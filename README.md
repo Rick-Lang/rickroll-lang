@@ -4,4 +4,4 @@ A rick roll oriented, dynamic, strong, esoteric programming language.
 - This repo is not completed and started yet
 - Don't pull request for now
 - We are just using github as a source code manager
-Thank you!
+~ Thank you!
