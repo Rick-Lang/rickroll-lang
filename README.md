@@ -4,6 +4,6 @@
 - You've been tricked!
 - 你被骗了！
 # But You Are Not Fully Tricked
-{[English 英文](https://github.com/Rick-Lang/Rick-Lang/blob/main/EN.md)}
+[English 英文](https://github.com/Rick-Lang/Rick-Lang/blob/main/EN.md)
 # 你被骗了，但没有完全被骗
-{[Chinese 简体中文](https://github.com/Rick-Lang/Rick-Lang/blob/main/CH.md)}
+[Chinese 简体中文](https://github.com/Rick-Lang/Rick-Lang/blob/main/CH.md)
