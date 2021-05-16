@@ -6,5 +6,5 @@
 - 我们目前只是用 gayhub 做项目管理
 ~ 谢谢您的配合！
 # 联系方式
-微信号：githubsherlockcxk
-邮件：cxk53cn@gmail.com
+- 微信号：githubsherlockcxk
+- 邮件：cxk53cn@gmail.com
