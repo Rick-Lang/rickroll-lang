@@ -8,4 +8,4 @@
 # 联系方式
 - 微信号：githubsherlockcxk
 - 邮件：cxk53cn@gmail.com
-- gitee：https://gitee.com/cxk-53
+- Gitee：https://gitee.com/cxk-53
