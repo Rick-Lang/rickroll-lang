@@ -7,4 +7,4 @@
 
 # Detailed Description / Documentation
 - _**[[This is a rick roll](https://github.com/Rick-Lang/rickroll-lang/blob/main/EnRickRoll.md)]**_
-- _**[[This is not a rick roll](https://github.com/Rick-Lang/rickroll-lang/blob/main/ChRickRoll.md)]**_
+- _**[[This is not a rick roll](https://github.com/Rick-Lang/rickroll-lang/blob/main/EnRickRoll.md)]**_
