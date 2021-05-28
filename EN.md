@@ -1,6 +1,6 @@
 # Rick Roll Language
 A rick roll oriented, dynamic, strong, interpreting esoteric programming language.
-# ⚠
+# Be Aware⚠
 - This repo is not completed yet, welcome to pull requests!
 
 # Contact
