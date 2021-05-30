@@ -6,5 +6,5 @@
 *The reasons that I made this language are I am one of Rick Astley's fans and I am excited to see other people being rickrolled.*
 
 # Detailed Description / Documentation
-- [_**[Description](https://github.com/Rick-Lang/rickroll-lang/blob/main/EnRickRoll.md)**_]
-- [_**[Documentation](https://github.com/Rick-Lang/rickroll-lang/blob/main/EnRickRoll.md)**_]
+- [_**[Description](https://github.com/Rick-Lang/rickroll-lang/blob/main/RickRoll.md)**_]
+- [_**[Documentation](https://github.com/Rick-Lang/rickroll-lang/blob/main/RickRoll.md)**_]
