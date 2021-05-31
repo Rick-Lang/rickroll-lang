@@ -1,7 +1,7 @@
 take_me_to_ur_heart
     let_u_down num1 = 10
 
-    and_if_u_ask_me_how_im_feeling num1 is 10 ~
+    and_if_u_ask_me_how_im_feeling num1 == 10 ~
 
         i_just_wanna_tell_u_how_im_feeling: "The number is 10"
 
