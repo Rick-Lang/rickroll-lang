@@ -1,0 +1,17 @@
+take_me_to_ur_heart
+
+give_u_up a = 10
+give_u_up b = 20
+
+and_if_u_ask_me_how_im_feeling b is 20:
+
+    i_just_wanna_tell_u_how_im_feeling: "B is 20"
+
+    and_if_u_ask_me_how_im_feeling a is 10:
+        i_just_wanna_tell_u_how_im_feeling: "A is 10"
+    say_good_bye
+
+say_good_bye
+
+this_old_house_is_the_way_u_should_be
+# END
