@@ -3,6 +3,12 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 # Be Aware⚠
 - This repo is not completed yet, welcome to pull requests!
 
+# Contact
+- Email: cxk53cn@gmail.com
+- Gitee: https://gitee.com/cxk-53
+- Wechat: githubsherlockcxk
+
+
 # Hello World
 ```
 take_me_to_ur_heart                           # This is the MAIN METHOD
@@ -15,8 +21,3 @@ And you can get the output on your terminal:
 ```
 Hello, World!
 ```
-
-# Contact
-- Email: cxk53cn@gmail.com
-- Gitee: https://gitee.com/cxk-53
-- Wechat: githubsherlockcxk
