@@ -11,6 +11,10 @@ take_me_to_ur_heart                           # This is the MAIN METHOD
 this_old_house_is_the_way_u_should_be         # End the main method
 # End                                         # End the whole program
 ```
+And you can get the output on your terminal:
+```
+Hello, World!
+```
 
 # Contact
 - Email: cxk53cn@gmail.com
