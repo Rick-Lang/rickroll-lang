@@ -1,8 +1,5 @@
-<audio controls>
-  <source src="videos/TakeMeToUrHeart.mp3" type="audio/mpeg">
-</audio>
+<img src="https://media4.giphy.com/media/Ju7l5y9osyymQ/200.gif" width="333" height="256"/>
 
-![Never Gonna Give You Up](https://media4.giphy.com/media/Ju7l5y9osyymQ/200.gif)
 # *You Got a RickRoll!*
 These are the real links:
 - [[English](https://github.com/Rick-Lang/Rick-Lang/blob/main/EN.md)]
