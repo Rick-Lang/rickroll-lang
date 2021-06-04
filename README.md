@@ -7,6 +7,7 @@
 
 # Rick Roll Language / Rick Astley Language
 
+![Build](https://img.shields.io/badge/Build-Unpassing-orange?style=for-the-badge&logo=appveyor)
 ![Python](https://img.shields.io/badge/Python-3.5%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 
