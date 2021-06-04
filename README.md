@@ -1,5 +1,5 @@
 # Notice:
-- This project is not completed yet.
+- This project is not completed yet, the code couldn't run directly
 
 # Rick Roll Language / Rick Astley Language
 <img src="http://i.ytimg.com/vi/V5B1jxiYXN8/mqdefault.jpg" width="300" height="181"/>
