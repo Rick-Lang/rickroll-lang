@@ -22,6 +22,10 @@
 # <img src="http://i.ytimg.com/vi/V5B1jxiYXN8/mqdefault.jpg" width="300" height="181"/>
 # <img src="https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93" width="420" height="236.25"/>
 
+# Rick Roll Language Website
+> [https://rick-roll-lang.org/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+
 ## Prolegomenon
 > *The reasons that I made this language are I am one of Rick Astley's fans and I am excited to see other people being rickrolled.*
 
