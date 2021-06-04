@@ -19,7 +19,7 @@
 
 # Detailed Description / Documentation
 - [_**[Description](https://github.com/Rick-Lang/rickroll-lang/blob/main/RickRoll.md)**_]
-- [_**[Documentation](https://github.com/Rick-Lang/rickroll-lang/blob/main/RickRoll.md)**_]
+- [_**[Documentation](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_]
 
 # Contributors
 - _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
