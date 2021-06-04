@@ -37,5 +37,5 @@
 
 
 ## Details
-- _**[Description](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**_
-- _**[Documentation](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_
+- _**[Description/Documentation](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**_
+- _**[Author's Bio](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_
