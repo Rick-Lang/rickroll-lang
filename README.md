@@ -1,5 +1,6 @@
-# Notice:
-- This project is not completed yet, the code couldn't run directly
+# Be Aware⚠
+- This repo is not completed yet, sometimes you will see the code couldn't run directly...
+- We are using GitHub as a source code manager (I don't usually use git 🤣😂)
 
 # Rick Roll Language / Rick Astley Language
 
