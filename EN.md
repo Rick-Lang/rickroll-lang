@@ -1,9 +1,3 @@
-# Contact
-- Email: cxk53cn@gmail.com
-- Gitee: https://gitee.com/cxk-53
-- Wechat: githubsherlockcxk
-
-
 # Rick Roll Language
 A rick roll oriented, dynamic, strong, interpreting esoteric programming language.
 
