@@ -21,9 +21,9 @@
 - [Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/rick_examples) to get started
 
 
-# Detailed Description / Documentation
-- [_**[Description](https://github.com/Rick-Lang/rickroll-lang/blob/main/RickRoll.md)**_]
-- [_**[Documentation](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_]
+# Details
+- _**[Description](https://github.com/Rick-Lang/rickroll-lang/blob/main/RickRoll.md)**_
+- _**[Documentation](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_
 
 # Contributors
 - _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
