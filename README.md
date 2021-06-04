@@ -28,9 +28,10 @@
 ## Features
 - Turing-complete
 - Support python 3.5+
+- Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics
 - [Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/rick_examples) to get started
 
 
 ## Details
-- _**[Description](https://github.com/Rick-Lang/rickroll-lang/blob/main/RickRoll.md)**_
+- _**[Description](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**_
 - _**[Documentation](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_
