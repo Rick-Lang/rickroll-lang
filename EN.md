@@ -1,7 +1,3 @@
-# Be Aware⚠
-- This repo is not completed yet, sometimes you will see the code couldn't run directly...
-- We are using GitHub as a source code manager (I don't usually use git 🤣😂)
-
 # Contact
 - Email: cxk53cn@gmail.com
 - Gitee: https://gitee.com/cxk-53
