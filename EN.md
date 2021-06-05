@@ -1,6 +1,25 @@
 # Rick Roll Language
 A rick roll oriented, dynamic, strong, interpreting esoteric programming language.
 
+## Execute Code Command
+> I usually execute my source code like this:
+```
+python3 rick.py -s [Source Code File Name]
+```
+> If you want to know the execution time:
+```
+python3 rick.py -s [Source Code File Name] -time
+```
+> The interpreter can generate a .mp3 file from your source code (This feature is not completed yet)
+```
+python3 rick.py -s [Source Code File Name] -mp3
+```
+> Also the interpreter provides you to "sing" code (This feature is not completed yet)
+```
+python3 rick.py -sing [MP3 File Name] [Source Code(Text) File Name]
+```
+
+
 ## Hello World
 ```
 take_me_to_ur_heart                           # This is the MAIN METHOD
