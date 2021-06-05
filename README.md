@@ -12,9 +12,9 @@
 - Wechat: githubsherlockcxk
 
 # Rick Roll Language Website
-> [https://rick-roll-lang.org/introduction/](https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/08/90/287639008/287639008-1-208.mp4?e=ig8euxZM2rNcNbhM7wdVhwdlhzKMhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1622854297&gen=playurlv2&os=cosbv&oi=3662575268&trid=b404849acbf647aeb952c0b5549d5ce4T&platform=html5&upsig=f30bcf70ee872591f8772235237ffe63&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&bvc=vod&orderid=0,1&logo=80000000)
+> [https://rick-roll-lang.org/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 #### Here are Rick Astley's songs in my website, you can download them from my website
-> [https://rick-roll-lang.org/songs/](https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/37/40/314024037/314024037-1-208.mp4?e=ig8euxZM2rNcNbhjnWdVhwdlhzTHhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1622854160&gen=playurlv2&os=cosbv&oi=3662575268&trid=91be76fbe3454f9a9d0b5ec308a3068eT&platform=html5&upsig=85f04fcd0e531d9bfd023352838a670d&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&bvc=vod&orderid=0,1&logo=80000000)
+> [https://rick-roll-lang.org/songs/](https://www.youtube.com/watch?v=yPYZpwSpKmA)
 
 
 # Rick Roll Language / Rick Astley Language
@@ -39,5 +39,5 @@
 
 
 ## Details
-- _**[Description/Documentation](https://upos-sz-mirrorcos.bilivideo.com/upgcxcode/08/90/287639008/287639008-1-208.mp4?e=ig8euxZM2rNcNbhM7wdVhwdlhzKMhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1622854297&gen=playurlv2&os=cosbv&oi=3662575268&trid=b404849acbf647aeb952c0b5549d5ce4T&platform=html5&upsig=f30bcf70ee872591f8772235237ffe63&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&bvc=vod&orderid=0,1&logo=80000000)**_
+- _**[Description/Documentation](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**_
 - _**[Author's Bio](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_
