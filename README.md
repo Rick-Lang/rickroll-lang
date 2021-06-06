@@ -1,5 +1,5 @@
 # Be Aware⚠
-- This repo is not completed yet, sometimes you will see the code couldn't run directly...
+- This repo is not completed yet, this language only supports "print" and "if statement"
 - We are using GitHub as a source code manager (I don't usually use git 🤣😂)
 
 # Contributors
