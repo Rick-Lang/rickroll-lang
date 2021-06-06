@@ -40,4 +40,4 @@
 
 ## Details
 - _**[Description/Documentation](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**_
-- _**[Author's Bio](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_
+- _**[This is not a rick roll (CLICK ME!)](https://github.com/Rick-Lang/rickroll-lang/blob/main/EN.md)**_
