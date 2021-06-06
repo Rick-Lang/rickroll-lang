@@ -25,8 +25,7 @@ python3 rick.py -sing [MP3 File Name] [Source Code(Text) File Name]
 take_me_to_ur_heart                           # This is the MAIN METHOD
     give_u_up msg = "Hello, World!"           # Define a variable, its value is hello world
     i_just_wanna_tell_u_how_im_feeling: msg   # print the "msg" variable
-this_old_house_is_where_u_should_be         # End the main method
-# End                                         # End the whole program
+never_let_me_go                               # End the main method
 ```
 And you can get the output on your terminal:
 ```
@@ -42,8 +41,7 @@ take_me_to_ur_heart
         i_just_wanna_tell_u_how_im_feeling: "A is 10!"
     say_good_bye
 
-this_old_house_is_where_u_should_be
-# END
+never_let_me_go
 ```
 And you can get this on your terminal:
 ```
