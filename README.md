@@ -32,10 +32,10 @@
 > *The reasons that I made this language are I am one of Rick Astley's fans and I am excited to see other people being rickrolled.*
 
 ## Features
-- Turing-complete
-- Support python 3.5+
-- Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics
-- [Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/rick_examples) to get started
+- *Turing-complete*
+- *Support python 3.5+*
+- *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
+- *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/rick_examples) to get started*
 
 
 ## Details
