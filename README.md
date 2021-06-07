@@ -12,9 +12,9 @@
 - Wechat: githubsherlockcxk
 
 # Rick Roll Language Website
-> [https://rick-roll-lang.org/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+> [https://rickroll-lang.tech/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 #### Here are Rick Astley's songs in my website, you can download them from my website
-> [https://rick-roll-lang.org/songs/](https://www.youtube.com/watch?v=yPYZpwSpKmA)
+> [https://rickroll-lang.tech/songs/](https://www.youtube.com/watch?v=yPYZpwSpKmA)
 
 
 # Rick Roll Programming Language
