@@ -1,7 +1,7 @@
 # Language Documentation
 A rick roll oriented, dynamic, strong, interpreting esoteric programming language.
 
-## Execute Code Command
+## Commands to execute your code
 > I usually execute my source code like this:
 ```
 python3 rick.py -s [Source Code File Name]
@@ -22,14 +22,14 @@ python3 rick.py -sing [MP3 File Name] [Source Code(Text) File Name]
 
 ## Hello World
 ```
-take_me_to_ur_heart                           # This is the MAIN METHOD
-    give_u_up msg = "Hello, World!"           # Define a variable, its value is hello world
-    i_just_wanna_tell_u_how_im_feeling: msg   # print the "msg" variable
-never_let_me_go                               # End the main method
+take_me_to_ur_heart                                                      # This is the MAIN METHOD
+    give_u_up msg = "Never gonna give you up, never gonna let you down~" # Define a variable
+    i_just_wanna_tell_u_how_im_feeling: msg                              # print the "msg" variable
+never_let_me_go                                                          # End the main method
 ```
 And you can get the output on your terminal:
 ```
-Hello, World!
+Never gonna give you up, never gonna let you down~
 ```
 
 ## If Statement
