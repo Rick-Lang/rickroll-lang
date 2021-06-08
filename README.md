@@ -37,4 +37,4 @@
 
 ## Documentation
 - **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
-- **[Chinese]()**
+- **[Chinese](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
