@@ -36,5 +36,5 @@
 - **[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/rick_examples) to get started**
 
 ## Documentation
-- **[English](https://github.com/Rick-Lang/rickroll-lang/edit/main/Doc.md)**
+- **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
 - **[Chinese]()**
