@@ -14,7 +14,7 @@ python3 rick.py -s [Source Code File Name] -time
 ```
 python3 rick.py -s [Source Code File Name] -mp3
 ```
-> 你还可以通过唱歌的方式写代码 (但这个功能我们也没有完成)
+> 客户还可以通过唱歌的方式写代码 (但这个功能我们也没有完成)
 ```
 python3 rick.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
@@ -23,16 +23,16 @@ python3 rick.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ## Hello World
 ```
 take_me_to_ur_heart                           # 这是一个Main函数/方法
-    give_u_up msg = "Hello, World!"           # 定义一个变量
-    i_just_wanna_tell_u_how_im_feeling: msg   # print the "msg" variable
-never_let_me_go                               # End the main method
+    give_u_up msg =  "你 被 骗 了 !"           # 定义一个变量
+    i_just_wanna_tell_u_how_im_feeling: msg   # 输出变量 “msg”
+never_let_me_go                               # 结束Main函数/方法
 ```
-And you can get the output on your terminal:
+客户的命令行会打印出：
 ```
-Hello, World!
+你 被 骗 了 !
 ```
 
-## If Statement
+## If 语句
 ```
 take_me_to_ur_heart
     give_u_up a = 10
@@ -43,7 +43,7 @@ take_me_to_ur_heart
 
 never_let_me_go
 ```
-And you can get this on your terminal:
+客户的命令行会打印出：
 ```
 "A is 10!"
 ```
