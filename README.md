@@ -26,7 +26,7 @@
 
 ## Documentation
 - **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
-- **[Chinese](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
+- **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
 
 # Contributors
 - _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
