@@ -26,9 +26,6 @@
 
 # <img src="https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93" width="420" height="236.25"/>
 
-## Prolegomenon
-> *The reasons that I made this language are I am one of Rick Astley's fans and I am excited to see other people being rickrolled.*
-
 ## Features
 - **[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)**
 - **Support python 3.5+**
