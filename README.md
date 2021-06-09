@@ -3,14 +3,6 @@
 - We are currently working on or achieving "loop"
 - We are using GitHub as a source code manager (I don't usually use git 🤣😂)
 
-# Contributors
-- _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
-- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions/advice)
-
-# Contact
-- Email: cxk53cn@gmail.com
-- Gitee: https://gitee.com/cxk-53
-- Wechat: githubsherlockcxk
 
 # Rick Roll Language Website
 > [https://rickroll-lang.tech/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
@@ -35,3 +27,12 @@
 ## Documentation
 - **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
 - **[Chinese](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
+
+# Contributors
+- _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
+- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions/advice)
+
+# Contact
+- Email: cxk53cn@gmail.com
+- Gitee: https://gitee.com/cxk-53
+- Wechat: githubsherlockcxk
