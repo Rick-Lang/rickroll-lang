@@ -342,16 +342,18 @@ class Main:
             current_arg = argv[i].lower()
 
             # Sing to write code
-            if current_arg == '-sing': pass
+            # if current_arg == '-sing': pass
+
+            # if current_arg == '-mp3': self.is_mp3 = True
 
             if current_arg == '-s': self.file_name = argv[i + 1]
 
             if current_arg == '-time': self.show_time = True
 
-            if current_arg == '-mp3': self.is_mp3 = True
-
-
         self.execute_src()if exists(self.file_name)else print(f"File [{self.file_name}] doesn't exist...")
+
+        if self.show_time:
+            print(f'Execution Time: [{time() - start}] sec.')
 
 
     def execute_src(self):
@@ -364,12 +366,6 @@ class Main:
                 current_line += 1
 
                 Parser(Token(exp).types, Token(exp).values)
-
-
-
-        if self.show_time:
-            print(f'Execution Time: [{time() - start}] sec.')
-
 
 
 if __name__ == '__main__':
