@@ -363,10 +363,7 @@ class Main:
             for exp in src.readlines():
                 current_line += 1
 
-                final_token_types = Token(exp).types
-                final_token_values = Token(exp).values
-
-                Parser(final_token_types, final_token_values)
+                Parser(Token(exp).types, Token(exp).values)
 
 
 
