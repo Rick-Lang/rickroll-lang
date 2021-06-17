@@ -60,31 +60,6 @@ TT_p_variable          = 'P_VARIABLE'
 TT_p_function          = 'P_FUNCTION'
 
 
-
-# with open("let.mp3", mode='rb') as f:
-#     let_audio = f.read()
-
-# with open("loop.mp3", mode='rb') as f:
-#     loop_audio = f.read()
-
-# with open("print.mp3", mode='rb') as f:
-#     print_audio = f.read()
-
-# with open("if.mp3", mode='rb') as f:
-#     if_audio = f.read()
-
-
-# with open("end.mp3", mode='rb') as f:
-#     end_audio = f.read()
-
-# with open("main.mp3", mode='rb') as f:
-#     main_audio = f.read()
-
-
-
-
-
-
 # Set and start a timer
 start = time()
 
@@ -304,10 +279,6 @@ class Main:
     def __init__(self):
         self.src_file_name = ''
         self.show_time = False
-        # self.is_mp3 = False
-
-        # self.mp3_name = ''
-
 
         for i in range(len(argv)):
 
@@ -319,10 +290,6 @@ class Main:
 
             if current_arg == '-time':
                 self.show_time = True
-
-            # if current_arg == '-mp3':
-            #     self.is_mp3 = True
-            #     self.mp3_name = argv[i + 1]
 
 
         self.execute_src()if exists(self.src_file_name)else print(f"File [{self.src_file_name}] doesn't exist...")
