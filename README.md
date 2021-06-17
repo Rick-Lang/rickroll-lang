@@ -23,6 +23,7 @@
 - **Support python 3.5+**
 - **Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics**
 - **[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/rick_examples) to get started**
+- **Translate .rick source code to python 3**
 
 ## Documentation
 - **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
