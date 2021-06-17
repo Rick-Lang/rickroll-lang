@@ -1,5 +1,5 @@
 take_me_to_ur_heart
     give_u_up msg = "Never gonna give u up, never gonna let u down~"
-    i_just_wanna_tell_u_how_im_feeling: msg
-never_let_me_go
+    i_just_wanna_tell_u_how_im_feeling msg
+say_good_bye
 # End
