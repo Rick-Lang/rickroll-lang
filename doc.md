@@ -24,8 +24,8 @@ python3 rick.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
 take_me_to_ur_heart                                                      # This is the MAIN METHOD
     give_u_up msg = "Never gonna give you up, never gonna let you down~" # Define a variable
-    i_just_wanna_tell_u_how_im_feeling: msg                              # print the "msg" variable
-never_let_me_go                                                          # End the main method
+    i_just_wanna_tell_u_how_im_feeling msg                              # print the "msg" variable
+say_good_bye                                                             # End the main method
 ```
 And you can get the output on your terminal:
 ```
@@ -38,10 +38,10 @@ take_me_to_ur_heart
     give_u_up a = 10
 
     and_if_u_ask_me_how_im_feeling a is 10
-        i_just_wanna_tell_u_how_im_feeling: "A is 10!"
+        i_just_wanna_tell_u_how_im_feeling "A is 10!"
     say_good_bye
 
-never_let_me_go
+say_good_bye
 ```
 And you can get this on your terminal:
 ```
