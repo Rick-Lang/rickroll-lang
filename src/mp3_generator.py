@@ -1,2 +1,0 @@
-def combine():
-    pass
