@@ -1,4 +1,4 @@
-# 骗子语言教程
+# 葫芦娃语言教程
 一个面向诈骗，强动态，解释性的深奥编程语言
 
 ## 执行源码命令
@@ -24,8 +24,8 @@ python3 rick.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
 take_me_to_ur_heart                           # 这是一个Main函数/方法
     give_u_up msg =  "你 被 骗 了 !"           # 定义一个变量
-    i_just_wanna_tell_u_how_im_feeling: msg   # 输出变量 “msg”
-never_let_me_go                               # 结束Main函数/方法
+    i_just_wanna_tell_u_how_im_feeling msg    # 输出变量 “msg”
+say_good_bye                                  # 结束Main函数/方法
 ```
 客户的命令行会打印出：
 ```
@@ -38,10 +38,10 @@ take_me_to_ur_heart
     give_u_up a = 10
 
     and_if_u_ask_me_how_im_feeling a is 10
-        i_just_wanna_tell_u_how_im_feeling: "A is 10!"
+        i_just_wanna_tell_u_how_im_feeling "A is 10!"
     say_good_bye
 
-never_let_me_go
+say_good_bye
 ```
 客户的命令行会打印出：
 ```
