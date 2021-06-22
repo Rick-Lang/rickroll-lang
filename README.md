@@ -3,8 +3,12 @@
 ![Build](https://img.shields.io/badge/Build-passing-orange?style=for-the-badge&logo=appveyor)
 ![Python](https://img.shields.io/badge/Python-3.5%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
+<br>
+Rick Roll Programming Language, a language for rick roll!
+<br>
+葫芦娃语言，一个为了诈骗而诞生的编程语言。
 
-# <img src="https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93" width="420" height="236.25"/>
+![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
 ## Features
 - **[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)**
