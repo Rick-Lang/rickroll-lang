@@ -10,6 +10,26 @@ Rick Roll Programming Language, a language for rick roll!
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
+## Hello World
+```
+take_me_to_ur_heart                                                      # This is the MAIN METHOD
+    give_u_up msg = "Never gonna give you up, never gonna let you down~" # Define a variable
+    i_just_wanna_tell_u_how_im_feeling msg                              # print the "msg" variable
+say_good_bye                                                             # End the main method
+```
+Equivalent to Python
+```python
+if __name__ == '__main__':
+  msg = "Never gonna give you up, never gonna let you down~"
+  print(msg)
+
+```
+
+And you can get the output on your terminal:
+```
+Never gonna give you up, never gonna let you down~
+```
+
 ## Features
 - **[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)**
 - **Support python 3.5+**
