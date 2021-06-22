@@ -6,7 +6,7 @@
 <br>
 Rick Roll Programming Language, a language for rick roll!
 <br>
-葫芦娃语言，一个为了诈骗而诞生的编程语言。
+"葫芦娃"语言，一个为了诈骗而诞生的编程语言。
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
@@ -34,4 +34,4 @@ Rick Roll Programming Language, a language for rick roll!
 # Contact
 - Email: cxk53cn@gmail.com
 - Gitee: https://gitee.com/cxk-53
-- Wechat: githubsherlockcxk
+- Wechat/微信·: githubsherlockcxk
