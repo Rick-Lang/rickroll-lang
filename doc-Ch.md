@@ -63,7 +63,7 @@ if __name__ == '__main__':
 "A is 10!"
 ```
 
-## loop 循环
+## Loop 循环
 ```
 take_me_to_ur_heart
     together_forever_we_two # 死循环
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         pass
 ```
 
-## function 函数
+## Function 函数
 ```
 never_knew func arg1, arg2 could_feel_this_way  # 定义函数
     when_i_give_my arg1, arg2 it_will_be_completely # 返回arg1和arg2
