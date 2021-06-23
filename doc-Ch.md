@@ -72,13 +72,13 @@ take_me_to_ur_heart
 
 say_good_bye
 ```
-相当于 Python 的
+相当于以下Python代码
 ```Python
 if __name__ == "__main__":
     while True:
         pass
-
 ```
+
 ## function 函数
 ```
 never_knew func arg1, arg2 could_feel_this_way  # 定义函数
@@ -86,8 +86,7 @@ never_knew func arg1, arg2 could_feel_this_way  # 定义函数
 say_good_bye
 ```
 相当于以下Python代码
-```
+```python
 def func(arg1, arg2):
     return arg1, arg2
-
 ```
