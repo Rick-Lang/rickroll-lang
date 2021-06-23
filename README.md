@@ -40,8 +40,9 @@ Never gonna give you up, never gonna let you down~
 - *Translate .rick source code to python 3*
 
 ## Documentation
-- **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
-- **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
+> **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
+
+> **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
 <br>
 
 # Rick Roll Language Website
