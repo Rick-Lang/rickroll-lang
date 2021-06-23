@@ -37,7 +37,7 @@ Never gonna give you up, never gonna let you down~
 - *Support python 3.5+*
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
-- *Translate .rick source code to python 3*
+- *Translate .rickroll source code to python 3*
 
 ## Documentation
 > **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
@@ -48,10 +48,10 @@ Never gonna give you up, never gonna let you down~
 # Rick Roll Language Website
 **[https://rickroll-lang.tech/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**
 <br>
-<br>
+
 **Here are Rick Astley's songs in my website, you can download them from my website**
 <br>
-<br>
+
 **[https://rickroll-lang.tech/songs/](https://www.youtube.com/watch?v=yPYZpwSpKmA)**
 
 # Contributors
