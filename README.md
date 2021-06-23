@@ -27,7 +27,10 @@ if __name__ == '__main__':
 
 ```
 
-And you can get the output on your terminal:
+**And you can get the output on your terminal:**
+![](https://preview.redd.it/w2n81iqx37p51.gif?format=png8&s=a5619fa00938c2aa817496ddd9eceda8a727324c)
+<br>
+**Sorry, it's this:**
 ```
 Never gonna give you up, never gonna let you down~
 ```
