@@ -1,4 +1,4 @@
-<img src="img/ico1.jpg" align="right" width="192" height="192"/>
+<img src="img/ico1.jpg" align="right" width="160" height="160"/>
 
 # Rick Roll Programming Language
 
