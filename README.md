@@ -76,6 +76,6 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 # Contact
 - Email: cxk53cn@gmail.com
 - Gitee: https://gitee.com/cxk-53
-- Wechat/微信·: githubsherlockcxk
+- Wechat/微信: githubsherlockcxk
 
 ![](https://user-images.githubusercontent.com/74444486/123045114-5ee90880-d3af-11eb-95dd-ff8398753b07.jpeg)
