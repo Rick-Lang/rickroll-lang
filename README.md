@@ -44,6 +44,24 @@ Never gonna give you up, never gonna let you down~
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate .rickroll source code to python 3*
 
+## Usage
+> I usually execute my source code like this:
+```
+python3 rick.py -s [Source Code File Name]
+```
+> If you want to know the execution time:
+```
+python3 rick.py -s [Source Code File Name] -time
+```
+> The interpreter can generate a .mp3 file from your source code (This feature is not completed yet)
+```
+python3 rick.py -s [Source Code File Name] -mp3
+```
+> Also the interpreter provides you to "sing" code (This feature is not completed yet)
+```
+python3 rick.py -sing [MP3 File Name] [Source Code(Text) File Name]
+```
+
 ## Documentation
 > **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
 
