@@ -74,7 +74,9 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 2. Make highlight for VS Code, PyCharm, and Subline!
 3. Write an audio generator!
 4. Support "writing code by singing"!
-5. **SPREAD RICK ROLL EVERYWHERE!!!**
+5. Design a better icon!
+6. Translate RickRoll to JavaScript, C/C++, and C#!
+7. **SPREAD RICK ROLL EVERYWHERE!!!**
 
 <br>
 
