@@ -1,3 +1,5 @@
+<img src="img/ico1.ico" align="right" width="128" height="128"/>
+
 # Rick Roll Programming Language
 
 ![Build](https://img.shields.io/badge/Build-passing-orange?style=for-the-badge&logo=appveyor)
