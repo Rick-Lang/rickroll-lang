@@ -48,6 +48,16 @@ Never gonna give you up, never gonna let you down~
 > **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
 <br>
 
+# Todo!
+In order to make RICK ROll becoming a world heritage, there are several things for YOU and I do!
+1. Add more keywords and built-in functions!
+2. Make highlight for VS Code, PyCharm, and Subline!
+3. Write an audio generator!
+4. Support "writing code by singing"!
+5. **SPREAD RICK ROLL EVERYWHERE!!!**
+
+<br>
+
 # Rick Roll Language Website
 **[https://rickroll-lang.tech/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**
 <br>
