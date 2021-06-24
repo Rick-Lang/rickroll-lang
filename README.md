@@ -49,7 +49,7 @@ Never gonna give you up, never gonna let you down~
 <br>
 
 # Todo!
-In order to make RICK ROll becoming a world heritage, there are several things for YOU and I do!
+In order to make RICK ROll becoming a world heritage, YOU and I still have a bunch of things to do!
 1. Add more keywords and built-in functions!
 2. Make highlight for VS Code, PyCharm, and Subline!
 3. Write an audio generator!
