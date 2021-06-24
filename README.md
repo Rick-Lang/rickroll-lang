@@ -71,12 +71,13 @@ python3 rickroll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 # Todo!
 In order to make RICK ROll becoming a world heritage, YOU and I still have a bunch of things to do!
 1. Add more keywords and built-in functions!
-2. Make highlight for VS Code, PyCharm, and Subline!
-3. Write an audio generator!
-4. Support "writing code by singing"!
-5. Design a better icon!
-6. Translate RickRoll to JavaScript, C/C++, and C#!
-7. **SPREAD RICK ROLL EVERYWHERE!!!**
+2. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
+3. Make highlight for VS Code, PyCharm, and Subline!
+4. Write an audio generator!
+5. Support "writing code by singing"!
+6. Design a better icon!
+7. Translate RickRoll to JavaScript, C/C++, and C#!
+8. **SPREAD RICK ROLL EVERYWHERE!!!**
 
 <br>
 
