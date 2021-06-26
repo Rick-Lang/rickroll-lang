@@ -7,7 +7,7 @@
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 <br>
 <br>
-Rick Roll Programming Language, a language for rick roll!
+Rick Roll Programming Language, a language for rick rolling!
 <br>
 "葫芦娃"语言，一个为了诈骗而诞生的编程语言。
 
