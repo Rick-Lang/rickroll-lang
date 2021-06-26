@@ -222,7 +222,7 @@ class Token:
             add_to_parser(TT_float)
 
         # Bool
-        elif t == 'TrueLove' or t == 'FalseFalse':
+        elif t == 'True' or t == 'False':
             add_to_parser(TT_bool)
 
         # String
