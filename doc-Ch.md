@@ -1,18 +1,18 @@
-# 葫芦娃语言教程
+# RickRoll 语言教程
 一个面向诈骗，强动态，解释性的深奥编程语言
 
 ## 执行源码命令
 > 用一般方法执行源代码：
 ```
-python3 rickroll.py -s [Source Code File Name]
+python3 rickroll.py -r [Source Code File Name]
 ```
 > 如果客户想知道执行时间：
 ```
-python3 rickroll.py -s [Source Code File Name] -time
+python3 rickroll.py -r [Source Code File Name] -time
 ```
 > 解释器也可以从你的源码中生成一个MP3文件（但此需求尚未完成）
 ```
-python3 rickroll.py -s [Source Code File Name] -mp3
+python3 rickroll.py -r [Source Code File Name] -audio [Audio_File_Name]
 ```
 > 客户还可以通过唱歌的方式写代码 (但这个功能我们也没有完成)
 ```
