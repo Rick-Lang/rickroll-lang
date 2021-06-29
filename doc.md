@@ -4,15 +4,15 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 ## Commands to execute your code
 > I usually execute my source code like this:
 ```
-python3 rickroll.py -s [Source Code File Name]
+python3 rickroll.py -r [Source Code File Name]
 ```
 > If you want to know the execution time:
 ```
-python3 rickroll.py -s [Source Code File Name] -time
+python3 rickroll.py -r [Source Code File Name] --time
 ```
 > The interpreter can generate a .mp3 file from your source code (This feature is not completed yet)
 ```
-python3 rickroll.py -s [Source Code File Name] -mp3
+python3 rickroll.py -r [Source Code File Name] -audio [Audio_File_Name]
 ```
 > Also the interpreter provides you to "sing" code (This feature is not completed yet)
 ```
