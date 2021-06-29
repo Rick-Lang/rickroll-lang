@@ -55,7 +55,7 @@ python3 rickroll.py -r [Source Code File Name] --time
 ```
 > The interpreter can generate a .mp3 file from your source code (This feature is not completed yet)
 ```
-python3 rickroll.py -s [Source Code File Name] -audio [audio_file_name]
+python3 rickroll.py -r [Source Code File Name] -audio [audio_file_name]
 ```
 > Also the interpreter provides you to "sing" code (This feature is not completed yet)
 ```
