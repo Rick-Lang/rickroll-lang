@@ -35,7 +35,9 @@ Never gonna give you up, never gonna let you down~
 ## Defining Variable
 ```
 give_u_up a = 10~
-give_u_up b = "bbc is fn"
+give_u_up b = "It is a string"
+give_u_up c = ["This", "is", "an", "array"]
+
 ```
 
 ## If Statement
