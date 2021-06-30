@@ -33,6 +33,7 @@ Never gonna give you up, never gonna let you down~
 ```
 
 ## Defining Variable
+You can define int, float, string, list/array, set, and tuple.
 ```
 give_u_up a = 10~
 give_u_up b = "It is a string"
@@ -41,6 +42,7 @@ give_u_up c = ["This", "is", "an", "array"]
 ```
 
 ## If Statement
+Indentation in RickRoll-lang is optional.
 ```
 take_me_to_ur_heart~    # You can add "~" at the end of the statement (it is totally optional)
     give_u_up a = 10
@@ -68,7 +70,7 @@ And you will get this on your terminal
 ## Loop
 ```
 take_me_to_ur_heart
-    together_forever_we_two # Endless loop
+    together_forever_and_never_to_part # Endless loop
 
     say_good_bye
 
