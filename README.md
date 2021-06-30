@@ -1,3 +1,8 @@
+# Notice:
+This language is only in its testing period, we will probably change some keywords.
+
+
+
 <img src="img/ico1.jpg" align="right" width="160" height="160"/>
 
 # Rick Roll Programming Language
