@@ -13,3 +13,17 @@ take_me_to_ur_heart
 
 say_good_bye~
 
+### Equivalent to Python
+# ----------------------
+# if __name__ == '__main__':
+#    areYouRolling= ["Together ","forever", "and never to part", "Together", "foverer", "we two"]
+#
+#    astleyCounter=0
+#
+#    while True:
+#      if astleyCounter == len(areYouRolling):
+#        break
+#
+#      print(areYouRolling[astleyCounter] + "\n")
+#
+#      astleyCounter+=1
