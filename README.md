@@ -6,7 +6,6 @@
 ![Python](https://img.shields.io/badge/Python-3.5%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 <br>
-<br>
 Rick Roll Programming Language, a language for rick rolling!
 <br>
 
