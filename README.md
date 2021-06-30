@@ -1,5 +1,5 @@
 # Notice:
-This language is only in its testing period, we will probably change some keywords.
+This language is in its testing period, we will probably change some keywords.
 
 
 
