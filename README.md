@@ -9,7 +9,6 @@
 <br>
 Rick Roll Programming Language, a language for rick rolling!
 <br>
-"葫芦娃"语言，一个为了诈骗而诞生的编程语言。
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
@@ -91,8 +90,9 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 **[https://rickroll-lang.tech/songs/](https://www.youtube.com/watch?v=yPYZpwSpKmA)**
 
 # Contributors
-- _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
-- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions/advice)
+- _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Write code)
+- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Make suggestions/advice)
+- _**[henriqueritter](https://github.com/henriqueritter)**_   (Contribute to RickRoll example)
 
 # Contact
 - Email: cxk53cn@gmail.com
