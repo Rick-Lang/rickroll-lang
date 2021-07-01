@@ -1,1 +1,3 @@
 traceback2
+wave
+pyttsx3
