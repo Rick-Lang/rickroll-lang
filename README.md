@@ -8,7 +8,7 @@ This language is in its testing period, we will probably change some keywords.
 # Rick Roll Programming Language
 
 ![Build](https://img.shields.io/badge/Build-passing-orange?style=for-the-badge&logo=appveyor)
-![Python](https://img.shields.io/badge/Python-3.5%2B-brightgreen?style=for-the-badge&logo=appveyor)
+![Python](https://img.shields.io/badge/Python-3.6%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 <br>
 Rick Roll Programming Language, a language for rick rolling!
@@ -42,7 +42,7 @@ Never gonna give you up, never gonna let you down~
 
 ## Features
 - *[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)*
-- *Support [python 3.5+](https://www.python.org/downloads/release/python-3510/)*
+- *Support [python 3.6+](https://www.python.org/downloads/release/python-3510/)*
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate .rickroll source code to python 3*
