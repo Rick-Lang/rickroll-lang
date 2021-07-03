@@ -1,0 +1,56 @@
+never_knew BubbleSort arr could_feel_this_way
+
+    give_u_up i = 0
+    give_u_up j = 0
+
+    together_forever_with i is Length(arr)
+        give_u_up i = i + 1
+
+        together_forever_with j is Length(arr) - 1
+            give_u_up j = j + 1
+
+            and_if_u_ask_me_how_im_feeling arr[j] > arr[j + 1]
+                give_u_up arr[j], arr[j + 1] = arr[j + 1], arr[j]
+            say_good_bye
+
+        say_good_bye
+    say_good_bye
+
+    when_i_give_my arr it_will_be_completely
+
+
+say_good_bye
+
+take_me_to_ur_heart~
+    give_u_up arr = [6, 3, 5, 9, 12]
+    i_just_wanna_tell_u_how_im_feeling BubbleSort(arr)
+
+say_good_bye
+
+# Equivalent to python
+# def BubbleSort(arr):
+
+#   i=0
+#   j=0
+
+#   while i==len(arr):
+#     i=i+1
+
+#     while j==len(arr)-1:
+#       j=j+1
+
+#       if arr[j]>arr[j+1]:
+#         arr[j],arr[j+1]=arr[j+1],arr[j]
+#         pass
+
+#       pass
+#     pass
+
+#   return arr
+
+
+#   pass
+
+# if __name__ == "__main__":
+#   arr=[6,3,5,9,12]
+#   print(BubbleSort(arr), end="")
