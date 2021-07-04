@@ -1,6 +1,11 @@
 # Language Documentation
 A rick roll oriented, dynamic, strong, interpreting esoteric programming language.
 
+# Notice:
+**The syntax of RickRoll-Lang is not same as Python**
+1. It doesn't need indentation
+2. The code must be written inside the main method, otherwise the interpreter will not execute
+
 ## Commands to execute your code
 > I usually execute my source code like this:
 ```
