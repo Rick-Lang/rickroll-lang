@@ -431,7 +431,6 @@ class Main:
 
         # Execute python code
         try:
-            print(py_code)
             exec(py_code, globals(), globals())
 
 
