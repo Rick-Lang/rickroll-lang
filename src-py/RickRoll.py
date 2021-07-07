@@ -12,7 +12,7 @@ Generate an audio: rickroll -r [File_Name] -audio [Audio_Name]
 Sing code:  rickroll -sing [Audio_Name] [File_Name]
 
 Other Options:
---time:      Show execution time ofyour code
+--time:      Show execution time of your code
 --help/--h:  Help
 """
 
