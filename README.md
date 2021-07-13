@@ -66,10 +66,9 @@ python3 rickroll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
 
 ## Documentation
-> **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
-
-> **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
+**[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
 <br>
+**[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
 
 # Todo!
 In order to make RICK ROll becoming a world heritage, YOU and I still have a bunch of things to do!
