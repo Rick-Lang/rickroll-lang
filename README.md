@@ -1,7 +1,6 @@
 # Notice:
 This language is in its testing period, we will probably change some keywords.
-
-
+<br>
 
 <img src="img/ico1.jpg" align="right" width="160" height="160"/>
 
