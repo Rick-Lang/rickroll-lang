@@ -56,6 +56,12 @@ python3 rickroll.py -r [Source Code File Name]
 ```
 python3 rickroll.py -r [Source Code File Name] --time
 ```
+> If you want to translate RickRoll to C++:
+```
+python3 rickroll.py -r [Source Code File Name] --cpp
+OR
+python3 rickroll.py -r [Source Code File Name] --c++
+```
 > The interpreter can generate a .mp3 file from your source code (This feature is not completed yet)
 ```
 python3 rickroll.py -r [Source Code File Name] -audio [audio_file_name]
