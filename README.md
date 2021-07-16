@@ -87,8 +87,6 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 7. Translate RickRoll to JavaScript, C, and C#!
 8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-<br>
-
 # Rick Roll Language Website
 **Address:**
 <br>
