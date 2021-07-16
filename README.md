@@ -56,7 +56,7 @@ python3 rickroll.py -r [Source Code File Name]
 ```
 python3 rickroll.py -r [Source Code File Name] --time
 ```
-> If you want to translate RickRoll to C++:
+> If you want to translate RickRoll to C++: (Requires g++ compiler)
 ```
 python3 rickroll.py -r [Source Code File Name] --cpp
 OR
