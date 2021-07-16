@@ -99,6 +99,7 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 **[https://rickroll-lang.tech/songs/](https://www.youtube.com/watch?v=yPYZpwSpKmA)**
 
 # Contributors
-- _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Write code)
-- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Make suggestions/advice)
-- _**[henriqueritter](https://github.com/henriqueritter)**_   (Contribute to RickRoll example)
+- _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
+- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions/advice)
+- _**[henriqueritter](https://github.com/henriqueritter)**_   (Contributed to RickRoll example)
+- _**[StepfenShawn](https://github.com/StepfenShawn)**_  (Revised typos in source code)
