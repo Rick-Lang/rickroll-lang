@@ -304,17 +304,17 @@ class TranslateToPython:
             exp = join_list(self.values[1: len(self.values) - 1])
             self.write(f'return {exp}')
 
-        if kw == KW_import1:
-            self.write('')
+        # if kw == KW_import1:
+        #     self.write('')
 
-            lib_name = join_list(self.values[1: len(self.values)])
+        #     lib_name = join_list(self.values[1: len(self.values)])
 
-            try:
-                with open(f'{lib_name}.rickroll', mode='r', encoding='utf-8') as f:
-                    libraries.update({lib_name : f.read()})
+        #     try:
+        #         with open(f'{lib_name}.rickroll', mode='r', encoding='utf-8') as f:
+        #             libraries.update({lib_name : f.read()})
 
-            except:
-                exit(f'Exception in line {current_line}: No library called [{lib_name}]')
+        #     except:
+        #         exit(f'Exception in line {current_line}: No library called [{lib_name}]')
 
 
         if kw == KW_end:
