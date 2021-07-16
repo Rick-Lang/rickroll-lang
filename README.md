@@ -45,7 +45,7 @@ Never gonna give you up, never gonna let you down~
 - *Support [python 3.6+](https://www.python.org/downloads/release/python-3510/)*
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
-- *Translate .rickroll source code to python 3*
+- *Translate .rickroll source code to Python 3 and C++*
 
 ## Usage
 > I usually execute my source code like this:
@@ -84,7 +84,7 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 4. Write an audio generator!
 5. Support "writing code by singing"!
 6. Design a better icon!
-7. Translate RickRoll to JavaScript, C/C++, and C#!
+7. Translate RickRoll to JavaScript, C, and C#!
 8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 <br>
