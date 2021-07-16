@@ -45,7 +45,7 @@ Never gonna give you up, never gonna let you down~
 - *Support [python 3.6+](https://www.python.org/downloads/release/python-3510/)*
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
-- *Translate .rickroll source code to Python 3 and C++*
+- *Translate .rickroll source code to Python3 and C++*
 
 ## Usage
 > I usually execute my source code like this:
