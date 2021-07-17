@@ -11,7 +11,7 @@ Also, I am a little bit buzy these days, so I am not going to update rickroll-la
 ![Python](https://img.shields.io/badge/Python-3.6%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 <br>
-Rick Roll Programming Language, a language for rick rolling!
+Rick Roll Programming Language, a language for rickrolling!
 <br>
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
