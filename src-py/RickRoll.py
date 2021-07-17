@@ -1,9 +1,8 @@
 from time import time
 from os.path import exists
-from sys import argv, stdout
 from traceback2 import format_exc
 
-from keywords import *
+from commonvariables import *
 from crickroll import run_in_cpp
 # from AudioGenerator import init
 
@@ -21,16 +20,16 @@ Other Options:
 
 
 # Token types
-TT_keyword    = 'KEYWORDS'
-TT_operator   = 'OPERATORS'
-TT_number     = 'VALUE-NUMBER'
-TT_bool       = 'VALUE-Bool'
-TT_char       = 'VALUE-Char'
-TT_string     = 'VALUE-String'
+TT_keyword  = 'KEYWORDS'
+TT_operator = 'OPERATORS'
+TT_number   = 'VALUE-NUMBER'
+TT_bool     = 'VALUE-Bool'
+TT_char     = 'VALUE-Char'
+TT_string   = 'VALUE-String'
 
-TT_variable   = 'VARIABLE'
-TT_function   = 'FUNCTION'
-TT_library    = 'LIBRARY'
+TT_variable = 'VARIABLE'
+TT_function = 'FUNCTION'
+TT_library  = 'LIBRARY'
 
 
 # Set and start a timer
@@ -104,7 +103,7 @@ class Token:
             if char in ignore_tokens:
                 continue
 
-            if char in seperator and quote_count % 2 == 0:
+            if char in separators and quote_count % 2 == 0:
 
                 if current_token != ' ' and current_token != '\n':
                     self.tokens.append(current_token)
@@ -202,6 +201,7 @@ class Token:
 
         elif t and t in libraries:
             add_to_parser(TT_library)
+
 
 
 ####################################################################################
@@ -336,7 +336,7 @@ audio_engine = None
 
 class Main:
     def __init__(self):
-        is_audio = False
+        # is_audio = False
         is_help = False
         show_time = False
         is_cpp = False
@@ -356,9 +356,9 @@ class Main:
                 src_file_name = argv[i + 1]
 
             # Generate audio. -audio [Output audio file name]
-            if current_arg == '-audio':
-                global audio_engine
-                is_audio = True
+            # if current_arg == '-audio':
+            #     global audio_engine
+            #     is_audio = True
 
                 # audio_engine = init(argv[i + 1])
 
@@ -381,6 +381,10 @@ class Main:
             else:
                 run_in_py(src_file_name)if exists(src_file_name)else exit(f"File [{src_file_name}] doesn't exist...")
 
+        else:
+            stdout.write('Warning: [Not executing any script...]')
+
+
         # if is_audio:
             # self.generate_audio(src_file_name)
             # audio_engine.export()
@@ -391,14 +395,14 @@ class Main:
         if show_time:
             stdout.write(f'\nExecution Time: [{time() - start}] sec.')
 
-    def generate_audio(self, src_file_name):
+    # def generate_audio(self, src_file_name):
 
-        with open(src_file_name, mode='r', encoding='utf-8') as src:
-            for statement in src.readlines():
-                obj = Token(statement)
+    #     with open(src_file_name, mode='r', encoding='utf-8') as src:
+    #         for statement in src.readlines():
+    #             obj = Token(statement)
 
-                for i in range(len(obj.t_types)):
-                    audio_engine.generate(obj.t_values[i])
+    #             for i in range(len(obj.t_types)):
+    #                 audio_engine.generate(obj.t_values[i])
 
 
 

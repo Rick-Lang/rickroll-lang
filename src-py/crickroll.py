@@ -1,8 +1,7 @@
-from sys import argv
 from os import system
 from platform import system as os_name
 
-from keywords import *
+from commonvariables import *
 
 
 # Token types
@@ -12,18 +11,16 @@ TT_number     = 'VALUE-NUMBER'
 TT_bool       = 'VALUE-Bool'
 TT_char       = 'VALUE-Char'
 TT_string     = 'VALUE-String'
+TT_list       = 'VALUE-List'
 
 TT_variable   = 'VARIABLE'
 TT_function   = 'FUNCTION'
-TT_p_variable = 'P_VARIABLE'
-TT_p_function = 'P_FUNCTION'
 
 
 variables = []
 functions = []
 
 current_line = 0
-
 
 # Python source code, translated from RickRoll source code
 c_code = '#include<iostream>\nusing namespace std;\n'
@@ -37,7 +34,6 @@ def join_list(l):
 
 
 ####################################################################################
-'Token Class'
 """
 Token class is used to tokenize a RickRoll statement
 """
@@ -74,7 +70,7 @@ class Token:
             if char in ignore_tokens:
                 continue
 
-            if char in seperator and quote_count % 2 == 0:
+            if char in separators and quote_count % 2 == 0:
 
                 if current_token != ' ' and current_token != '\n':
                     self.tokens.append(current_token)
@@ -150,44 +146,47 @@ class Token:
         elif t[0] == '"' and t[-1] == '"':
             add_to_parser(TT_string)
 
-
     # Others
         # Variables / Functions
         elif self.tokens[i - 1] == KW_let:
             add_to_parser(TT_variable)
             variables.append(t)
 
+        # Library
+        elif self.tokens[i - 1] == KW_import1:
+            add_to_parser(TT_library)
+
         elif self.tokens[i - 1] == KW_def1:
             add_to_parser(TT_function)
             functions.append(t)
 
-
         # Others and possible variables
-        elif t in variables or t:
+        elif t and t in variables:
             add_to_parser(TT_variable)
 
+        else:
+            stdout.write(f'Exception in line {current_line}: the token [{t}] is invalid...\n')
+            exit('------'*10 + '\n"You know the rules, and so do I~"')
 
 
 ####################################################################################
 'Translate To C++'
 ####################################################################################
 
-
 class TranslateToCPP:
 
     def __init__(self, types, values):
-        
+
         self.types = types        # types of the tokens
         self.values = values      # tokens
 
-        if self.types:
-            if self.types[0] == TT_keyword or self.values[0] in functions:
-                # Convert RickRoll code to Python
-                self.convert(kw=self.values[0])
+        if self.types[0] == TT_keyword or self.values[0] in functions:
+            # Convert RickRoll code to Python
+            self.convert(kw=self.values[0])
 
-            else:
-                print(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
-                exit('------'*10 + '\n"You know the rules, and so do I~"')
+        else:
+            stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+            exit('------'*10 + '\n"You know the rules, and so do I~"')
 
 
     def convert(self, kw):
@@ -219,12 +218,15 @@ class TranslateToCPP:
 
                 if self.types[i] == TT_string:
                     self.write(f'string {var} = {join_list(exp[eql_op_index:len(exp)])};')
+                    break
 
                 if self.types[i] == TT_number:
                     self.write(f'int {var} = {join_list(exp[eql_op_index:len(exp)])};')
+                    break
 
                 if self.types[i] == TT_bool:
                     self.write(f'bool {var} = {join_list(exp[eql_op_index:len(exp)])};')
+                    break
 
 
         if kw == KW_if:
@@ -282,7 +284,8 @@ def run_in_cpp(src_file_name):
             current_line += 1
 
             obj = Token(statement)
-            TranslateToCPP(types=obj.t_types, values=obj.t_values)
+            if obj.t_types:
+                TranslateToCPP(types=obj.t_types, values=obj.t_values)
 
     f_name = src_file_name.split('.')
     f_name = join_list(f_name[0:len(f_name) - 1])

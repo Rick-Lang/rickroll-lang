@@ -1,3 +1,7 @@
+from sys import argv, stdout
+
+# Keywords
+
 KW_print        = 'i_just_wanna_tell_u_how_im_feeling'
 KW_if           = 'and_if_u_ask_me_how_im_feeling'
 
@@ -38,13 +42,15 @@ keywords = {
 # Tokens that the interpreter will totally ignore
 ignore_tokens = {'~', "'"}
 
+# Characters in numbers
 digits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'}
 
-
-seperator = {
+# Separators are used in tokenization
+separators = {
     '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
 
+# Operators
 OP_arithmetic = {'+', '-', '*', '/', '%', '^'}
 OP_relational = {'is', 'is_not', 'is_greater_than', 'is_less_than'}
 OP_assignment = {'='}
