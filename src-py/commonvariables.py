@@ -52,7 +52,7 @@ separators = {
 
 # Operators
 OP_arithmetic = {'+', '-', '*', '/', '%', '^'}
-OP_relational = {'is', 'is_not', 'is_greater_than', 'is_less_than'}
+OP_relational = {'is', 'is_not', 'is_greater_than', 'is_less_than', 'and', 'or'}
 OP_assignment = {'='}
 OP_other      = {'[', ']', '(', ')', '{', '}', ','}
 
