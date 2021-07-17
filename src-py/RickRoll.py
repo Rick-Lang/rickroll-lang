@@ -2,7 +2,7 @@ from time import time
 from os.path import exists
 from traceback2 import format_exc
 
-from commonvariables import *
+from PublicVariables import *
 from crickroll import run_in_cpp
 # from AudioGenerator import init
 
