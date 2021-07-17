@@ -125,6 +125,8 @@ class Token:
             if t == 'is_not': add_operator('!=')
             if t == 'is_greater_than': add_operator('>')
             if t == 'is_less_than': add_operator('<')
+            if t == 'and': add_operator('&&')
+            if t == 'or': add_operator('||')
 
             # Build in functions
             if t == 'ToString': add_operator('str')
