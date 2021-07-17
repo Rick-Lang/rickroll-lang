@@ -1,7 +1,7 @@
 from os import system
 from platform import system as os_name
 
-from commonvariables import *
+from PublicVariables import *
 
 
 # Token types
