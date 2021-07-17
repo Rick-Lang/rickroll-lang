@@ -1,4 +1,4 @@
-# Notice:
+# Announcement:
 This language is in its testing period, we will probably change some keywords.
 <br>
 Also, I am a little bit buzy these days, so I am not going to update rickroll-lang recently :(
@@ -45,7 +45,7 @@ Never gonna give you up, never gonna let you down~
 - *Support [python 3.6+](https://www.python.org/downloads/release/python-3510/)*
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
-- *Translate .rickroll source code to Python 3 and C++*
+- *Translate .rickroll source code to Python3 and C++*
 
 ## Usage
 > I usually execute my source code like this:
@@ -56,7 +56,7 @@ python3 rickroll.py -r [Source Code File Name]
 ```
 python3 rickroll.py -r [Source Code File Name] --time
 ```
-> If you want to translate RickRoll to C++:
+> If you want to translate RickRoll to C++: (Requires g++ compiler)
 ```
 python3 rickroll.py -r [Source Code File Name] --cpp
 OR
@@ -87,8 +87,6 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 7. Translate RickRoll to JavaScript, C, and C#!
 8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-<br>
-
 # Rick Roll Language Website
 **Address:**
 <br>
@@ -99,6 +97,7 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 **[https://rickroll-lang.tech/songs/](https://www.youtube.com/watch?v=yPYZpwSpKmA)**
 
 # Contributors
-- _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Write code)
-- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Make suggestions/advice)
-- _**[henriqueritter](https://github.com/henriqueritter)**_   (Contribute to RickRoll example)
+- _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
+- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions/advice)
+- _**[henriqueritter](https://github.com/henriqueritter)**_   (Contributed to RickRoll example)
+- _**[StepfenShawn](https://github.com/StepfenShawn)**_  (Revised typos in source code)
