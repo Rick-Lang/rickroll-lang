@@ -4,19 +4,25 @@
 ## 执行源码命令
 > 用一般方法执行源代码：
 ```
-python3 rickroll.py -r [Source Code File Name]
+python3 RickRoll.py -r [Source Code File Name]
+```
+> 将 .rickroll 翻译到 .cpp (C++): (需要G++编译器，而且此功能目前还不成熟，可能会出问题)
+```
+python3 RickRoll.py -r [Source Code File Name] --cpp
+或
+python3 RickRoll.py -r [Source Code File Name] --c++
 ```
 > 如果客户想知道执行时间：
 ```
-python3 rickroll.py -r [Source Code File Name] -time
+python3 RickRoll.py -r [Source Code File Name] --time
 ```
 > 解释器也可以从你的源码中生成一个MP3文件（但此需求尚未完成）
 ```
-python3 rickroll.py -r [Source Code File Name] -audio [Audio_File_Name]
+python3 RickRoll.py -r [Source Code File Name] -audio [Audio_File_Name]
 ```
 > 客户还可以通过唱歌的方式写代码 (但这个功能我们也没有完成)
 ```
-python3 rickroll.py -sing [MP3 File Name] [Source Code(Text) File Name]
+python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
 
 
