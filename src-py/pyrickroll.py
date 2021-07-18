@@ -1,39 +1,48 @@
-from os import system
-from platform import system as os_name
-
 from PublicVariables import *
 
 
 # Token types
-TT_keyword    = 'KEYWORDS'
-TT_operator   = 'OPERATORS'
-TT_number     = 'VALUE-NUMBER'
-TT_bool       = 'VALUE-Bool'
-TT_char       = 'VALUE-Char'
-TT_string     = 'VALUE-String'
-TT_list       = 'VALUE-List'
+TT_keyword  = 'KEYWORDS'
+TT_operator = 'OPERATORS'
+TT_number   = 'VALUE-NUMBER'
+TT_bool     = 'VALUE-Bool'
+TT_char     = 'VALUE-Char'
+TT_string   = 'VALUE-String'
 
-TT_variable   = 'VARIABLE'
-TT_function   = 'FUNCTION'
+TT_variable = 'VARIABLE'
+TT_function = 'FUNCTION'
+TT_library  = 'LIBRARY'
 
+
+# Keywords can execute outside main function
+kw_exe_outside_main = {KW_main, KW_def1, KW_import1}
 
 variables = []
 functions = []
 
+indent_count = 0                       # Determine if needs to indent
 current_line = 0
 
+is_main = False                        # Is the current statement in main
+is_function = False                    # Is the current statement in a function
+
+
 # Python source code, translated from RickRoll source code
-c_code = '#include<iostream>\nusing namespace std;\n'
+py_code = ""
+
+# Store libraries
+libraries = {}
 
 
 # "join_list" is a replacement of ''.join()
 def join_list(l):
     result = ''
-    for i in l: result += str(i)
+    for i in l: result += f'{i}'
     return result
 
 
 ####################################################################################
+'Token Class'
 """
 Token class is used to tokenize a RickRoll statement
 """
@@ -51,7 +60,6 @@ class Token:
         for i in range(len(self.tokens)):
             if self.tokens[i]:
                 self.convert_token(i)
-
 
 
     # Split statements to single word / token
@@ -93,7 +101,7 @@ class Token:
         return True if len(string) == count and string.count('.') <= 1 else False
 
 
-    # Convert each token to 
+    # Convert each token
     def convert_token(self, i=0):
 
         global variables
@@ -125,8 +133,8 @@ class Token:
             if t == 'is_not': add_operator('!=')
             if t == 'is_greater_than': add_operator('>')
             if t == 'is_less_than': add_operator('<')
-            if t == 'and': add_operator('&&')
-            if t == 'or': add_operator('||')
+            if t == 'and': add_operator(' and ')
+            if t == 'or': add_operator(' or ')
 
             # Build in functions
             if t == 'ToString': add_operator('str')
@@ -148,8 +156,9 @@ class Token:
         elif t[0] == '"' and t[-1] == '"':
             add_to_parser(TT_string)
 
+
     # Others
-        # Variables / Functions
+        # Variables
         elif self.tokens[i - 1] == KW_let:
             add_to_parser(TT_variable)
             variables.append(t)
@@ -158,123 +167,130 @@ class Token:
         elif self.tokens[i - 1] == KW_import1:
             add_to_parser(TT_library)
 
+        # Functions
         elif self.tokens[i - 1] == KW_def1:
             add_to_parser(TT_function)
             functions.append(t)
 
-        # Others and possible variables
+        # Variables
         elif t and t in variables:
             add_to_parser(TT_variable)
 
-        else:
-            stdout.write(f'Exception in line {current_line}: the token [{t}] is invalid...\n')
-            exit('------'*10 + '\n"You know the rules, and so do I~"')
+        elif t and t in libraries:
+            add_to_parser(TT_library)
+
 
 
 ####################################################################################
-'Translate To C++'
+'Translate To Python'
 ####################################################################################
 
-class TranslateToCPP:
+class TranslateToPython:
 
     def __init__(self, types, values):
 
-        self.types = types        # types of the tokens
-        self.values = values      # tokens
+        # types of the tokens
+        self.types = types
+        # tokens
+        self.values = values
 
-        if self.types[0] == TT_keyword or self.values[0] in functions:
-            # Convert RickRoll code to Python
-            self.convert(kw=self.values[0])
+        # if there is code in the current line of code
+        if self.types:
 
+            if self.types[0] == TT_keyword or self.values[0] in functions or self.values[0] in libraries:
+                if is_main or (is_main == False and self.values[0] in kw_exe_outside_main) or is_function:
+                    # Convert RickRoll code to Python
+                    self.convert(kw=self.values[0])
+
+                else:
+                    stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
+                    exit('------'*10 + '\n"You know the rules, and so do I~"')
+
+            else:
+                stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+                exit('------'*10 + '\n"If you knew what Im feeling, you would not say no~"')
+
+        # if this line doesn't have code, then write "\n"
         else:
-            stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
-            exit('------'*10 + '\n"You know the rules, and so do I~"')
+            self.write('')
 
-
+            
     def convert(self, kw):
+        global indent_count
+        global is_main
+        global is_function
 
         if kw in functions:
             self.write(f'{join_list(self.values)}')
 
         if kw == KW_main:
-            self.write('int main(int argc, char* argv[]){')
+            self.write('if __name__ == "__main__":')
+
+            is_main = True
+            indent_count += 1
+
+        if indent_count == 0:
+            if is_main: is_main = False
+            if is_function: is_function = False
 
         if kw == KW_print:
             # print EXP
 
             exp = join_list(self.values[1: len(self.values)])
-            self.write(f'cout<<{exp};')
+            self.write(f'print({exp}, end="")')
 
         if kw == KW_let:
             # IDENTIFIER = VALUE
-            exp = self.values[1: len(self.values)]
 
-            eql_op_index = 0
-            var = ''
-            for i in range(len(self.types)):
-                if self.values[i] == '=':
-                    eql_op_index = i
-
-                if self.types[i] == TT_variable:
-                    var = self.values[i]
-
-                if self.types[i] == TT_string:
-                    self.write(f'string {var} = {join_list(exp[eql_op_index:len(exp)])};')
-                    break
-
-                if self.types[i] == TT_number:
-                    self.write(f'int {var} = {join_list(exp[eql_op_index:len(exp)])};')
-                    break
-
-                if self.types[i] == TT_bool:
-                    self.write(f'bool {var} = {join_list(exp[eql_op_index:len(exp)])};')
-                    break
-
+            exp = join_list(self.values[1: len(self.values)])
+            self.write(f'{exp}')
 
         if kw == KW_if:
             # IF CONDITION:
 
             condition = join_list(self.values[1: len(self.values)])
-            self.write(f'if({condition})' + '{')
+            self.write(f'if {condition}:')
+            indent_count += 1
 
         if kw == KW_endless_loop:
-            self.write('while(true){')
+            self.write('while True:')
+            indent_count += 1
 
         if kw == KW_while_loop:
-            condition = join_list(self.values[1: len(self.values)])
-            self.write(f'while({condition})' + '{')
+            # WHILE CONDITION
+
+            condition = join_list(self.values[1:len(self.values)])
+            self.write(f'while {condition}:')
+            indent_count += 1
 
         if kw == KW_break:
-            self.write('break;')
+            self.write('break')
 
         if kw == KW_continue:
-            self.write('continue;')
+            self.write('continue')
 
         if kw == KW_def1:
             arguments = join_list(self.values[2 : len(self.values) - 1])
+            self.write(f'def {self.values[1]}({arguments}):')
+            is_function = True
 
-            self.write(f'char {self.values[1]}({arguments})' + '{')
+            indent_count += 1
 
         if kw == KW_return1:
             exp = join_list(self.values[1: len(self.values) - 1])
-            self.write(f'return {exp};')
-
+            self.write(f'return {exp}')
 
         if kw == KW_end:
-            self.write('}')
+            self.write('pass')
+            indent_count -= 1
 
 
     def write(self, stmt):
-        global c_code
-        c_code += stmt + '\n'
+        global py_code
+        py_code += f"{'  ' * indent_count + stmt}\n"
 
 
-
-####################################################################################
-'Main'
-####################################################################################
-
-def run_in_cpp(src_file_name):
+def run_in_py(src_file_name):
     global current_line
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
@@ -286,24 +302,6 @@ def run_in_cpp(src_file_name):
             current_line += 1
 
             obj = Token(statement)
-            if obj.t_types:
-                TranslateToCPP(types=obj.t_types, values=obj.t_values)
+            TranslateToPython(types=obj.t_types, values=obj.t_values)
 
-    f_name = src_file_name.split('.')
-    f_name = join_list(f_name[0:len(f_name) - 1])
-
-    with open(f_name + '.cpp', 'w', encoding='utf-8') as f:
-        f.write(c_code)
-
-
-    if os_name() == 'Windows':
-        exe_file = f'{f_name}.exe'
-        system(f'g++ {f_name + ".cpp"} -o {exe_file}')
-        system(f'{exe_file}')
-
-    if os_name() == 'Linux':
-        exe_file = f'{f_name}.out'
-        system(f'g++ {f_name + ".cpp"} -o {exe_file}')
-        system(f'./{exe_file}')
-
-    
+    return py_code
