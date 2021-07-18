@@ -49,7 +49,7 @@ take_me_to_ur_heart~    # 你可以在语句后面加 “~”
 
 say_good_bye~
 ```
-相当于一下Python代码
+相当于以下Python代码
 ```python
 if __name__ == '__main__':
     a = 10
