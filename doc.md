@@ -89,6 +89,7 @@ if __name__ == "__main__":
 ```
 
 ## Defining Function
+RickRoll supports return function
 ```
 never_knew func arg1, arg2 could_feel_this_way  # Define a function
     when_i_give_my arg1, arg2 it_will_be_completely # Return arg1 and arg2
