@@ -9,27 +9,27 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 ## Commands to execute your code
 > I usually execute my source code like this:
 ```
-python3 rickroll.py -r [Source Code File Name]
+python3 RickRoll.py -r [Source Code File Name]
 ```
 > If you want to know the execution time:
 ```
-python3 rickroll.py -r [Source Code File Name] --time
+python3 RickRoll.py -r [Source Code File Name] --time
 ```
 
 > If you want to translate RickRoll to C++: (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
 ```
-python3 rickroll.py -r [Source Code File Name] --cpp
+python3 RickRoll.py -r [Source Code File Name] --cpp
 OR
-python3 rickroll.py -r [Source Code File Name] --c++
+python3 RickRoll.py -r [Source Code File Name] --c++
 ```
 
 > The interpreter can generate a .mp3 file from your source code (This feature is not completed yet)
 ```
-python3 rickroll.py -r [Source Code File Name] -audio [Audio_File_Name]
+python3 RickRoll.py -r [Source Code File Name] -audio [Audio_File_Name]
 ```
 > Also the interpreter provides you to "sing" code (This feature is not completed yet)
 ```
-python3 rickroll.py -sing [MP3 File Name] [Source Code(Text) File Name]
+python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
 
 
