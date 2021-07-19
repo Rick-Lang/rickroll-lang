@@ -81,7 +81,7 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 1. Add more keywords and built-in functions!
 2. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
 3. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide), PyCharm, and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
-4. Write an audio generator!
+4. Improve the current audio generator!
 5. Support "writing code by singing"!
 6. Design a better icon!
 7. Translate RickRoll to JavaScript, C, and C#!
