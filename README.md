@@ -62,9 +62,9 @@ python3 RickRoll.py -r [Source Code File Name] --cpp
 OR
 python3 RickRoll.py -r [Source Code File Name] --c++
 ```
-> The interpreter can generate a .mp3 file from your source code (This feature is not completed yet)
+> The interpreter can generate a .mp3 file from your source code (This feature is not mature yet)
 ```
-python3 RickRoll.py -r [Source Code File Name] -audio [audio_file_name]
+python3 RickRoll.py -r [Source Code File Name] --audio
 ```
 > Also the interpreter provides you to "sing" code (This feature is not completed yet)
 ```
