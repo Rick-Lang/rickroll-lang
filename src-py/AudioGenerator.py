@@ -1,67 +1,44 @@
-from os.path import exists
-from os import remove as delete_file
 from pyttsx3 import init
-import wave
-import soundfile
+from playsound import playsound as play_wav
 
-au_print = wave.open("print.wav", "rb")
-au_let = wave.open("let.wav", "rb")
-au_main = wave.open("main.wav", "rb")
-au_if = wave.open("if.wav", "rb")
-au_end = wave.open("end.wav", "rb")
-au_break = wave.open("break.wav", "rb")
-
+from PublicVariables import *
 
 engine = init()
 
+au_print = 'print.wav'
+au_let = 'let.wav'
+au_main = 'main.wav'
+au_if = 'if.wav'
+au_end = 'end.wav'
+au_break = 'break.wav'
+au_loop = 'loop.wav'
+au_while_loop = 'whileloop.wav'
 
-class init:
-    def __init__(self, audio_name):
-        self.audio_name = audio_name
-        self.audio_data = []
+def play(token):
+    if token == KW_print:
+        play_wav(au_print)
 
+    elif token == KW_let:
+        play_wav(au_let)
 
-    def generate(self, word):
+    elif token == KW_main:
+        play_wav(au_main)
 
-        if word == 'i_just_wanna_tell_u_how_im_feeling':
-            self.audio_data.append([au_print.getparams(), au_print.readframes(au_print.getnframes())])
+    elif token == KW_if:
+        play_wav(au_if)
 
-        elif word == 'give_u_up':
-            self.audio_data.append([au_let.getparams(), au_let.readframes(au_let.getnframes())])
+    elif token == KW_end:
+        play_wav(au_end)
 
-        elif word == 'take_me_to_ur_heart':
-            self.audio_data.append([au_main.getparams(), au_main.readframes(au_main.getnframes())])
+    elif token == KW_break:
+        play_wav(au_break)
 
-        elif word == 'and_if_u_ask_me_how_im_feeling':
-            self.audio_data.append([au_if.getparams(), au_if.readframes(au_if.getnframes())])
+    elif token == KW_while_loop:
+        play_wav(au_while_loop)
 
-        elif word == 'say_good_bye':
-            self.audio_data.append([au_end.getparams(), au_end.readframes(au_end.getnframes())])
+    elif token == KW_endless_loop:
+        play_wav(au_loop)
 
-        elif word == 'desert_u':
-            self.audio_data.append([au_break.getparams(), au_break.readframes(au_break.getnframes())])
-
-        else:
-            temp_path = "temp_audio.wav"
-
-            engine.save_to_file(word, temp_path)
-            engine.runAndWait()
-
-
-            with wave.open(temp_path, "rb") as temp_audio:
-                self.audio_data.append([temp_audio.getparams(), temp_audio.readframes(temp_audio.getnframes())])
-
-
-            if exists(temp_path):
-                delete_file(temp_path)
-
-
-    def export(self):
-        output = wave.open(self.audio_name, "wb")
-
-        output.setparams(self.audio_data[0][0])
-
-        for i in range(len(self.audio_data)):
-            output.writeframes(self.audio_data[i][1])
-
-        output.close()
+    else:
+        engine.say(token)
+        engine.runAndWait()
