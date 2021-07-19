@@ -4,8 +4,8 @@ from os.path import exists
 from traceback2 import format_exc
 
 from crickroll import run_in_cpp
-from pyrickroll import run_in_py
-# from AudioGenerator import init
+from pyrickroll import run_in_py, Token
+import AudioGenerator
 
 
 # Help message
@@ -24,17 +24,18 @@ start = time()
 
 audio_engine = None
 
-# def generate_audio(self, src_file_name):
+def play_audio(src_file_name):
+    with open(src_file_name, mode='r', encoding='utf-8') as src:
+        content = src.readlines()
+        content[-1] += '\n'
+        for statement in content:
+            obj = Token(statement)
 
-#     with open(src_file_name, mode='r', encoding='utf-8') as src:
-#         for statement in src.readlines():
-#             obj = Token(statement)
-
-#             for i in range(len(obj.t_types)):
-#                 audio_engine.generate(obj.t_values[i])
+            for i in range(len(obj.t_types)):
+                AudioGenerator.play(obj.t_values[i])
 
 def main():
-    # is_audio = False
+    is_audio = False
     is_help = False
     show_time = False
     is_cpp = False
@@ -51,12 +52,10 @@ def main():
         if current_arg == '-r':
             src_file_name = argv[i + 1]
 
-        # Generate audio. -audio [Output audio file name]
-        # if current_arg == '-audio':
-        #     global audio_engine
-        #     is_audio = True
-
-            # audio_engine = init(argv[i + 1])
+        # Generate audio. --audio [Output audio file name]
+        if current_arg == '--audio':
+            global audio_engine
+            is_audio = True
 
         if current_arg == '--cpp' or current_arg == '--c++':
             is_cpp = True
@@ -74,7 +73,7 @@ def main():
       if exists(src_file_name):
           if is_cpp: run_in_cpp(src_file_name)
           else:
-            try: exec(run_in_py(src_file_name), locals(), globals())
+            try: exec(run_in_py(src_file_name), globals(), globals())
             except:
               error = format_exc().split('File "<string>",')[-1]
               stdout.write(f'Exception in{error}\n' + '-------'*10)
@@ -83,9 +82,8 @@ def main():
     else: stdout.write('Warning: [Not executing any script...]')
 
 
-    # if is_audio:
-        # self.generate_audio(src_file_name)
-        # audio_engine.export()
+    if is_audio:
+        play_audio(src_file_name)
 
     if is_help:
         stdout.write(rick_help)
