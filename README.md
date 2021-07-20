@@ -46,9 +46,9 @@ Never gonna give you up, never gonna let you down~
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate .rickroll source code to Python3 and C++*
-- *[Generate and play audios from .rickroll source code]()*
+- *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate Audio)*
 
-## Usage
+## How to Execute Code From Your Terminal
 > I usually execute my source code like this:
 ```
 python3 RickRoll.py -r [Source Code File Name]
@@ -71,6 +71,9 @@ python3 RickRoll.py -r [Source Code File Name] --audio
 ```
 python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
+
+## Generate Audio
+See the source code [AudioGenerator.py](https://github.com/Rick-Lang/rickroll-lang/blob/main/src-py/AudioGenerator.py)
 
 ## Documentation
 **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
