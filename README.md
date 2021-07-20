@@ -27,9 +27,19 @@ say_good_bye                                                             # End t
 Equivalent to Python
 ```python
 if __name__ == '__main__':
-  msg = "Never gonna give you up, never gonna let you down~"
-  print(msg)
+  msg = "Never gonna give you up, never gonna let you down~\n"
+  print(msg, end='')
 
+```
+
+Equivalent to C++
+```c++
+#include<iostream>
+using namespace std;
+int main(int argc, char* argv[]){
+    string msg = "Never gonna give you up, never gonna let you down~\n";
+    cout<<msg;
+}
 ```
 
 **And you can get the output on your terminal:**
