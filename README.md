@@ -73,7 +73,11 @@ python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
 
 ## Generate Audio
-See the source code [AudioGenerator.py](https://github.com/Rick-Lang/rickroll-lang/blob/main/src-py/AudioGenerator.py)
+How to use this feature:
+```
+python3 RickRoll.py -r [Source Code File Name] --audio
+```
+This thing generates an audio from the [Source Code File Name] and plays it in your terminal
 
 ## Documentation
 **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
