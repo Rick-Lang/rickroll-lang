@@ -107,7 +107,13 @@ take_me_to_ur_heart
 say_good_bye
 ```
 Equivalent to python:
+```
+if __name__ == "__main__":
+    a = 0
+    while a < 10:
+        a += 1
 
+```
 
 ## Defining Function
 RickRoll supports return function
