@@ -1,4 +1,4 @@
-# Announcement:
+# Announcement
 - This language is in its testing period, we will probably change some keywords.
 - We don't usually update [The Chinese Documentation / 中文文档](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)
 - Also, I am a little bit buzy these days, so I am not going to update rickroll-lang recently
