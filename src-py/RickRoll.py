@@ -39,9 +39,11 @@ def main():
     is_audio = False
     is_help = False
     show_time = False
-    is_cpp = False
-    src_file_name = ''
 
+    is_cpp = False
+    is_py = False
+
+    src_file_name = ''
 
     if len(argv) <= 1:
         exit(rick_help)
@@ -49,20 +51,20 @@ def main():
     for i in range(len(argv)):
         current_arg = argv[i].lower()
 
-        # Run code. -r [file_name]
-        if current_arg == '-r':
+        # Run code -py [file_name]
+        if current_arg == '-py':
             src_file_name = argv[i + 1]
-
+            is_py = True
+        # Run code -cpp [file_name]
+        if current_arg == '-cpp' or current_arg == '-c++':
+            src_file_name = argv[i + 1]
+            is_cpp = True
         # Generate audio. --audio [Output audio file name]
         if current_arg == '--audio':
             global audio_engine
             is_audio = True
-
-        if current_arg == '--cpp' or current_arg == '--c++':
-            is_cpp = True
-
         # Help message
-        if current_arg == '--help' or current_arg == '--h':
+        if current_arg == '--help' or current_arg == '-h':
             is_help = True
 
         # Show execution time
@@ -71,15 +73,24 @@ def main():
 
     # Run the RickRoll program
     if src_file_name:
-      if exists(src_file_name):
-          if is_cpp: run_in_cpp(src_file_name)
-          else:
-            try: exec(run_in_py(src_file_name), globals(), globals())
-            except:
-              error = format_exc().split('File "<string>",')[-1]
-              stdout.write(f'Exception in{error}\n' + '-------'*10)
-              stdout.write('"'+"There ain't no mistaking, is true love we are making~"+'"')
-      else: exit(f"File [{src_file_name}] doesn't exist...")
+        if exists(src_file_name):
+            # Convert .rickroll to C++
+            if is_cpp:
+                run_in_cpp(src_file_name)
+
+            # Convert .rickroll to Python
+            elif is_py:
+                try:
+                    exec(run_in_py(src_file_name), globals(), globals())
+                except:
+                    error_msg = format_exc().split('File "<string>",')[-1]
+                    stdout.write(f'Exception in{error_msg}')
+
+            # Execute .rickroll using the interpreter
+            else:
+                pass
+
+        else: exit(f"File [{src_file_name}] doesn't exist...")
     else: stdout.write('Warning: [Not executing any script...]')
 
 
