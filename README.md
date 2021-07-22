@@ -58,29 +58,6 @@ Never gonna give you up, never gonna let you down~
 - *Translate .rickroll source code to Python3 and C++*
 - *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
 
-## How to Execute Code From Your Terminal
-> I usually execute my source code like this:
-```
-python3 RickRoll.py -r [Source Code File Name]
-```
-> If you want to know the execution time:
-```
-python3 RickRoll.py -r [Source Code File Name] --time
-```
-> If you want to translate RickRoll to C++: (Requires g++ compiler)
-```
-python3 RickRoll.py -r [Source Code File Name] --cpp
-OR
-python3 RickRoll.py -r [Source Code File Name] --c++
-```
-> The interpreter can generate and play an audio from your source code (This feature is not mature yet)
-```
-python3 RickRoll.py -r [Source Code File Name] --audio
-```
-> Also the interpreter provides you to "sing" code (This feature is not completed yet)
-```
-python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
-```
 
 ## Generate Audio
 How to use this generator:
