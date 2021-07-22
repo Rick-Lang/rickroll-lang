@@ -35,10 +35,10 @@ python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 
 ## Hello World
 ```
-take_me_to_ur_heart                                                      # This is the MAIN METHOD
-    give_u_up msg = "Never gonna give you up, never gonna let you down~" # Define a variable
-    i_just_wanna_tell_u_how_im_feeling msg                               # print the "msg" variable
-say_good_bye                                                             # End the main method
+take_me_to_ur_heart                                                        # This is the MAIN METHOD
+    give_u_up msg = "Never gonna give you up, never gonna let you down~\n" # Define a variable
+    i_just_wanna_tell_u_how_im_feeling msg                                 # print the "msg" variable
+say_good_bye                                                               # End the main method
 ```
 And you can get the output on your terminal:
 ```
