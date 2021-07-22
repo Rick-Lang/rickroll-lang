@@ -22,7 +22,7 @@ functions = []
 
 current_line = 0
 
-# Python source code, translated from RickRoll source code
+# Cpp source code, translated from RickRoll source code
 c_code = '#include<iostream>\nusing namespace std;\n'
 
 
@@ -93,7 +93,7 @@ class Token:
         return True if len(string) == count and string.count('.') <= 1 else False
 
 
-    # Convert each token to 
+    # Make a token
     def convert_token(self, i=0):
 
         global variables
