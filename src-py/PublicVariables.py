@@ -1,4 +1,5 @@
-from sys import argv, stdout
+from sys import stdout
+from random import choice
 
 # Keywords
 
@@ -57,3 +58,15 @@ OP_assignment = {'='}
 OP_other      = {'[', ']', '(', ')', '{', '}', ','}
 
 OP_build_in_functions = {'ToString', 'ToInt', 'ToFloat', 'Length'}
+
+error_lyrics = ['"If you knew what Im feeling, you would not say no~"', '"You know the rules, and so do I~"']
+
+def join_list(l):
+    result = ''
+    for i in l: result += str(i)
+    return str(result)
+
+
+def error(error_msg):
+    stdout.write(error_msg)
+    exit('------'*10 + '\n' + choice(error_lyrics))
