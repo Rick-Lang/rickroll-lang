@@ -92,9 +92,7 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 # Rick Roll Language Website
-**Address:**
-<br>
-**[https://rickroll-lang.tech/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**
+**[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX?from=search&seid=14140125842351210096)**
 
 
 # Contributors
