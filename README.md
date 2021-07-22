@@ -68,10 +68,13 @@ This thing generates an audio from the .rickroll program and plays it in your te
 
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
+## Requirements
+
 ## Documentation
 **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
 <br>
 **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
+
 
 # Todo!
 In order to make RICK ROll becoming a world heritage, YOU and I still have a bunch of things to do!
