@@ -7,16 +7,16 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 2. The code must be written inside the main method, otherwise the interpreter will not execute
 
 ## Commands to execute your code
-> I usually execute my source code like this:
+> Execute by converting .rickroll to Python
 ```
-python3 RickRoll.py -r [Source Code File Name]
+python3 RickRoll.py -py [Source Code File Name]
 ```
 > If you want to know the execution time:
 ```
 python3 RickRoll.py -r [Source Code File Name] --time
 ```
 
-> If you want to translate RickRoll to C++: (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
+> Execute by converting .rickroll to Python (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
 ```
 python3 RickRoll.py -r [Source Code File Name] --cpp
 OR
