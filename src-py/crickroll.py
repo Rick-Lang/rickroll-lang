@@ -5,32 +5,70 @@ from PublicVariables import *
 
 
 # Token types
-TT_keyword    = 'KEYWORDS'
-TT_operator   = 'OPERATORS'
-TT_number     = 'VALUE-NUMBER'
-TT_bool       = 'VALUE-Bool'
-TT_char       = 'VALUE-Char'
-TT_string     = 'VALUE-String'
-TT_list       = 'VALUE-List'
+TT_keyword        = 'KEYWORDS'
+TT_operator       = 'OPERATORS'
+TT_build_in_funcs = 'Build-In-Function'
+TT_int            = 'VALUE-Int'
+TT_float          = 'VALUE-Float'
+TT_bool           = 'VALUE-Bool'
+TT_char           = 'VALUE-Char'
+TT_string         = 'VALUE-String'
+TT_list           = 'VALUE-List'
+
+TT_arithmetic_op = 'OP-Arithmetic'
+TT_relational_op = 'OP-Relational'
+TT_assignment_op = 'OP-Assignment'
+TT_other_op      = 'OP-Other'
 
 TT_variable   = 'VARIABLE'
 TT_function   = 'FUNCTION'
 
+c_separators = {
+    '(', ')', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
+}
 
 variables = []
 functions = []
 
 current_line = 0
 
-# Cpp source code, translated from RickRoll source code
+
+# RickRoll-Lang API in C++
+API_Length = """int Length(int arr){
+    return sizeof arr / sizeof arr[0];
+}
+
+"""
+
+# C++ source code, translated from RickRoll source code
 c_code = '#include<iostream>\nusing namespace std;\n'
 
 
 # "join_list" is a replacement of ''.join()
-def join_list(l):
-    result = ''
-    for i in l: result += str(i)
-    return result
+
+# Determine variable types
+def v_types(string):
+    string = str(string)
+    # Boolean
+    if string == 'True' or string == 'False':
+        return 'bool'
+    # String
+    if string[0] == '"' and string[-1] == '"':
+        return 'string'
+    # List
+    if string[0] == '[' and string[-1] == ']':
+        return 'list'
+    # Determine the string is int or float
+    count = 0
+    dot_count = 0
+    for char in string:
+        if char in digits:
+            count += 1
+        if char == '.':
+            dot_count += 1
+    if count == len(string):
+        if dot_count == 1: return 'float'
+        if dot_count == 0: return 'int'
 
 
 ####################################################################################
@@ -43,206 +81,160 @@ class Token:
         self.statement = statement
         self.tokens = []
 
-        self.tokenize()
-
+        self.tokenize(self.statement)
         self.t_types = []
         self.t_values = []
 
-        for i in range(len(self.tokens)):
-            if self.tokens[i]:
-                self.convert_token(i)
+        self.last_kw = ''
 
+        for tok in self.tokens:
+            if tok:
+                self.make_token(tok)
 
 
     # Split statements to single word / token
-    def tokenize(self):
-
+    def tokenize(self, statement):
         current_token = ''
         quote_count = 0
+        sq_bracket = 0
+        for char in statement:
 
-        for char in self.statement:
+            if char == '[': sq_bracket += 1
+            if char == ']': sq_bracket -= 1
+            if char == '"': quote_count += 1
+            if char == '#': break
+            if char in ignore_tokens: continue
 
-            if char == '"':
-                quote_count += 1
-
-            if char == '#':
-                break
-            if char in ignore_tokens:
-                continue
-
-            if char in separators and quote_count % 2 == 0:
-
+            if char in c_separators and quote_count % 2 == 0 and sq_bracket == 0:
                 if current_token != ' ' and current_token != '\n':
                     self.tokens.append(current_token)
                 if char != ' ' and char != '\n':
                     self.tokens.append(char)
 
                 current_token = ''
+            else: current_token += char
 
-            else:
-                current_token += char
-
-
-    # is_num determines whether the token is a number
-    def is_num(self, string = ''):
-        count = 0
-        for i in string:
-            if i in digits:
-                count += 1
-
-        return True if len(string) == count and string.count('.') <= 1 else False
-
-
-    # Make a token
-    def convert_token(self, i=0):
+    def make_token(self, tok):
+        def add_to_tokens(type, token):
+            self.t_types.append(type)
+            self.t_values.append(token)
 
         global variables
-
-        def add_to_parser(token_type):
-            self.t_types.append(token_type)
-            self.t_values.append(self.tokens[i])
-
-        def add_operator(operator_in_python):
-            self.t_types.append(TT_operator)
-            self.t_values.append(operator_in_python)
+        global functions
 
 
-        t = self.tokens[i]
+        if tok in keywords:
+            add_to_tokens(TT_keyword, tok)
+            self.last_kw = tok
+        elif tok in OP_build_in_functions:
+            add_to_tokens(TT_build_in_funcs, tok)
 
-        # If the token is a key word
-        if t in keywords:
-            add_to_parser(TT_keyword)
+        # Variable types
+        elif v_types(tok) == 'bool':
+            add_to_tokens(TT_bool, tok)
+        elif v_types(tok) == 'string':
+            add_to_tokens(TT_string, tok)
+        elif v_types(tok) == 'list':
+            tok = '{' + str(tok[1 : len(tok) -1]) + '}'
+            add_to_tokens(TT_list, tok)
+        elif v_types(tok) == 'float':
+            add_to_tokens(TT_float, tok)
+        elif v_types(tok) == 'int':
+            add_to_tokens(TT_int, tok)
 
+        # Operators
+        elif tok in OP_arithmetic:
+            add_to_tokens(TT_arithmetic_op, tok)
+        elif tok in OP_relational:
+            add_to_tokens(TT_relational_op, tok)
+        elif tok in OP_assignment:
+            add_to_tokens(TT_assignment_op, tok)
+        elif tok in OP_other:
+            add_to_tokens(TT_other_op, tok)
 
-    # Operators
-        # Arithmetic Operators
-        elif t in OP_arithmetic or t in OP_assignment or t in OP_other:
-            add_to_parser(TT_operator)
-
-        # Relational Operator
-        elif t in OP_relational or t in OP_build_in_functions:
-            if t == 'is': add_operator('==')
-            if t == 'is_not': add_operator('!=')
-            if t == 'is_greater_than': add_operator('>')
-            if t == 'is_less_than': add_operator('<')
-            if t == 'and': add_operator('&&')
-            if t == 'or': add_operator('||')
-
-            # Build in functions
-            if t == 'ToString': add_operator('str')
-            if t == 'ToInt': add_operator('int')
-            if t == 'ToFloat': add_operator('float')
-            if t == 'Length': add_operator('len')
-
-
-    # Value
-        # number
-        elif self.is_num(t):
-            add_to_parser(TT_number)
-
-        # Bool
-        elif t == 'True' or t == 'False':
-            add_to_parser(TT_bool)
-
-        # String
-        elif t[0] == '"' and t[-1] == '"':
-            add_to_parser(TT_string)
-
-    # Others
-        # Variables / Functions
-        elif self.tokens[i - 1] == KW_let:
-            add_to_parser(TT_variable)
-            variables.append(t)
-
-        # Library
-        elif self.tokens[i - 1] == KW_import1:
-            add_to_parser(TT_library)
-
-        elif self.tokens[i - 1] == KW_def1:
-            add_to_parser(TT_function)
-            functions.append(t)
-
-        # Others and possible variables
-        elif t and t in variables:
-            add_to_parser(TT_variable)
+        # Variables
+        elif self.last_kw == KW_let:
+            variables.append(tok)
+            add_to_tokens(TT_variable, tok)
+        # Functions
+        elif self.last_kw == KW_def1:
+            functions.append(tok)
+            add_to_tokens.append(TT_function, tok)
+        elif tok and tok in variables:
+            add_to_tokens(TT_variable, tok)
 
         else:
-            stdout.write(f'Exception in line {current_line}: the token [{t}] is invalid...\n')
-            exit('------'*10 + '\n"You know the rules, and so do I~"')
-
+            error(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
 
 ####################################################################################
 'Translate To C++'
 ####################################################################################
-
-class TranslateToCPP:
-
+class TranslateToCpp:
     def __init__(self, types, values):
-
-        self.types = types        # types of the tokens
-        self.values = values      # tokens
+        self.types = types
+        self.values = values
 
         if self.types[0] == TT_keyword or self.values[0] in functions:
-            # Convert RickRoll code to Python
+            # Convert RickRoll code to Cpp
             self.convert(kw=self.values[0])
 
         else:
-            stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
-            exit('------'*10 + '\n"You know the rules, and so do I~"')
+            error(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
-
+    # Convert RickRoll tokens to C++
     def convert(self, kw):
-
         if kw in functions:
-            self.write(f'{join_list(self.values)}')
+            self.write(join_list(self.values))
 
         if kw == KW_main:
             self.write('int main(int argc, char* argv[]){')
-
         if kw == KW_print:
-            # print EXP
-
-            exp = join_list(self.values[1: len(self.values)])
-            self.write(f'cout<<{exp};')
-
-        if kw == KW_let:
-            # IDENTIFIER = VALUE
-            exp = self.values[1: len(self.values)]
-
-            eql_op_index = 0
-            var = ''
-            for i in range(len(self.types)):
-                if self.values[i] == '=':
-                    eql_op_index = i
-
-                if self.types[i] == TT_variable:
-                    var = self.values[i]
-
-                if self.types[i] == TT_string:
-                    self.write(f'string {var} = {join_list(exp[eql_op_index:len(exp)])};')
-                    break
-
-                if self.types[i] == TT_number:
-                    self.write(f'int {var} = {join_list(exp[eql_op_index:len(exp)])};')
-                    break
-
-                if self.types[i] == TT_bool:
-                    self.write(f'bool {var} = {join_list(exp[eql_op_index:len(exp)])};')
-                    break
-
-
+            """
+            cout << EXPR;
+            """
+            EXPR = join_list(self.values[1:])
+            self.write(f'cout<<{EXPR};')
         if kw == KW_if:
-            # IF CONDITION:
+            """
+            if(CONDI){
+            """
+            CONDI = join_list(self.values[1:])
+            self.write(f'if({EXPR})' + '{')
+        if kw == KW_let:
+            """
+            TYPE ID = EXPR;
+            """
+            TYPE = ''
+            ID = ''
+            EXPR = ''
 
-            condition = join_list(self.values[1: len(self.values)])
-            self.write(f'if({condition})' + '{')
+            exp_start_index = 0
+            for i in range(len(self.types)):
+                if self.types[i] == TT_variable:
+                    ID = self.values[i]
+                if self.values[i] == '=':
+                    exp_start_index = i + 1
+
+            EXPR = join_list(self.values[exp_start_index:])
+
+            if v_types(eval("'" + EXPR + "'")) == 'string':
+                TYPE = 'string'
+            if v_types(eval(EXPR)) == 'int':
+                TYPE = 'int'
+            if v_types(eval(EXPR)) == 'float':
+                TYPE = 'float'
+
+            self.write(f'{TYPE} {ID}={EXPR};')
 
         if kw == KW_endless_loop:
             self.write('while(true){')
 
         if kw == KW_while_loop:
-            condition = join_list(self.values[1: len(self.values)])
-            self.write(f'while({condition})' + '{')
+            """
+            while(CONDI){
+            """
+            CONDI = join_list(self.values[1:])
+            self.write(f'while({EXPR})' + '{')
 
         if kw == KW_break:
             self.write('break;')
@@ -251,23 +243,24 @@ class TranslateToCPP:
             self.write('continue;')
 
         if kw == KW_def1:
-            arguments = join_list(self.values[2 : len(self.values) - 1])
-
-            self.write(f'char {self.values[1]}({arguments})' + '{')
-
+            """
+            int ID(ARGS){
+            """
+            pass
         if kw == KW_return1:
-            exp = join_list(self.values[1: len(self.values) - 1])
-            self.write(f'return {exp};')
-
+            """
+            return EXPR;
+            """
+            EXPR = join_list(self.values[1:])
+            self.write(f'return {EXPR};')
 
         if kw == KW_end:
             self.write('}')
 
-
-    def write(self, stmt):
+    # Write to C++ code
+    def write(self, content):
         global c_code
-        c_code += stmt + '\n'
-
+        c_code += f'{content}\n'
 
 
 ####################################################################################
@@ -287,14 +280,14 @@ def run_in_cpp(src_file_name):
 
             obj = Token(statement)
             if obj.t_types:
-                TranslateToCPP(types=obj.t_types, values=obj.t_values)
+                TranslateToCpp(types=obj.t_types, values=obj.t_values)
+
 
     f_name = src_file_name.split('.')
     f_name = join_list(f_name[0:len(f_name) - 1])
 
     with open(f_name + '.cpp', 'w', encoding='utf-8') as f:
         f.write(c_code)
-
 
     if os_name() == 'Windows':
         exe_file = f'{f_name}.exe'
@@ -305,5 +298,3 @@ def run_in_cpp(src_file_name):
         exe_file = f'{f_name}.out'
         system(f'g++ {f_name + ".cpp"} -o {exe_file}')
         system(f'./{exe_file}')
-
-    
