@@ -22,7 +22,7 @@ python3 RickRoll.py -py [Source Code File Name] --time
 ```
 Generate and play an audio from .rickroll (This feature probably will fail becauese it is quite new)
 ```
-python3 RickRoll.py -r [Source Code File Name] --audio
+python3 RickRoll.py -py [Source Code File Name] --audio
 ```
 
 ## Hello World
