@@ -96,9 +96,6 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 <br>
 **[https://rickroll-lang.tech/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**
 
-**Here are Rick Astley's songs in my website, you can download them from my website**
-<br>
-**[https://rickroll-lang.tech/songs/](https://www.youtube.com/watch?v=yPYZpwSpKmA)**
 
 # Contributors
 - _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
