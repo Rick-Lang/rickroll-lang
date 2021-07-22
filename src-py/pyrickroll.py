@@ -34,12 +34,6 @@ py_code = ""
 libraries = {}
 
 
-# "join_list" is a replacement of ''.join()
-def join_list(l):
-    result = ''
-    for i in l: result += f'{i}'
-    return result
-
 
 ####################################################################################
 'Token Class'
@@ -133,8 +127,8 @@ class Token:
             if t == 'is_not': add_operator('!=')
             if t == 'is_greater_than': add_operator('>')
             if t == 'is_less_than': add_operator('<')
-            if t == 'and': add_operator(' and ')
-            if t == 'or': add_operator(' or ')
+            if t == 'and': add_operator('and')
+            if t == 'or': add_operator('or')
 
             # Build in functions
             if t == 'ToString': add_operator('str')
@@ -203,16 +197,14 @@ class TranslateToPython:
                     self.convert(kw=self.values[0])
 
                 else:
-                    stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
-                    exit('------'*10 + '\n"You know the rules, and so do I~"')
+                    error(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
 
             else:
-                stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
-                exit('------'*10 + '\n"If you knew what Im feeling, you would not say no~"')
+                error(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
         # if this line doesn't have code, then write "\n"
         else:
-            self.write('')
+            error()
 
             
     def convert(self, kw):
