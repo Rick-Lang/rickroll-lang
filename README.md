@@ -77,11 +77,11 @@ This thing generates an audio from the .rickroll program and plays it in your te
 In order to make RICK ROll becoming a world heritage, YOU and I still have a bunch of things to do!
 1. Add more keywords and built-in functions!
 2. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
-3. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide), PyCharm, and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
+3. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
 4. Improve the current audio generator!
 5. Support "writing code by singing"!
 6. Design a better icon!
-7. Translate RickRoll to JavaScript, C, and C#!
+7. Build a virtual machine or interpreter for RickRoll-Lang
 8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 # Rick Roll Language Website
