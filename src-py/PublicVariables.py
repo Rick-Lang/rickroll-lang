@@ -59,7 +59,11 @@ OP_other      = {'[', ']', '(', ')', '{', '}', ','}
 
 OP_build_in_functions = {'ToString', 'ToInt', 'ToFloat', 'Length'}
 
-error_lyrics = ['"If you knew what Im feeling, you would not say no~"', '"You know the rules, and so do I~"']
+error_lyrics = [
+    '"If you knew what Im feeling, you would not say no~"',
+    '"You know the rules, and so do I~"',
+    '"'+"There ain't no mistaking, is true love we are making~"+'"'
+]
 
 def join_list(l):
     result = ''
