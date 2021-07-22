@@ -56,7 +56,7 @@ Never gonna give you up, never gonna let you down~
 
 ## Features
 - *[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)*
-- *Support [python 3.6+](https://www.python.org/downloads/release/python-3510/)*
+- *Support [python 3.6+](https://www.python.org/downloads/release/python-3610/)*
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate .rickroll source code to Python3 and C++*
