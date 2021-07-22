@@ -5,14 +5,14 @@ from PublicVariables import *
 
 engine = init()
 
-au_print = 'print.wav'
-au_let = 'let.wav'
-au_main = 'main.wav'
-au_if = 'if.wav'
-au_end = 'end.wav'
-au_break = 'break.wav'
-au_loop = 'loop.wav'
-au_while_loop = 'whileloop.wav'
+au_print = 'audios/print.wav'
+au_let = 'audios/let.wav'
+au_main = 'audios/main.wav'
+au_if = 'audios/if.wav'
+au_end = 'audios/end.wav'
+au_break = 'audios/break.wav'
+au_loop = 'audios/loop.wav'
+au_while_loop = 'audios/whileloop.wav'
 
 def play(token):
     if token == KW_print:
