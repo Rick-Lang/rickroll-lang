@@ -68,7 +68,7 @@ How to use this generator:
 ```
 python3 RickRoll.py -r [Source Code File Name] --audio
 ```
-This thing generates an audio from the .rickroll program and plays it in your terminal
+This generates an audio from the .rickroll program and plays it in your terminal
 
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
