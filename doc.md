@@ -16,22 +16,14 @@ Execute by converting .rickroll to Python (Requires g++ compiler, however this f
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
 If you want to know the execution time:
-
 > Add "--time"
-
 ```
 python3 RickRoll.py -py [Source Code File Name] --time
 ```
-
 Generate and play an audio from .rickroll (This feature probably will fail becauese it is quite new)
 ```
 python3 RickRoll.py -r [Source Code File Name] --audio
 ```
-"Sing" to write code (This feature is not completed yet)
-```
-python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
-```
-
 
 ## Hello World
 ```
