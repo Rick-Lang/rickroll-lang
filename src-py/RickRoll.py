@@ -3,12 +3,10 @@ from time import time
 from os.path import exists
 from traceback2 import format_exc
 
-try:
-    from crickroll import run_in_cpp
-    from pyrickroll import run_in_py, Token
-    import AudioGenerator
-except:
-    pass
+from crickroll import run_in_cpp
+from pyrickroll import run_in_py, Token
+import AudioGenerator
+
 
 
 # Help message
