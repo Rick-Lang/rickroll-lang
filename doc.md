@@ -7,28 +7,28 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 2. The code must be written inside the main method, otherwise the interpreter will not execute
 
 ## Commands to execute your code
-> Execute by converting .rickroll to Python
+Execute by converting .rickroll to Python
 ```
 python3 RickRoll.py -py [Source Code File Name]
 ```
-> Execute by converting .rickroll to Python (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
+Execute by converting .rickroll to Python (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
 ```
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
 > If you want to know the execution time:
 <br>
-Add "--time"
+> Add "--time"
 <br>
-For example:
+> For example:
 ```
 python3 RickRoll.py -py [Source Code File Name] --time
 ```
 
-> The interpreter can generate and play an audio from your source code (This feature is not mature yet)
+The interpreter can generate and play an audio from your source code (This feature is not mature yet)
 ```
 python3 RickRoll.py -r [Source Code File Name] --audio
 ```
-> Also the interpreter provides you to "sing" code (This feature is not completed yet)
+Also the interpreter provides you to "sing" code (This feature is not completed yet)
 ```
 python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ```
