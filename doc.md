@@ -11,16 +11,17 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 ```
 python3 RickRoll.py -py [Source Code File Name]
 ```
-> If you want to know the execution time:
-```
-python3 RickRoll.py -r [Source Code File Name] --time
-```
-
 > Execute by converting .rickroll to Python (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
 ```
-python3 RickRoll.py -r [Source Code File Name] --cpp
-OR
-python3 RickRoll.py -r [Source Code File Name] --c++
+python3 RickRoll.py -cpp [Source Code File Name]
+```
+> If you want to know the execution time:
+<br>
+Add "--time"
+<br>
+For example:
+```
+python3 RickRoll.py -py [Source Code File Name] --time
 ```
 
 > The interpreter can generate and play an audio from your source code (This feature is not mature yet)
