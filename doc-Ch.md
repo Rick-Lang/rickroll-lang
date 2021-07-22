@@ -29,7 +29,7 @@ python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ## Hello World
 ```
 take_me_to_ur_heart                           # 这是一个Main函数/方法
-    give_u_up msg =  "你 被 骗 了 !"           # 定义一个变量
+    give_u_up msg =  "你 被 骗 了 !\n"         # 定义一个变量
     i_just_wanna_tell_u_how_im_feeling msg    # 输出变量 “msg”
 say_good_bye                                  # 结束Main函数/方法
 ```
