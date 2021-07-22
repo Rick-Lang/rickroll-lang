@@ -16,7 +16,7 @@ python3 RickRoll.py -r [Source Code File Name] --c++
 ```
 python3 RickRoll.py -r [Source Code File Name] --time
 ```
-> 解释器也可以从你的源码中生成一个MP3文件（但此需求尚未完成）
+> 解释器也可以从你的源码中生成一个MP3文件（但此功能不算成熟，可能会出错）
 ```
 python3 RickRoll.py -r [Source Code File Name] -audio [Audio_File_Name]
 ```
