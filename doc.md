@@ -81,6 +81,7 @@ And you will get this on your terminal
 ```
 
 ## Loop
+RickRoll supports 2 kinds of loop, the first one is endless loop, and the second one is while loop
 ```
 take_me_to_ur_heart
     together_forever_and_never_to_part # Endless loop
@@ -95,6 +96,18 @@ if __name__ == "__main__":
     while True:
         pass
 ```
+While loop
+```
+take_me_to_ur_heart
+    give_u_up a = 0
+    together_forever_with a is_less_than 10
+        give_u_up a = a + 1
+    say_good_bye
+
+say_good_bye
+```
+Equivalent to python:
+
 
 ## Defining Function
 RickRoll supports return function
