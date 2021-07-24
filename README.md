@@ -80,6 +80,7 @@ Never gonna give you up, never gonna let you down~
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate .rickroll source code to Python3 and C++*
 - *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
+- *Documentation for both English and Chinese*
 
 
 ## Generate Audio
