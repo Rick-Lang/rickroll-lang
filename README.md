@@ -93,7 +93,7 @@ This generates an audio from the .rickroll program and plays it in your terminal
 
 ## Requirements
 - [Python libraries](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
-- 
+- [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
 - G++ compiler (For translating RickRoll to C++)
 
 ## Documentation
