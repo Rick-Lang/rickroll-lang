@@ -204,8 +204,7 @@ class TranslateToPython:
 
         # if this line doesn't have code, then write "\n"
         else:
-            pass
-            #error()
+            self.write("")
 
             
     def convert(self, kw):
