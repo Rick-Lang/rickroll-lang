@@ -5,6 +5,7 @@ from PublicVariables import *
 TT_keyword  = 'KEYWORDS'
 TT_operator = 'OPERATORS'
 TT_number   = 'VALUE-NUMBER'
+TT_identifier = 'VALUE_IDENTIFIER'
 TT_bool     = 'VALUE-Bool'
 TT_char     = 'VALUE-Char'
 TT_string   = 'VALUE-String'
@@ -94,6 +95,15 @@ class Token:
 
         return True if len(string) == count and string.count('.') <= 1 else False
 
+    # is_identifier determines whether the token is a number
+    def is_identifier(self, string = ''):
+        count = 0
+        for i in string:
+            if i.isalpha() or i == '_':
+                count += 1
+
+        return True if len(string) == count and string.count('.') <= 1 else False
+
 
     # Convert each token
     def convert_token(self, i=0):
@@ -127,8 +137,8 @@ class Token:
             if t == 'is_not': add_operator('!=')
             if t == 'is_greater_than': add_operator('>')
             if t == 'is_less_than': add_operator('<')
-            if t == 'and': add_operator('and')
-            if t == 'or': add_operator('or')
+            if t == 'and': add_operator(' and ')
+            if t == 'or': add_operator(' or ')
 
             # Build in functions
             if t == 'ToString': add_operator('str')
@@ -173,6 +183,9 @@ class Token:
         elif t and t in libraries:
             add_to_parser(TT_library)
 
+        # Identifier
+        elif self.is_identifier(t):
+            add_to_parser(TT_identifier)
 
 
 ####################################################################################
@@ -295,5 +308,4 @@ def run_in_py(src_file_name):
 
             obj = Token(statement)
             TranslateToPython(types=obj.t_types, values=obj.t_values)
-
     return py_code
