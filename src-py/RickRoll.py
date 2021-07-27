@@ -12,8 +12,9 @@ import AudioGenerator
 
 # Help message
 rick_help = """
-Programming by writing code:   rickroll -s [File_Name]
-Generate an audio: rickroll -r [File_Name] -audio [Audio_Name]
+Translate RickRoll to Python:   RickRoll -py [File_Name]
+Translate RickRoll to C++: RickRoll -cpp [File_Name]
+Generate an audio: RickRoll -py [File_Name] -audio [Audio_Name]
 
 Other Options:
 --time:      Show execution time ofyour code
