@@ -14,7 +14,6 @@ import AudioGenerator
 rick_help = """
 Programming by writing code:   rickroll -s [File_Name]
 Generate an audio: rickroll -r [File_Name] -audio [Audio_Name]
-Sing code:  rickroll -sing [Audio_Name] [File_Name]
 
 Other Options:
 --time:      Show execution time ofyour code
