@@ -54,10 +54,11 @@ separators = {
 # Operators
 OP_arithmetic = {'+', '-', '*', '/', '%', '^'}
 OP_relational = {'is', 'is_not', 'is_greater_than', 'is_less_than', 'and', 'or'}
+OP_logical    = {'and', 'or'}
 OP_assignment = {'='}
 OP_other      = {'[', ']', '(', ')', '{', '}', ','}
 
-OP_build_in_functions = {'ToString', 'ToInt', 'ToFloat', 'Length'}
+OP_build_in_functions = {'to_string', 'to_int', 'to_float', 'length'}
 
 error_lyrics = [
     '"If you knew what Im feeling, you would not say no~"',
@@ -67,8 +68,8 @@ error_lyrics = [
 
 def join_list(l):
     result = ''
-    for i in l: result += str(i)
-    return str(result)
+    for i in l: result += f'{i} '
+    return result
 
 
 def error(error_msg):

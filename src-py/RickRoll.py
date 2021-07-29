@@ -3,17 +3,18 @@ from time import time
 from os.path import exists
 from traceback2 import format_exc
 
-from crickroll import run_in_cpp
+from interpreter import run_in_interpreter
 from pyrickroll import run_in_py, Token
+from crickroll import run_in_cpp
 import AudioGenerator
 
 
 
 # Help message
 rick_help = """
-Programming by writing code:   rickroll -s [File_Name]
-Generate an audio: rickroll -r [File_Name] -audio [Audio_Name]
-Sing code:  rickroll -sing [Audio_Name] [File_Name]
+Translate RickRoll to Python:   RickRoll -py [File_Name]
+Translate RickRoll to C++: RickRoll -cpp [File_Name]
+Generate an audio: RickRoll -py [File_Name] -audio [Audio_Name]
 
 Other Options:
 --time:      Show execution time ofyour code
@@ -42,6 +43,7 @@ def main():
 
     is_cpp = False
     is_py = False
+    is_intpr = False
 
     src_file_name = ''
 
@@ -56,9 +58,13 @@ def main():
             src_file_name = argv[i + 1]
             is_py = True
         # Run code -cpp [file_name]
-        if current_arg == '-cpp' or current_arg == '-c++':
+        if current_arg == '-cpp':
             src_file_name = argv[i + 1]
             is_cpp = True
+        # Run code -intpr [file_name]
+        if current_arg == '-intpr':
+            src_file_name = argv[i + 1]
+            is_intpr = True
         # Generate audio. --audio [Output audio file name]
         if current_arg == '--audio':
             global audio_engine
@@ -87,8 +93,8 @@ def main():
                     stdout.write(f'Exception in{error_msg}')
 
             # Execute .rickroll using the interpreter
-            else:
-                pass
+            elif is_intpr:
+                run_in_interpreter(src_file_name)
 
         else: exit(f"File [{src_file_name}] doesn't exist...")
     else: stdout.write('Warning: [Not executing any script...]')
