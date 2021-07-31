@@ -25,6 +25,10 @@ Execute by converting .rickroll to C++ (Requires g++ compiler)
 ```
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
+Execute by interpreter (owever this feature has a bunch of bugs)
+```
+python3 RickRolll.py -intpr [Source Code File Name]
+```
 If you want to know the execution time:
 > Add "--time"
 ```
