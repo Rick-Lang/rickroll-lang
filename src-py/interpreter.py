@@ -44,6 +44,25 @@ current_line = 0
 # For definining variables (Relevant: Interpreter, KW_let)
 variables = {}
 
+# Determine variable types
+def v_types(string):
+    string = str(string)
+    # Boolean
+    if string == 'True' or string == 'False':
+        return 'bool'
+    # String
+    if string[0] == '"' and string[-1] == '"':
+        return 'string'
+    # List
+    if string[0] == '[' and string[-1] == ']':
+        return 'list'
+    # Determine the string is int or float
+    count = 0
+    for char in string:
+        if char in digits:
+            count += 1
+    if count == len(string) and string.count('.') < 2:
+        return 'number'
 
 class Lexer:
     def __init__(self, statement):
@@ -138,7 +157,11 @@ class Interpreter:
                 if tokens[i] == 'is': tokens[i] = '=='
                 if tokens[i] == 'is_not': tokens[i] = '!='
 
-        return eval(join_list(tokens))
+        try:
+            return eval(join_list(tokens))
+
+        except SyntaxError:
+            return eval(f'"{join_list(tokens)}"')
 
 
     def run_code(self, kw):
@@ -163,14 +186,14 @@ class Interpreter:
 
         if kw == KW_print:
             """
-            PRINT EXPR
+                PRINT EXPR
             """
             EXPR = self.evaluate(self.types[1:], self.tokens[1:])
             stdout.write(str(EXPR))
 
         elif kw == KW_if:
             """
-            IF CONDI
+                IF CONDI
             """
             CONDI = self.evaluate(self.types[1:], self.tokens[1:])
             if CONDI:
@@ -183,7 +206,7 @@ class Interpreter:
 
         elif kw == KW_while_loop:
             """
-            WHILE CONDI
+                WHILE CONDI
             """
             CONDI = self.evaluate(self.types[1:], self.tokens[1:])
 
@@ -191,13 +214,13 @@ class Interpreter:
 
         elif kw == KW_let:
             """
-            LET ID = EXPR
+                LET ID = EXPR
             """
             ID = self.tokens[self.tokens.index(KW_let) + 1]
 
             EXPR = self.evaluate(
-                types=self.types[self.types.index(TT_assignment_operator) + 1:],
-                tokens=self.tokens[self.types.index(TT_assignment_operator) + 1:]
+                types = self.types[self.types.index(TT_assignment_operator) + 1:],
+                tokens = self.tokens[self.types.index(TT_assignment_operator) + 1:]
             )
             variables.update({ID: EXPR})
 
@@ -213,8 +236,8 @@ def run_in_interpreter(src_file_name):
             obj = Lexer(statement=content[i])    # "statement" is a line of code the in source code
 
             if obj.types:
-            # try:
-                Interpreter(types=obj.types, tokens=obj.tokens)
+                try:
+                    Interpreter(types=obj.types, tokens=obj.tokens)
 
-            # except Exception as e:
-            #     stdout.write(f'Exception in line {current_line}: {e}\n')
+                except Exception as e:
+                    stdout.write(f'Exception in line {current_line}: {e}\n')
