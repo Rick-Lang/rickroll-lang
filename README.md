@@ -116,10 +116,10 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 5. Improve the current audio generator!
 6. Support "writing code by singing"!
 7. Design a better icon!
-8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
 
 # Rick Roll Language Website
-**[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX?from=search&seid=14140125842351210096)**
+**[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX)**
 
 
 # Contributors
