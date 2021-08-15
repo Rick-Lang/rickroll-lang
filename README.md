@@ -25,6 +25,10 @@ Execute by converting .rickroll to C++ (Requires g++ compiler)
 ```
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
+Execute by interpreter (owever this feature has a bunch of bugs)
+```
+python3 RickRoll.py -intpr [Source Code File Name]
+```
 If you want to know the execution time:
 > Add "--time"
 ```
@@ -112,14 +116,15 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 5. Improve the current audio generator!
 6. Support "writing code by singing"!
 7. Design a better icon!
-8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
 
 # Rick Roll Language Website
-**[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX?from=search&seid=14140125842351210096)**
+**[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX)**
 
 
 # Contributors
 - _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
 - _**[StepfenShawn](https://github.com/StepfenShawn)**_  (Revised typos in source code && fixed bugs)
+- _**[AcaiBerii](https://github.com/AcaiBerii)**_  (Building the C# and Java transpiler for RickRoll Lang)
 - _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions/advice)
 - _**[henriqueritter](https://github.com/henriqueritter)**_   (Contributed to RickRoll example)

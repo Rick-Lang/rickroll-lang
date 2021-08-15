@@ -31,18 +31,45 @@ TT_char                = 'VALUE-Char'
 TT_string              = 'VALUE-String'
 
 start = time()
-current_line = 0
 
+"""
+Code level works as indentation in python
+"""
+# The current code level the interpreter is reading
+current_code_level = 0
+# The code level that the interpreter should execute or interpret
+executing_code_level = 0
+
+current_line = 0
 # For definining variables (Relevant: Interpreter, KW_let)
 variables = {}
 
+# Determine variable types
+def v_types(string):
+    string = str(string)
+    # Boolean
+    if string == 'True' or string == 'False':
+        return 'bool'
+    # String
+    if string[0] == '"' and string[-1] == '"':
+        return 'string'
+    # List
+    if string[0] == '[' and string[-1] == ']':
+        return 'list'
+    # Determine the string is int or float
+    count = 0
+    for char in string:
+        if char in digits:
+            count += 1
+    if count == len(string) and string.count('.') < 2:
+        return 'number'
 
 class Lexer:
     def __init__(self, statement):
         self.statement = statement
 
-        self.tokens = []
-        self.types = []       # Token type
+        self.tokens = []      # Tokens
+        self.types = []       # Token types
 
         self.tokenize(self.statement)
 
@@ -71,14 +98,13 @@ class Lexer:
 
         def typeof(string):
             if string.count('"') == 2: return 'string'
-            else:
-                count = 0
-                for i in string:
-                    if i in digits: count += 1
 
-                if len(string) == count:
-                    if string.count('.') == 1: return 'float'
-                    if string.count('.') == 0: return 'int'
+            count = 0
+            for i in string:
+                if i in digits: count += 1
+            if count == len(string):
+                if string.count('.') == 1: return 'float'
+                if string.count('.') == 0: return 'int'
 
         if t:
             self.tokens.append(t)
@@ -90,8 +116,6 @@ class Lexer:
                 self.types.append(TT_assignment_operator)
             elif t in OP_relational:
                 self.types.append(TT_relational_operator)
-            elif t in OP_logical:
-                self.types.append(TT_logical_operator)
             elif t in OP_other:
                 self.types.append(TT_other_operator)
             elif typeof(t) == 'int':
@@ -110,62 +134,95 @@ class Interpreter:
         self.tokens = tokens
         self.error_exp = ''    # expression; used to return errors;
 
+        # If this line is executable or should be executed, then execute this line of code
         if self.types[0] == TT_keyword:
             self.run_code(kw=self.tokens[0])
 
+    # Indentation, edits the two code levels
+    def indent(self):
+        global current_code_level, executing_code_level
+        current_code_level += 1
+        executing_code_level += 1
+
+
+    # Get the value of an expression (EXPR)
     def evaluate(self, types=[], tokens=[]):
         for i in range(len(types)):
             if types[i] == TT_identifier:
                 tokens[i] = variables[tokens[i]]
 
             if types[i] == TT_relational_operator:
-                if tokens[i] == 'is_greater_than':
-                    tokens[i] = '>'
-                if tokens[i] == 'is_less_than':
-                    tokens[i] = '<'
-                if tokens[i] == 'is':
-                    tokens[i] = '=='
-                if tokens[i] == 'is_not':
-                    tokens[i] = '!='
+                if tokens[i] == 'is_greater_than': tokens[i] = '>'
+                if tokens[i] == 'is_less_than': tokens[i] = '<'
+                if tokens[i] == 'is': tokens[i] = '=='
+                if tokens[i] == 'is_not': tokens[i] = '!='
 
-        return eval(join_list(tokens))
+        try:
+            return eval(join_list(tokens))
+
+        except SyntaxError:
+            return eval(f'"{join_list(tokens)}"')
 
 
     def run_code(self, kw):
+        global current_code_level, executing_code_level
+
+        """
+            End statement, which 
+        """
+        if kw == KW_end:
+            if executing_code_level == current_code_level:
+                executing_code_level -= 1
+
+            # the current code level go back 1
+            current_code_level -= 1
+
+        # If the current code level should not execute, then return back (don't execute)
+        if executing_code_level != current_code_level:
+            return
+
+        if kw == KW_main:
+            self.indent()
+
         if kw == KW_print:
             """
-            PRINT EXPR
+                PRINT EXPR
             """
             EXPR = self.evaluate(self.types[1:], self.tokens[1:])
             stdout.write(str(EXPR))
 
         elif kw == KW_if:
             """
-            IF CONDI
+                IF CONDI
             """
             CONDI = self.evaluate(self.types[1:], self.tokens[1:])
             if CONDI:
-                stdout.write("Valid If Statement")
+                executing_code_level += 1
+
+            current_code_level += 1
 
         elif kw == KW_endless_loop:
-            pass
+            self.indent()
 
         elif kw == KW_while_loop:
             """
-            WHILE CONDI
+                WHILE CONDI
             """
             CONDI = self.evaluate(self.types[1:], self.tokens[1:])
 
+            self.indent()
+
         elif kw == KW_let:
             """
-            LET ID = EXPR
+                LET ID = EXPR
             """
             ID = self.tokens[self.tokens.index(KW_let) + 1]
-            EXPR = join_list(self.tokens[self.tokens.index('=') + 1:])
-            variables.update({ID: EXPR})
 
-        elif kw == KW_end:
-            pass
+            EXPR = self.evaluate(
+                types = self.types[self.types.index(TT_assignment_operator) + 1:],
+                tokens = self.tokens[self.types.index(TT_assignment_operator) + 1:]
+            )
+            variables.update({ID: EXPR})
 
 
 def run_in_interpreter(src_file_name):
@@ -178,10 +235,9 @@ def run_in_interpreter(src_file_name):
             current_line += 1
             obj = Lexer(statement=content[i])    # "statement" is a line of code the in source code
 
-            # Run code
-            # try:
-            if obj.tokens:
-                Interpreter(types=obj.types, tokens=obj.tokens)
+            if obj.types:
+                try:
+                    Interpreter(types=obj.types, tokens=obj.tokens)
 
-            # except Exception as e:
-            #     stdout.write(f'Exception in line {current_line}: {e}\n')
+                except Exception as e:
+                    stdout.write(f'Exception in line {current_line}: {e}\n')
