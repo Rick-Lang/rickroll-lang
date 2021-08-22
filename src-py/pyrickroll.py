@@ -148,9 +148,6 @@ class Token:
             add_to_tokens(TT_arguments, tok)
             # error(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
 
-        # Identifier
-        elif self.is_identifier(t):
-            add_to_parser(TT_identifier)
 
 
 ####################################################################################
@@ -289,4 +286,5 @@ def run_in_py(src_file_name):
 
             obj = Token(statement)
             TranslateToPython(types=obj.t_types, values=obj.t_values)
+
     return py_code
