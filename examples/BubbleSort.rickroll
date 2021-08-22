@@ -7,13 +7,11 @@ never_knew BubbleSort arr could_feel_this_way
         give_u_up j = 0
         together_forever_with j is_less_than length(arr) - 1
 
-            and_if_u_ask_me_how_im_feeling arr[j] is_less_than arr[i]
-                give_u_up j = j - 1
+            and_if_u_ask_me_how_im_feeling arr[j] > arr[j + 1]
+                give_u_up arr[j], arr[j + 1] = arr[j + 1], arr[j]
             say_good_bye
             give_u_up j = j + 1
 
-        give_u_up j = Length(arr) - 1
-        give_u_up i = i + 1
         say_good_bye
     say_good_bye
 
