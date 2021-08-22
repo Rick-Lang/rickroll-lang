@@ -126,6 +126,5 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 # Contributors
 - _**[Sherlockcxk](https://github.com/Sherlockcxk)**_   (Writing code)
 - _**[StepfenShawn](https://github.com/StepfenShawn)**_  (Revised typos in source code && fixed bugs)
-- _**[AcaiBerii](https://github.com/AcaiBerii)**_  (Building the C# and Java transpiler for RickRoll Lang)
-- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions/advice)
+- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions / advice)
 - _**[henriqueritter](https://github.com/henriqueritter)**_   (Contributed to RickRoll example)
