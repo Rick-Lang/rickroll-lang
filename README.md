@@ -47,10 +47,10 @@ python3 RickRoll.py -py [Source Code File Name] --audio
 
 Rick Roll-Lang:
 ```
-take me to ur heart                                                        # This is the MAIN METHOD
+take me to ur heart                                                    # This is the MAIN METHOD
     give msg up "Never gonna give you up, never gonna let you down~\n" # Define a variable
-    i just wanna tell u how im feeling msg                                 # print the "msg" variable
-say goodbye                                                               # End the main method
+    i just wanna tell u how im feeling msg                             # print the "msg" variable
+say goodbye                                                            # End the main method
 ```
 Equivalent to Python
 ```python
