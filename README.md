@@ -44,6 +44,7 @@ python3 RickRoll.py -py [Source Code File Name] --audio
 **The syntax of RickRoll-Lang is not completely similar to Python**
 1. It doesn't need indentation
 2. The code must be written inside the main method, otherwise the interpreter will not execute
+3. **The keywords can be separated freely**
 
 Rick Roll-Lang:
 ```
@@ -77,6 +78,15 @@ int main(int argc, char* argv[]){
 ```
 Never gonna give you up, never gonna let you down~
 ```
+**The keywords can be separated freely**
+```
+takemetourheart
+    give msg up "Never gonna give you up, never gonna let you down~\n"
+    i justwanna telluhowim feeling msg
+say good bye
+```
+This can also be executable
+
 
 ## Features
 - *[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)*
