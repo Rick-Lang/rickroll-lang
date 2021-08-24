@@ -1,4 +1,5 @@
 from PublicVariables import *
+from Lexer import Lexer
 
 
 # Token types
@@ -57,95 +58,65 @@ def v_types(string):
 
 ####################################################################################
 'Token Class'
-"""
-Token class is used to tokenize a RickRoll statement
-"""
 ####################################################################################
-class Token:
-    def __init__(self, statement):
-        self.statement = statement
-        self.tokens = []
-
-        self.tokenize(self.statement)
+class Token:    # Return token types
+    def __init__(self, tokens):
         self.t_types = []
         self.t_values = []
-
+        self.__tokens = tokens
         self.last_kw = ''
 
-        for tok in self.tokens:
+        for tok in self.__tokens:
             if tok:
-                self.make_token(tok)
+                self.__make_token(tok)
 
+    def add_to_tokens(self, type, token):
+        self.t_types.append(type)
+        self.t_values.append(token)
 
-    # Split statements to single word / token
-    def tokenize(self, statement):
-        current_token = ''
-        quote_count = 0
-        sq_bracket = 0
-        for char in statement:
-
-            if char == '"': quote_count += 1
-            if char == '#': break
-            if char in ignore_tokens: continue
-
-            if char in separators and quote_count % 2 == 0:
-                if current_token != ' ' and current_token != '\n':
-                    self.tokens.append(current_token)
-                if char != ' ' and char != '\n':
-                    self.tokens.append(char)
-
-                current_token = ''
-            else: current_token += char
-
-    def make_token(self, tok):
-        def add_to_tokens(type, token):
-            self.t_types.append(type)
-            self.t_values.append(token)
-
-        global variables
-        global functions
-
+    def __make_token(self, tok):
+        global variables, functions
 
         if tok in keywords:
-            add_to_tokens(TT_keyword, tok)
+            self.add_to_tokens(TT_keyword, tok)
             self.last_kw = tok
         elif tok in OP_build_in_functions:
-            if tok == 'length': add_to_tokens(TT_build_in_funcs, 'len')
-            if tok == 'to_string': add_to_tokens(TT_build_in_funcs, 'str')
-            if tok == 'to_int': add_to_tokens(TT_build_in_funcs, 'int')
-            if tok == 'to_float': add_to_tokens(TT_build_in_funcs, 'float')
+            if tok == 'length': self.add_to_tokens(TT_build_in_funcs, 'len')
+            if tok == 'to_string': self.add_to_tokens(TT_build_in_funcs, 'str')
+            if tok == 'to_int': self.add_to_tokens(TT_build_in_funcs, 'int')
+            if tok == 'to_float': self.add_to_tokens(TT_build_in_funcs, 'float')
 
         # Variable types
         elif v_types(tok) == 'bool':
-            add_to_tokens(TT_bool, tok)
+            self.add_to_tokens(TT_bool, tok)
         elif v_types(tok) == 'string':
-            add_to_tokens(TT_string, tok)
+            self.add_to_tokens(TT_string, tok)
         elif v_types(tok) == 'list':
-            add_to_tokens(TT_list, tok)
+            self.add_to_tokens(TT_list, tok)
         elif v_types(tok) == 'number':
-            add_to_tokens(TT_number, tok)
+            self.add_to_tokens(TT_number, tok)
 
         # Operators
         elif tok in OP_arithmetic or tok in OP_relational or tok in OP_assignment or tok in OP_other:
-            if tok == 'is': add_to_tokens(TT_operator, '==')
-            elif tok == 'is_not': add_to_tokens(TT_operator, '!=')
-            elif tok == 'is_greater_than': add_to_tokens(TT_operator, '>')
-            elif tok == 'is_less_than': add_to_tokens(TT_operator, '<')
-            else: add_to_tokens(TT_operator, tok)
+            if tok == 'is': self.add_to_tokens(TT_operator, '==')
+            elif tok == 'is_not': self.add_to_tokens(TT_operator, '!=')
+            elif tok == 'is_greater_than': self.add_to_tokens(TT_operator, '>')
+            elif tok == 'is_less_than': self.add_to_tokens(TT_operator, '<')
+            else: self.add_to_tokens(TT_operator, tok)
 
         # Variables
         elif self.last_kw == KW_let:
             variables.append(tok)
-            add_to_tokens(TT_variable, tok)
+            self.add_to_tokens(TT_variable, tok)
         # Functions
         elif self.last_kw == KW_def1:
             functions.append(tok)
-            add_to_tokens(TT_function, tok)
+            self.add_to_tokens(TT_function, tok)
         elif tok and tok in variables:
-            add_to_tokens(TT_variable, tok)
+            self.add_to_tokens(TT_variable, tok)
 
         else:
-            add_to_tokens(TT_arguments, tok)
+            self.add_to_tokens(TT_arguments, tok)
             # error(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
 
 
@@ -181,11 +152,9 @@ class TranslateToPython:
         else:
             self.write("")
 
-            
+
     def convert(self, kw):
-        global indent_count
-        global is_main
-        global is_function
+        global indent_count, is_main, is_function
 
         if kw in functions:
             self.write(join_list(self.values))
@@ -210,11 +179,12 @@ class TranslateToPython:
 
         if kw == KW_let:
             """
-                let ID = EXPR
+                let ID up EXPR
             """
 
-            EXPR = join_list(self.values[1:])
-            self.write(f'{EXPR}')
+            ID = self.values[1]
+            EXPR = join_list(self.values[3:])
+            self.write(f'{ID} = {EXPR}')
 
         if kw == KW_if:
             """
@@ -284,7 +254,8 @@ def run_in_py(src_file_name):
         for statement in content:  # "statement" is a line of code the in source code
             current_line += 1
 
-            obj = Token(statement)
-            TranslateToPython(types=obj.t_types, values=obj.t_values)
+            lexer = Lexer(statement)
+            token = Token(lexer.tokens)
+            TranslateToPython(types=token.t_types, values=token.t_values)
 
     return py_code
