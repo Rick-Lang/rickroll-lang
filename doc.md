@@ -40,23 +40,23 @@ Never gonna give you up, never gonna let you down~
 ## Defining Variable
 You can define int, float, string, list/array, set, and tuple.
 ```
-give_u_up a = 10~
-give_u_up b = "It is a string"
-give_u_up c = ["This", "is", "an", "array"]
+give a up 10
+give b up "It is a string"
+give c up ["This", "is", "an", "array"]
 
 ```
 
 ## If Statement
 Indentation in RickRoll-lang is optional.
 ```
-take_me_to_ur_heart~    # You can add "~" at the end of the statement (it is totally optional)
-    give_u_up a = 10
+take me to ur heart~    # You can add "~" at the end of the statement (it is totally optional)
+    give a up 10
 
-    and_if_u_ask_me_how_im_feeling a is 10
-        i_just_wanna_tell_u_how_im_feeling "A is 10!"
-    say_good_bye
+    and if u ask me how im feeling a is 10
+        i just wanna tell u how im feeling "A is 10!"
+    say goodbye
 
-say_good_bye~
+say goodbye~
 ```
 Equivalent to Python:
 ```python
@@ -75,10 +75,10 @@ And you will get this on your terminal
 ## Loop
 RickRoll supports 2 kinds of loop, the first one is endless loop, and the second one is while loop
 ```
-take_me_to_ur_heart
-    together_forever_and_never_to_part # Endless loop
+take me to ur heart
+    together forever and never to part # Endless loop
 
-    say_good_bye
+    say goodbye
 
 say_good_bye
 ```
@@ -90,13 +90,13 @@ if __name__ == "__main__":
 ```
 While loop
 ```
-take_me_to_ur_heart
-    give_u_up a = 0
-    together_forever_with a is_less_than 10
-        give_u_up a = a + 1
-    say_good_bye
+take me to ur heart
+    give a up 10
+    together forever with a is_less_than 10
+        give a up a + 1
+    say goodbye
 
-say_good_bye
+say goodbye
 ```
 Equivalent to python:
 ```
