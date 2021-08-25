@@ -1,27 +1,27 @@
-never_knew BubbleSort arr could_feel_this_way
+never knew BubbleSort arr could feel this way
 
-    give_u_up i = 0
+    give i up 0
 
-    together_forever_with i < length(arr)
-        give_u_up i = i + 1
-        give_u_up j = 0
-        together_forever_with j is_less_than length(arr) - 1
+    together forever with i < length(arr)
+        give i up i + 1
+        give j up 0
+        together forever with j is_less_than length(arr) - 1
 
-            and_if_u_ask_me_how_im_feeling arr[j] > arr[j + 1]
-                give_u_up arr[j], arr[j + 1] = arr[j + 1], arr[j]
-            say_good_bye
-            give_u_up j = j + 1
+            and if u ask me how im feeling arr[j] > arr[j + 1]
+                give arr[j], arr[j + 1] up arr[j + 1], arr[j]
+            say goodbye
+            give j up j + 1
 
-        say_good_bye
-    say_good_bye
+        say goodbye
+    say goodbye
 
-    i_just_wanna_tell_u_how_im_feeling arr
+    i just wanna tell u how im feeling arr
 
 
-say_good_bye
+say good bye
 
-take_me_to_ur_heart~
-    give_u_up arr = [6, 7, 5, 9, 12]
+take me to ur heart~
+    give arr up [6, 7, 5, 9, 12]
     BubbleSort(arr)
 
-say_good_bye
+say goodbye
