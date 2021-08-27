@@ -1,17 +1,17 @@
-take_me_to_ur_heart
-    give_u_up areYouRolling= ["Together ","forever", "and never to part", "Together", "foverer", "we two"]
+take me to ur heart
+    give areYouRolling up ["Together ","forever", "and never to part", "Together", "foverer", "we two"]
 
-    give_u_up astleyCounter=0
+    give astleyCounter up 0
     
-    together_forever_and_never_to_part
-      and_if_u_ask_me_how_im_feeling astleyCounter is Length(areYouRolling)
-        desert_u
-      say_good_bye
+    together forever and never to part
+      and if u ask me how im feeling astleyCounter is length(areYouRolling)
+        desert u
+      say goodbye
 
-      i_just_wanna_tell_u_how_im_feeling areYouRolling[astleyCounter] + "\n"
-      give_u_up astleyCounter=astlleyCounter+1
+      i just wanna tell u how im feeling areYouRolling[astleyCounter] + "\n"
+      give astleyCounter up astleyCounter + 1
 
-say_good_bye~
+say goodbye
 
 ### Equivalent to Python
 # ----------------------
