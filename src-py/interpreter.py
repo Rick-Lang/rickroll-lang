@@ -3,6 +3,7 @@ from os.path import exists
 from sys import argv, stdout
 
 from PublicVariables import *
+from Lexer import Lexer
 
 # Help message
 rick_help = """
@@ -23,6 +24,7 @@ TT_assignment_operator = 'OPERATORS-ASSIGNMENT'
 TT_relational_operator = 'OPERATORS-RELATIONAL'
 TT_logical_operator    = 'OPERATORS-LOGICAL'
 TT_other_operator      = 'OPERATORS-OTHER'
+TT_built_in_funcs      = 'OPERATORS-BUILT-IN-FUNCS'
 
 TT_int                 = 'VALUE-INT'
 TT_float               = 'VALUE-FLOAT'
@@ -40,9 +42,20 @@ current_code_level = 0
 # The code level that the interpreter should execute or interpret
 executing_code_level = 0
 
+in_loop = False
+in_loop_stmts = []
+
+while_condition = False
+
 current_line = 0
 # For definining variables (Relevant: Interpreter, KW_let)
 variables = {}
+
+
+
+test_types = ['KEYWORDS', 'VALUE-String']
+test_tokens = ['i_just_wanna_tell_u_how_im_feeling', '"Hello\\n"']
+
 
 # Determine variable types
 def v_types(string):
@@ -64,35 +77,15 @@ def v_types(string):
     if count == len(string) and string.count('.') < 2:
         return 'number'
 
-class Lexer:
-    def __init__(self, statement):
-        self.statement = statement
-
+class Token:
+    def __init__(self, raw_tokens):
+        self.__raw_tokens = raw_tokens
         self.tokens = []      # Tokens
         self.types = []       # Token types
 
-        self.tokenize(self.statement)
-
-
-    def tokenize(self, statement):
-        current_token = ''
-        quote_count = 0
-
-        for char in statement:
-
-            if char == '"': quote_count += 1
-            if char == '#': break
-            if char in ignore_tokens: continue
-
-            if char in separators and quote_count % 2 == 0:
-
-                if current_token != ' ' and current_token != '\n':
-                    self.make_token(current_token)
-                if char != ' ' and char != '\n':
-                    self.make_token(char)
-
-                current_token = ''
-            else: current_token += char
+        for t in self.__raw_tokens:
+            if t:
+                self.make_token(t)
 
     def make_token(self, t):
 
@@ -118,6 +111,8 @@ class Lexer:
                 self.types.append(TT_relational_operator)
             elif t in OP_other:
                 self.types.append(TT_other_operator)
+            elif t in OP_build_in_functions:
+                self.types.append(TT_built_in_funcs)
             elif typeof(t) == 'int':
                 self.types.append(TT_int)
             elif typeof(t) == 'float':
@@ -132,7 +127,6 @@ class Interpreter:
     def __init__(self, types, tokens):
         self.types = types
         self.tokens = tokens
-        self.error_exp = ''    # expression; used to return errors;
 
         # If this line is executable or should be executed, then execute this line of code
         if self.types[0] == TT_keyword:
@@ -157,6 +151,10 @@ class Interpreter:
                 if tokens[i] == 'is': tokens[i] = '=='
                 if tokens[i] == 'is_not': tokens[i] = '!='
 
+            if types[i] == TT_built_in_funcs:
+                if tokens[i] == 'to_string': tokens[i] = 'str'
+
+
         try:
             return eval(join_list(tokens))
 
@@ -166,25 +164,47 @@ class Interpreter:
 
     def run_code(self, kw):
         global current_code_level, executing_code_level
+        global in_loop, in_loop_stmts, while_condition
+
 
         """
             End statement, which 
         """
         if kw == KW_end:
+            
+            run_loop = False
+
             if executing_code_level == current_code_level:
                 executing_code_level -= 1
 
+                # End a loop
+                if in_loop:
+                    in_loop = False
+                    run_loop = True
+
             # the current code level go back 1
             current_code_level -= 1
+
+            # Run the codes in loop
+            if run_loop:
+                while while_condition:
+                    for stmt in in_loop_stmts:
+                        Interpreter(stmt[0], stmt[1])
+
 
         # If the current code level should not execute, then return back (don't execute)
         if executing_code_level != current_code_level:
             return
 
+        if in_loop:
+            in_loop_stmts.append([self.types, self.tokens])
+            return
+
+
         if kw == KW_main:
             self.indent()
 
-        if kw == KW_print:
+        elif kw == KW_print:
             """
                 PRINT EXPR
             """
@@ -202,6 +222,8 @@ class Interpreter:
             current_code_level += 1
 
         elif kw == KW_endless_loop:
+            in_loop = True
+            while_condition = True
             self.indent()
 
         elif kw == KW_while_loop:
@@ -209,8 +231,13 @@ class Interpreter:
                 WHILE CONDI
             """
             CONDI = self.evaluate(self.types[1:], self.tokens[1:])
+            while_condition = CONDI
+            if CONDI:
+                in_loop = True
+                executing_code_level += 1
+            current_code_level += 1
 
-            self.indent()
+            # self.indent()
 
         elif kw == KW_let:
             """
@@ -233,11 +260,11 @@ def run_in_interpreter(src_file_name):
         content[-1] += '\n'
         for i in range(len(content)):
             current_line += 1
-            obj = Lexer(statement=content[i])    # "statement" is a line of code the in source code
-
-            if obj.types:
+            lexer = Lexer(stmt=content[i])    # "statement" is a line of code the in source code
+            token = Token(raw_tokens=lexer.tokens)
+            if token.tokens:
                 try:
-                    Interpreter(types=obj.types, tokens=obj.tokens)
+                    Interpreter(types=token.types, tokens=token.tokens)
 
                 except Exception as e:
                     stdout.write(f'Exception in line {current_line}: {e}\n')

@@ -1,15 +1,15 @@
-take_me_to_ur_heart
+take me to ur heart
 
-    give_u_up age = 20
+    give age up 20
 
-    i_just_wanna_tell_u_how_im_feeling "Your age is " + to_string(age) + "\n"
+    i just wanna tell u how im feeling "Your age is " + to_string(age) + "\n"
 
-    and_if_u_ask_me_how_im_feeling age > 18
-        i_just_wanna_tell_u_how_im_feeling "Adult" + "\n"
-    say_good_bye
+    and if u ask me how im feeling age > 18
+       i just wanna tell u how im feeling  "Adult" + "\n"
+    say goodbye
 
-    and_if_u_ask_me_how_im_feeling age < 6
-        i_just_wanna_tell_u_how_im_feeling "Kid" + "\n"
-    say_good_bye
+    and if u ask me how im feeling age < 6
+        i just wanna tell u how im feeling "Kid" + "\n"
+    say goodbye
 
-say_good_bye
+say goodbye
