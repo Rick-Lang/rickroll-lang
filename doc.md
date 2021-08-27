@@ -7,38 +7,30 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 2. The code must be written inside the main method, otherwise the interpreter will not execute
 
 ## Commands to execute your code
-> I usually execute my source code like this:
+Execute by converting .rickroll to Python
 ```
-python3 RickRoll.py -r [Source Code File Name]
+python3 RickRoll.py -py [Source Code File Name]
 ```
-> If you want to know the execution time:
+Execute by converting .rickroll to C++ (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
 ```
-python3 RickRoll.py -r [Source Code File Name] --time
+python3 RickRoll.py -cpp [Source Code File Name]
 ```
-
-> If you want to translate RickRoll to C++: (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
+If you want to know the execution time:
+> Add "--time"
 ```
-python3 RickRoll.py -r [Source Code File Name] --cpp
-OR
-python3 RickRoll.py -r [Source Code File Name] --c++
+python3 RickRoll.py -py [Source Code File Name] --time
 ```
-
-> The interpreter can generate and play an audio from your source code (This feature is not mature yet)
+Generate and play an audio from .rickroll (This feature probably will fail becauese it is quite new)
 ```
-python3 RickRoll.py -r [Source Code File Name] --audio
+python3 RickRoll.py -py [Source Code File Name] --audio
 ```
-> Also the interpreter provides you to "sing" code (This feature is not completed yet)
-```
-python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
-```
-
 
 ## Hello World
 ```
-take_me_to_ur_heart                                                      # This is the MAIN METHOD
-    give_u_up msg = "Never gonna give you up, never gonna let you down~" # Define a variable
-    i_just_wanna_tell_u_how_im_feeling msg                               # print the "msg" variable
-say_good_bye                                                             # End the main method
+take me to ur heart                                                    # This is the MAIN METHOD
+    give msg up "Never gonna give you up, never gonna let you down~\n" # Define a variable
+    i just wanna tell u how im feeling msg                             # print the "msg" variable
+say goodbye                                                            # End the main method
 ```
 And you can get the output on your terminal:
 ```
@@ -48,23 +40,23 @@ Never gonna give you up, never gonna let you down~
 ## Defining Variable
 You can define int, float, string, list/array, set, and tuple.
 ```
-give_u_up a = 10~
-give_u_up b = "It is a string"
-give_u_up c = ["This", "is", "an", "array"]
+give a up 10
+give b up "It is a string"
+give c up ["This", "is", "an", "array"]
 
 ```
 
 ## If Statement
 Indentation in RickRoll-lang is optional.
 ```
-take_me_to_ur_heart~    # You can add "~" at the end of the statement (it is totally optional)
-    give_u_up a = 10
+take me to ur heart~    # You can add "~" at the end of the statement (it is totally optional)
+    give a up 10
 
-    and_if_u_ask_me_how_im_feeling a is 10
-        i_just_wanna_tell_u_how_im_feeling "A is 10!"
-    say_good_bye
+    and if u ask me how im feeling a is 10
+        i just wanna tell u how im feeling "A is 10!"
+    say goodbye
 
-say_good_bye~
+say goodbye~
 ```
 Equivalent to Python:
 ```python
@@ -81,11 +73,12 @@ And you will get this on your terminal
 ```
 
 ## Loop
+RickRoll supports 2 kinds of loop, the first one is endless loop, and the second one is while loop
 ```
-take_me_to_ur_heart
-    together_forever_and_never_to_part # Endless loop
+take me to ur heart
+    together forever and never to part # Endless loop
 
-    say_good_bye
+    say goodbye
 
 say_good_bye
 ```
@@ -94,6 +87,24 @@ Equivalent to Python:
 if __name__ == "__main__":
     while True:
         pass
+```
+While loop
+```
+take me to ur heart
+    give a up 10
+    together forever with a is_less_than 10
+        give a up a + 1
+    say goodbye
+
+say goodbye
+```
+Equivalent to python:
+```
+if __name__ == "__main__":
+    a = 0
+    while a < 10:
+        a += 1
+
 ```
 
 ## Defining Function

@@ -1,0 +1,15 @@
+take me to ur heart
+
+    give age up 20
+
+    i just wanna tell u how im feeling "Your age is " + to_string(age) + "\n"
+
+    and if u ask me how im feeling age > 18
+       i just wanna tell u how im feeling  "Adult" + "\n"
+    say goodbye
+
+    and if u ask me how im feeling age < 6
+        i just wanna tell u how im feeling "Kid" + "\n"
+    say goodbye
+
+say goodbye

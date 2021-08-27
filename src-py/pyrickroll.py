@@ -1,17 +1,21 @@
 from PublicVariables import *
+from Lexer import Lexer
 
 
 # Token types
 TT_keyword  = 'KEYWORDS'
 TT_operator = 'OPERATORS'
 TT_number   = 'VALUE-NUMBER'
-TT_bool     = 'VALUE-Bool'
-TT_char     = 'VALUE-Char'
-TT_string   = 'VALUE-String'
+TT_bool     = 'VALUE-BOOL'
+TT_string   = 'VALUE-STRING'
+TT_list     = 'VALUE-LIST'
 
+TT_arguments = 'ARGUMENTS'
+TT_operator = 'OPERATOR'
 TT_variable = 'VARIABLE'
 TT_function = 'FUNCTION'
 TT_library  = 'LIBRARY'
+TT_build_in_funcs = 'BUILD-IN-FUNCS'
 
 
 # Keywords can execute outside main function
@@ -30,154 +34,90 @@ is_function = False                    # Is the current statement in a function
 # Python source code, translated from RickRoll source code
 py_code = ""
 
-# Store libraries
 libraries = {}
 
-
-# "join_list" is a replacement of ''.join()
-def join_list(l):
-    result = ''
-    for i in l: result += f'{i}'
-    return result
-
+# Determine variable types
+def v_types(string):
+    string = str(string)
+    # Boolean
+    if string == 'True' or string == 'False':
+        return 'bool'
+    # String
+    if string[0] == '"' and string[-1] == '"':
+        return 'string'
+    # List
+    if string[0] == '[' and string[-1] == ']':
+        return 'list'
+    # Determine the string is int or float
+    count = 0
+    for char in string:
+        if char in digits:
+            count += 1
+    if count == len(string) and string.count('.') < 2:
+        return 'number'
 
 ####################################################################################
 'Token Class'
-"""
-Token class is used to tokenize a RickRoll statement
-"""
 ####################################################################################
-class Token:
-    def __init__(self, statement):
-        self.statement = statement
-        self.tokens = []
-
-        self.tokenize()
-
+class Token:    # Return token types
+    def __init__(self, tokens):
         self.t_types = []
         self.t_values = []
+        self.__tokens = tokens
+        self.last_kw = ''
 
-        for i in range(len(self.tokens)):
-            if self.tokens[i]:
-                self.convert_token(i)
+        for tok in self.__tokens:
+            if tok:
+                self.__make_token(tok)
 
+    def add_to_tokens(self, type, token):
+        self.t_types.append(type)
+        self.t_values.append(token)
 
-    # Split statements to single word / token
-    def tokenize(self):
+    def __make_token(self, tok):
+        global variables, functions
 
-        current_token = ''
-        quote_count = 0
+        if tok in keywords:
+            self.add_to_tokens(TT_keyword, tok)
+            self.last_kw = tok
+        elif tok in OP_build_in_functions:
+            if tok == 'length': self.add_to_tokens(TT_build_in_funcs, 'len')
+            if tok == 'to_string': self.add_to_tokens(TT_build_in_funcs, 'str')
+            if tok == 'to_int': self.add_to_tokens(TT_build_in_funcs, 'int')
+            if tok == 'to_float': self.add_to_tokens(TT_build_in_funcs, 'float')
 
-        for char in self.statement:
+        # Variable types
+        elif v_types(tok) == 'bool':
+            self.add_to_tokens(TT_bool, tok)
+        elif v_types(tok) == 'string':
+            self.add_to_tokens(TT_string, tok)
+        elif v_types(tok) == 'list':
+            self.add_to_tokens(TT_list, tok)
+        elif v_types(tok) == 'number':
+            self.add_to_tokens(TT_number, tok)
 
-            if char == '"':
-                quote_count += 1
+        # Operators
+        elif tok in OP_arithmetic or tok in OP_relational or tok in OP_assignment or tok in OP_other:
+            if tok == 'is': self.add_to_tokens(TT_operator, '==')
+            elif tok == 'is_not': self.add_to_tokens(TT_operator, '!=')
+            elif tok == 'is_greater_than': self.add_to_tokens(TT_operator, '>')
+            elif tok == 'is_less_than': self.add_to_tokens(TT_operator, '<')
+            else: self.add_to_tokens(TT_operator, tok)
 
-            if char == '#':
-                break
-            if char in ignore_tokens:
-                continue
-
-            if char in separators and quote_count % 2 == 0:
-
-                if current_token != ' ' and current_token != '\n':
-                    self.tokens.append(current_token)
-                if char != ' ' and char != '\n':
-                    self.tokens.append(char)
-
-                current_token = ''
-
-            else:
-                current_token += char
-
-
-    # is_num determines whether the token is a number
-    def is_num(self, string = ''):
-        count = 0
-        for i in string:
-            if i in digits:
-                count += 1
-
-        return True if len(string) == count and string.count('.') <= 1 else False
-
-
-    # Convert each token
-    def convert_token(self, i=0):
-
-        global variables
-
-        def add_to_parser(token_type):
-            self.t_types.append(token_type)
-            self.t_values.append(self.tokens[i])
-
-        def add_operator(operator_in_python):
-            self.t_types.append(TT_operator)
-            self.t_values.append(operator_in_python)
-
-
-        t = self.tokens[i]
-
-        # If the token is a key word
-        if t in keywords:
-            add_to_parser(TT_keyword)
-
-
-    # Operators
-        # Arithmetic Operators
-        elif t in OP_arithmetic or t in OP_assignment or t in OP_other:
-            add_to_parser(TT_operator)
-
-        # Relational Operator
-        elif t in OP_relational or t in OP_build_in_functions:
-            if t == 'is': add_operator('==')
-            if t == 'is_not': add_operator('!=')
-            if t == 'is_greater_than': add_operator('>')
-            if t == 'is_less_than': add_operator('<')
-            if t == 'and': add_operator(' and ')
-            if t == 'or': add_operator(' or ')
-
-            # Build in functions
-            if t == 'ToString': add_operator('str')
-            if t == 'ToInt': add_operator('int')
-            if t == 'ToFloat': add_operator('float')
-            if t == 'Length': add_operator('len')
-
-
-    # Value
-        # number
-        elif self.is_num(t):
-            add_to_parser(TT_number)
-
-        # Bool
-        elif t == 'True' or t == 'False':
-            add_to_parser(TT_bool)
-
-        # String
-        elif t[0] == '"' and t[-1] == '"':
-            add_to_parser(TT_string)
-
-
-    # Others
         # Variables
-        elif self.tokens[i - 1] == KW_let:
-            add_to_parser(TT_variable)
-            variables.append(t)
-
-        # Library
-        elif self.tokens[i - 1] == KW_import1:
-            add_to_parser(TT_library)
-
+        elif self.last_kw == KW_let:
+            variables.append(tok)
+            self.add_to_tokens(TT_variable, tok)
         # Functions
-        elif self.tokens[i - 1] == KW_def1:
-            add_to_parser(TT_function)
-            functions.append(t)
+        elif self.last_kw == KW_def1:
+            functions.append(tok)
+            self.add_to_tokens(TT_function, tok)
+        elif tok and tok in variables:
+            self.add_to_tokens(TT_variable, tok)
 
-        # Variables
-        elif t and t in variables:
-            add_to_parser(TT_variable)
-
-        elif t and t in libraries:
-            add_to_parser(TT_library)
+        else:
+            self.add_to_tokens(TT_arguments, tok)
+            # error(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
 
 
 
@@ -203,25 +143,21 @@ class TranslateToPython:
                     self.convert(kw=self.values[0])
 
                 else:
-                    stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
-                    exit('------'*10 + '\n"You know the rules, and so do I~"')
+                    error(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
 
             else:
-                stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
-                exit('------'*10 + '\n"If you knew what Im feeling, you would not say no~"')
+                error(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
         # if this line doesn't have code, then write "\n"
         else:
-            self.write('')
+            self.write("")
 
-            
+
     def convert(self, kw):
-        global indent_count
-        global is_main
-        global is_function
+        global indent_count, is_main, is_function
 
         if kw in functions:
-            self.write(f'{join_list(self.values)}')
+            self.write(join_list(self.values))
 
         if kw == KW_main:
             self.write('if __name__ == "__main__":')
@@ -234,22 +170,29 @@ class TranslateToPython:
             if is_function: is_function = False
 
         if kw == KW_print:
-            # print EXP
+            """
+                print EXPR
+            """
 
-            exp = join_list(self.values[1: len(self.values)])
-            self.write(f'print({exp}, end="")')
+            EXPR = join_list(self.values[1:])
+            self.write(f'print({EXPR}, end="")')
 
         if kw == KW_let:
-            # IDENTIFIER = VALUE
+            """
+                let ID up EXPR
+            """
 
-            exp = join_list(self.values[1: len(self.values)])
-            self.write(f'{exp}')
+            ID = self.values[1]
+            EXPR = join_list(self.values[3:])
+            self.write(f'{ID} = {EXPR}')
 
         if kw == KW_if:
-            # IF CONDITION:
+            """
+                if CONDI
+            """
 
-            condition = join_list(self.values[1: len(self.values)])
-            self.write(f'if {condition}:')
+            CONDI = join_list(self.values[1:])
+            self.write(f'if {CONDI}:')
             indent_count += 1
 
         if kw == KW_endless_loop:
@@ -257,10 +200,12 @@ class TranslateToPython:
             indent_count += 1
 
         if kw == KW_while_loop:
-            # WHILE CONDITION
+            """
+                while1 CONDI while2
+            """
 
-            condition = join_list(self.values[1:len(self.values)])
-            self.write(f'while {condition}:')
+            CONDI = join_list(self.values[1:])
+            self.write(f'while {CONDI}:')
             indent_count += 1
 
         if kw == KW_break:
@@ -270,15 +215,23 @@ class TranslateToPython:
             self.write('continue')
 
         if kw == KW_def1:
-            arguments = join_list(self.values[2 : len(self.values) - 1])
-            self.write(f'def {self.values[1]}({arguments}):')
-            is_function = True
+            """
+                def1 ID ARGS def2
+            """
+            ID = self.values[1]
+            ARGS = join_list(self.values[2 :-1])
 
+            self.write(f'def {ID}({ARGS}):')
+
+            is_function = True
             indent_count += 1
 
         if kw == KW_return1:
-            exp = join_list(self.values[1: len(self.values) - 1])
-            self.write(f'return {exp}')
+            """
+                return1 EXPR return2
+            """
+            EXPR = join_list(self.values[1: -1])
+            self.write(f'return {EXPR}')
 
         if kw == KW_end:
             self.write('pass')
@@ -301,7 +254,8 @@ def run_in_py(src_file_name):
         for statement in content:  # "statement" is a line of code the in source code
             current_line += 1
 
-            obj = Token(statement)
-            TranslateToPython(types=obj.t_types, values=obj.t_values)
+            lexer = Lexer(statement)
+            token = Token(lexer.tokens)
+            TranslateToPython(types=token.t_types, values=token.t_values)
 
     return py_code

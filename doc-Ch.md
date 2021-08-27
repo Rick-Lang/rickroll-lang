@@ -2,23 +2,22 @@
 一个面向诈骗，强动态，解释性的深奥编程语言
 
 ## 执行源码命令
+
 > 用一般方法执行源代码：
 ```
-python3 RickRoll.py -r [Source Code File Name]
+python3 RickRoll.py -py [Source Code File Name]
 ```
 > 将 .rickroll 翻译到 .cpp (C++): (需要G++编译器，而且此功能目前还不成熟，可能会出问题)
 ```
-python3 RickRoll.py -r [Source Code File Name] --cpp
-或
-python3 RickRoll.py -r [Source Code File Name] --c++
+python3 RickRoll.py -cpp [Source Code File Name]
 ```
 > 如果客户想知道执行时间：
 ```
-python3 RickRoll.py -r [Source Code File Name] --time
+python3 RickRoll.py -py [Source Code File Name] --time
 ```
-> 解释器也可以从你的源码中生成一个MP3文件（但此需求尚未完成）
+> 从RickRoll源码中生成并播放一个音频（但此功能不算成熟，可能会出错）
 ```
-python3 RickRoll.py -r [Source Code File Name] -audio [Audio_File_Name]
+python3 RickRoll.py -py [Source Code File Name] --audio
 ```
 > 客户还可以通过唱歌的方式写代码 (但这个功能我们也没有完成)
 ```
@@ -29,7 +28,7 @@ python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 ## Hello World
 ```
 take_me_to_ur_heart                           # 这是一个Main函数/方法
-    give_u_up msg =  "你 被 骗 了 !"           # 定义一个变量
+    give_u_up msg =  "你 被 骗 了 !\n"         # 定义一个变量
     i_just_wanna_tell_u_how_im_feeling msg    # 输出变量 “msg”
 say_good_bye                                  # 结束Main函数/方法
 ```
