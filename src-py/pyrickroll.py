@@ -146,6 +146,7 @@ class TranslateToPython:
                     error(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
 
             else:
+                print(self.values[0])
                 error(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
         # if this line doesn't have code, then write "\n"
@@ -182,8 +183,8 @@ class TranslateToPython:
                 let ID up EXPR
             """
 
-            ID = self.values[1]
-            EXPR = join_list(self.values[3:])
+            ID = join_list(self.values[self.values.index(KW_let) + 1 : self.values.index(KW_assign)])
+            EXPR = join_list(self.values[self.values.index(KW_assign) + 1:])
             self.write(f'{ID} = {EXPR}')
 
         if kw == KW_if:
@@ -219,7 +220,7 @@ class TranslateToPython:
                 def1 ID ARGS def2
             """
             ID = self.values[1]
-            ARGS = join_list(self.values[2 :-1])
+            ARGS = join_list(self.values[2:])
 
             self.write(f'def {ID}({ARGS}):')
 
