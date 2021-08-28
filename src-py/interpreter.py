@@ -122,6 +122,85 @@ class Token:
             else:
                 self.types.append(TT_identifier)
 
+class Eval:
+    def __init__(self, tokens):
+        self.__tokens = tokens
+        self.values = []
+
+        self.__evaluate(self.__tokens)
+
+    def __precedence(self, op):
+     
+        if op == '+' or op == '-':
+            return 1
+        if op == '*' or op == '/':
+            return 2
+        return 0
+
+    def __applyOp(self, a, b, op):
+        
+        if op == '+': return a + b
+        if op == '-': return a - b
+        if op == '*': return a * b
+        if op == '/': return a // b
+
+    def __evaluate(self, tokens):
+        ops = []
+
+        for i in range(len(tokens)):
+    
+            if tokens[i] == '(':
+                ops.append(tokens[i])
+            
+            elif tokens[i].isdigit():
+                val = 0
+                
+                while (i < len(tokens) and tokens[i].isdigit()):
+                
+                    val = (val * 10) + int(tokens[i])
+                    i += 1
+
+                self.values.append(val)
+
+            elif tokens[i][0] == '"' and tokens[i][-1] == '"':
+                self.values.append(tokens[i][1: -1])
+
+
+            elif tokens[i] == ')':
+                while len(ops) != 0 and ops[-1] != '(':
+                
+                    val2 = self.values.pop()
+                    val1 = self.values.pop()
+                    op = ops.pop()
+
+                    self.values.append(self.__applyOp(val1, val2, op))
+                
+                ops.pop()
+            
+            else:
+                while len(ops) != 0 and self.__precedence(ops[-1]) >= self.__precedence(tokens[i]):
+
+                    val2 = self.values.pop()
+                    val1 = self.values.pop()
+                    op = ops.pop()
+
+                    self.values.append(self.__applyOp(val1, val2, op))
+
+                ops.append(tokens[i])
+
+
+        for i in range(len(ops)):
+
+            val2 = self.values.pop()
+            val1 = self.values.pop()
+            op = ops.pop()
+
+            self.values.append(self.__applyOp(val1, val2, op))
+
+        
+    def __repr__(self):
+        return f'{self.values[-1]}'
+
 
 class Interpreter:
     def __init__(self, types, tokens):
@@ -208,14 +287,16 @@ class Interpreter:
             """
                 PRINT EXPR
             """
-            EXPR = self.evaluate(self.types[1:], self.tokens[1:])
+            # EXPR = Evaluate(self.types[1:], self.tokens[1:])
+            EXPR = Eval(self.tokens[1:])
             stdout.write(str(EXPR))
 
         elif kw == KW_if:
             """
                 IF CONDI
             """
-            CONDI = self.evaluate(self.types[1:], self.tokens[1:])
+            # CONDI = Evaluate(self.types[1:], self.tokens[1:])
+            CONDI = self.evaluate(types=self.types[1:], tokens=self.tokens[1:])
             if CONDI:
                 executing_code_level += 1
 
@@ -230,7 +311,9 @@ class Interpreter:
             """
                 WHILE CONDI
             """
-            CONDI = self.evaluate(self.types[1:], self.tokens[1:])
+            # CONDI = Evaluate(self.types[1:], self.tokens[1:])
+            print(self.tokens[1:])
+            CONDI = Eval(self.tokens[1:])
             while_condition = CONDI
             if CONDI:
                 in_loop = True
@@ -241,13 +324,12 @@ class Interpreter:
 
         elif kw == KW_let:
             """
-                LET ID = EXPR
+                LET ID up EXPR
             """
             ID = self.tokens[self.tokens.index(KW_let) + 1]
 
-            EXPR = self.evaluate(
-                types = self.types[self.types.index(TT_assignment_operator) + 1:],
-                tokens = self.tokens[self.types.index(TT_assignment_operator) + 1:]
+            EXPR = Eval(
+                tokens = self.tokens[self.tokens.index(KW_assign) + 1:]
             )
             variables.update({ID: EXPR})
 
