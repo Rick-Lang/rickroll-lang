@@ -22,6 +22,11 @@ KW_continue     = 'runaround'
 KW_endless_loop = 'togetherforeverandnevertopart'
 KW_while_loop   = 'togetherforeverwith'
 
+KW_less_than_OP = 'islessthan'
+KW_greater_than_OP = 'isgreaterthan'
+KW_is_not_OP = 'isnot'
+KW_equals_OP = 'is'
+
 keywords = [
     KW_print,
     KW_if,
@@ -38,7 +43,11 @@ keywords = [
     KW_break,
     KW_continue,
     KW_endless_loop,
-    KW_while_loop
+    KW_while_loop,
+    KW_less_than_OP,
+    KW_greater_than_OP,
+    KW_is_not_OP,
+    KW_equals_OP
 ]
 
 all_keyword_string = ''
@@ -58,7 +67,6 @@ separators = {
 
 # Operators
 OP_arithmetic = {'+', '-', '*', '/', '%', '^'}
-OP_relational = {'is', 'is_not', 'is_greater_than', 'is_less_than', 'and', 'or'}
 OP_assignment = {'='}
 OP_other      = {'[', ']', '(', ')', '{', '}', ','}
 
