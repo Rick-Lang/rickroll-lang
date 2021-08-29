@@ -258,7 +258,6 @@ def run_in_py(src_file_name):
 
             lexer = Lexer(statement)
             token = Token(lexer.tokens)
-            print(token.t_types, token.t_values)
             TranslateToPython(types=token.t_types, values=token.t_values)
 
     return py_code
