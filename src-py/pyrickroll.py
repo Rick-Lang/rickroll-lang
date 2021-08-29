@@ -11,7 +11,6 @@ TT_string   = 'VALUE-STRING'
 TT_list     = 'VALUE-LIST'
 
 TT_arguments = 'ARGUMENTS'
-TT_operator = 'OPERATOR'
 TT_variable = 'VARIABLE'
 TT_function = 'FUNCTION'
 TT_library  = 'LIBRARY'
@@ -78,8 +77,14 @@ class Token:    # Return token types
         global variables, functions
 
         if tok in keywords:
-            self.add_to_tokens(TT_keyword, tok)
+            if tok == 'is': self.add_to_tokens(TT_operator, '==')
+            elif tok == 'isnot': self.add_to_tokens(TT_operator, '!=')
+            elif tok == 'isgreaterthan': self.add_to_tokens(TT_operator, '>')
+            elif tok == 'islessthan': self.add_to_tokens(TT_operator, '<')
+            else: self.add_to_tokens(TT_keyword, tok)
+
             self.last_kw = tok
+
         elif tok in OP_build_in_functions:
             if tok == 'length': self.add_to_tokens(TT_build_in_funcs, 'len')
             if tok == 'to_string': self.add_to_tokens(TT_build_in_funcs, 'str')
@@ -97,12 +102,8 @@ class Token:    # Return token types
             self.add_to_tokens(TT_number, tok)
 
         # Operators
-        elif tok in OP_arithmetic or tok in OP_relational or tok in OP_assignment or tok in OP_other:
-            if tok == 'is': self.add_to_tokens(TT_operator, '==')
-            elif tok == 'is_not': self.add_to_tokens(TT_operator, '!=')
-            elif tok == 'is_greater_than': self.add_to_tokens(TT_operator, '>')
-            elif tok == 'is_less_than': self.add_to_tokens(TT_operator, '<')
-            else: self.add_to_tokens(TT_operator, tok)
+        elif tok in OP_arithmetic or tok in OP_assignment or tok in OP_other:
+            self.add_to_tokens(TT_operator, tok)
 
         # Variables
         elif self.last_kw == KW_let:
@@ -257,6 +258,7 @@ def run_in_py(src_file_name):
 
             lexer = Lexer(statement)
             token = Token(lexer.tokens)
+            print(token.t_types, token.t_values)
             TranslateToPython(types=token.t_types, values=token.t_values)
 
     return py_code
