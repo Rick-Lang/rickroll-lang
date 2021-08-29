@@ -19,11 +19,11 @@ Other Options:
 # Token types
 TT_keyword             = 'KEYWORDS'
 TT_identifier          = 'IDENTIFIER'
-TT_arithmetic_operator = 'OPERATORS-ARITHMETIC'
-TT_assignment_operator = 'OPERATORS-ASSIGNMENT'
-TT_relational_operator = 'OPERATORS-RELATIONAL'
-TT_logical_operator    = 'OPERATORS-LOGICAL'
-TT_other_operator      = 'OPERATORS-OTHER'
+TT_operator            = 'OPERATOR'
+# TT_arithmetic_operator = 'OPERATORS-ARITHMETIC'
+# TT_assignment_operator = 'OPERATORS-ASSIGNMENT'
+# TT_logical_operator    = 'OPERATORS-LOGICAL'
+# TT_other_operator      = 'OPERATORS-OTHER'
 TT_built_in_funcs      = 'OPERATORS-BUILT-IN-FUNCS'
 
 TT_int                 = 'VALUE-INT'
@@ -52,30 +52,18 @@ current_line = 0
 variables = {}
 
 
-
-test_types = ['KEYWORDS', 'VALUE-String']
-test_tokens = ['i_just_wanna_tell_u_how_im_feeling', '"Hello\\n"']
-
-
 # Determine variable types
-def v_types(string):
-    string = str(string)
-    # Boolean
-    if string == 'True' or string == 'False':
-        return 'bool'
-    # String
-    if string[0] == '"' and string[-1] == '"':
-        return 'string'
-    # List
-    if string[0] == '[' and string[-1] == ']':
-        return 'list'
-    # Determine the string is int or float
+
+def typeof(string):
+    if string.count('"') == 2: return 'string'
+
     count = 0
-    for char in string:
-        if char in digits:
-            count += 1
-    if count == len(string) and string.count('.') < 2:
-        return 'number'
+    for i in string:
+        if i in digits: count += 1
+    if count == len(string):
+        if string.count('.') == 1: return 'float'
+        if string.count('.') == 0: return 'int'
+
 
 class Token:
     def __init__(self, raw_tokens):
@@ -88,37 +76,21 @@ class Token:
                 self.make_token(t)
 
     def make_token(self, t):
-
-        def typeof(string):
-            if string.count('"') == 2: return 'string'
-
-            count = 0
-            for i in string:
-                if i in digits: count += 1
-            if count == len(string):
-                if string.count('.') == 1: return 'float'
-                if string.count('.') == 0: return 'int'
-
-        if t:
-            self.tokens.append(t)
-            if t in keywords:
-                self.types.append(TT_keyword)
-            elif t in OP_arithmetic:
-                self.types.append(TT_arithmetic_operator)
-            elif t in OP_assignment:
-                self.types.append(TT_assignment_operator)
-            elif t in OP_other:
-                self.types.append(TT_other_operator)
-            elif t in OP_build_in_functions:
-                self.types.append(TT_built_in_funcs)
-            elif typeof(t) == 'int':
-                self.types.append(TT_int)
-            elif typeof(t) == 'float':
-                self.types.append(TT_float)
-            elif typeof(t) == 'string':
-                self.types.append(TT_string)
-            else:
-                self.types.append(TT_identifier)
+        self.tokens.append(t)
+        if t in keywords:
+            self.types.append(TT_keyword)
+        elif t in operators:
+            self.types.append(TT_operator)
+        elif t in OP_build_in_functions:
+            self.types.append(TT_built_in_funcs)
+        elif typeof(t) == 'int':
+            self.types.append(TT_int)
+        elif typeof(t) == 'float':
+            self.types.append(TT_float)
+        elif typeof(t) == 'string':
+            self.types.append(TT_string)
+        else:
+            self.types.append(TT_identifier)
 
 class Eval:
     def __init__(self, tokens):
@@ -128,17 +100,15 @@ class Eval:
         self.__evaluate(self.__tokens)
 
     def __precedence(self, op):
-     
+
         if op == '+' or op == '-':
             return 1
         if op == '*' or op == '/':
             return 2
-        if op == 'islessthan' or op == 'isgreaterthan' or op == 'is' or op == 'isnot':
-            return 3
         return 0
 
     def __applyOp(self, a, b, op):
-        
+
         if op == '+': return a + b
         if op == '-': return a - b
         if op == '*': return a * b
@@ -148,19 +118,12 @@ class Eval:
         ops = []
 
         for i in range(len(tokens)):
-    
+
             if tokens[i] == '(':
                 ops.append(tokens[i])
-            
-            elif tokens[i].isdigit():
-                val = 0
-                
-                while (i < len(tokens) and tokens[i].isdigit()):
-                
-                    val = (val * 10) + int(tokens[i])
-                    i += 1
 
-                self.values.append(val)
+            elif tokens[i].isdigit():
+                self.values.append(int(tokens[i]))
 
             elif tokens[i][0] == '"' and tokens[i][-1] == '"':
                 self.values.append(tokens[i][1: -1])
@@ -168,23 +131,15 @@ class Eval:
 
             elif tokens[i] == ')':
                 while len(ops) != 0 and ops[-1] != '(':
-                
                     val2 = self.values.pop()
                     val1 = self.values.pop()
                     op = ops.pop()
 
                     self.values.append(self.__applyOp(val1, val2, op))
-                
+
                 ops.pop()
 
-            elif tokens[i] == 'islessthan' or tokens[i] == 'isgreaterthan' or tokens[i] == 'is' or tokens[i] == 'isnot':
-                ops.append(tokens[i])
-                # val2 = self.values.pop()
-                # val1 = self.values.pop()
-
-                # self.values.append(val)
-
-
+            # Current tok is an operator
             else:
                 while len(ops) != 0 and self.__precedence(ops[-1]) >= self.__precedence(tokens[i]):
 
@@ -197,7 +152,7 @@ class Eval:
                 ops.append(tokens[i])
 
 
-        for i in range(len(ops)):
+        while len(ops) != 0:
 
             val2 = self.values.pop()
             val1 = self.values.pop()
@@ -205,7 +160,7 @@ class Eval:
 
             self.values.append(self.__applyOp(val1, val2, op))
 
-        
+
     def __repr__(self):
         return f'{self.values[-1]}'
 
