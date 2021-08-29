@@ -107,8 +107,6 @@ class Token:
                 self.types.append(TT_arithmetic_operator)
             elif t in OP_assignment:
                 self.types.append(TT_assignment_operator)
-            elif t in OP_relational:
-                self.types.append(TT_relational_operator)
             elif t in OP_other:
                 self.types.append(TT_other_operator)
             elif t in OP_build_in_functions:
@@ -135,6 +133,8 @@ class Eval:
             return 1
         if op == '*' or op == '/':
             return 2
+        if op == 'islessthan' or op == 'isgreaterthan' or op == 'is' or op == 'isnot':
+            return 3
         return 0
 
     def __applyOp(self, a, b, op):
@@ -176,7 +176,15 @@ class Eval:
                     self.values.append(self.__applyOp(val1, val2, op))
                 
                 ops.pop()
-            
+
+            elif tokens[i] == 'islessthan' or tokens[i] == 'isgreaterthan' or tokens[i] == 'is' or tokens[i] == 'isnot':
+                ops.append(tokens[i])
+                # val2 = self.values.pop()
+                # val1 = self.values.pop()
+
+                # self.values.append(val)
+
+
             else:
                 while len(ops) != 0 and self.__precedence(ops[-1]) >= self.__precedence(tokens[i]):
 
@@ -219,20 +227,16 @@ class Interpreter:
 
 
     # Get the value of an expression (EXPR)
-    def evaluate(self, types=[], tokens=[]):
+    def eval_condition(self, types=[], tokens=[]):
         for i in range(len(types)):
             if types[i] == TT_identifier:
                 tokens[i] = variables[tokens[i]]
 
-            if types[i] == TT_relational_operator:
-                if tokens[i] == 'is_greater_than': tokens[i] = '>'
-                if tokens[i] == 'is_less_than': tokens[i] = '<'
+            if types[i] == TT_keyword:
+                if tokens[i] == 'isgreaterthan': tokens[i] = '>'
+                if tokens[i] == 'islessthan': tokens[i] = '<'
                 if tokens[i] == 'is': tokens[i] = '=='
-                if tokens[i] == 'is_not': tokens[i] = '!='
-
-            if types[i] == TT_built_in_funcs:
-                if tokens[i] == 'to_string': tokens[i] = 'str'
-
+                if tokens[i] == 'isnot': tokens[i] = '!='
 
         try:
             return eval(join_list(tokens))
@@ -247,7 +251,7 @@ class Interpreter:
 
 
         """
-            End statement, which 
+            End statement
         """
         if kw == KW_end:
             
@@ -288,15 +292,16 @@ class Interpreter:
                 PRINT EXPR
             """
             # EXPR = Evaluate(self.types[1:], self.tokens[1:])
-            EXPR = Eval(self.tokens[1:])
-            stdout.write(str(EXPR))
+            EXPR = str(Eval(self.tokens[1:]))
+            for i in EXPR.split("\\n"):
+                stdout.write(f'{i}\n')
 
         elif kw == KW_if:
             """
                 IF CONDI
             """
-            # CONDI = Evaluate(self.types[1:], self.tokens[1:])
-            CONDI = self.evaluate(types=self.types[1:], tokens=self.tokens[1:])
+            CONDI = self.eval_condition(types=self.types[1:], tokens=self.tokens[1:])
+            # If the condition is true, execute the next code level (executing_code_level += 1)
             if CONDI:
                 executing_code_level += 1
 
@@ -312,8 +317,7 @@ class Interpreter:
                 WHILE CONDI
             """
             # CONDI = Evaluate(self.types[1:], self.tokens[1:])
-            print(self.tokens[1:])
-            CONDI = Eval(self.tokens[1:])
+            CONDI = self.eval_condition(self.tokens[1:])
             while_condition = CONDI
             if CONDI:
                 in_loop = True
@@ -328,9 +332,7 @@ class Interpreter:
             """
             ID = self.tokens[self.tokens.index(KW_let) + 1]
 
-            EXPR = Eval(
-                tokens = self.tokens[self.tokens.index(KW_assign) + 1:]
-            )
+            EXPR = str(Eval(tokens = self.tokens[self.tokens.index(KW_assign) + 1:]))
             variables.update({ID: EXPR})
 
 
