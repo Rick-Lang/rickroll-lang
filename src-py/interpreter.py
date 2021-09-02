@@ -109,6 +109,11 @@ class Eval:
         if op == '-': return a - b
         if op == '*': return a * b
         if op == '/': return a // b
+        if op == 'is' and a == b or op == 'isnot' and a != b or op == 'isgreaterthan' and a > b or op == 'islessthan' and a < b:
+            return 'TrueLove'
+        else:
+            return 'FalseLove'
+
 
     def __evaluate(self, tokens):
         ops = []
@@ -134,6 +139,12 @@ class Eval:
                     self.values.append(self.__applyOp(val1, val2, op))
 
                 ops.pop()
+
+            # elif tokens[i] in {'is', 'isnot', 'isgreaterthan', 'islessthan'}:
+            #     val2 = self.values.pop()
+            #     val1 = self.values.pop()
+            #     self.values.append(self.__applyOp(val1, val2, tokens[i]))
+
 
             # Current tok is an operator
             else:
@@ -300,7 +311,7 @@ def run_in_interpreter(src_file_name):
             current_line += 1
             lexer = Lexer(stmt=content[i])    # "statement" is a line of code the in source code
             token = Token(raw_tokens=lexer.tokens)
-            # print(token.types, token.tokens)
+
             if token.tokens:
                 try:
                     Interpreter(types=token.types, tokens=token.tokens)
