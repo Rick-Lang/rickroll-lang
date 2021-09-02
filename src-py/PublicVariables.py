@@ -66,9 +66,7 @@ separators = {
 }
 
 # Operators
-OP_arithmetic = {'+', '-', '*', '/', '%', '^'}
-OP_assignment = {'='}
-OP_other      = {'[', ']', '(', ')', '{', '}', ','}
+operators = {'+', '-', '*', '/', '%', '^', '=', '[', ']', '(', ')', '{', '}', ','}
 
 OP_build_in_functions = {'to_string', 'to_int', 'to_float', 'length'}
 
