@@ -21,11 +21,11 @@ Execute by converting .rickroll to Python
 ```
 python3 RickRoll.py -py [Source Code File Name]
 ```
-Execute by converting .rickroll to C++ (Requires g++ compiler)
+Execute by converting .rickroll to C++ (Requires g++ compiler and has numerous bugs)
 ```
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
-Execute by interpreter (however this feature has a bunch of bugs)
+Execute by interpreter
 ```
 python3 RickRoll.py -intpr [Source Code File Name]
 ```
