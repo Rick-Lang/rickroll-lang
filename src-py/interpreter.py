@@ -20,10 +20,6 @@ Other Options:
 TT_keyword             = 'KEYWORDS'
 TT_identifier          = 'IDENTIFIER'
 TT_operator            = 'OPERATOR'
-# TT_arithmetic_operator = 'OPERATORS-ARITHMETIC'
-# TT_assignment_operator = 'OPERATORS-ASSIGNMENT'
-# TT_logical_operator    = 'OPERATORS-LOGICAL'
-# TT_other_operator      = 'OPERATORS-OTHER'
 TT_built_in_funcs      = 'OPERATORS-BUILT-IN-FUNCS'
 
 TT_int                 = 'VALUE-INT'
@@ -209,7 +205,7 @@ class Interpreter:
             End statement
         """
         if kw == KW_end:
-            
+
             run_loop = False
 
             if executing_code_level == current_code_level:
@@ -248,8 +244,11 @@ class Interpreter:
             """
             # EXPR = Evaluate(self.types[1:], self.tokens[1:])
             EXPR = str(Eval(self.tokens[1:]))
-            for i in EXPR.split("\\n"):
-                stdout.write(f'{i}\n')
+            if '\\n' in EXPR:
+                for i in EXPR.split("\\n"):
+                    stdout.write(f'{i}\n')
+            else:
+                stdout.write(EXPR)
 
         elif kw == KW_if:
             """
@@ -301,6 +300,7 @@ def run_in_interpreter(src_file_name):
             current_line += 1
             lexer = Lexer(stmt=content[i])    # "statement" is a line of code the in source code
             token = Token(raw_tokens=lexer.tokens)
+            # print(token.types, token.tokens)
             if token.tokens:
                 try:
                     Interpreter(types=token.types, tokens=token.tokens)
