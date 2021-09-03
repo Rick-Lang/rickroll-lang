@@ -102,7 +102,7 @@ class Token:    # Return token types
             self.add_to_tokens(TT_number, tok)
 
         # Operators
-        elif tok in OP_arithmetic or tok in OP_assignment or tok in OP_other:
+        elif tok in operators:
             self.add_to_tokens(TT_operator, tok)
 
         # Variables
@@ -118,8 +118,6 @@ class Token:    # Return token types
 
         else:
             self.add_to_tokens(TT_arguments, tok)
-            # error(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
-
 
 
 ####################################################################################
@@ -144,11 +142,10 @@ class TranslateToPython:
                     self.convert(kw=self.values[0])
 
                 else:
-                    error(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
+                    stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
 
             else:
-                print(self.values[0])
-                error(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+                stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
         # if this line doesn't have code, then write "\n"
         else:
