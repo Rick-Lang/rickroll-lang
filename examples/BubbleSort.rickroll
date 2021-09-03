@@ -2,10 +2,10 @@ never knew BubbleSort arr could feel this way
 
     give i up 0
 
-    together forever with i < length(arr)
+    together forever with i is less than length(arr)
         give i up i + 1
         give j up 0
-        together forever with j is_less_than length(arr) - 1
+        together forever with j is less than length(arr) - 1
 
             and if u ask me how im feeling arr[j] > arr[j + 1]
                 give arr[j], arr[j + 1] up arr[j + 1], arr[j]
