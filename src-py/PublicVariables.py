@@ -1,5 +1,4 @@
 from sys import stdout
-from random import choice
 
 # Keywords
 
@@ -70,18 +69,7 @@ operators = {'+', '-', '*', '/', '%', '^', '=', '[', ']', '(', ')', '{', '}', ',
 
 OP_build_in_functions = {'to_string', 'to_int', 'to_float', 'length'}
 
-error_lyrics = [
-    '"If you knew what Im feeling, you would not say no~"',
-    '"You know the rules, and so do I~"',
-    '"'+"There ain't no mistaking, is true love we are making~"+'"'
-]
-
 def join_list(l):
     result = ''
     for i in l: result += f'{i}'
     return result
-
-
-def error(error_msg):
-    stdout.write(error_msg)
-    exit('------'*10 + '\n' + choice(error_lyrics))
