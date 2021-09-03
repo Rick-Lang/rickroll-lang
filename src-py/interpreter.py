@@ -89,8 +89,9 @@ class Token:
             self.types.append(TT_identifier)
 
 class Eval:
-    def __init__(self, tokens):
+    def __init__(self, tokens, types=[]):
         self.__tokens = tokens
+        self.__types = types
         self.values = []
 
         self.__evaluate(self.__tokens)
@@ -126,6 +127,10 @@ class Eval:
             elif tokens[i].isdigit():
                 self.values.append(int(tokens[i]))
 
+            elif self.__types[i] == TT_identifier:
+                var_value = variables[tokens[i]]
+                self.values.append(int(variables[tokens[i]]) if var_value.isdigit() else variables[tokens[i]])
+
             elif tokens[i][0] == '"' and tokens[i][-1] == '"':
                 self.values.append(tokens[i][1: -1])
 
@@ -139,12 +144,6 @@ class Eval:
                     self.values.append(self.__applyOp(val1, val2, op))
 
                 ops.pop()
-
-            # elif tokens[i] in {'is', 'isnot', 'isgreaterthan', 'islessthan'}:
-            #     val2 = self.values.pop()
-            #     val1 = self.values.pop()
-            #     self.values.append(self.__applyOp(val1, val2, tokens[i]))
-
 
             # Current tok is an operator
             else:
@@ -160,7 +159,6 @@ class Eval:
 
 
         while len(ops) != 0:
-
             val2 = self.values.pop()
             val1 = self.values.pop()
             op = ops.pop()
@@ -254,7 +252,7 @@ class Interpreter:
                 PRINT EXPR
             """
             # EXPR = Evaluate(self.types[1:], self.tokens[1:])
-            EXPR = str(Eval(self.tokens[1:]))
+            EXPR = str(Eval(self.tokens[1:], self.types[1:]))
             if '\\n' in EXPR:
                 for i in EXPR.split("\\n"):
                     stdout.write(f'{i}\n')
@@ -265,9 +263,9 @@ class Interpreter:
             """
                 IF CONDI
             """
-            CONDI = self.eval_condition(types=self.types[1:], tokens=self.tokens[1:])
+            CONDI = str(Eval(types=self.types[1:], tokens=self.tokens[1:]))
             # If the condition is true, execute the next code level (executing_code_level += 1)
-            if CONDI:
+            if CONDI == 'TrueLove':
                 executing_code_level += 1
 
             current_code_level += 1
@@ -297,7 +295,7 @@ class Interpreter:
             """
             ID = self.tokens[self.tokens.index(KW_let) + 1]
 
-            EXPR = str(Eval(tokens = self.tokens[self.tokens.index(KW_assign) + 1:]))
+            EXPR = str(Eval(self.tokens[self.tokens.index(KW_assign)+1:],self.types[self.tokens.index(KW_assign)+1:]))
             variables.update({ID: EXPR})
 
 
