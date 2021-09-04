@@ -1,6 +1,7 @@
 from os import system
 from platform import system as os_name
 
+from Lexer import Lexer
 from PublicVariables import *
 
 
@@ -14,11 +15,6 @@ TT_bool           = 'VALUE-Bool'
 TT_char           = 'VALUE-Char'
 TT_string         = 'VALUE-String'
 TT_list           = 'VALUE-List'
-
-TT_arithmetic_op = 'OP-Arithmetic'
-TT_relational_op = 'OP-Relational'
-TT_assignment_op = 'OP-Assignment'
-TT_other_op      = 'OP-Other'
 
 TT_variable   = 'VARIABLE'
 TT_function   = 'FUNCTION'
@@ -43,8 +39,6 @@ API_Length = """int Length(int arr){
 # C++ source code, translated from RickRoll source code
 c_code = '#include<iostream>\nusing namespace std;\n'
 
-
-# "join_list" is a replacement of ''.join()
 
 # Determine variable types
 def v_types(string):
@@ -73,54 +67,26 @@ def v_types(string):
 
 ####################################################################################
 """
-Token class is used to tokenize a RickRoll statement
+Token
 """
 ####################################################################################
 class Token:
-    def __init__(self, statement):
-        self.statement = statement
-        self.tokens = []
-
-        self.tokenize(self.statement)
+    def __init__(self, raw_tokens):
         self.t_types = []
         self.t_values = []
 
         self.last_kw = ''
 
-        for tok in self.tokens:
+        for tok in raw_tokens:
             if tok:
                 self.make_token(tok)
-
-
-    # Split statements to single word / token
-    def tokenize(self, statement):
-        current_token = ''
-        quote_count = 0
-        sq_bracket = 0
-        for char in statement:
-
-            if char == '[': sq_bracket += 1
-            if char == ']': sq_bracket -= 1
-            if char == '"': quote_count += 1
-            if char == '#': break
-            if char in ignore_tokens: continue
-
-            if char in c_separators and quote_count % 2 == 0 and sq_bracket == 0:
-                if current_token != ' ' and current_token != '\n':
-                    self.tokens.append(current_token)
-                if char != ' ' and char != '\n':
-                    self.tokens.append(char)
-
-                current_token = ''
-            else: current_token += char
 
     def make_token(self, tok):
         def add_to_tokens(type, token):
             self.t_types.append(type)
             self.t_values.append(token)
 
-        global variables
-        global functions
+        global variables, functions
 
 
         if tok in keywords:
@@ -143,14 +109,8 @@ class Token:
             add_to_tokens(TT_int, tok)
 
         # Operators
-        elif tok in OP_arithmetic:
-            add_to_tokens(TT_arithmetic_op, tok)
-        elif tok in OP_relational:
-            add_to_tokens(TT_relational_op, tok)
-        elif tok in OP_assignment:
-            add_to_tokens(TT_assignment_op, tok)
-        elif tok in OP_other:
-            add_to_tokens(TT_other_op, tok)
+        elif tok in operators:
+            add_to_tokens(TT_operator, tok)
 
         # Variables
         elif self.last_kw == KW_let:
@@ -202,27 +162,11 @@ class TranslateToCpp:
             self.write(f'if({EXPR})' + '{')
         if kw == KW_let:
             """
-            TYPE ID = EXPR;
+            give ID up EXPR;
             """
-            TYPE = ''
-            ID = ''
-            EXPR = ''
-
-            exp_start_index = 0
-            for i in range(len(self.types)):
-                if self.types[i] == TT_variable:
-                    ID = self.values[i]
-                if self.values[i] == '=':
-                    exp_start_index = i + 1
-
-            EXPR = join_list(self.values[exp_start_index:])
-
-            if v_types(eval("'" + EXPR + "'")) == 'string':
-                TYPE = 'string'
-            if v_types(eval(EXPR)) == 'int':
-                TYPE = 'int'
-            if v_types(eval(EXPR)) == 'float':
-                TYPE = 'float'
+            ID = self.values[1]
+            EXPR = join_list(self.values[self.values.index('up') + 1:])
+            TYPE = v_types(eval(str(EXPR)))
 
             self.write(f'{TYPE} {ID}={EXPR};')
 
@@ -278,9 +222,10 @@ def run_in_cpp(src_file_name):
         for statement in content:  # "statement" is a line of code the in source code
             current_line += 1
 
-            obj = Token(statement)
-            if obj.t_types:
-                TranslateToCpp(types=obj.t_types, values=obj.t_values)
+            lexer = Lexer(statement)
+            tok = Token(lexer.tokens)
+            if tok.t_types:
+                TranslateToCpp(types=tok.t_types, values=tok.t_values)
 
 
     f_name = src_file_name.split('.')

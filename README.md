@@ -1,8 +1,6 @@
 # Announcement
 - This language is in its testing period, we will probably change some keywords.
 - We don't usually update [The Chinese Documentation / 中文文档](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)
-- I will not update this repository recently because my class is started
-- We are currently working on the new Lexer...
 
 <img src="img/ico1.jpg" align="right" width="160" height="160"/>
 
@@ -22,11 +20,11 @@ Execute by converting .rickroll to Python
 ```
 python3 RickRoll.py -py [Source Code File Name]
 ```
-Execute by converting .rickroll to C++ (Requires g++ compiler)
+Execute by converting .rickroll to C++ (Requires g++ compiler and has numerous bugs)
 ```
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
-Execute by interpreter (however this feature has a bunch of bugs)
+Execute by interpreter
 ```
 python3 RickRoll.py -intpr [Source Code File Name]
 ```

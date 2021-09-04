@@ -9,7 +9,6 @@ class Lexer:
 
     def tokenize(self, stmt):
         tokens = self.__basic_tokenize(stmt)
-        # print(tokens)
         self.__order_tokens(tokens)
 
     def __basic_tokenize(self, stmt):

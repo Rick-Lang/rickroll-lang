@@ -11,7 +11,6 @@ TT_string   = 'VALUE-STRING'
 TT_list     = 'VALUE-LIST'
 
 TT_arguments = 'ARGUMENTS'
-TT_operator = 'OPERATOR'
 TT_variable = 'VARIABLE'
 TT_function = 'FUNCTION'
 TT_library  = 'LIBRARY'
@@ -78,8 +77,14 @@ class Token:    # Return token types
         global variables, functions
 
         if tok in keywords:
-            self.add_to_tokens(TT_keyword, tok)
+            if tok == 'is': self.add_to_tokens(TT_operator, '==')
+            elif tok == 'isnot': self.add_to_tokens(TT_operator, '!=')
+            elif tok == 'isgreaterthan': self.add_to_tokens(TT_operator, '>')
+            elif tok == 'islessthan': self.add_to_tokens(TT_operator, '<')
+            else: self.add_to_tokens(TT_keyword, tok)
+
             self.last_kw = tok
+
         elif tok in OP_build_in_functions:
             if tok == 'length': self.add_to_tokens(TT_build_in_funcs, 'len')
             if tok == 'to_string': self.add_to_tokens(TT_build_in_funcs, 'str')
@@ -97,12 +102,8 @@ class Token:    # Return token types
             self.add_to_tokens(TT_number, tok)
 
         # Operators
-        elif tok in OP_arithmetic or tok in OP_relational or tok in OP_assignment or tok in OP_other:
-            if tok == 'is': self.add_to_tokens(TT_operator, '==')
-            elif tok == 'is_not': self.add_to_tokens(TT_operator, '!=')
-            elif tok == 'is_greater_than': self.add_to_tokens(TT_operator, '>')
-            elif tok == 'is_less_than': self.add_to_tokens(TT_operator, '<')
-            else: self.add_to_tokens(TT_operator, tok)
+        elif tok in operators:
+            self.add_to_tokens(TT_operator, tok)
 
         # Variables
         elif self.last_kw == KW_let:
@@ -117,8 +118,6 @@ class Token:    # Return token types
 
         else:
             self.add_to_tokens(TT_arguments, tok)
-            # error(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
-
 
 
 ####################################################################################
@@ -143,10 +142,10 @@ class TranslateToPython:
                     self.convert(kw=self.values[0])
 
                 else:
-                    error(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
+                    stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
 
             else:
-                error(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+                stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
         # if this line doesn't have code, then write "\n"
         else:
@@ -182,8 +181,8 @@ class TranslateToPython:
                 let ID up EXPR
             """
 
-            ID = self.values[1]
-            EXPR = join_list(self.values[3:])
+            ID = join_list(self.values[self.values.index(KW_let) + 1 : self.values.index(KW_assign)])
+            EXPR = join_list(self.values[self.values.index(KW_assign) + 1:])
             self.write(f'{ID} = {EXPR}')
 
         if kw == KW_if:
@@ -219,7 +218,7 @@ class TranslateToPython:
                 def1 ID ARGS def2
             """
             ID = self.values[1]
-            ARGS = join_list(self.values[2 :-1])
+            ARGS = join_list(self.values[2:])
 
             self.write(f'def {ID}({ARGS}):')
 
