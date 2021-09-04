@@ -1,6 +1,4 @@
-from time import time
-from os.path import exists
-from sys import argv, stdout
+from sys import stdout
 
 from PublicVariables import *
 from Lexer import Lexer
@@ -16,8 +14,6 @@ TT_float               = 'VALUE-FLOAT'
 TT_bool                = 'VALUE-Bool'
 TT_char                = 'VALUE-Char'
 TT_string              = 'VALUE-String'
-
-start = time()
 
 """
 Code level works as indentation in python
@@ -220,7 +216,7 @@ class Interpreter:
             # EXPR = Evaluate(self.types[1:], self.tokens[1:])
             EXPR = str(Eval(self.tokens[1:], self.types[1:]))
             if '\\n' in EXPR:
-                for i in EXPR.split("\\n"):
+                for i in EXPR.split("\\n")[:-1]:
                     stdout.write(f'{i}\n')
             else:
                 stdout.write(EXPR)
