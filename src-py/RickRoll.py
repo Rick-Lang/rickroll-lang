@@ -40,6 +40,7 @@ def main():
     arg_parser.add_argument("-intpr", action = "store_true")
     arg_parser.add_argument("--time", action = "store_true")
     arg_parser.add_argument("--audio", action = "store_true")
+    arg_parser.add_argument("--help", action = "store_true")
     args = arg_parser.parse_args()
 
     src_file_name = args.file
@@ -76,6 +77,9 @@ def main():
 
     if args.time:
         stdout.write(f'\nExecution Time: [{time() - start}] sec.\n')
+
+    if args.help:
+        stdout.write(rick_help)
 
 
 if __name__ == "__main__":
