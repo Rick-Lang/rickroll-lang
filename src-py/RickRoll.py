@@ -12,7 +12,7 @@ Generate an audio: rickroll -py [File_Name] -audio [Audio_Name]
 
 Other Options:
 --time:      Show execution time of your code
---help/--h:  Help
+--helps/--h:  Help
 """
 
 # Set and start a timer
@@ -40,11 +40,8 @@ def main():
     arg_parser.add_argument("-intpr", action = "store_true")
     arg_parser.add_argument("--time", action = "store_true")
     arg_parser.add_argument("--audio", action = "store_true")
-    arg_parser.add_argument("--help", action = "store_true")
+    arg_parser.add_argument("--helps", action = "store_true")
     args = arg_parser.parse_args()
-
-    src_file_name = args.file
-
 
     # Run the RickRoll program
     if args.file:
@@ -78,7 +75,7 @@ def main():
     if args.time:
         stdout.write(f'\nExecution Time: [{time() - start}] sec.\n')
 
-    if args.help:
+    if args.helps:
         stdout.write(rick_help)
 
 
