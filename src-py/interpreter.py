@@ -175,7 +175,6 @@ class Interpreter:
         self.types = types
         self.tokens = tokens
 
-        # If this line is executable or should be executed, then execute this line of code
         if self.types[0] == TT_keyword:
             self.run_code(kw=self.tokens[0])
 
@@ -209,7 +208,9 @@ class Interpreter:
 
             # Run the codes in loop
             if run_loop:
-                while while_condition == 'TrueLove':
+                while True:
+                    if while_condition == False:
+                        break
                     for stmt in in_loop_stmts:
                         Interpreter(stmt[0], stmt[1])
 
@@ -221,7 +222,6 @@ class Interpreter:
         if in_loop:
             in_loop_stmts.append([self.types, self.tokens])
             return
-
 
         if kw == KW_main:
             self.indent()
@@ -251,8 +251,14 @@ class Interpreter:
 
         elif kw == KW_endless_loop:
             in_loop = True
-            while_condition = "TrueLove"
+            while_condition = True
             self.indent()
+
+        elif kw == KW_break:
+            in_loop = False
+            while_condition = False
+            in_loop_stmts.clear()
+            return
 
         elif kw == KW_let:
             """
