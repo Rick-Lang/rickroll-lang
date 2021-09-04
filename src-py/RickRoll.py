@@ -1,35 +1,24 @@
 from time import time
-start = time()
+start = time()      # Set and start a timer
 
 from sys import argv, stdout
 from argparse import ArgumentParser
 
 
-# Help message
-rick_help = """
-Programming by writing code:   rickroll -py [File_Name]
-Generate an audio: rickroll -py [File_Name] -audio [Audio_Name]
-
-Other Options:
---time:      Show execution time of your code
---helps/--h:  Help
-"""
-
-# Set and start a timer
-
-
 def play_audio(src_file_name):
     import AudioGenerator
     from pyrickroll import Token
+    from Lexer import Lexer
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
         content[-1] += '\n'
         for statement in content:
-            obj = Token(statement)
+            lexer = Lexer(statement)
+            tok = Token(raw_tokens=lexer.tokens)
 
-            while len(obj.v_types) != 0:
-                AudioGenerator.play(obj.t_values[i])
+            while len(tok.types) != 0:
+                AudioGenerator.play(tok.tokens[i])
 
 def main():
 
@@ -40,7 +29,6 @@ def main():
     arg_parser.add_argument("-intpr", action = "store_true")
     arg_parser.add_argument("--time", action = "store_true")
     arg_parser.add_argument("--audio", action = "store_true")
-    arg_parser.add_argument("--helps", action = "store_true")
     args = arg_parser.parse_args()
 
     # Run the RickRoll program
@@ -66,7 +54,8 @@ def main():
             from interpreter import run_in_interpreter
             run_in_interpreter(args.file)
 
-    else: stdout.write('Warning: [Not executing any script...]')
+    else:
+        stdout.write('Warning: [Not executing any script...]')
 
 
     if args.audio:
@@ -74,9 +63,6 @@ def main():
 
     if args.time:
         stdout.write(f'\nExecution Time: [{time() - start}] sec.\n')
-
-    if args.helps:
-        stdout.write(rick_help)
 
 
 if __name__ == "__main__":
