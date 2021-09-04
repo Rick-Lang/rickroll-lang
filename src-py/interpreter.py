@@ -5,17 +5,6 @@ from sys import argv, stdout
 from PublicVariables import *
 from Lexer import Lexer
 
-# Help message
-rick_help = """
-Programming by writing code:   rickroll -s [File_Name]
-Generate an audio: rickroll -r [File_Name] -audio [Audio_Name]
-Sing code:  rickroll -sing [Audio_Name] [File_Name]
-
-Other Options:
---time:      Show execution time of your code
---help/--h:  Help
-"""
-
 # Token types
 TT_keyword             = 'KEYWORDS'
 TT_identifier          = 'IDENTIFIER'
