@@ -1,5 +1,3 @@
-from sys import stdout
-
 from PublicVariables import *
 from Lexer import Lexer
 
