@@ -14,6 +14,8 @@ class Lexer:
 
             if char == '"': quote_count += 1
             if char == '#': break
+            if char in ignore_tokens:
+                continue
 
             if char in separators and quote_count % 2 == 0:
                 if current_token != ' ' and current_token != '\n':
