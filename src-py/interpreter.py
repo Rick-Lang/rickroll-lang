@@ -208,9 +208,7 @@ class Interpreter:
 
             # Run the codes in loop
             if run_loop:
-                while True:
-                    if while_condition == False:
-                        break
+                while while_condition:
                     for stmt in in_loop_stmts:
                         Interpreter(stmt[0], stmt[1])
 
