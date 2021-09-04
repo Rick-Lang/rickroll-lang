@@ -129,7 +129,7 @@ class Eval:
 
             elif self.__types[i] == TT_identifier:
                 var_value = variables[tokens[i]]
-                self.values.append(int(variables[tokens[i]]) if var_value.isdigit() else variables[tokens[i]])
+                self.values.append(int(var_value) if var_value.isdigit() else var_value)
 
             elif tokens[i][0] == '"' and tokens[i][-1] == '"':
                 self.values.append(tokens[i][1: -1])
@@ -186,37 +186,16 @@ class Interpreter:
         executing_code_level += 1
 
 
-    # Get the value of an expression (EXPR)
-    def eval_condition(self, types=[], tokens=[]):
-        for i in range(len(types)):
-            if types[i] == TT_identifier:
-                tokens[i] = variables[tokens[i]]
-
-            if types[i] == TT_keyword:
-                if tokens[i] == 'isgreaterthan': tokens[i] = '>'
-                if tokens[i] == 'islessthan': tokens[i] = '<'
-                if tokens[i] == 'is': tokens[i] = '=='
-                if tokens[i] == 'isnot': tokens[i] = '!='
-
-        try:
-            return eval(join_list(tokens))
-
-        except SyntaxError:
-            return eval(f'"{join_list(tokens)}"')
-
-
     def run_code(self, kw):
         global current_code_level, executing_code_level
         global in_loop, in_loop_stmts, while_condition
 
-
-        """
-            End statement
-        """
+        # End statement
         if kw == KW_end:
 
             run_loop = False
 
+            # send back the executing_code_level
             if executing_code_level == current_code_level:
                 executing_code_level -= 1
 
@@ -230,7 +209,7 @@ class Interpreter:
 
             # Run the codes in loop
             if run_loop:
-                while while_condition:
+                while while_condition == 'TrueLove':
                     for stmt in in_loop_stmts:
                         Interpreter(stmt[0], stmt[1])
 
@@ -272,22 +251,8 @@ class Interpreter:
 
         elif kw == KW_endless_loop:
             in_loop = True
-            while_condition = True
+            while_condition = "TrueLove"
             self.indent()
-
-        elif kw == KW_while_loop:
-            """
-                WHILE CONDI
-            """
-            # CONDI = Evaluate(self.types[1:], self.tokens[1:])
-            CONDI = self.eval_condition(self.tokens[1:])
-            while_condition = CONDI
-            if CONDI:
-                in_loop = True
-                executing_code_level += 1
-            current_code_level += 1
-
-            # self.indent()
 
         elif kw == KW_let:
             """
