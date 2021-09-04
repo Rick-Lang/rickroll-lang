@@ -1,15 +1,10 @@
 from PublicVariables import *
 
-
 class Lexer:
     def __init__(self, stmt):
         self.tokens = []
 
-        self.tokenize(stmt)
-
-    def tokenize(self, stmt):
-        tokens = self.__basic_tokenize(stmt)
-        self.__order_tokens(tokens)
+        self.__order_tokens(tokens=self.__basic_tokenize(stmt))
 
     def __basic_tokenize(self, stmt):
         current_token = ''
