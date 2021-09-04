@@ -1,7 +1,6 @@
 # Announcement
 - This language is in its testing period, we will probably change some keywords.
 - We don't usually update [The Chinese Documentation / 中文文档](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)
-- I probably would not update this repository recently because my class is started
 
 <img src="img/ico1.jpg" align="right" width="160" height="160"/>
 
