@@ -1,5 +1,9 @@
 from PublicVariables import *
 
+all_keyword_string = ''
+for i in keywords:
+    all_keyword_string += i
+
 class Lexer:
     def __init__(self, stmt):
         self.tokens = []
