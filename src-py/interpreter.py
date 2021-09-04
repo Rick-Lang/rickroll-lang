@@ -2,16 +2,16 @@ from PublicVariables import *
 from Lexer import Lexer
 
 # Token types
-TT_keyword             = 'KEYWORDS'
-TT_identifier          = 'IDENTIFIER'
-TT_operator            = 'OPERATOR'
-TT_built_in_funcs      = 'OPERATORS-BUILT-IN-FUNCS'
+TT_keyword        = 'KEYWORDS'
+TT_identifier     = 'IDENTIFIER'
+TT_operator       = 'OPERATOR'
+TT_built_in_funcs = 'OPERATORS-BUILT-IN-FUNCS'
 
-TT_int                 = 'VALUE-INT'
-TT_float               = 'VALUE-FLOAT'
-TT_bool                = 'VALUE-Bool'
-TT_char                = 'VALUE-Char'
-TT_string              = 'VALUE-String'
+TT_int            = 'VALUE-INT'
+TT_float          = 'VALUE-FLOAT'
+TT_bool           = 'VALUE-Bool'
+TT_char           = 'VALUE-Char'
+TT_string         = 'VALUE-String'
 
 """
 Code level works as indentation in python
@@ -46,11 +46,10 @@ def typeof(string):
 
 class Token:
     def __init__(self, raw_tokens):
-        self.__raw_tokens = raw_tokens
         self.tokens = []      # Tokens
         self.types = []       # Token types
 
-        for t in self.__raw_tokens:
+        for t in raw_tokens:
             if t:
                 self.make_token(t)
 
@@ -247,7 +246,10 @@ class Interpreter:
             """
             ID = self.tokens[self.tokens.index(KW_let) + 1]
 
-            EXPR = str(Eval(self.tokens[self.tokens.index(KW_assign)+1:],self.types[self.tokens.index(KW_assign)+1:]))
+            EXPR = str(Eval(
+                tokens=self.tokens[self.tokens.index(KW_assign)+1:],
+                types=self.types[self.tokens.index(KW_assign)+1:]
+            ))
             variables.update({ID: EXPR})
 
 
