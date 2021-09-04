@@ -17,24 +17,24 @@ Rick Roll Programming Language, a language for rickrolling!
 
 ## Run Code
 Execute by converting .rickroll to Python
-```
+```shell
 python3 RickRoll.py -py [Source Code File Name]
 ```
 Execute by converting .rickroll to C++ (Requires g++ compiler and has numerous bugs)
-```
+```shell
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
 Execute by interpreter
-```
+```shell
 python3 RickRoll.py -intpr [Source Code File Name]
 ```
 If you want to know the execution time:
 > Add "--time"
-```
+```shell
 python3 RickRoll.py -py [Source Code File Name] --time
 ```
 Generate and play an audio from .rickroll
-```
+```shell
 python3 RickRoll.py -py [Source Code File Name] --audio
 ```
 
