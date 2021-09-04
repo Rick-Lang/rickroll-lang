@@ -119,10 +119,10 @@ This generates an audio from the .rickroll program and plays it in your terminal
 # Todo!
 In order to make RICK ROll becoming a world heritage, YOU and I still have a bunch of things to do!
 1. Add more keywords and built-in functions!
-2. Build a virtual machine or interpreter for RickRoll-Lang
-3. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
-4. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
-5. Improve the current audio generator!
+2. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
+3. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
+4. Improve the current audio generator!
+5. Improve the RickRoll interpreter!
 6. Support "writing code by singing"!
 7. Design a better icon!
 8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
