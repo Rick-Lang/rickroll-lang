@@ -2,7 +2,7 @@ never_knew LinearSearch arr, target could_feel_this_way
 
     give_u_up i = 0
 
-    together_forever_with i < length(arr)
+    together_forever_with i is less than length(arr)
         and_if_u_ask_me_how_im_feeling arr[i] is target
             i_just_wanna_tell_u_how_im_feeling "Found in index " + to_string(i) + "\n"
             when_i_give_my i it_will_be_completely
