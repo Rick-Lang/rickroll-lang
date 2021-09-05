@@ -1,15 +1,14 @@
 from PublicVariables import *
 
+all_keyword_string = ''
+for i in keywords:
+    all_keyword_string += i
 
 class Lexer:
     def __init__(self, stmt):
         self.tokens = []
 
-        self.tokenize(stmt)
-
-    def tokenize(self, stmt):
-        tokens = self.__basic_tokenize(stmt)
-        self.__order_tokens(tokens)
+        self.__order_tokens(tokens=self.__basic_tokenize(stmt))
 
     def __basic_tokenize(self, stmt):
         current_token = ''
@@ -19,6 +18,8 @@ class Lexer:
 
             if char == '"': quote_count += 1
             if char == '#': break
+            if char in ignore_tokens:
+                continue
 
             if char in separators and quote_count % 2 == 0:
                 if current_token != ' ' and current_token != '\n':

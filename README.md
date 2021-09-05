@@ -17,24 +17,24 @@ Rick Roll Programming Language, a language for rickrolling!
 
 ## Run Code
 Execute by converting .rickroll to Python
-```
+```shell
 python3 RickRoll.py -py [Source Code File Name]
 ```
 Execute by converting .rickroll to C++ (Requires g++ compiler and has numerous bugs)
-```
+```shell
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
 Execute by interpreter
-```
+```shell
 python3 RickRoll.py -intpr [Source Code File Name]
 ```
 If you want to know the execution time:
 > Add "--time"
-```
+```shell
 python3 RickRoll.py -py [Source Code File Name] --time
 ```
 Generate and play an audio from .rickroll
-```
+```shell
 python3 RickRoll.py -py [Source Code File Name] --audio
 ```
 
@@ -119,10 +119,10 @@ This generates an audio from the .rickroll program and plays it in your terminal
 # Todo!
 In order to make RICK ROll becoming a world heritage, YOU and I still have a bunch of things to do!
 1. Add more keywords and built-in functions!
-2. Build a virtual machine or interpreter for RickRoll-Lang
-3. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
-4. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
-5. Improve the current audio generator!
+2. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
+3. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
+4. Improve the current audio generator!
+5. Improve the RickRoll interpreter!
 6. Support "writing code by singing"!
 7. Design a better icon!
 8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
@@ -136,3 +136,10 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 - _**[StepfenShawn](https://github.com/StepfenShawn)**_  (Revised typos in source code && fixed bugs)
 - _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions / advice)
 - _**[henriqueritter](https://github.com/henriqueritter)**_   (Contributed to RickRoll example)
+
+
+# Contact
+Wechat/微信: githubsherlockcxk
+<br>
+
+![](https://user-images.githubusercontent.com/74630829/132019837-13c4729e-5968-42c9-83cd-7412e1e893e5.jpeg)

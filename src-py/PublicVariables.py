@@ -48,10 +48,6 @@ keywords = [
     KW_equals_OP
 ]
 
-all_keyword_string = ''
-for i in keywords:
-    all_keyword_string += i
-
 # Tokens that the interpreter will totally ignore
 ignore_tokens = {'~', "'"}
 
