@@ -136,3 +136,8 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 - _**[StepfenShawn](https://github.com/StepfenShawn)**_  (Revised typos in source code && fixed bugs)
 - _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions / advice)
 - _**[henriqueritter](https://github.com/henriqueritter)**_   (Contributed to RickRoll example)
+
+
+# Contact
+Wechat: githubsherlockcxk
+![](https://user-images.githubusercontent.com/74630829/132019837-13c4729e-5968-42c9-83cd-7412e1e893e5.jpeg)
