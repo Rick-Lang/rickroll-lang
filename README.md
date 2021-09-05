@@ -125,7 +125,7 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 5. Improve the RickRoll interpreter!
 6. Support "writing code by singing"!
 7. Design a better icon!
-8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
+8. [**SPREAD RICK ROLL EVERYWHERE!!!**](http://res-video.licolico.cn/1048577/380301/9467925/playlist.m3u8)
 
 # Rick Roll Language Website
 **[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX)**
