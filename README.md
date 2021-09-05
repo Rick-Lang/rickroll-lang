@@ -128,7 +128,7 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 8. [**SPREAD RICK ROLL EVERYWHERE!!!**](http://res-video.licolico.cn/1048577/380301/9467925/playlist.m3u8)
 
 # Rick Roll Language Website
-**[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX)**
+**[https://rickroll-lang.tech/introduction/](http://res-video.licolico.cn/1048577/380301/9467925/playlist.m3u8)**
 
 
 # Contributors
