@@ -27,9 +27,9 @@ python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
 
 ## Hello World
 ```
-take_me_to_ur_heart                           # 这是一个Main函数/方法
-    give_u_up msg =  "你 被 骗 了 !\n"         # 定义一个变量
-    i_just_wanna_tell_u_how_im_feeling msg    # 输出变量 “msg”
+take me to ur heart                           # 这是一个Main函数/方法
+    give msg up "你 被 骗 了 !\n"              # 定义一个变量
+    i just wanna tell u how im feeling msg    # 输出变量 “msg”
 say_good_bye                                  # 结束Main函数/方法
 ```
 客户的命令行会打印出：
@@ -39,18 +39,20 @@ say_good_bye                                  # 结束Main函数/方法
 
 ## 定义变量
 ```
-give_u_up a = 10~
-give_u_up b = "bbc is fn"
+give a up 10
+give b up "It is a string"
+give c up ["This", "is", "an", "array"]
 ```
 
 ## If 语句
 ```
-take_me_to_ur_heart~    # 你可以在语句后面加 “~”
-    give_u_up a = 10
+take me to ur heart~    # 你可以在语句后面加 “~”
 
-    and_if_u_ask_me_how_im_feeling a is 10
-        i_just_wanna_tell_u_how_im_feeling "A is 10!"
-    say_good_bye
+    give a up 10
+
+    and if u ask me how im feeling a is 10
+        i just wanna tell u how im feeling "A is 10!"
+    say goodbye
 
 say_good_bye~
 ```
@@ -70,10 +72,10 @@ if __name__ == '__main__':
 
 ## Loop 循环
 ```
-take_me_to_ur_heart
-    together_forever_we_two # 死循环
+take me to ur heart
+    together forever and never to part # 死循环
 
-    say_good_bye
+    say goodbye
 
 say_good_bye
 ```
@@ -86,9 +88,9 @@ if __name__ == "__main__":
 
 ## Function 函数
 ```
-never_knew func arg1, arg2 could_feel_this_way  # 定义函数
-    when_i_give_my arg1, arg2 it_will_be_completely # 返回arg1和arg2
-say_good_bye
+never knew func arg1, arg2 could feel this way  # 定义函数
+    when i give_my arg1, arg2 it will be completely # 返回arg1和arg2
+say goodbye
 ```
 相当于以下Python代码
 ```python
