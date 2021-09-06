@@ -81,6 +81,8 @@ class Token:    # Return token types
             elif tok == 'isnot': self.add_to_tokens(TT_operator, '!=')
             elif tok == 'isgreaterthan': self.add_to_tokens(TT_operator, '>')
             elif tok == 'islessthan': self.add_to_tokens(TT_operator, '<')
+            elif tok == 'isgreaterthanorequalto': self.add_to_tokens(TT_operator, '>=')
+            elif tok == 'islessthanorequalto': self.add_to_tokens(TT_operator, '<=')
             else: self.add_to_tokens(TT_keyword, tok)
 
             self.last_kw = tok
