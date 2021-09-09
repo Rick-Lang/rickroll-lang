@@ -108,6 +108,7 @@ This generates an audio from the .rickroll program and plays it in your terminal
 
 ## Documentation
 We don't usually update [The Chinese Documentation / 中文文档](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)
+
 **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
 <br>
 **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
