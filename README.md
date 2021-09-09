@@ -41,6 +41,22 @@ int main(int argc, char* argv[]){
     cout<<msg;
 }
 ```
+**And you can get the output on your terminal:**
+![](https://preview.redd.it/w2n81iqx37p51.gif?format=png8&s=a5619fa00938c2aa817496ddd9eceda8a727324c)
+<br>
+**Sorry, it's this:**
+```
+Never gonna give you up, never gonna let you down~
+```
+**The keywords can be separated freely**
+```
+takemetourheart
+    give msg up "Never gonna give you up, never gonna let you down~\n"
+    i justwanna telluhowim feeling msg
+say good bye
+```
+This can also be executable
+
 
 ## Run Code
 Execute by converting .rickroll to Python
@@ -64,23 +80,6 @@ Generate and play an audio from .rickroll
 ```shell
 python3 RickRoll.py -py [Source Code File Name] --audio
 ```
-
-
-**And you can get the output on your terminal:**
-![](https://preview.redd.it/w2n81iqx37p51.gif?format=png8&s=a5619fa00938c2aa817496ddd9eceda8a727324c)
-<br>
-**Sorry, it's this:**
-```
-Never gonna give you up, never gonna let you down~
-```
-**The keywords can be separated freely**
-```
-takemetourheart
-    give msg up "Never gonna give you up, never gonna let you down~\n"
-    i justwanna telluhowim feeling msg
-say good bye
-```
-This can also be executable
 
 
 ## Features
