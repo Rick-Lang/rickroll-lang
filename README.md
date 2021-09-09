@@ -11,29 +11,6 @@ Rick Roll Programming Language, a language for rickrolling!
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
-## Run Code
-Execute by converting .rickroll to Python
-```shell
-python3 RickRoll.py -py [Source Code File Name]
-```
-Execute by converting .rickroll to C++ (Requires g++ compiler and has numerous bugs)
-```shell
-python3 RickRoll.py -cpp [Source Code File Name]
-```
-Execute by interpreter
-```shell
-python3 RickRoll.py -intpr [Source Code File Name]
-```
-If you want to know the execution time:
-> Add "--time"
-```shell
-python3 RickRoll.py -py [Source Code File Name] --time
-```
-Generate and play an audio from .rickroll
-```shell
-python3 RickRoll.py -py [Source Code File Name] --audio
-```
-
 ## Hello World
 **The syntax of RickRoll-Lang is not completely similar to Python**
 1. It doesn't need indentation
@@ -64,6 +41,30 @@ int main(int argc, char* argv[]){
     cout<<msg;
 }
 ```
+
+## Run Code
+Execute by converting .rickroll to Python
+```shell
+python3 RickRoll.py -py [Source Code File Name]
+```
+Execute by converting .rickroll to C++ (Requires g++ compiler and has numerous bugs)
+```shell
+python3 RickRoll.py -cpp [Source Code File Name]
+```
+Execute by interpreter
+```shell
+python3 RickRoll.py -intpr [Source Code File Name]
+```
+If you want to know the execution time:
+> Add "--time"
+```shell
+python3 RickRoll.py -py [Source Code File Name] --time
+```
+Generate and play an audio from .rickroll
+```shell
+python3 RickRoll.py -py [Source Code File Name] --audio
+```
+
 
 **And you can get the output on your terminal:**
 ![](https://preview.redd.it/w2n81iqx37p51.gif?format=png8&s=a5619fa00938c2aa817496ddd9eceda8a727324c)
