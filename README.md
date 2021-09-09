@@ -1,4 +1,3 @@
-We don't usually update [The Chinese Documentation / 中文文档](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)
 <img src="img/ico1.jpg" align="right" width="160" height="160"/>
 
 # Rick Roll Programming Language
@@ -108,6 +107,7 @@ This generates an audio from the .rickroll program and plays it in your terminal
 - G++ compiler (For translating RickRoll to C++)
 
 ## Documentation
+We don't usually update [The Chinese Documentation / 中文文档](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)
 **[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
 <br>
 **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
