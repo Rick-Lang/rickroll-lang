@@ -55,7 +55,7 @@ takemetourheart
     i justwanna telluhowim feeling msg
 say good bye
 ```
-This can also be executable
+This is also executable
 
 
 ## Run Code
