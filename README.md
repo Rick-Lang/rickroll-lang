@@ -86,6 +86,7 @@ python3 RickRoll.py -py [Source Code File Name] --audio
 - *[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)*
 - *Support [Python 3.6+](https://www.python.org/downloads/release/python-3610/)*
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
+- *Keywords can be separated freely*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate RickRoll source code to Python3 and C++*
 - *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
