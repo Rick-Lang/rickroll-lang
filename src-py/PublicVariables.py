@@ -22,6 +22,8 @@ KW_while_loop   = 'togetherforeverwith'
 
 KW_less_than_OP = 'islessthan'
 KW_greater_than_OP = 'isgreaterthan'
+KW_greater_or_equals_OP = 'isgreaterthanorequalto'
+KW_less_or_equals_OP = 'islessthanorequalto'
 KW_is_not_OP = 'isnot'
 KW_equals_OP = 'is'
 
@@ -44,9 +46,12 @@ keywords = [
     KW_while_loop,
     KW_less_than_OP,
     KW_greater_than_OP,
+    KW_greater_or_equals_OP,
+    KW_less_or_equals_OP,
     KW_is_not_OP,
     KW_equals_OP
 ]
+
 
 # Tokens that the interpreter will totally ignore
 ignore_tokens = {'~', "'"}

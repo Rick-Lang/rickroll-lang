@@ -1,7 +1,7 @@
 from time import time
 start = time()      # Set and start a timer
 
-from sys import argv, stdout
+from sys import stdout
 from argparse import ArgumentParser
 
 

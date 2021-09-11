@@ -19,10 +19,6 @@ python3 RickRoll.py -py [Source Code File Name] --time
 ```
 python3 RickRoll.py -py [Source Code File Name] --audio
 ```
-> 客户还可以通过唱歌的方式写代码 (但这个功能我们也没有完成)
-```
-python3 RickRoll.py -sing [MP3 File Name] [Source Code(Text) File Name]
-```
 
 
 ## Hello World

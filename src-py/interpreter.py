@@ -92,7 +92,7 @@ class Eval:
         if op == '-': return a - b
         if op == '*': return a * b
         if op == '/': return a // b
-        if op == 'is' and a == b or op == 'isnot' and a != b or op == 'isgreaterthan' and a > b or op == 'islessthan' and a < b:
+        if op=='is'and a==b or op=='isnot'and a!=b or op=='isgreaterthan'and a>b or op=='islessthan'and a<b or op==KW_greater_or_equals_OP and a >= b:
             return 'TrueLove'
         else:
             return 'FalseLove'
@@ -201,7 +201,6 @@ class Interpreter:
 
         if in_loop:
             in_loop_stmts.append([self.types, self.tokens])
-            return
 
         if kw == KW_main:
             self.indent()
@@ -210,7 +209,6 @@ class Interpreter:
             """
                 PRINT EXPR
             """
-            # EXPR = Evaluate(self.types[1:], self.tokens[1:])
             EXPR = str(Eval(self.tokens[1:], self.types[1:]))
             if '\\n' in EXPR:
                 for i in EXPR.split("\\n")[:-1]:
