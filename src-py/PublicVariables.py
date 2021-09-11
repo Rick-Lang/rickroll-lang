@@ -12,6 +12,8 @@ KW_def1         = 'neverknew'
 KW_def2         = 'couldfeelthisway'
 KW_return1      = 'whenigivemy'
 KW_return2      = 'itwillbecompletely'
+KW_try          = 'thereaintnomistaking'
+KW_except       = 'iftheyevergetudown'
 KW_main         = 'takemetourheart'
 KW_end          = 'saygoodbye'
 
@@ -38,6 +40,8 @@ keywords = [
     KW_def2,
     KW_return1,
     KW_return2,
+    KW_try,
+    KW_except,
     KW_main,
     KW_end,
     KW_break,
