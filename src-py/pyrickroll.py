@@ -160,17 +160,17 @@ class TranslateToPython:
         if kw in functions:
             self.write(join_list(self.values))
 
-        if kw == KW_main:
+        elif kw == KW_main:
             self.write('if __name__ == "__main__":')
 
             is_main = True
             indent_count += 1
 
-        if indent_count == 0:
+        elif indent_count == 0:
             if is_main: is_main = False
             if is_function: is_function = False
 
-        if kw == KW_print:
+        elif kw == KW_print:
             """
                 print EXPR
             """
@@ -178,7 +178,7 @@ class TranslateToPython:
             EXPR = join_list(self.values[1:])
             self.write(f'print({EXPR}, end="")')
 
-        if kw == KW_let:
+        elif kw == KW_let:
             """
                 let ID up EXPR
             """
@@ -187,7 +187,7 @@ class TranslateToPython:
             EXPR = join_list(self.values[self.values.index(KW_assign) + 1:])
             self.write(f'{ID} = {EXPR}')
 
-        if kw == KW_if:
+        elif kw == KW_if:
             """
                 if CONDI
             """
@@ -196,11 +196,19 @@ class TranslateToPython:
             self.write(f'if {CONDI}:')
             indent_count += 1
 
-        if kw == KW_endless_loop:
+        elif kw == KW_try:
+            self.write('try:')
+            indent_count += 1
+
+        elif kw == KW_except:
+            self.write('except:')
+            indent_count += 1
+
+        elif kw == KW_endless_loop:
             self.write('while True:')
             indent_count += 1
 
-        if kw == KW_while_loop:
+        elif kw == KW_while_loop:
             """
                 while1 CONDI while2
             """
@@ -209,13 +217,13 @@ class TranslateToPython:
             self.write(f'while {CONDI}:')
             indent_count += 1
 
-        if kw == KW_break:
+        elif kw == KW_break:
             self.write('break')
 
-        if kw == KW_continue:
+        elif kw == KW_continue:
             self.write('continue')
 
-        if kw == KW_def1:
+        elif kw == KW_def1:
             """
                 def1 ID ARGS def2
             """
@@ -227,14 +235,14 @@ class TranslateToPython:
             is_function = True
             indent_count += 1
 
-        if kw == KW_return1:
+        elif kw == KW_return1:
             """
                 return1 EXPR return2
             """
             EXPR = join_list(self.values[1: -1])
             self.write(f'return {EXPR}')
 
-        if kw == KW_end:
+        elif kw == KW_end:
             self.write('pass')
             indent_count -= 1
 
