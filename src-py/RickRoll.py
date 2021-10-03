@@ -15,10 +15,10 @@ def play_audio(src_file_name):
         content[-1] += '\n'
         for statement in content:
             lexer = Lexer(statement)
-            tok = Token(raw_tokens=lexer.tokens)
+            tok = Token(lexer.tokens)
 
-            while len(tok.types) != 0:
-                AudioGenerator.play(tok.tokens[i])
+            for i in range(len(tok.t_values)):
+                AudioGenerator.play(tok.t_values[i])
 
 def main():
 
