@@ -8,6 +8,12 @@ Despite this language is an esoteric programming language, it has its own signif
 **The this language is just for fun🤣**
 
 ## Contributors
+@ XuQingGen
+@ Sherlockcxk
+@cxk-bugsfly
+@StepfenShawn
+@henriqueritter
+@calebrwalk5
 
 ## Author
 
