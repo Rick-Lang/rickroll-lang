@@ -12,7 +12,7 @@ Despite this language is an esoteric programming language, it has its own signif
 <br>
 @[Sherlockcxk](https://github.com/Sherlockcxk)
 <br>
-@[cxk-bugsfly](https://github.com/bugsfly)
+@[cxk-bugsfly](https://github.com/cxk-bugsfly)
 <br>
 @[StepfenShawn](https://github.com/StepfenShawn)
 <br>
