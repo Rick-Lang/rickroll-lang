@@ -8,7 +8,7 @@ Despite this language is an esoteric programming language, it has its own signif
 **The this language is just for fun🤣**
 
 ## Contributors
-@[XuQingGen](https://github.com/XuQingGen)
+@[SatinWuker](https://github.com/SatinWuker)
 <br>
 @[Sherlockcxk](https://github.com/Sherlockcxk)
 <br>
