@@ -24,3 +24,6 @@ Despite this language is an esoteric programming language, it has its own signif
 ## Author
 
 ## Contact
+Wechat/微信号: githubsherlockcxk
+<br>
+Email: flyingsatin@gmail.com
