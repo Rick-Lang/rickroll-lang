@@ -5,7 +5,7 @@ Despite this language is an esoteric programming language, it has its own signif
 
 **↑ That is bullshit LOL😂**
 
-**The purpose of this language is just for fun🤣**
+**The this language is just for fun🤣**
 
 ## Contributors
 
