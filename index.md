@@ -22,7 +22,7 @@ Despite this language is an esoteric programming language, it has its own signif
 
 
 ## Author
-https://satinwuker.github.io/SatinWuker/
+[SatinWuker](https://satinwuker.github.io/SatinWuker/)
 
 ## Contact
 Wechat/微信号: githubsherlockcxk
