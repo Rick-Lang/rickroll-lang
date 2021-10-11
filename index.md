@@ -27,4 +27,5 @@ Despite this language is an esoteric programming language, it has its own signif
 ## Contact
 Wechat/微信号: githubsherlockcxk
 <br>
+Discord: Satin Wuker#0572
 Email: flyingsatin@gmail.com
