@@ -77,8 +77,7 @@ class Token:
         else:
             if self.__last_kw == KW_def1:
                 self.types.append(TT_function)
-                global functions, function_name
-                functions.update({t:""})
+                global function_name
                 function_name = t
             else:
                 self.types.append(TT_identifier)
@@ -102,7 +101,6 @@ class Eval:
         return 0
 
     def __applyOp(self, a, b, op):
-
         if op == '+': return a + b
         if op == '-': return a - b
         if op == '*': return a * b
@@ -280,10 +278,7 @@ class Interpreter:
     def run_func(self, func):
         content = functions.get(func)
         for stmt in content:
-            try:
-                Interpreter(types=stmt[0], tokens=stmt[1])
-            except:
-                break
+            Interpreter(types=stmt[0], tokens=stmt[1])
             
 
 def run_in_interpreter(src_file_name):
