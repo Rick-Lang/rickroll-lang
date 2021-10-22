@@ -54,6 +54,7 @@ class Token:
     def __init__(self, raw_tokens):
         self.tokens = []      # Tokens
         self.types = []       # Token types
+        self.__last_kw = ''
 
         for t in raw_tokens:
             if t:
