@@ -6,6 +6,7 @@ TT_keyword        = 'KEYWORDS'
 TT_identifier     = 'IDENTIFIER'
 TT_operator       = 'OPERATOR'
 TT_built_in_funcs = 'OPERATORS-BUILT-IN-FUNCS'
+TT_function       = 'FUNCTION'
 
 TT_int            = 'VALUE-INT'
 TT_float          = 'VALUE-FLOAT'
@@ -30,6 +31,11 @@ current_line = 0
 # For definining variables (Relevant: Interpreter, KW_let)
 variables = {}
 
+# Functions
+functions = dict({})
+function_name = ""
+function_content = []
+in_function = False
 
 # Determine variable types
 
@@ -68,7 +74,15 @@ class Token:
         elif typeof(t) == 'string':
             self.types.append(TT_string)
         else:
-            self.types.append(TT_identifier)
+            if self.__last_kw == KW_def1:
+                self.types.append(TT_function)
+                global functions, function_name
+                functions.update({t:""})
+                function_name = t
+            else:
+                self.types.append(TT_identifier)
+
+        self.__last_kw = t
 
 class Eval:
     def __init__(self, tokens, types=[]):
@@ -157,8 +171,10 @@ class Interpreter:
         self.types = types
         self.tokens = tokens
 
-        if self.types[0] == TT_keyword:
+        if self.types[0] == TT_keyword or self.types[0] == TT_identifier:
             self.run_code(kw=self.tokens[0])
+        if self.types[0] == TT_identifier:
+            self.run_func(func=self.tokens[0])
 
     # Indentation, edits the two code levels
     def indent(self):
@@ -170,6 +186,7 @@ class Interpreter:
     def run_code(self, kw):
         global current_code_level, executing_code_level
         global in_loop, in_loop_stmts, while_condition
+        global in_function, function_content
 
         # End statement
         if kw == KW_end:
@@ -180,6 +197,10 @@ class Interpreter:
             if executing_code_level == current_code_level:
                 executing_code_level -= 1
 
+                if in_function:
+                    functions.update({function_name:function_content})
+                    in_function = False
+                    function_content = []
                 # End a loop
                 if in_loop:
                     in_loop = False
@@ -194,7 +215,9 @@ class Interpreter:
                     for stmt in in_loop_stmts:
                         Interpreter(stmt[0], stmt[1])
 
-
+        if in_function:
+            function_content.append([self.types, self.tokens])
+            return
         # If the current code level should not execute, then return back (don't execute)
         if executing_code_level != current_code_level:
             return
@@ -227,6 +250,9 @@ class Interpreter:
 
             current_code_level += 1
 
+        elif kw == KW_def1:
+            in_function = True
+ 
         elif kw == KW_endless_loop:
             in_loop = True
             while_condition = True
@@ -249,7 +275,15 @@ class Interpreter:
                 types=self.types[self.tokens.index(KW_assign)+1:]
             ))
             variables.update({ID: EXPR})
-
+            
+    def run_func(self, func):
+        content = functions.get(func)
+        for stmt in content:
+            try:
+                Interpreter(types=stmt[0], tokens=stmt[1])
+            except:
+                break
+            
 
 def run_in_interpreter(src_file_name):
     global current_line
