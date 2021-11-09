@@ -8,8 +8,7 @@ KW_let          = 'give'
 KW_assign       = 'up'
 KW_import1      = 'weknowthe'
 KW_import2      = "andwe'regonnaplayit"
-KW_def1         = 'neverknew'
-KW_def2         = 'couldfeelthisway'
+KW_def          = 'gonna'
 KW_return1      = 'whenigivemy'
 KW_return2      = 'itwillbecompletely'
 KW_try          = 'thereaintnomistaking'
@@ -36,8 +35,7 @@ keywords = [
     KW_assign,
     KW_import1,
     KW_import2,
-    KW_def1,
-    KW_def2,
+    KW_def,
     KW_return1,
     KW_return2,
     KW_try,
