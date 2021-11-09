@@ -112,7 +112,7 @@ class Token:    # Return token types
             variables.append(tok)
             self.add_to_tokens(TT_variable, tok)
         # Functions
-        elif self.last_kw == KW_def1:
+        elif self.last_kw == KW_def:
             functions.append(tok)
             self.add_to_tokens(TT_function, tok)
         elif tok and tok in variables:
@@ -223,7 +223,7 @@ class TranslateToPython:
         elif kw == KW_continue:
             self.write('continue')
 
-        elif kw == KW_def1:
+        elif kw == KW_def:
             """
                 def1 ID ARGS def2
             """
