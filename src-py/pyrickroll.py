@@ -18,7 +18,7 @@ TT_build_in_funcs = 'BUILD-IN-FUNCS'
 
 
 # Keywords can execute outside main function
-kw_exe_outside_main = {KW_main, KW_def1, KW_import1}
+kw_exe_outside_main = {KW_main, KW_def, KW_import1}
 
 variables = []
 functions = []
