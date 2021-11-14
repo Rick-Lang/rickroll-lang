@@ -1,20 +1,20 @@
-never knew LinearSearch arr, target could feel this way
-
-    give i up 0
-
-    together forever with i is less than length(arr)
-        and if u ask me how im feeling arr[i] is target
-            i just wanna tell u how im feeling "Found in index " + to_string(i) + "\n"
-            when i give my i it will be completely
-        say goodbye
-        give i up i + 1
-    say goodbye
-
-    i just wanna tell u how im feeling to_string(target) + " is not found! :( \n"
-
-say good bye
-
 take me to ur heart
+    never knew LinearSearch arr, target could feel this way
+
+        give index up 0
+
+        together forever with index is less than length(arr)
+            and if u ask me how im feeling arr[index] is target
+                i just wanna tell u how im feeling "Found in index " + to_string(index) + "\n"
+                when i give my index it will be completely
+            say goodbye
+            give i up i + 1
+        say goodbye
+
+        i just wanna tell u how im feeling to_string(target) + " is not found! :( \n"
+
+    say good bye
+
     give arr up [6, 7, 5, 9, 12]
     LinearSearch(arr, 12)
     LinearSearch(arr, 7)
