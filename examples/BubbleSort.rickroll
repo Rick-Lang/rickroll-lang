@@ -1,16 +1,16 @@
 never knew BubbleSort arr could feel this way
 
-    give i up 0
+    give index up 0
 
-    together forever with i is less than length(arr)
-        give i up i + 1
-        give j up 0
-        together forever with j is less than length(arr) - 1
+    together forever with index is less than length(arr)
+        give index up index + 1
+        give index2 up 0
+        together forever with index2 is less than length(arr) - 1
 
-            and if u ask me how im feeling arr[j] is greater than arr[j + 1]
-                give arr[j], arr[j + 1] up arr[j + 1], arr[j]
+            and if u ask me how im feeling arr[index2] is greater than arr[index2 + 1]
+                give arr[index2], arr[index2 + 1] up arr[index2 + 1], arr[index2]
             say goodbye
-            give j up j + 1
+            give index2 up index2 + 1
 
         say goodbye
     say goodbye
