@@ -11,6 +11,10 @@ Rick Roll Programming Language, a language for rickrolling!
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
+# Offcial Discord Server/Support
+https://discord.gg/yzZ3MfGZ8A
+Join this server to chat with cool people or for support
+
 ## Hello World
 **The syntax of RickRoll-Lang is not completely similar to Python**
 1. It doesn't need indentation
