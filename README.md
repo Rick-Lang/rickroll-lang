@@ -14,7 +14,8 @@ Rick Roll Programming Language, a language for rickrolling!
 # Offcial Discord Server/Support
 https://discord.gg/yzZ3MfGZ8A
 Join this server to chat with cool people or for support
-![Discord-Logo+Wordmark-White](https://user-images.githubusercontent.com/86417658/144336634-1ac5cb55-700f-444a-9a88-e426e8b02fc8.png)
+![Discord-Logo+Wordmark-White](https://user-images.githubusercontent.com/86417658/144336714-f4bc8616-e660-453f-bd7c-4bc1875ac6c8.png)
+
 
 
 ## Hello World
