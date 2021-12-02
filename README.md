@@ -14,6 +14,7 @@ Rick Roll Programming Language, a language for rickrolling!
 # Offcial Discord Server/Support
 https://discord.gg/yzZ3MfGZ8A
 Join this server to chat with cool people or for support
+https://www.linuxadictos.com/wp-content/uploads/discord-1024x576.jpg.webp
 
 ## Hello World
 **The syntax of RickRoll-Lang is not completely similar to Python**
