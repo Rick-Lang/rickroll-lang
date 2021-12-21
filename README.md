@@ -18,9 +18,9 @@ Join this server to chat with cool people or for support
 
 
 # Credit: Rick Astley 
-! Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
-! Twitter: https://twitter.com/rickastley
-! Facebook: https://www.facebook.com/RickAstley
+ Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
+<br /> Twitter: https://twitter.com/rickastley
+<br /> Facebook: https://www.facebook.com/RickAstley
 
 
 
