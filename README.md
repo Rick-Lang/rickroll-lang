@@ -17,6 +17,12 @@ Join this server to chat with cool people or for support
 ![Discord-Logo+Wordmark-Black](https://user-images.githubusercontent.com/86417658/144336734-863dadf8-8fcd-40c6-b2e4-23e0b5e2ecc3.png)
 
 
+# Credit: Rick Astley 
+Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw;
+Twitter: https://twitter.com/rickastley;
+Facebook: https://www.facebook.com/RickAstley;
+
+
 
 
 ## Hello World
