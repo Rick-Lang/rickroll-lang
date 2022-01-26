@@ -14,7 +14,14 @@ Rick Roll Programming Language, a language for rickrolling!
 # Offcial Discord Server/Support
 https://discord.gg/yzZ3MfGZ8A
 Join this server to chat with cool people or for support
+<br /> We currently need some people to join! 
 ![Discord-Logo+Wordmark-Black](https://user-images.githubusercontent.com/86417658/144336734-863dadf8-8fcd-40c6-b2e4-23e0b5e2ecc3.png)
+
+
+# Credit: Rick Astley 
+ Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
+<br /> Twitter: https://twitter.com/rickastley
+<br /> Facebook: https://www.facebook.com/RickAstley
 
 
 
@@ -149,5 +156,6 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 Wechat/微信: githubsherlockcxk
 <br>
 Discord: Satin Wuker#0572
+<br /> Valcan#1407
 
 ![](https://user-images.githubusercontent.com/74630829/132019837-13c4729e-5968-42c9-83cd-7412e1e893e5.jpeg)
