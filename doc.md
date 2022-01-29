@@ -5,6 +5,7 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 **The syntax of RickRoll-Lang is not same as Python**
 1. It doesn't need indentation
 2. The code must be written inside the main method, otherwise the interpreter will not execute
+3. Every identifier (function or variable name) should contain more than one character
 
 ## Commands to execute your code
 Execute by converting .rickroll to Python
