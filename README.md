@@ -15,8 +15,6 @@ Rick Roll Programming Language, a language for rickrolling!
 https://discord.gg/yzZ3MfGZ8A
 Join this server to chat with cool people or for support
 <br /> We currently need some people to join! 
-![Discord-Logo+Wordmark-Black](https://user-images.githubusercontent.com/86417658/144336734-863dadf8-8fcd-40c6-b2e4-23e0b5e2ecc3.png)
-
 
 # Credit: Rick Astley 
  Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
