@@ -11,18 +11,6 @@ Rick Roll Programming Language, a language for rickrolling!
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
-# Offcial Discord Server/Support
-https://discord.gg/yzZ3MfGZ8A
-Join this server to chat with cool people or for support
-<br /> We currently need some people to join! 
-
-# Credit: Rick Astley 
- Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
-<br /> Twitter: https://twitter.com/rickastley
-<br /> Facebook: https://www.facebook.com/RickAstley
-
-
-
 
 ## Hello World
 **The syntax of RickRoll-Lang is not completely similar to Python**
@@ -142,6 +130,16 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 
 # Rick Roll Language Website
 **[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX)**
+
+# Offcial Discord Server/Support
+https://discord.gg/yzZ3MfGZ8A
+Join this server to chat with cool people or for support
+<br /> We currently need some people to join! 
+
+# Credit: Rick Astley 
+ Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
+<br /> Twitter: https://twitter.com/rickastley
+<br /> Facebook: https://www.facebook.com/RickAstley
 
 
 # Contributors
