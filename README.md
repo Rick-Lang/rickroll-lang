@@ -44,8 +44,11 @@ int main(int argc, char* argv[]){
 }
 ```
 **And you can get the output on your terminal:**
-![](https://preview.redd.it/w2n81iqx37p51.gif?format=png8&s=a5619fa00938c2aa817496ddd9eceda8a727324c)
+
+<img src="https://preview.redd.it/w2n81iqx37p51.gif?format=png8&s=a5619fa00938c2aa817496ddd9eceda8a727324c" width="460" height="460"/>
+
 <br>
+
 **Sorry, it's this:**
 ```
 Never gonna give you up, never gonna let you down~
