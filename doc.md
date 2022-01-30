@@ -111,12 +111,12 @@ if __name__ == "__main__":
 ## Defining Function
 RickRoll supports return function
 ```
-never knew func arg1, arg2 could feel this way  # Define a function
-    when i give_my arg1, arg2 it will be completely # Return arg1 and arg2
+gonna do_something arg1, arg2 # Define a function
+    when i give my arg1, arg2 it will be completely # Return arg1 and arg2
 say goodbye
 ```
 Equivalent to Python:
 ```python
-def func(arg1, arg2):
+def do_something(arg1, arg2):
     return arg1, arg2
 ```
