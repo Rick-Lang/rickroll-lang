@@ -1,5 +1,5 @@
 take me to ur heart
-    never knew LinearSearch arr, target could feel this way
+    gonna LinearSearch arr, target
 
         give index up 0
 
@@ -8,7 +8,7 @@ take me to ur heart
                 i just wanna tell u how im feeling "Found in index " + to_string(index) + "\n"
                 when i give my index it will be completely
             say goodbye
-            give i up i + 1
+            give index up index + 1
         say goodbye
 
         i just wanna tell u how im feeling to_string(target) + " is not found! :( \n"
