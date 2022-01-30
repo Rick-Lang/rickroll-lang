@@ -128,13 +128,15 @@ class Token:    # Return token types
 
 class TranslateToPython:
 
-    def __init__(self, types, values):
-
+    def __init__(self):
         # types of the tokens
-        self.types = types
+        self.types = []
         # tokens
-        self.values = values
+        self.values = []
 
+    def translate(self, types, values):
+        self.types = types
+        self.values = values
         # if there is code in the current line of code
         if self.types:
 
@@ -152,7 +154,6 @@ class TranslateToPython:
         # if this line doesn't have code, then write "\n"
         else:
             self.write("")
-
 
     def convert(self, kw):
         global indent_count, is_main, is_function
@@ -255,6 +256,8 @@ class TranslateToPython:
 def run_in_py(src_file_name):
     global current_line
 
+    transpiler = TranslateToPython()
+
     with open(src_file_name, mode='r', encoding='utf-8') as src:
 
         content = src.readlines()
@@ -265,6 +268,6 @@ def run_in_py(src_file_name):
 
             lexer = Lexer(statement)
             token = Token(lexer.tokens)
-            TranslateToPython(types=token.t_types, values=token.t_values)
+            transpiler.translate(types=token.t_types, values=token.t_values)
 
     return py_code
