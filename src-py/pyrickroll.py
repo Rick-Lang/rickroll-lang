@@ -1,6 +1,5 @@
 from PublicVariables import *
-from Lexer import Lexer
-
+from Lexer import lexicalize
 
 # Token types
 TT_keyword  = 'KEYWORDS'
@@ -62,10 +61,9 @@ class Token:    # Return token types
     def __init__(self, tokens):
         self.t_types = []
         self.t_values = []
-        self.__tokens = tokens
         self.last_kw = ''
 
-        for tok in self.__tokens:
+        for tok in tokens:
             if tok:
                 self.__make_token(tok)
 
@@ -266,8 +264,7 @@ def run_in_py(src_file_name):
         for statement in content:  # "statement" is a line of code the in source code
             current_line += 1
 
-            lexer = Lexer(statement)
-            token = Token(lexer.tokens)
+            token = Token(lexicalize(statement))
             transpiler.translate(types=token.t_types, values=token.t_values)
 
     return py_code
