@@ -13,7 +13,7 @@ Rick Roll Programming Language, a language for rickrolling!
 
 
 ## Hello World
-**The syntax of RickRoll-Lang is not completely similar to Python**
+**Although RickRoll can be transpiled into Python3, its syntax is not completely similar to Python's**
 1. It doesn't need indentation
 2. The code must be written inside the main method, otherwise the interpreter will not execute
 3. Every identifier (function or variable name) should contain more than one character
