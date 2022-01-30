@@ -4,52 +4,53 @@ all_keyword_string = ''
 for i in keywords:
     all_keyword_string += i
 
-class Lexer:
-    def __init__(self, stmt):
-        self.tokens = []
 
-        self.__order_tokens(tokens=self.__basic_tokenize(stmt))
+def lexicalize(stmt):
+    return order_tokens(tokens=basic_tokenize(stmt))
 
-    def __basic_tokenize(self, stmt):
-        current_token = ''
-        quote_count = 0
-        tokens = []
-        for char in stmt:
 
-            if char == '"': quote_count += 1
-            if char == '#': break
-            if char in ignore_tokens and quote_count % 2 == 0:
-                continue
+def basic_tokenize(stmt):
+    current_token = ''
+    quote_count = 0
+    tokens = []
+    for char in stmt:
 
-            if char in separators and quote_count % 2 == 0:
-                if current_token != ' ' and current_token != '\n':
-                    tokens.append(current_token)
-                if char != ' ' and char != '\n':
-                    tokens.append(char)
+        if char == '"': quote_count += 1
+        if char == '#': break
+        if char in ignore_tokens and quote_count % 2 == 0:
+            continue
 
-                current_token = ''
-            else: current_token += char
+        if char in separators and quote_count % 2 == 0:
+            if current_token != ' ' and current_token != '\n':
+                tokens.append(current_token)
+            if char != ' ' and char != '\n':
+                tokens.append(char)
 
-        return tokens
+            current_token = ''
+        else: current_token += char
 
-    def __order_tokens(self, tokens):
+    return tokens
 
-        """
-        如果当前token+kw_in_statement在all keyword string里，kw_in_statement += token
-        如果当前token+kw_in_statement不在在all keyword string里，将当前kw_in_statement加到final_token里
-        如果statement结束，将kw_in_statement加到final_token里
-        """
-        kw_in_statement = ''
-        temp = False
-        for tok in tokens:
-            if tok in all_keyword_string and kw_in_statement + tok in all_keyword_string:
-                kw_in_statement += tok
+def order_tokens(tokens):
+    
+    """
+    如果当前token+kw_in_statement在all keyword string里，kw_in_statement += token
+    如果当前token+kw_in_statement不在在all keyword string里，将当前kw_in_statement加到final_token里
+    如果statement结束，将kw_in_statement加到final_token里
+    """
+    final_token = []
+    kw_in_statement = ''
+    temp = False
+    for tok in tokens:
+        if tok in all_keyword_string and kw_in_statement + tok in all_keyword_string:
+            kw_in_statement += tok
 
-            else:
-                temp = True
-                self.tokens.append(kw_in_statement)
-                kw_in_statement = ''
-                self.tokens.append(tok)
+        else:
+            temp = True
+            final_token.append(kw_in_statement)
+            kw_in_statement = ''
+            final_token.append(tok)
 
-        if temp == False:
-            self.tokens.append(kw_in_statement)
+    if temp == False:
+        final_token.append(kw_in_statement)
+    return final_token
