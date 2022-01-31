@@ -7,6 +7,19 @@ Despite this language is an esoteric programming language, it has its own signif
 
 **The this language is just for fun🤣**
 
+## Creator
+[SatinWuker](https://satinwuker.github.io/SatinWuker/)
+
+## Contact
+Wechat/微信号: githubsherlockcxk
+<br>
+Discord: Satin Wuker#0572
+<br>
+Email: cxk53cn@gmail.com
+
+## Discord Server
+https://discord.gg/yzZ3MfGZ8A
+
 ## Contributors
 @[SatinWuker](https://github.com/SatinWuker)
 <br>
@@ -19,13 +32,3 @@ Despite this language is an esoteric programming language, it has its own signif
 @[henriqueritter](https://github.com/henriqueritter)
 <br>
 @[calebrwalk5](https://github.com/calebrwalk5)
-
-
-## Author
-[SatinWuker](https://satinwuker.github.io/SatinWuker/)
-
-## Contact
-Wechat/微信号: githubsherlockcxk
-<br>
-Discord: Satin Wuker#0572
-Email: flyingsatin@gmail.com
