@@ -1,3 +1,5 @@
+<link rel="shortcut icon" type="image/x-icon" href="https://github.com/Rick-Lang/rickroll-lang/blob/main/img/ico1.jpg?raw=true">
+
 # The Rick Roll Programming Language
 
 ## Purpose
@@ -16,7 +18,7 @@ Discord: Satin Wuker#0572
 Email: cxk53cn@gmail.com
 
 ## Discord Server
-https://discord.gg/yzZ3MfGZ8A
+[https://discord.gg/yzZ3MfGZ8A](https://discord.gg/yzZ3MfGZ8A)
 
 ## Contributors
 @[SatinWuker](https://github.com/SatinWuker)
