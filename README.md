@@ -133,6 +133,10 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 
 # Rick Roll Language Website
 **[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX)**
+<br>
+**_or_**
+<br>
+**https://rick-lang.github.io/rickroll-lang/**
 
 # Offcial Discord Server/Support
 https://discord.gg/yzZ3MfGZ8A
