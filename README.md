@@ -45,7 +45,7 @@ int main(int argc, char* argv[]){
 ```
 **And you can get the output on your terminal:**
 
-<img src="https://memeguy.com/photos/images/ascii-art-rick-astley--444392.gif" width="460" height="460"/>
+![](https://memeguy.com/photos/images/ascii-art-rick-astley--444392.gif)
 
 <br>
 
