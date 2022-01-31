@@ -1,5 +1,3 @@
-<link rel="shortcut icon" type="image/x-icon" href="https://github.com/Rick-Lang/rickroll-lang/blob/main/img/ico1.jpg?raw=true">
-
 # The Rick Roll Programming Language
 
 ## Purpose
