@@ -1,4 +1,20 @@
-from pyttsx3 import init
+try:
+ from pyttsx3 import init
+except:
+ print("pyttsx3 is missing. It's needed for Audio generation. Install package or stop?(Y/N)")
+ installChoice=input()
+ if installChoice=="Y":
+  print("NOTE: pip needed for this to actually work.")
+  import os
+  os.system("pip install pyttsx3")
+  try:
+   from pyttsx3 import init
+  except:
+   print("Installation of pip package pyttsx3 failed :(")
+   exit()
+ else:
+   print("stopping.")
+   exit()
 from playsound import playsound as play_wav
 
 from PublicVariables import *
