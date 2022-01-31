@@ -1,5 +1,9 @@
 # The Rick Roll Programming Language
 
+<img src="https://preview.redd.it/w2n81iqx37p51.gif?format=png8&s=a5619fa00938c2aa817496ddd9eceda8a727324c" width="460" height="460"/>
+
+(cited from https://memeguy.com/photo/444392/ascii-art-rick-astley-)
+
 ## Purpose
 Despite this language is an esoteric programming language, it has its own significance. I believe that rick roll is not only a way to promote people's communication, it is also one of the most paramount art in the human history. The purpose of the Rick Roll Language is to introduce this art to people in a distinctive way -- programming.
 
