@@ -38,7 +38,7 @@ libraries = {}
 def v_types(string):
     string = str(string)
     # Boolean
-    if string == 'True' or string == 'False':
+    if string in {'True', 'False'}:
         return 'bool'
     # String
     if string[0] == '"' and string[-1] == '"':
@@ -47,10 +47,7 @@ def v_types(string):
     if string[0] == '[' and string[-1] == ']':
         return 'list'
     # Determine the string is int or float
-    count = 0
-    for char in string:
-        if char in digits:
-            count += 1
+    count = sum(char in digits for char in string)
     if count == len(string) and string.count('.') < 2:
         return 'number'
 
