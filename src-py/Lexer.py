@@ -1,8 +1,6 @@
 from PublicVariables import *
 
-all_keyword_string = ''
-for i in keywords:
-    all_keyword_string += i
+all_keyword_string = ''.join(keywords)
 
 
 def lexicalize(stmt):
@@ -21,9 +19,9 @@ def basic_tokenize(stmt):
             continue
 
         if char in separators and quote_count % 2 == 0:
-            if current_token != ' ' and current_token != '\n':
+            if current_token not in [' ', '\n']:
                 tokens.append(current_token)
-            if char != ' ' and char != '\n':
+            if char not in [' ', '\n']:
                 tokens.append(char)
 
             current_token = ''
@@ -32,7 +30,7 @@ def basic_tokenize(stmt):
     return tokens
 
 def order_tokens(tokens):
-    
+
     """
     如果当前token+kw_in_statement在all keyword string里，kw_in_statement += token
     如果当前token+kw_in_statement不在在all keyword string里，将当前kw_in_statement加到final_token里
@@ -51,6 +49,6 @@ def order_tokens(tokens):
             kw_in_statement = ''
             final_token.append(tok)
 
-    if temp == False:
+    if not temp:
         final_token.append(kw_in_statement)
     return final_token
