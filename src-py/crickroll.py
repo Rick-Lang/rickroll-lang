@@ -44,7 +44,7 @@ c_code = '#include<iostream>\nusing namespace std;\n'
 def v_types(string):
     string = str(string)
     # Boolean
-    if string == 'True' or string == 'False':
+    if string in {'True', 'False'}:
         return 'bool'
     # String
     if string[0] == '"' and string[-1] == '"':
@@ -190,7 +190,6 @@ class TranslateToCpp:
             """
             int ID(ARGS){
             """
-            pass
         if kw == KW_return1:
             """
             return EXPR;
@@ -229,9 +228,9 @@ def run_in_cpp(src_file_name):
 
 
     f_name = src_file_name.split('.')
-    f_name = join_list(f_name[0:len(f_name) - 1])
+    f_name = join_list(f_name[:-1])
 
-    with open(f_name + '.cpp', 'w', encoding='utf-8') as f:
+    with open(f'{f_name}.cpp', 'w', encoding='utf-8') as f:
         f.write(c_code)
 
     if os_name() == 'Windows':
@@ -241,5 +240,5 @@ def run_in_cpp(src_file_name):
 
     if os_name() == 'Linux':
         exe_file = f'{f_name}.out'
-        system(f'g++ {f_name + ".cpp"} -o {exe_file}')
+        system(f'g++ {f_name}.cpp -o {exe_file}')
         system(f'./{exe_file}')

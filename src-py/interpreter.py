@@ -42,9 +42,7 @@ in_function = False
 def typeof(string):
     if string.count('"') == 2: return 'string'
 
-    count = 0
-    for i in string:
-        if i in digits: count += 1
+    count = sum(i in digits for i in string)
     if count == len(string):
         if string.count('.') == 1: return 'float'
         if string.count('.') == 0: return 'int'
@@ -74,13 +72,12 @@ class Token:
             self.types.append(TT_float)
         elif typeof(t) == 'string':
             self.types.append(TT_string)
+        elif self.__last_kw == KW_def1:
+            self.types.append(TT_function)
+            global function_name
+            function_name = t
         else:
-            if self.__last_kw == KW_def1:
-                self.types.append(TT_function)
-                global function_name
-                function_name = t
-            else:
-                self.types.append(TT_identifier)
+            self.types.append(TT_identifier)
 
         self.__last_kw = t
 
@@ -94,9 +91,9 @@ class Eval:
 
     def __precedence(self, op):
 
-        if op == '+' or op == '-':
+        if op in ['+', '-']:
             return 1
-        if op == '*' or op == '/':
+        if op in ['*', '/']:
             return 2
         return 0
 
@@ -131,7 +128,7 @@ class Eval:
 
 
             elif tokens[i] == ')':
-                while len(ops) != 0 and ops[-1] != '(':
+                while ops and ops[-1] != '(':
                     val2 = self.values.pop()
                     val1 = self.values.pop()
                     op = ops.pop()
@@ -140,9 +137,10 @@ class Eval:
 
                 ops.pop()
 
-            # Current tok is an operator
             else:
-                while len(ops) != 0 and self.__precedence(ops[-1]) >= self.__precedence(tokens[i]):
+                while ops and self.__precedence(ops[-1]) >= self.__precedence(
+                    tokens[i]
+                ):
 
                     val2 = self.values.pop()
                     val1 = self.values.pop()
@@ -153,7 +151,7 @@ class Eval:
                 ops.append(tokens[i])
 
 
-        while len(ops) != 0:
+        while ops:
             val2 = self.values.pop()
             val1 = self.values.pop()
             op = ops.pop()
@@ -170,7 +168,7 @@ class Interpreter:
         self.types = types
         self.tokens = tokens
 
-        if self.types[0] == TT_keyword or self.types[0] == TT_identifier:
+        if self.types[0] in [TT_keyword, TT_identifier]:
             self.run_code(kw=self.tokens[0])
         if self.types[0] == TT_identifier:
             self.run_func(func=self.tokens[0])

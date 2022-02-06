@@ -72,6 +72,4 @@ operators = {'+', '-', '*', '/', '%', '^', '=', '[', ']', '(', ')', '{', '}', ',
 OP_build_in_functions = {'to_string', 'to_int', 'to_float', 'length'}
 
 def join_list(l):
-    result = ''
-    for i in l: result += f'{i}'
-    return result
+    return ''.join(f'{i}' for i in l)
