@@ -24,7 +24,6 @@ def main():
 
     arg_parser = ArgumentParser()
     arg_parser.add_argument("file", nargs='?', default="")
-    arg_parser.add_argument("-py", action = "store_true")
     arg_parser.add_argument("-cpp", action = "store_true")
     arg_parser.add_argument("-intpr", action = "store_true")
     arg_parser.add_argument("--time", action = "store_true")
@@ -39,8 +38,12 @@ def main():
             from crickroll import run_in_cpp
             run_in_cpp(args.file)
 
-        # Convert .rickroll to Python
-        elif args.py:
+        # Execute .rickroll using the interpreter
+        elif args.intpr:
+            from interpreter import run_in_interpreter
+            run_in_interpreter(args.file)
+
+        else:
             try:
                 from pyrickroll import run_in_py
                 exec(run_in_py(args.file), globals(), globals())
@@ -48,11 +51,6 @@ def main():
                 from traceback2 import format_exc
                 error_msg = format_exc().split('File "<string>",')[-1]
                 stdout.write(f'Exception in{error_msg}')
-
-        # Execute .rickroll using the interpreter
-        elif args.intpr:
-            from interpreter import run_in_interpreter
-            run_in_interpreter(args.file)
 
     else:
         stdout.write('Warning: [Not executing any script...]')
