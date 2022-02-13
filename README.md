@@ -162,5 +162,3 @@ Wechat/微信: githubsherlockcxk
 <br>
 Discord: Satin Wuker#0572
 <br /> Valcan#1407
-
-![](https://user-images.githubusercontent.com/74630829/132019837-13c4729e-5968-42c9-83cd-7412e1e893e5.jpeg)
