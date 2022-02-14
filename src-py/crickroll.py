@@ -1,7 +1,7 @@
 from os import system
 from platform import system as os_name
 
-from Lexer import Lexer
+from Lexer import lexicalize
 from PublicVariables import *
 
 
@@ -221,8 +221,8 @@ def run_in_cpp(src_file_name):
         for statement in content:  # "statement" is a line of code the in source code
             current_line += 1
 
-            lexer = Lexer(statement)
-            tok = Token(lexer.tokens)
+            tokens = lexicalize(statement)
+            tok = Token(tokens)
             if tok.t_types:
                 TranslateToCpp(types=tok.t_types, values=tok.t_values)
 

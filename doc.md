@@ -10,7 +10,7 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 ## Commands to execute your code
 Execute by converting .rickroll to Python
 ```
-python3 RickRoll.py -py [Source Code File Name]
+python3 RickRoll.py [Source Code File Name]
 ```
 Execute by converting .rickroll to C++ (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
 ```
@@ -19,11 +19,11 @@ python3 RickRoll.py -cpp [Source Code File Name]
 If you want to know the execution time:
 > Add "--time"
 ```
-python3 RickRoll.py -py [Source Code File Name] --time
+python3 RickRoll.py [Source Code File Name] --time
 ```
 Generate and play an audio from .rickroll (This feature probably will fail becauese it is quite new)
 ```
-python3 RickRoll.py -py [Source Code File Name] --audio
+python3 RickRoll.py [Source Code File Name] --audio
 ```
 
 ## Hello World

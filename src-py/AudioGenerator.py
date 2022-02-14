@@ -1,29 +1,32 @@
-pyttsxMissingBool=False
-playsoundMissingBool=False
-dependancyMissingBool=False
-dependancyMissingCounter=0
+pyttsxMissingBool = False
+playsoundMissingBool = False
+dependancyMissingBool = False
+dependancyMissingCounter = 0
+
 try:
     from pyttsx3 import init
 except:
-    pyttsxMissingBool=True
-    dependancyMissingBool=True
-    dependancyMissingCounter+=1
+    pyttsxMissingBool = True
+    dependancyMissingBool = True
+    dependancyMissingCounter += 1
+
 try:
     from playsound import playsound as play_wav
 except:
     playsoundMissingBool=True
     dependancyMissingBool=True
     dependancyMissingCounter+=1
-if dependancyMissingBool==True:
+
+if dependancyMissingBool:
     print(dependancyMissingCounter, " packages are missing. Would you like to install them or stop the script?(Y/N)")
-    installChoice=input()
-    if installChoice="Y":
+    installChoice=input().upper()
+    if installChoice=="Y":
         print("pip needed for this to work.")
         import os
-        if pyttsxMissingBool==True:
+        if pyttsxMissingBool:
             print("Installing the pip package pyttsx3...")
             os.system("pip install pyttsx3")
-        if playsoundMissingBool=True:
+        if playsoundMissingBool:
             print("Installing the pip package playsound...")
             os.system("pip install playsound")
         try:
@@ -36,9 +39,10 @@ if dependancyMissingBool==True:
         except:
             print("Failed. Stopping :(")
             exit()
-     else:
+    else:
          print("Stopping...")
          exit()
+
 from PublicVariables import *
 
 engine = init()

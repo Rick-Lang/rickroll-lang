@@ -1,5 +1,5 @@
 from PublicVariables import *
-from Lexer import Lexer
+from Lexer import lexicalize
 
 # Token types
 TT_keyword        = 'KEYWORDS'
@@ -287,8 +287,8 @@ def run_in_interpreter(src_file_name):
         content[-1] += '\n'
         for i in range(len(content)):
             current_line += 1
-            lexer = Lexer(stmt=content[i])    # "statement" is a line of code the in source code
-            token = Token(raw_tokens=lexer.tokens)
+            tokens = lexicalize(stmt=content[i])    # "statement" is a line of code the in source code
+            token = Token(raw_tokens=tokens)
 
             if token.tokens:
                 try:
