@@ -8,14 +8,14 @@ from argparse import ArgumentParser
 def play_audio(src_file_name):
     import AudioGenerator
     from pyrickroll import Token
-    from Lexer import Lexer
+    from Lexer import lexicalize
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
         content[-1] += '\n'
         for statement in content:
-            lexer = Lexer(statement)
-            tok = Token(lexer.tokens)
+            tokens = lexicalize(statement)
+            tok = Token(tokens)
 
             for i in range(len(tok.t_values)):
                 AudioGenerator.play(tok.t_values[i])
