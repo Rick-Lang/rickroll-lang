@@ -1,17 +1,15 @@
 <img src="img/ico1.jpg" align="right" width="160" height="160"/>
 <img src="https://avatars.githubusercontent.com/u/83736946?s=200&v=4" align="right" width="150" height="150"/>
+<br>
 
 # Rick Roll Programming Language
-
 ![Build](https://img.shields.io/badge/Build-passing-orange?style=for-the-badge&logo=appveyor)
 ![Python](https://img.shields.io/badge/Python-3.6%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 <br>
 Rick Roll Programming Language, a language for rickrolling!
 <br>
-
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
-
 
 ## Hello World
 **Although RickRoll can be transpiled into Python3, its syntax is not completely similar to Python's**
