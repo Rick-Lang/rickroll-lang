@@ -1,5 +1,5 @@
-<img src="img/ico1.jpg" align="right" width="160" height="160"/>
-<img src="https://avatars.githubusercontent.com/u/83736946?s=200&v=4" align="right" width="150" height="150"/>
+<img src="img/ico1.jpg" align="right" width="130" height="130"/>
+<img src="https://avatars.githubusercontent.com/u/83736946?s=200&v=4" align="right" width="120" height="120"/>
 <br>
 
 # Rick Roll Programming Language
