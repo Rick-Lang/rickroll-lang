@@ -117,14 +117,14 @@ class Token:
             variables.append(tok)
             add_to_tokens(TT_variable, tok)
         # Functions
-        elif self.last_kw == KW_def1:
+        elif self.last_kw == KW_def:
             functions.append(tok)
             add_to_tokens.append(TT_function, tok)
         elif tok and tok in variables:
             add_to_tokens(TT_variable, tok)
 
         else:
-            error(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
+            raise SyntaxError(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
 
 ####################################################################################
 'Translate To C++'
@@ -139,7 +139,7 @@ class TranslateToCpp:
             self.convert(kw=self.values[0])
 
         else:
-            error(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+            raise SyntaxError(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
     # Convert RickRoll tokens to C++
     def convert(self, kw):
@@ -159,7 +159,7 @@ class TranslateToCpp:
             if(CONDI){
             """
             CONDI = join_list(self.values[1:])
-            self.write(f'if({EXPR})' + '{')
+            self.write(f'if({CONDI})' + '{')
         if kw == KW_let:
             """
             give ID up EXPR;
@@ -178,7 +178,7 @@ class TranslateToCpp:
             while(CONDI){
             """
             CONDI = join_list(self.values[1:])
-            self.write(f'while({EXPR})' + '{')
+            self.write(f'while({CONDI})' + '{')
 
         if kw == KW_break:
             self.write('break;')
@@ -186,7 +186,7 @@ class TranslateToCpp:
         if kw == KW_continue:
             self.write('continue;')
 
-        if kw == KW_def1:
+        if kw == KW_def:
             """
             int ID(ARGS){
             """
@@ -210,6 +210,7 @@ class TranslateToCpp:
 'Main'
 ####################################################################################
 
+
 def run_in_cpp(src_file_name):
     global current_line
 
@@ -226,11 +227,10 @@ def run_in_cpp(src_file_name):
             if tok.t_types:
                 TranslateToCpp(types=tok.t_types, values=tok.t_values)
 
-
     f_name = src_file_name.split('.')
     f_name = join_list(f_name[:-1])
 
-    with open(f'{f_name}.cpp', 'w', encoding='utf-8') as f:
+    with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
         f.write(c_code)
 
     if os_name() == 'Windows':
