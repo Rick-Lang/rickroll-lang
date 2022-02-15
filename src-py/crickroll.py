@@ -119,7 +119,7 @@ class Token:
         # Functions
         elif self.last_kw == KW_def:
             functions.append(tok)
-            add_to_tokens.append(TT_function, tok)
+            add_to_tokens(TT_function, tok)
         elif tok and tok in variables:
             add_to_tokens(TT_variable, tok)
 
@@ -168,7 +168,7 @@ class TranslateToCpp:
             EXPR = join_list(self.values[self.values.index('up') + 1:])
             TYPE = v_types(eval(str(EXPR)))
 
-            self.write(f'{TYPE} {ID}={EXPR};')
+            self.write(f'auto {ID}={EXPR};')
 
         if kw == KW_endless_loop:
             self.write('while(true){')
@@ -228,7 +228,7 @@ def run_in_cpp(src_file_name):
                 TranslateToCpp(types=tok.t_types, values=tok.t_values)
 
     f_name = src_file_name.split('.')
-    f_name = join_list(f_name[:-1])
+    f_name = ".".join((f_name[:-1]))
 
     with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
         f.write(c_code)
