@@ -13,7 +13,7 @@ def precedence(op):
     if op in ['*', '/']: return 2
     return 0
 
-def applyOp(a, b, op): ##a and b can be either ints or strs due to the eval function, op is the string of the operator.
+def applyOp(a, b, op): ##a and b can be either ints or strs due to the use of the eval function, op is the string of the operator.
     answ = eval(f"{a}{op}{b}")
     if isinstance(answ, bool) == True: return str(answ) ##Since your initial version returned the str of the boolean responses.
     return answ
