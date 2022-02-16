@@ -1,6 +1,6 @@
 from PublicVariables import *
 
-all_keyword_string = ''.join(keywords)
+all_keyword_string = ','.join(keywords)
 
 
 def lexicalize(stmt):

@@ -2,6 +2,7 @@ from time import time
 start = time()      # Set and start a timer
 
 from sys import stdout
+from traceback import format_exc
 from argparse import ArgumentParser
 
 
@@ -47,8 +48,7 @@ def main():
             try:
                 from pyrickroll import run_in_py
                 exec(run_in_py(args.file), globals(), globals())
-            except:
-                from traceback2 import format_exc
+            except Exception:
                 error_msg = format_exc().split('File "<string>",')[-1]
                 stdout.write(f'Exception in{error_msg}')
 

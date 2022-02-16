@@ -1,3 +1,2 @@
-traceback2
 pyttsx3
 playsound
