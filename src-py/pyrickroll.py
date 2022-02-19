@@ -235,7 +235,7 @@ class TranslateToPython:
             """
                 return1 EXPR return2
             """
-            EXPR = join_list(self.values[1: -1])
+            EXPR = ",".join(self.values[1:])
             self.write(f'return {EXPR}')
 
         elif kw == KW_end:
