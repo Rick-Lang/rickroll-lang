@@ -16,6 +16,7 @@ TT_char           = 'VALUE-Char'
 TT_string         = 'VALUE-String'
 TT_list           = 'VALUE-List'
 
+TT_arguments = 'ARGUMENTS'
 TT_variable   = 'VARIABLE'
 TT_function   = 'FUNCTION'
 
@@ -90,7 +91,14 @@ class Token:
 
 
         if tok in keywords:
-            add_to_tokens(TT_keyword, tok)
+            if tok == 'is': add_to_tokens(TT_operator, '==')
+            elif tok == 'isnot': add_to_tokens(TT_operator, '!=')
+            elif tok == 'isgreaterthan': add_to_tokens(TT_operator, '>')
+            elif tok == 'islessthan': add_to_tokens(TT_operator, '<')
+            elif tok == 'isgreaterthanorequalto': add_to_tokens(TT_operator, '>=')
+            elif tok == 'islessthanorequalto': add_to_tokens(TT_operator, '<=')
+            else: add_to_tokens(TT_keyword, tok)
+            
             self.last_kw = tok
         elif tok in OP_build_in_functions:
             add_to_tokens(TT_build_in_funcs, tok)
@@ -124,7 +132,7 @@ class Token:
             add_to_tokens(TT_variable, tok)
 
         else:
-            raise SyntaxError(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
+            add_to_tokens(TT_arguments, tok)
 
 ####################################################################################
 'Translate To C++'
