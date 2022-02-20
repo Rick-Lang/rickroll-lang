@@ -25,20 +25,18 @@ c_separators = {
 }
 
 variables = []
+declared_variables = set()
 functions = []
 
 current_line = 0
 
-
-# RickRoll-Lang API in C++
-API_Length = """int Length(int arr){
-    return sizeof arr / sizeof arr[0];
-}
-
-"""
-
 # C++ source code, translated from RickRoll source code
-c_code = '#include<iostream>\nusing namespace std;\n'
+c_code = '''#include<iostream>
+using namespace std;
+int length(int arr[]){
+    return sizeof(arr) / sizeof(arr[0]);
+}
+'''
 
 
 # Determine variable types
@@ -174,9 +172,12 @@ class TranslateToCpp:
             """
             ID = self.values[1]
             EXPR = join_list(self.values[self.values.index('up') + 1:])
-            TYPE = v_types(eval(str(EXPR)))
 
-            self.write(f'auto {ID}={EXPR};')
+            if ID not in declared_variables:
+                self.write(f'auto {ID}={EXPR};')
+                declared_variables.add(ID)
+            else:
+                self.write(f'{ID}={EXPR};')
 
         if kw == KW_endless_loop:
             self.write('while(true){')
