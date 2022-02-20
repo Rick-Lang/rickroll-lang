@@ -1,5 +1,5 @@
 from os import system
-from platform import system as os_name
+from sys import platform
 
 from Lexer import lexicalize
 from PublicVariables import *
@@ -233,12 +233,13 @@ def run_in_cpp(src_file_name):
     with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
         f.write(c_code)
 
-    if os_name() == 'Windows':
+    if platform == 'win32':
         exe_file = f'{f_name}.exe'
         system(f'g++ {f_name + ".cpp"} -o {exe_file}')
         system(f'{exe_file}')
-
-    if os_name() == 'Linux':
+    elif platform == 'linux':
         exe_file = f'{f_name}.out'
         system(f'g++ {f_name}.cpp -o {exe_file}')
         system(f'./{exe_file}')
+    else:
+        raise NotImplementedError(f"Platform {platform} is not supported")
