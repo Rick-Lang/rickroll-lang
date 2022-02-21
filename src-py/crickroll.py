@@ -199,6 +199,11 @@ class TranslateToCpp:
             """
             int ID(ARGS){
             """
+            ID = self.values[1]
+            ARGS = ", ".join(["auto "+x for x in self.values[2:]])
+
+            self.write(f"auto {ID} = []({ARGS}) {{")
+
         if kw == KW_return1:
             """
             return EXPR;
@@ -207,7 +212,7 @@ class TranslateToCpp:
             self.write(f'return {EXPR};')
 
         if kw == KW_end:
-            self.write('}')
+            self.write('};')
 
     # Write to C++ code
     def write(self, content):
