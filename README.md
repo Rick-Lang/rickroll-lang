@@ -18,7 +18,7 @@ Rick Roll Programming Language, a language for rickrolling!
 3. Every identifier (function or variable name) should contain more than one character
 4. **The keywords can be separated freely**
 
-Rick Roll-Lang:
+Rickroll-Lang:
 ```
 take me to ur heart
     give msg up "Never gonna give you up, never gonna let you down~\n"
@@ -119,7 +119,7 @@ We don't usually update [The Chinese Documentation / 中文文档](https://githu
 
 
 # Todo!
-In order to make RICK ROll becoming a world heritage, YOU and I still have a bunch of things to do!
+In order to make RICKROll becoming a world heritage, YOU and I still have a bunch of things to do!
 1. Add more keywords and built-in functions!
 2. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
 3. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
@@ -127,24 +127,30 @@ In order to make RICK ROll becoming a world heritage, YOU and I still have a bun
 5. Improve the RickRoll interpreter!
 6. Support "writing code by singing"!
 7. Design a better icon!
-8. [**SPREAD RICK ROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
+8. [**SPREAD RICKROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
 
-# Rick Roll Language Website
+# Rickroll Language Website
 **[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX)**
 <br>
 **_or_**
 <br>
 **https://rick-lang.github.io/rickroll-lang/**
 
-# Offcial Discord Server/Support
+# Offcial Discord Server/Contact
 https://discord.gg/yzZ3MfGZ8A
 Join this server to chat with cool people or for support
-<br /> We currently need some people to join! 
+<br /> We currently need some people to join!
 
-# Credit: Rick Astley 
+Wechat/微信: githubsherlockcxk
+<br>
+Discord: Satin Wuker#0572
+<br/> Valcan#1407
+
+# Credit: Rick Astley
  Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
-<br /> Twitter: https://twitter.com/rickastley
-<br /> Facebook: https://www.facebook.com/RickAstley
+<br/> Twitter: https://twitter.com/rickastley
+<br/> Facebook: https://www.facebook.com/RickAstley
+<br/> Spotify: https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt
 
 
 # Contributors
@@ -155,9 +161,3 @@ Join this server to chat with cool people or for support
 - _**[Valcan3344](https://github.com/Valcan3344)**_   (Managing the Rickroll discord server)
 - _**[Tantatorn-dev](https://github.com/Tantatorn-dev)**_  (Contributed to Rickroll examples)
 - _**[calebrwalk5](https://github.com/calebrwalk5)**_  (Contributed to Rickroll examples)
-
-# Contact
-Wechat/微信: githubsherlockcxk
-<br>
-Discord: Satin Wuker#0572
-<br /> Valcan#1407
