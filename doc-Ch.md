@@ -5,7 +5,7 @@
 
 > 用一般方法执行源代码：
 ```
-python3 RickRoll.py -py [Source Code File Name]
+python3 RickRoll.py [Source Code File Name]
 ```
 > 将 .rickroll 翻译到 .cpp (C++): (需要G++编译器，而且此功能目前还不成熟，可能会出问题)
 ```
@@ -13,11 +13,11 @@ python3 RickRoll.py -cpp [Source Code File Name]
 ```
 > 如果客户想知道执行时间：
 ```
-python3 RickRoll.py -py [Source Code File Name] --time
+python3 RickRoll.py [Source Code File Name] --time
 ```
 > 从RickRoll源码中生成并播放一个音频（但此功能不算成熟，可能会出错）
 ```
-python3 RickRoll.py -py [Source Code File Name] --audio
+python3 RickRoll.py [Source Code File Name] --audio
 ```
 
 
