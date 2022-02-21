@@ -101,7 +101,7 @@ Usage:
 ```
 python3 RickRoll.py -r [Source Code File Name] --audio
 ```
-This generates an audio from the .rickroll program and plays it in your terminal
+After running this command, the generator generates an audio from the .rickroll program and plays it on your terminal
 
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
