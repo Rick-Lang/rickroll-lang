@@ -117,6 +117,8 @@ We don't usually update [The Chinese Documentation / 中文文档](https://githu
 <br>
 **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
 
+# Purpose
+Despite this language is an esoteric programming language, it has its own significance. I believe that rick roll is not only a way to promote people’s communication, it is also one of the most paramount art in the human history. The purpose of the Rick Roll Language is to introduce this art to people in a distinctive way – programming.
 
 # Todo!
 In order to make RICKROll becoming a world heritage, YOU and I still have a bunch of things to do!
