@@ -97,7 +97,7 @@ python3 RickRoll.py [Source Code File Name] --audio
 
 
 ## Generate Audio
-How to use this generator:
+Usage:
 ```
 python3 RickRoll.py -r [Source Code File Name] --audio
 ```
