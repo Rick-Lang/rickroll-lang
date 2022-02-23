@@ -1,5 +1,5 @@
 from os import system
-from platform import system as os_name
+from sys import platform
 
 from Lexer import lexicalize
 from PublicVariables import *
@@ -16,6 +16,7 @@ TT_char           = 'VALUE-Char'
 TT_string         = 'VALUE-String'
 TT_list           = 'VALUE-List'
 
+TT_arguments = 'ARGUMENTS'
 TT_variable   = 'VARIABLE'
 TT_function   = 'FUNCTION'
 
@@ -24,20 +25,18 @@ c_separators = {
 }
 
 variables = []
+declared_variables = set()
 functions = []
 
 current_line = 0
 
-
-# RickRoll-Lang API in C++
-API_Length = """int Length(int arr){
-    return sizeof arr / sizeof arr[0];
-}
-
-"""
-
 # C++ source code, translated from RickRoll source code
-c_code = '#include<iostream>\nusing namespace std;\n'
+c_code = '''#include<iostream>
+using namespace std;
+int length(int arr[]){
+    return sizeof(arr) / sizeof(arr[0]);
+}
+'''
 
 
 # Determine variable types
@@ -90,7 +89,14 @@ class Token:
 
 
         if tok in keywords:
-            add_to_tokens(TT_keyword, tok)
+            if tok == 'is': add_to_tokens(TT_operator, '==')
+            elif tok == 'isnot': add_to_tokens(TT_operator, '!=')
+            elif tok == 'isgreaterthan': add_to_tokens(TT_operator, '>')
+            elif tok == 'islessthan': add_to_tokens(TT_operator, '<')
+            elif tok == 'isgreaterthanorequalto': add_to_tokens(TT_operator, '>=')
+            elif tok == 'islessthanorequalto': add_to_tokens(TT_operator, '<=')
+            else: add_to_tokens(TT_keyword, tok)
+            
             self.last_kw = tok
         elif tok in OP_build_in_functions:
             add_to_tokens(TT_build_in_funcs, tok)
@@ -124,7 +130,7 @@ class Token:
             add_to_tokens(TT_variable, tok)
 
         else:
-            raise SyntaxError(f'Exception in line {current_line}: the token [{tok}] is invalid...\n')
+            add_to_tokens(TT_arguments, tok)
 
 ####################################################################################
 'Translate To C++'
@@ -166,9 +172,12 @@ class TranslateToCpp:
             """
             ID = self.values[1]
             EXPR = join_list(self.values[self.values.index('up') + 1:])
-            TYPE = v_types(eval(str(EXPR)))
 
-            self.write(f'auto {ID}={EXPR};')
+            if ID not in declared_variables:
+                self.write(f'auto {ID}={EXPR};')
+                declared_variables.add(ID)
+            else:
+                self.write(f'{ID}={EXPR};')
 
         if kw == KW_endless_loop:
             self.write('while(true){')
@@ -190,6 +199,11 @@ class TranslateToCpp:
             """
             int ID(ARGS){
             """
+            ID = self.values[1]
+            ARGS = ", ".join(["auto "+x for x in self.values[2:]])
+
+            self.write(f"auto {ID} = []({ARGS}) {{")
+
         if kw == KW_return1:
             """
             return EXPR;
@@ -198,7 +212,7 @@ class TranslateToCpp:
             self.write(f'return {EXPR};')
 
         if kw == KW_end:
-            self.write('}')
+            self.write('};')
 
     # Write to C++ code
     def write(self, content):
@@ -233,12 +247,13 @@ def run_in_cpp(src_file_name):
     with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
         f.write(c_code)
 
-    if os_name() == 'Windows':
+    if platform == 'win32':
         exe_file = f'{f_name}.exe'
         system(f'g++ {f_name + ".cpp"} -o {exe_file}')
         system(f'{exe_file}')
-
-    if os_name() == 'Linux':
+    elif platform == 'linux':
         exe_file = f'{f_name}.out'
         system(f'g++ {f_name}.cpp -o {exe_file}')
         system(f'./{exe_file}')
+    else:
+        raise NotImplementedError(f"Platform {platform} is not supported")
