@@ -1,4 +1,4 @@
-from PublicVariables import *
+from Keywords import *
 
 all_keyword_string = ''.join(keywords)
 
