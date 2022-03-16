@@ -1,4 +1,4 @@
-from PublicVariables import *
+from Keywords import *
 from Lexer import lexicalize
 
 # Token types
