@@ -165,12 +165,21 @@ class TranslateToPython:
             """
                 return1 EXPR return2
             """
-            EXPR = "".join(self.values[1:])
+            EXPR = join_list(self.values[1:])
             self.write(f'return {EXPR}')
 
         elif kw == KW_end:
             self.write('pass')
             self.indent_count -= 1
+
+        elif kw == KW_import1:
+            """
+                import1 lib_name import2
+            """
+            self.write(f'import {self.values[1]}')
+
+        elif kw == KW_PY:
+            self.write(join_list(self.values[1:]))
 
 
     def write(self, stmt):
