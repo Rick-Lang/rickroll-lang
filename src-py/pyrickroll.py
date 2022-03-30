@@ -22,12 +22,7 @@ kw_exe_outside_main = {KW_main, KW_def, KW_import1}
 variables = []
 functions = []
 
-indent_count = 0                       # Determine if needs to indent
 current_line = 0
-
-is_main = False                        # Is the current statement in main
-is_function = False                    # Is the current statement in a function
-
 
 # Python source code, translated from RickRoll source code
 py_code = ""
@@ -51,10 +46,7 @@ def v_types(string):
     if count == len(string) and string.count('.') < 2:
         return 'number'
 
-####################################################################################
-'Token Class'
-####################################################################################
-class Token:    # Return token types
+class Token:
     def __init__(self, tokens):
         self.t_types = []
         self.t_values = []
@@ -117,10 +109,6 @@ class Token:    # Return token types
             self.add_to_tokens(TT_arguments, tok)
 
 
-####################################################################################
-'Translate To Python'
-####################################################################################
-
 class TranslateToPython:
 
     def __init__(self):
@@ -128,30 +116,30 @@ class TranslateToPython:
         self.types = []
         # tokens
         self.values = []
+        self.is_main = False
+        self.is_function = False
+        self.indent_count = 0
 
     def translate(self, types, values):
         self.types = types
         self.values = values
-        # if there is code in the current line of code
-        if self.types:
-
-            if self.types[0] == TT_keyword or self.values[0] in functions or self.values[0] in libraries:
-                if is_main or (is_main == False and self.values[0] in kw_exe_outside_main) or is_function:
-                    # Convert RickRoll code to Python
-                    self.convert(kw=self.values[0])
-
-                else:
-                    stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
-
-            else:
-                stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
-
-        # if this line doesn't have code, then write "\n"
-        else:
+        # if there is no code in the current line of code
+        if not self.types:
             self.write("")
+            return
+        if not (self.types[0] == TT_keyword or self.values[0] in functions or self.values[0] in libraries):
+            stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+            return
+
+        if self.is_main or (self.is_main == False and self.values[0] in kw_exe_outside_main) or self.is_function:
+            # Convert Rickroll code to Python
+            self.convert(kw=self.values[0])
+
+        else:
+            stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
+
 
     def convert(self, kw):
-        global indent_count, is_main, is_function
 
         if kw in functions:
             self.write(join_list(self.values))
@@ -159,12 +147,12 @@ class TranslateToPython:
         elif kw == KW_main:
             self.write('if __name__ == "__main__":')
 
-            is_main = True
-            indent_count += 1
+            self.is_main = True
+            self.indent_count += 1
 
-        elif indent_count == 0:
-            if is_main: is_main = False
-            if is_function: is_function = False
+        elif self.indent_count == 0:
+            self.is_main = False
+            self.is_function = False
 
         elif kw == KW_print:
             """
@@ -190,28 +178,28 @@ class TranslateToPython:
 
             CONDI = join_list(self.values[1:])
             self.write(f'if {CONDI}:')
-            indent_count += 1
+            self.indent_count += 1
 
         elif kw == KW_try:
             self.write('try:')
-            indent_count += 1
+            self.indent_count += 1
 
         elif kw == KW_except:
             self.write('except:')
-            indent_count += 1
+            self.indent_count += 1
 
         elif kw == KW_endless_loop:
             self.write('while True:')
-            indent_count += 1
+            self.indent_count += 1
 
         elif kw == KW_while_loop:
             """
-                while1 CONDI while2
+                while1 CONDI
             """
 
             CONDI = join_list(self.values[1:])
             self.write(f'while {CONDI}:')
-            indent_count += 1
+            self.indent_count += 1
 
         elif kw == KW_break:
             self.write('break')
@@ -221,15 +209,15 @@ class TranslateToPython:
 
         elif kw == KW_def:
             """
-                def1 ID ARGS def2
+                def ID ARGS
             """
             ID = self.values[1]
             ARGS = join_list(self.values[2:])
 
             self.write(f'def {ID}({ARGS}):')
 
-            is_function = True
-            indent_count += 1
+            self.is_function = True
+            self.indent_count += 1
 
         elif kw == KW_return1:
             """
@@ -240,12 +228,12 @@ class TranslateToPython:
 
         elif kw == KW_end:
             self.write('pass')
-            indent_count -= 1
+            self.indent_count -= 1
 
 
     def write(self, stmt):
         global py_code
-        py_code += f"{'  ' * indent_count + stmt}\n"
+        py_code += f"{'  ' * self.indent_count + stmt}\n"
 
 
 def run_in_py(src_file_name):
