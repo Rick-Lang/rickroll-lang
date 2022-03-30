@@ -1,21 +1,6 @@
 from Keywords import *
 from Lexer import lexicalize
 
-# Token types
-TT_keyword  = 'KEYWORDS'
-TT_operator = 'OPERATORS'
-TT_number   = 'VALUE-NUMBER'
-TT_bool     = 'VALUE-BOOL'
-TT_string   = 'VALUE-STRING'
-TT_list     = 'VALUE-LIST'
-
-TT_arguments = 'ARGUMENTS'
-TT_variable = 'VARIABLE'
-TT_function = 'FUNCTION'
-TT_library  = 'LIBRARY'
-TT_build_in_funcs = 'BUILD-IN-FUNCS'
-
-
 # Keywords can execute outside main function
 kw_exe_outside_main = {KW_main, KW_def, KW_import1}
 
@@ -24,31 +9,10 @@ functions = []
 
 current_line = 0
 
-# Python source code, translated from RickRoll source code
-py_code = ""
-
 libraries = {}
-
-# Determine variable types
-def v_types(string):
-    string = str(string)
-    # Boolean
-    if string in {'True', 'False'}:
-        return 'bool'
-    # String
-    if string[0] == '"' and string[-1] == '"':
-        return 'string'
-    # List
-    if string[0] == '[' and string[-1] == ']':
-        return 'list'
-    # Determine the string is int or float
-    count = sum(char in digits for char in string)
-    if count == len(string) and string.count('.') < 2:
-        return 'number'
 
 class Token:
     def __init__(self, tokens):
-        self.t_types = []
         self.t_values = []
         self.last_kw = ''
 
@@ -56,78 +20,54 @@ class Token:
             if tok:
                 self.__make_token(tok)
 
-    def add_to_tokens(self, type, token):
-        self.t_types.append(type)
-        self.t_values.append(token)
-
     def __make_token(self, tok):
         global variables, functions
 
         if tok in keywords:
-            if tok == 'is': self.add_to_tokens(TT_operator, '==')
-            elif tok == 'isnot': self.add_to_tokens(TT_operator, '!=')
-            elif tok == 'isgreaterthan': self.add_to_tokens(TT_operator, '>')
-            elif tok == 'islessthan': self.add_to_tokens(TT_operator, '<')
-            elif tok == 'isgreaterthanorequalto': self.add_to_tokens(TT_operator, '>=')
-            elif tok == 'islessthanorequalto': self.add_to_tokens(TT_operator, '<=')
-            else: self.add_to_tokens(TT_keyword, tok)
+            if tok == 'is': self.t_values.append('==')
+            elif tok == 'isnot': self.t_values.append('!=')
+            elif tok == 'isgreaterthan': self.t_values.append('>')
+            elif tok == 'islessthan': self.t_values.append('<')
+            elif tok == 'isgreaterthanorequalto': self.t_values.append('>=')
+            elif tok == 'islessthanorequalto': self.t_values.append('<=')
+            else: self.t_values.append(tok)
 
             self.last_kw = tok
 
         elif tok in OP_build_in_functions:
-            if tok == 'length': self.add_to_tokens(TT_build_in_funcs, 'len')
-            if tok == 'to_string': self.add_to_tokens(TT_build_in_funcs, 'str')
-            if tok == 'to_int': self.add_to_tokens(TT_build_in_funcs, 'int')
-            if tok == 'to_float': self.add_to_tokens(TT_build_in_funcs, 'float')
-
-        # Variable types
-        elif v_types(tok) == 'bool':
-            self.add_to_tokens(TT_bool, tok)
-        elif v_types(tok) == 'string':
-            self.add_to_tokens(TT_string, tok)
-        elif v_types(tok) == 'list':
-            self.add_to_tokens(TT_list, tok)
-        elif v_types(tok) == 'number':
-            self.add_to_tokens(TT_number, tok)
-
-        # Operators
-        elif tok in operators:
-            self.add_to_tokens(TT_operator, tok)
+            if tok == 'length': self.t_values.append('len')
+            if tok == 'to_string': self.t_values.append('str')
+            if tok == 'to_int': self.t_values.append('int')
+            if tok == 'to_float': self.t_values.append('float')
 
         # Variables
         elif self.last_kw == KW_let:
             variables.append(tok)
-            self.add_to_tokens(TT_variable, tok)
+            self.t_values.append(tok)
         # Functions
         elif self.last_kw == KW_def:
             functions.append(tok)
-            self.add_to_tokens(TT_function, tok)
-        elif tok and tok in variables:
-            self.add_to_tokens(TT_variable, tok)
-
+            self.t_values.append(tok)
         else:
-            self.add_to_tokens(TT_arguments, tok)
+            self.t_values.append(tok)
 
 
 class TranslateToPython:
-
     def __init__(self):
-        # types of the tokens
-        self.types = []
         # tokens
         self.values = []
         self.is_main = False
         self.is_function = False
         self.indent_count = 0
+        self.py_code = ""               # Python source code, translated from RickRoll source code
 
-    def translate(self, types, values):
-        self.types = types
+    def translate(self, values):
         self.values = values
         # if there is no code in the current line of code
-        if not self.types:
+        if not self.values:
             self.write("")
             return
-        if not (self.types[0] == TT_keyword or self.values[0] in functions or self.values[0] in libraries):
+        if not (self.values[0] in keywords or self.values[0] in functions or self.values[0] in libraries):
             stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
             return
 
@@ -136,7 +76,9 @@ class TranslateToPython:
             self.convert(kw=self.values[0])
 
         else:
-            stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
+            stdout.write(
+            f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n'
+            )
 
 
     def convert(self, kw):
@@ -232,8 +174,7 @@ class TranslateToPython:
 
 
     def write(self, stmt):
-        global py_code
-        py_code += f"{'  ' * self.indent_count + stmt}\n"
+        self.py_code += f"{'  ' * self.indent_count + stmt}\n"
 
 
 def run_in_py(src_file_name):
@@ -250,6 +191,6 @@ def run_in_py(src_file_name):
             current_line += 1
 
             token = Token(lexicalize(statement))
-            transpiler.translate(types=token.t_types, values=token.t_values)
+            transpiler.translate(values=token.t_values)
 
-    return py_code
+    return transpiler.py_code
