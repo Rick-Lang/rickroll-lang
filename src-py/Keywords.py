@@ -28,6 +28,8 @@ KW_less_or_equals_OP = 'islessthanorequalto'
 KW_is_not_OP = 'isnot'
 KW_equals_OP = 'is'
 
+KW_PY = "py:"
+
 keywords = [
     KW_print,
     KW_if,
@@ -51,7 +53,9 @@ keywords = [
     KW_greater_or_equals_OP,
     KW_less_or_equals_OP,
     KW_is_not_OP,
-    KW_equals_OP
+    KW_equals_OP,
+
+    KW_PY
 ]
 
 
