@@ -1,6 +1,6 @@
 from Keywords import *
 
-all_keyword_string = ''.join(keywords)
+all_keyword_string = ','.join(keywords)
 
 def lexicalize(stmt):
     return order_tokens(tokens=basic_tokenize(stmt))
@@ -28,9 +28,9 @@ def basic_tokenize(stmt):
 
 def order_tokens(tokens):
     """
-    如果当前token+kw_in_statement在all keyword string里，kw_in_statement += token
-    如果当前token+kw_in_statement不在在all keyword string里，将当前kw_in_statement加到final_token里
-    如果statement结束，将kw_in_statement加到final_token里
+    if current token+kw_in_statement is in all keyword string, kw_in_statement += token
+    if current token+kw_in_statement not in all keyword string, add kw_in_statement to final_token
+    if statement is ended, add kw_in_statement to final_token
     """
     final_token = []
     kw_in_statement = ''
