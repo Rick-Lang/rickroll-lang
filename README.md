@@ -2,7 +2,7 @@
 <img src="https://avatars.githubusercontent.com/u/83736946?s=200&v=4" align="right" width="150" height="150"/>
 <br>
 
-# Rick Roll Programming Language
+# Rickroll Programming Language
 ![Build](https://img.shields.io/badge/Build-passing-orange?style=for-the-badge&logo=appveyor)
 ![Python](https://img.shields.io/badge/Python-3.6%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
@@ -15,8 +15,7 @@ Rick Roll Programming Language, a language for rickrolling!
 **Although Rickroll can be transpiled into Python3, its syntax is not completely similar to Python's**
 1. It doesn't need indentation
 2. The code must be written inside the main method, otherwise the interpreter will not execute
-3. Every identifier (function or variable name) should contain more than one character
-4. **The keywords can be separated freely**
+3. **The keywords can be separated freely**
 
 Rickroll-Lang:
 ```
@@ -118,7 +117,7 @@ We don't usually update [The Chinese Documentation / 中文文档](https://githu
 **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
 
 # Purpose
-Despite this language is an esoteric programming language, it has its own significance. I believe that rick roll is not only a way to promote people’s communication, it is also one of the most paramount art in the human history. The purpose of the Rick Roll Language is to introduce this art to people in a distinctive way – programming.
+Despite this language is an esoteric programming language, it has its own significance. I believe that rickroll is not only a way to promote people’s communication, it is also one of the most paramount art in the human history. The purpose of the Rickroll Language is to introduce this art to people in a distinctive way – programming.
 
 # Todo!
 In order to make RICKROll becoming a world heritage, YOU and I still have a bunch of things to do!
