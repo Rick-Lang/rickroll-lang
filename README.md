@@ -12,7 +12,7 @@ Rick Roll Programming Language, a language for rickrolling!
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
 ## Hello World
-**Although RickRoll can be transpiled into Python3, its syntax is not completely similar to Python's**
+**Although Rickroll can be transpiled into Python3, its syntax is not completely similar to Python's**
 1. It doesn't need indentation
 2. The code must be written inside the main method, otherwise the interpreter will not execute
 3. Every identifier (function or variable name) should contain more than one character
@@ -93,15 +93,15 @@ python3 RickRoll.py [Source Code File Name] --audio
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate RickRoll source code to Python3 and C++*
 - *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
-- *Documentation for both English and Chinese*
+- *Documentation for both English and Chinese* (Hope you guys can pull request docs in other languages lol)
 
 
 ## Generate Audio
-Usage:
+Command:
 ```
 python3 RickRoll.py -r [Source Code File Name] --audio
 ```
-After running this command, the generator generates an audio from the .rickroll program and plays it on your terminal
+After running this command, the generator is gonna generate an audio from the .rickroll program and play it on your terminal
 
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
