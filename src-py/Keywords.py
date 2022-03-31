@@ -1,5 +1,3 @@
-from sys import stdout
-
 # Keywords
 KW_print        = 'ijustwannatelluhowimfeeling'
 KW_if           = 'andifuaskmehowimfeeling'
