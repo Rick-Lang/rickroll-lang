@@ -120,3 +120,23 @@ Equivalent to Python:
 def do_something(arg1, arg2):
     return arg1, arg2
 ```
+
+## Import Python Library/file
+```
+we know the LIB_NAME and we're gonna play it
+```
+Equivalent to Python:
+```python
+import LIB_NAME
+```
+
+### Embed Python Code
+```
+py: print("hello Rick Astley")
+py: import sys
+```
+Equivalent to Python:
+```python
+print("hello Rick Astley")
+import sys
+```
