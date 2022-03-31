@@ -1,5 +1,5 @@
-# Language Documentation
-A rick roll oriented, dynamic, strong, interpreting esoteric programming language.
+# Documentation
+its not a rickroll! get into the car and the journey is gonna start in 3 secs
 
 # Notice:
 **The syntax of RickRoll-Lang is not same as Python**
@@ -11,7 +11,7 @@ Execute by converting .rickroll to Python
 ```
 python3 RickRoll.py [Source Code File Name]
 ```
-Execute by converting .rickroll to C++ (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
+Execute by converting .rickroll to C++ (Requires g++ compiler, however this feature is quite immature, sometimes probably won't work)
 ```
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
@@ -20,7 +20,7 @@ If you want to know the execution time:
 ```
 python3 RickRoll.py [Source Code File Name] --time
 ```
-Generate and play an audio from .rickroll (This feature probably will fail becauese it is quite new)
+Generate and play an audio from .rickroll (This feature is quite new)
 ```
 python3 RickRoll.py [Source Code File Name] --audio
 ```
