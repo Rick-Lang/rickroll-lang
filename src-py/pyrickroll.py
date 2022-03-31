@@ -1,5 +1,4 @@
-from Keywords import *
-from Lexer import lexicalize
+from Lexer import *
 
 # Keywords can execute outside main function
 kw_exe_outside_main = {KW_main, KW_def, KW_import1}
@@ -8,8 +7,6 @@ variables = []
 functions = []
 
 current_line = 0
-
-libraries = {}
 
 class Token:
     def __init__(self, tokens):
@@ -67,7 +64,7 @@ class TranslateToPython:
         if not self.values:
             self.write("")
             return
-        if not (self.values[0] in keywords or self.values[0] in functions or self.values[0] in libraries):
+        if not (self.values[0] in keywords or self.values[0] in functions):
             stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
             return
 
