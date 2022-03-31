@@ -153,12 +153,3 @@ Discord: Satin Wuker#0572
 <br/> Facebook: https://www.facebook.com/RickAstley
 <br/> Spotify: https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt
 
-
-# Contributors
-- _**[SatinWuker](https://github.com/SatinWuker)**_   (Writing code)
-- _**[StepfenShawn](https://github.com/StepfenShawn)**_  (Revising typos in source code && fixing bugs)
-- _**[Lemonix-xxx](https://github.com/Lemonix-xxx)**_   (Making suggestions / advice)
-- _**[henriqueritter](https://github.com/henriqueritter)**_   (Contributed to Rickroll examples)
-- _**[Valcan3344](https://github.com/Valcan3344)**_   (Managing the Rickroll discord server)
-- _**[Tantatorn-dev](https://github.com/Tantatorn-dev)**_  (Contributed to Rickroll examples)
-- _**[calebrwalk5](https://github.com/calebrwalk5)**_  (Contributed to Rickroll examples)
