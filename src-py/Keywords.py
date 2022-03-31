@@ -25,7 +25,7 @@ KW_less_than_OP = 'islessthan'
 KW_greater_than_OP = 'isgreaterthan'
 KW_greater_or_equals_OP = 'isgreaterthanorequalto'
 KW_less_or_equals_OP = 'islessthanorequalto'
-KW_is_not_OP = 'isnot'
+KW_is_not_OP = 'aint'
 KW_equals_OP = 'is'
 
 KW_PY = "py:"
