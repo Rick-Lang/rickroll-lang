@@ -84,6 +84,12 @@ Generate and play an audio from .rickroll
 python3 RickRoll.py [Source Code File Name] --audio
 ```
 
+## Requirements
+- [Python libraries](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
+- [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
+- G++ compiler (For translating RickRoll to C++)
+
+
 ## Features
 - *[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)*
 - *Support [Python 3.6+](https://www.python.org/downloads/release/python-3610/)*
@@ -103,11 +109,6 @@ python3 RickRoll.py -r [Source Code File Name] --audio
 After running this command, the generator is gonna generate an audio from the .rickroll program and play it on your terminal
 
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
-
-## Requirements
-- [Python libraries](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
-- [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
-- G++ compiler (For translating RickRoll to C++)
 
 ## Documentation
 We don't usually update [The Chinese Documentation / 中文文档](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)
@@ -146,6 +147,11 @@ Wechat/微信: githubsherlockcxk
 <br>
 Discord: Satin Wuker#0572
 <br/> Valcan#1407
+
+# Related Repos
+Here are the projects that are inspired by Rickroll-lang
+1. [Ricky](https://github.com/thevvx/Ricky)
+2. [Rickroll-lang API](https://github.com/FusionSid/RicklangAPI)
 
 # Credit: Rick Astley
  Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
