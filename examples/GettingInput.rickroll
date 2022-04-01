@@ -1,8 +1,10 @@
 take me to ur heart
     # Same as `import sys` in python
-    give sys up __import__("sys")
+    we know the sys and we're gonna play it
 
     # Ask for input
+    i just wanna tell u how im feeling "What is your name?\n"
+
     give name up sys.stdin.readline()
 
     # Prints hello {name}
