@@ -104,7 +104,7 @@ python3 RickRoll.py [Source Code File Name] --audio
 ## Generate Audio
 Command:
 ```
-python3 RickRoll.py -r [Source Code File Name] --audio
+python3 RickRoll.py [Source Code File Name] --audio
 ```
 After running this command, the generator is gonna generate an audio from the .rickroll program and play it on your terminal
 
