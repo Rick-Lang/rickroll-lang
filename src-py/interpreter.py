@@ -97,7 +97,7 @@ def applyOp(a, b, op):
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
-    if op=='=='and a==b or op=='!='and a!=b or op=='>'and a>b or op=='<'and a<b or op==">=" and a >= b or op=="<=" and a <= b:
+    if op=='is'and a==b or op=='aint'and a!=b or op=='>'and a>b or op=='<'and a<b or op==">=" and a >= b or op=="<=" and a <= b:
         return 'True'
     return 'False'
 
@@ -126,7 +126,7 @@ def evaluate(tokens):
                 op = ops.pop()
                 values.append(applyOp(val1, val2, op))
             ops.pop()
-        elif tokens[i] in OPERATORS:
+        elif tokens[i] in operators:
             while len(ops) != 0 and precedence(ops[-1]) >= precedence(tokens[i]):
                 val2 = values.pop()
                 val1 = values.pop()
@@ -147,7 +147,6 @@ def evaluate(tokens):
     return values[-1]
 
 variables = {}
-OPERATORS = {'+', '-', '*', '/', '==', '>', '<', '<=', '>=', '!='}
 
 class Interpreter:
     def __init__(self):
@@ -163,7 +162,8 @@ class Interpreter:
                 variables.update({node[1]:evaluate(node[2])})
 
             elif node[0] == "if_node":
-                pass
+                if evaluate(node[1]) == 'True':
+                    self.interpret(node[2])
 
 
 def run_in_interpreter(src_file_name):
