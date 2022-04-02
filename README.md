@@ -117,8 +117,8 @@ We don't usually update [The Chinese Documentation / 中文文档](https://githu
 <br>
 **[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
 
-# Purpose
-Despite this language is an esoteric programming language, it has its own significance. I believe that rickroll is not only a way to promote people’s communication, it is also one of the most paramount art in the human history. The purpose of the Rickroll Language is to introduce this art to people in a distinctive way – programming.
+# Rickroll-lang Editor
+
 
 # Todo!
 In order to make RICKROll becoming a world heritage, YOU and I still have a bunch of things to do!
@@ -147,6 +147,9 @@ Wechat/微信: githubsherlockcxk
 <br>
 Discord: Satin Wuker#0572
 <br/> Valcan#1407
+
+# Purpose
+Despite this language is an esoteric programming language, it has its own significance. I believe that rickroll is not only a way to promote people’s communication, it is also one of the most paramount art in the human history. The purpose of the Rickroll Language is to introduce this art to people in a distinctive way – programming.
 
 # Related Repos
 Here are the projects that are inspired by Rickroll-lang
