@@ -1,4 +1,4 @@
-from keywords import *
+from Keywords import *
 from Lexer import lexicalize
 from time import time
 start = time()
@@ -178,4 +178,4 @@ def run_in_interpreter(src_file_name):
 
         intpr.interpret(Node)
 
-    print(f"{time() - start}")
+    print(f"\n{time() - start}")
