@@ -58,6 +58,10 @@ keywords = [
     KW_PY
 ]
 
+INDENT_KW = [
+KW_if, KW_def, KW_try, KW_except, KW_while_loop, KW_endless_loop
+]
+
 
 # Tokens that the interpreter will totally ignore
 ignore_tokens = {'~', "'"}
@@ -71,8 +75,11 @@ separators = {
 }
 
 # Operators
-operators = {'+', '-', '*', '/', '%', '^', '=', '[', ']', '(', ')', '{', '}', ','}
-
+operators = {
+    '+', '-', '*', '/', '%', '^', '=',
+    '[', ']', '(', ')', '{', '}', ',',
+    '>', '<', '<=', '>=', '!=', 'is', 'aint'
+}
 OP_build_in_functions = {'to_string', 'to_int', 'to_float', 'length'}
 
 def join_list(l):
