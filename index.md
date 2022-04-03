@@ -22,6 +22,32 @@ Email: cxk53cn@gmail.com
 ## Discord Server
 [https://discord.gg/yzZ3MfGZ8A](https://discord.gg/yzZ3MfGZ8A)
 
+## Syntax
+Rickroll-Lang:
+```
+take me to ur heart
+    give msg up "Never gonna give you up, never gonna let you down~\n"
+    i just wanna tell u how im feeling msg
+say goodbye
+```
+Equivalent to Python
+```python
+if __name__ == '__main__':
+  msg = "Never gonna give you up, never gonna let you down~\n"
+  print(msg, end='')
+
+```
+
+Equivalent to C++
+```c++
+#include<iostream>
+using namespace std;
+int main(int argc, char* argv[]){
+    string msg = "Never gonna give you up, never gonna let you down~\n";
+    cout<<msg;
+}
+```
+
 ## Contributors
 @[SatinWuker](https://github.com/SatinWuker)
 <br>
