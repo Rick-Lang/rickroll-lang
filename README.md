@@ -98,7 +98,7 @@ python3 RickRoll.py [Source Code File Name] --audio
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate RickRoll source code to Python3 and C++*
 - *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
-- *Documentation for both English and Chinese* (Hope you guys can pull request docs in other languages lol)
+- *Chinese, Russian, and English documentation* (Hope you guys can pull request docs in other languages lol)
 
 
 ## Generate Audio
@@ -111,11 +111,13 @@ After running this command, the generator is gonna generate an audio from the .r
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
 ## Documentation
-We don't usually update [The Chinese Documentation / 中文文档](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)
+We don't usually update [The Chinese Documentation / 中文文档](doc-Ch.md)
 
-**[English](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc.md)**
+**[English](doc.md)**
 <br>
-**[简体中文](https://github.com/Rick-Lang/rickroll-lang/blob/main/doc-Ch.md)**
+**[简体中文](doc-Ch.md)**
+<br>
+**[Russian](doc-RU.md)**
 
 # Rickroll-lang Editor
 
