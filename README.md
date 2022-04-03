@@ -99,6 +99,7 @@ python3 RickRoll.py [Source Code File Name] --audio
 - *Translate RickRoll source code to Python3 and C++*
 - *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
 - *Chinese, Russian, and English documentation* (Hope you guys can pull request docs in other languages lol)
+- [*An editor for writing .rickroll code*](https://github.com/RedEnder666/RickRoll_IDE)
 
 
 ## Generate Audio
@@ -120,7 +121,7 @@ We don't usually update [The Chinese Documentation / 中文文档](doc-Ch.md)
 **[Russian](doc-RU.md)**
 
 # Rickroll-lang Editor
-
+See https://github.com/RedEnder666/RickRoll_IDE
 
 # Todo!
 In order to make RICKROll becoming a world heritage, YOU and I still have a bunch of things to do!
