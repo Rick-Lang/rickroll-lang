@@ -50,10 +50,10 @@ give c up ["Это", "и", "есть", "массив"]
 # Условия
 Индентация в Rickroll-lang необязательна.
 ```
-take me to ur heart~    # You can add "~" at the end of the statement (it is totally optional)
+take me to ur heart~    # Вы можете добавить "~" в конце выражения (Это необязательно)
     give a up 10
     and if u ask me how im feeling a is 10
-        i just wanna tell u how im feeling "A is 10!"
+        i just wanna tell u how im feeling "A это 10!"
     say goodbye
 say goodbye~
 ```
@@ -62,20 +62,20 @@ say goodbye~
 if __name__ == '__main__':
     a = 10
     if a == 10:
-        print("A is 10!")
+        print("A это 10!")
 
 ```
 
 И вы получите вывод в терминале:
 ```
-"A is 10!"
+"A это 10!"
 ```
 
 # Циклы
 RickRoll поддерживает 2 вида циклов. Первый это бесконечный цикл, а второй это цикл с предусловием(while).
 ```
 take me to ur heart
-    together forever and never to part # Endless loop
+    together forever and never to part # Вечный цикл
     say goodbye
 say_good_bye
 ```
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 ## Объявление функций
 RickRoll поддерживает создание функций возврата(функций с return)
 ```
-gonna do_something arg1, arg2 # Define a function
+gonna do_something arg1, arg2 # Объявление функции
     when i give my arg1, arg2 it will be completely # Return arg1 and arg2
 say goodbye
 ```
