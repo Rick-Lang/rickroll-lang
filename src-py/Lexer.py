@@ -3,7 +3,7 @@ from Keywords import *
 all_keyword_string = ','.join(keywords)
 
 def lexicalize(stmt):
-    return order_tokens(tokens=basic_tokenize(stmt))
+    return order_tokens(basic_tokenize(stmt))
 
 def basic_tokenize(stmt):
     current_token = ''
@@ -16,9 +16,9 @@ def basic_tokenize(stmt):
             continue
 
         if char in separators and quote_count % 2 == 0:
-            if current_token not in [' ', '\n']:
+            if current_token not in {' ', '\n'}:
                 tokens.append(current_token)
-            if char not in [' ', '\n']:
+            if char not in {' ', '\n'}:
                 tokens.append(char)
 
             current_token = ''
@@ -47,4 +47,8 @@ def order_tokens(tokens):
 
     if not temp:
         final_token.append(kw_in_statement)
+
+    while '' in final_token:
+        final_token.remove('')
+
     return final_token
