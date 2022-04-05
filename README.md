@@ -158,6 +158,7 @@ Despite this language is an esoteric programming language, it has its own signif
 Here are the projects that are inspired by Rickroll-lang
 1. [Ricky](https://github.com/thevvx/Ricky)
 2. [Rickroll-lang API](https://github.com/FusionSid/RicklangAPI)
+3. [RickRoll IDE](https://github.com/RedEnder666/RickRoll_IDE)
 
 # Credit: Rick Astley
  Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
