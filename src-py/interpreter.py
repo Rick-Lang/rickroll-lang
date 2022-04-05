@@ -27,6 +27,14 @@ class AST:
         """
         Node.append(["if_node", cond, child_stmts])
 
+    def while_node(Node: list, cond, child_stmts):
+        """
+              while_node
+               /     \
+            cond    child_stmts
+        """
+        Node.append(["while_node", cond, child_stmts])
+
 
 class Parser(AST):
     def __init__(self, tokens, Node):
@@ -134,7 +142,7 @@ def evaluate(tokens):
                 values.append(applyOp(val1, val2, op))
             ops.append(tokens[i])
         else:
-            var_value = variables[tokens[i]]
+            var_value = str(variables[tokens[i]])
             values.append(int(var_value) if var_value.isdigit() else var_value)
 
         i += 1
@@ -165,6 +173,10 @@ class Interpreter:
                 if evaluate(node[1]) == 'True':
                     self.interpret(node[2])
 
+            elif node[0] == "while_node":
+                while evaluate(node[1]) == 'True':
+                    self.interpret(node[2])
+
 
 def run_in_interpreter(src_file_name):
     intpr = Interpreter()
@@ -173,7 +185,8 @@ def run_in_interpreter(src_file_name):
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
         content[-1] += '\n'
-        tokens =  [lexicalize(stmt) for stmt in content if lexicalize(stmt) != ['']]
+        tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != []]
+
         Parser(tokens=tokens, Node=Node)
 
         intpr.interpret(Node)
