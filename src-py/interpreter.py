@@ -190,5 +190,3 @@ def run_in_interpreter(src_file_name):
         Parser(tokens=tokens, Node=Node)
 
         intpr.interpret(Node)
-
-    print(f"\n{time() - start}")
