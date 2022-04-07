@@ -3,9 +3,6 @@ from Keywords import *
 all_keyword_string = ','.join(keywords)
 
 def lexicalize(stmt):
-    return order_tokens(basic_tokenize(stmt))
-
-def basic_tokenize(stmt):
     current_token = ''
     quote_count = 0
     tokens = []
@@ -24,9 +21,9 @@ def basic_tokenize(stmt):
             current_token = ''
         else: current_token += char
 
-    return tokens
+    return order_words(tokens)
 
-def order_tokens(tokens):
+def order_words(tokens):
     """
     if current token+kw_in_statement is in all keyword string, kw_in_statement += token
     if current token+kw_in_statement not in all keyword string, add kw_in_statement to final_token
