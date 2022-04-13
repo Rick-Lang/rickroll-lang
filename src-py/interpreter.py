@@ -105,7 +105,9 @@ def applyOp(a, b, op):
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
-    if op=='is'and a==b or op=='aint'and a!=b or op=='>'and a>b or op=='<'and a<b or op==">=" and a >= b or op=="<=" and a <= b:
+    if op=='is'and a==b or op=='aint'and a!=b or op==KW_GOE_OP and a>b\
+        or op==KW_L_OP and a<b or op==KW_GOE_OP and a >= b\
+        or op==KW_LOE_OP and a <= b:
         return 'True'
     return 'False'
 
@@ -186,7 +188,6 @@ def run_in_interpreter(src_file_name):
         content = src.readlines()
         content[-1] += '\n'
         tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != []]
-
         Parser(tokens=tokens, Node=Node)
 
         intpr.interpret(Node)
