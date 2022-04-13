@@ -7,7 +7,7 @@
 ![Python](https://img.shields.io/badge/Python-3.6%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 <br>
-Rick Roll Programming Language, a language that is rickroll oriented
+Rick Roll Programming Language, a language that is rickroll based!
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
