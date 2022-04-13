@@ -21,12 +21,12 @@ KW_continue     = 'runaround'
 KW_endless_loop = 'togetherforeverandnevertopart'
 KW_while_loop   = 'togetherforeverwith'
 
-KW_less_than_OP = 'islessthan'
-KW_greater_than_OP = 'isgreaterthan'
-KW_greater_or_equals_OP = 'isgreaterthanorequalto'
-KW_less_or_equals_OP = 'islessthanorequalto'
+KW_L_OP = 'islessthan'
+KW_G_OP = 'isgreaterthan'
+KW_GOE_OP = 'isgreaterthanorequalto'
+KW_LOE_OP = 'islessthanorequalto'
 KW_is_not_OP = 'aint'
-KW_equals_OP = 'is'
+KW_E_OP = 'is'
 
 KW_PY = "py:"
 
@@ -48,12 +48,12 @@ keywords = [
     KW_continue,
     KW_endless_loop,
     KW_while_loop,
-    KW_less_than_OP,
-    KW_greater_than_OP,
-    KW_greater_or_equals_OP,
-    KW_less_or_equals_OP,
+    KW_L_OP,
+    KW_G_OP,
+    KW_GOE_OP,
+    KW_LOE_OP,
     KW_is_not_OP,
-    KW_equals_OP,
+    KW_E_OP,
 
     KW_PY
 ]
