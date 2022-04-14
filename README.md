@@ -84,6 +84,10 @@ Generate and play an audio from .rickroll
 python3 RickRoll.py [Source Code File Name] --audio
 ```
 
+## VsCode Extension
+https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
+
+
 ## Requirements
 - [Python libraries](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
 - [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
@@ -100,6 +104,7 @@ python3 RickRoll.py [Source Code File Name] --audio
 - *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
 - *Chinese, Russian, and English documentation* (Hope you guys can pull request docs in other languages lol)
 - [*An editor for writing .rickroll code*](https://github.com/RedEnder666/RickRoll_IDE)
+- [*An Vscode extension*](https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang)
 
 
 ## Generate Audio
