@@ -147,7 +147,7 @@ In order to make RICKROll becoming a world heritage, YOU and I still have a bunc
 **https://rick-lang.github.io/rickroll-lang/**
 
 # Offcial Discord Server/Contact
-https://discord.gg/yzZ3MfGZ8A
+https://discord.gg/bRrbZPjVDH
 Join this server to chat with cool people or for support
 <br /> We currently need some people to join!
 
