@@ -165,6 +165,7 @@ Here are the projects that are inspired by Rickroll-lang
 2. [Rickroll-lang API](https://github.com/FusionSid/RicklangAPI)
 3. [RickRoll IDE](https://github.com/RedEnder666/RickRoll_IDE)
 4. [Rick Astley Bot](https://github.com/FusionSid/Rick-Astley-Bot)
+5. [Rickroll Lang Vscode extension](https://github.com/FusionSid/Rickroll-Lang-VScode-Extension)
 
 # Credit: Rick Astley
  Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
