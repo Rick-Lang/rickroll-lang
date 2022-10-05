@@ -9,17 +9,19 @@ def lexicalize(stmt):
     for char in stmt:
         if char == '"': quote_count += 1
         if char == '#': break
-        if char in ignore_tokens and quote_count % 2 == 0:
-            continue
 
-        if char in separators and quote_count % 2 == 0:
-            if current_token not in {' ', '\n'}:
-                tokens.append(current_token)
-            if char not in {' ', '\n'}:
-                tokens.append(char)
+        if quote_count % 2 == 0:
+            if char in ignore_tokens:
+                continue
 
-            current_token = ''
-        else: current_token += char
+            if char in separators:
+                if current_token not in {' ', '\n'}:
+                    tokens.append(current_token)
+                if char not in {' ', '\n'}:
+                    tokens.append(char)
+
+                current_token = ''
+            else: current_token += char
 
     return order_words(tokens)
 
