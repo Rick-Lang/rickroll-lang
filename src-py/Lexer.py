@@ -25,9 +25,9 @@ def lexicalize(stmt):
 
 def order_words(tokens):
     """
-    if current token+kw_in_statement is in all keyword string, kw_in_statement += token
-    if current token+kw_in_statement not in all keyword string, add kw_in_statement to final_token
-    if statement is ended, add kw_in_statement to final_token
+    if current `token+kw_in_statement` is in all keyword string, `kw_in_statement += token`
+    if current `token+kw_in_statement` not in all keyword string, add `kw_in_statement` to `final_token`
+    if statement is ended, add `kw_in_statement` to `final_token`
     """
     final_token = []
     kw_in_statement = ''
