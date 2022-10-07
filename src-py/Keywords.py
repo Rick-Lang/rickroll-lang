@@ -1,5 +1,3 @@
-from sys import stdout
-
 # Keywords
 KW_print        = 'ijustwannatelluhowimfeeling'
 KW_if           = 'andifuaskmehowimfeeling'
@@ -59,7 +57,7 @@ keywords = [
 ]
 
 INDENT_KW = [
-KW_if, KW_def, KW_try, KW_except, KW_while_loop, KW_endless_loop
+    KW_if, KW_def, KW_try, KW_except, KW_while_loop, KW_endless_loop
 ]
 
 

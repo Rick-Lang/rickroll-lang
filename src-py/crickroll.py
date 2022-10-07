@@ -40,7 +40,7 @@ int length(int arr[]){
 
 
 # Determine variable types
-def v_types(string):
+def v_types(string: str):
     string = str(string)
     # Boolean
     if string in {'True', 'False'}:
@@ -87,15 +87,17 @@ class Token:
 
         global variables, functions
 
+        TOK_TO_OP = {
+            'is': '==',
+            'isnot': '!=',
+            'isgreaterthan': '>',
+            'islessthan': '<',
+            'isgreaterthanorequalto': '>=',
+            'islessthanorequalto': '<='
+        }
 
         if tok in keywords:
-            if tok == 'is': add_to_tokens(TT_operator, '==')
-            elif tok == 'isnot': add_to_tokens(TT_operator, '!=')
-            elif tok == 'isgreaterthan': add_to_tokens(TT_operator, '>')
-            elif tok == 'islessthan': add_to_tokens(TT_operator, '<')
-            elif tok == 'isgreaterthanorequalto': add_to_tokens(TT_operator, '>=')
-            elif tok == 'islessthanorequalto': add_to_tokens(TT_operator, '<=')
-            else: add_to_tokens(TT_keyword, tok)
+            add_to_tokens(TT_operator, TOK_TO_OP[tok] if tok in TOK_TO_OP else tok)
 
             self.last_kw = tok
         elif tok in OP_build_in_functions:
