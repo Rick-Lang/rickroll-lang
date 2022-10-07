@@ -21,7 +21,8 @@ def lexicalize(stmt):
                     tokens.append(char)
 
                 current_token = ''
-            else: current_token += char
+            else:
+                current_token += char
 
     return order_words(tokens)
 
