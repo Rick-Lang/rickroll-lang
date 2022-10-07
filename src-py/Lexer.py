@@ -1,5 +1,11 @@
 from Keywords import *
 
+def remove_all(ls: list, __value):
+    """Remove all occurrences of value (in-place) and returns the list"""
+    while __value in ls:
+        ls.remove(__value)
+    return ls
+
 all_keyword_string = ','.join(keywords)
 
 def lexicalize(stmt):
@@ -45,7 +51,4 @@ def order_words(tokens):
     if not temp:
         final_token.append(kw_in_statement)
 
-    while '' in final_token:
-        final_token.remove('')
-
-    return final_token
+    return remove_all(final_token, '')
