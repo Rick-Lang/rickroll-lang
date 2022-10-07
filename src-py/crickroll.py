@@ -2,7 +2,7 @@ from os import system
 from sys import platform
 
 from Lexer import lexicalize
-from PublicVariables import *
+from Keywords import *
 
 
 # Token types
@@ -96,7 +96,7 @@ class Token:
             elif tok == 'isgreaterthanorequalto': add_to_tokens(TT_operator, '>=')
             elif tok == 'islessthanorequalto': add_to_tokens(TT_operator, '<=')
             else: add_to_tokens(TT_keyword, tok)
-            
+
             self.last_kw = tok
         elif tok in OP_build_in_functions:
             add_to_tokens(TT_build_in_funcs, tok)
