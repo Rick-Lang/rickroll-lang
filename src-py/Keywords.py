@@ -1,35 +1,35 @@
 from helpers import dict_values
 
-# TO-DO': replace all KW* vars by this dict
+# TO-DO: replace all KW* vars by this dict
 KW = {
-    'print':'ijustwannatelluhowimfeeling',
-    'if':'andifuaskmehowimfeeling',
+    'print' : 'ijustwannatelluhowimfeeling',
+    'if' : 'andifuaskmehowimfeeling',
 
-    'let':'give',
-    'assign':'up',
-    'import1':'weknowthe',
-    'import2':"andwe'regonnaplayit",
-    'def':'gonna',
-    'return1':'whenigivemy',
-    'return2':'itwillbecompletely',
-    'try':'thereaintnomistaking',
-    'except':'iftheyevergetudown',
-    'main':'takemetourheart',
-    'end':'saygoodbye',
+    'let' : 'give',
+    'assign' : 'up',
+    'import1' : 'weknowthe',
+    'import2' : "andwe'regonnaplayit",
+    'def' : 'gonna',
+    'return1' : 'whenigivemy',
+    'return2' : 'itwillbecompletely',
+    'try' : 'thereaintnomistaking',
+    'except' : 'iftheyevergetudown',
+    'main' : 'takemetourheart',
+    'end' : 'saygoodbye',
 
-    'break':'desertu',
-    'continue':'runaround',
-    'endless_loop':'togetherforeverandnevertopart',
-    'while_loop':'togetherforeverwith',
+    'break' : 'desertu',
+    'continue' : 'runaround',
+    'endless_loop' : 'togetherforeverandnevertopart',
+    'while_loop' : 'togetherforeverwith',
 
-    'L_OP':'islessthan',
-    'G_OP':'isgreaterthan',
-    'GOE_OP':'isgreaterthanorequalto',
-    'LOE_OP':'islessthanorequalto',
-    'is_not_OP':'aint',
-    'E_OP':'is',
+    'L_OP' : 'islessthan',
+    'G_OP' : 'isgreaterthan',
+    'GOE_OP' : 'isgreaterthanorequalto',
+    'LOE_OP' : 'islessthanorequalto',
+    'is_not_OP' : 'aint',
+    'E_OP' : 'is',
 
-    'PY':"py:"
+    'PY' : 'py:'
 }
 
 # Keywords
