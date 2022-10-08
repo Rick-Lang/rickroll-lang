@@ -98,7 +98,7 @@ class Token:
         }
 
         if tok in keywords:
-            add_to_tokens(TT_operator, TOK_TO_OP[tok] if tok in TOK_TO_OP else tok)
+            add_to_tokens(TT_operator, TOK_TO_OP.get(tok, tok))
 
             self.last_kw = tok
         elif tok in OP_build_in_functions:
