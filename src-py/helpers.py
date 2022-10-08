@@ -15,3 +15,21 @@ def remove_all(ls: list, __value):
 def dict_values(d: dict):
     """Get only the values (not keys) from a dictionary"""
     return [v for _, v in d.items()]
+
+def filter_str(s: str):
+    """Remove 1st and last chars from a `str`ing"""
+    return s[1:-1]
+
+def precedence(op: str):
+    """
+    Get precedence of basic arithmetic operators (+ - * /).
+
+    `op` should be a char.
+
+    returns `1` for lowest precedence, `2` for highest, `0` if `op` is not recognized
+    """
+    if op in {'+', '-'}:
+        return 1
+    if op in {'*', '/'}:
+        return 2
+    return 0

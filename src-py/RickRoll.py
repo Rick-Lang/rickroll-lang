@@ -6,7 +6,7 @@ from traceback import format_exc
 from argparse import ArgumentParser
 
 
-def play_audio(src_file_name):
+def play_audio(src_file_name: str):
     import AudioGenerator
     from pyrickroll import Token
     from Lexer import lexicalize
@@ -33,7 +33,6 @@ def main():
 
     # Run the RickRoll program
     if args.file:
-        from os.path import exists
         # Convert .rickroll to C++
         if args.cpp:
             from crickroll import run_in_cpp

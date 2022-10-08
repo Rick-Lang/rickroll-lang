@@ -1,17 +1,13 @@
 from sys import stdout
+
+from helpers import filter_str, precedence
+
 """
 print: print EXPR
 jmp: jmp LINE COND
 var: var NAME VALUE
 """
 
-def filter_str(a):
-    return a[1:-1]
-
-def precedence(op):
-    if op in ['+', '-']: return 1
-    if op in ['*', '/']: return 2
-    return 0
 
 def applyOp(a, b, op):
     if op == '+': return a + b

@@ -1,9 +1,10 @@
 from sys import stdout
+from time import time
 
 from Keywords import *
 from Lexer import lexicalize
+from helpers import filter_str, precedence
 
-from time import time
 start = time()
 
 class AST:
@@ -96,15 +97,7 @@ class Parser(AST):
             Parser(tokens=child_stmts, Node=while_nodes)
             AST.while_node(self.Node, cond, while_nodes)
 
-def filter_str(a):
-    return a[1:-1]
-
-def precedence(op):
-    if op in {'+', '-'}: return 1
-    if op in {'*', '/'}: return 2
-    return 0
-
-def applyOp(a, b, op):
+def applyOp(a, b, op: str):
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
