@@ -1,7 +1,11 @@
+from sys import stdout
+
 from Keywords import *
 from Lexer import lexicalize
+
 from time import time
 start = time()
+
 class AST:
     def print_node(Node: list, args):
         """
