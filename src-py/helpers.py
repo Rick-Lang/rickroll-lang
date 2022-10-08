@@ -13,7 +13,7 @@ def remove_all(ls: list, __value):
     return ls
 
 def dict_values(d: dict):
-    """Get only the values (not keys) from a dictionary"""
+    """Get only the values (not keys) from a `dict`ionary"""
     return [v for _, v in d.items()]
 
 def filter_str(s: str):

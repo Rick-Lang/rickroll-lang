@@ -1,43 +1,41 @@
-from helpers import dict_values
+from enum import Enum
 
-# TO-DO: replace all KW* vars by this dict
-KW = {
-    'print' : 'ijustwannatelluhowimfeeling',
-    'if' : 'andifuaskmehowimfeeling',
+class KW_ENUM(Enum):
+    PRINT = 'ijustwannatelluhowimfeeling'
+    IF = 'andifuaskmehowimfeeling'
 
-    'let' : 'give',
-    'assign' : 'up',
-    'import1' : 'weknowthe',
-    'import2' : "andwe'regonnaplayit",
-    'def' : 'gonna',
-    'return1' : 'whenigivemy',
-    'return2' : 'itwillbecompletely',
-    'try' : 'thereaintnomistaking',
-    'except' : 'iftheyevergetudown',
-    'main' : 'takemetourheart',
-    'end' : 'saygoodbye',
+    LET = 'give'
+    ASSIGN = 'up'
+    IMPORT1 = 'weknowthe'
+    IMPORT2 = "andwe'regonnaplayit"
+    DEF = 'gonna'
+    RETURN1 = 'whenigivemy'
+    RETURN2 = 'itwillbecompletely'
+    TRY = 'thereaintnomistaking'
+    EXCEPT = 'iftheyevergetudown'
+    MAIN = 'takemetourheart'
+    END = 'saygoodbye'
 
-    'break' : 'desertu',
-    'continue' : 'runaround',
-    'endless_loop' : 'togetherforeverandnevertopart',
-    'while_loop' : 'togetherforeverwith',
+    BREAK = 'desertu'
+    CONTINUE = 'runaround'
+    ENDLESS_LOOP = 'togetherforeverandnevertopart'
+    WHILE_LOOP = 'togetherforeverwith'
 
-    'L_OP' : 'islessthan',
-    'G_OP' : 'isgreaterthan',
-    'GOE_OP' : 'isgreaterthanorequalto',
-    'LOE_OP' : 'islessthanorequalto',
-    'is_not_OP' : 'aint',
-    'E_OP' : 'is',
+    L_OP = 'islessthan'
+    G_OP = 'isgreaterthan'
+    GOE_OP = 'isgreaterthanorequalto'
+    LOE_OP = 'islessthanorequalto'
+    IS_NOT_OP = 'aint'
+    E_OP = 'is'
 
-    'PY' : 'py:'
-}
+    PY = 'py:'
 
 # Keywords
-KW_print        = 'ijustwannatelluhowimfeeling'
-KW_if           = 'andifuaskmehowimfeeling'
+KW_print        = KW_ENUM.PRINT.value
+KW_if           = KW_ENUM.IF.value
 
-KW_let          = 'give'
-KW_assign       = 'up'
+KW_let          = KW_ENUM.LET.value
+KW_assign       = KW_ENUM.ASSIGN.value
 KW_import1      = 'weknowthe'
 KW_import2      = "andwe'regonnaplayit"
 KW_def          = 'gonna'
@@ -60,11 +58,11 @@ KW_LOE_OP = 'islessthanorequalto'
 KW_is_not_OP = 'aint'
 KW_E_OP = 'is'
 
-KW_PY = 'py:'
+KW_PY = KW_ENUM.PY.value
 
-keywords = dict_values(KW)
+keywords: list[str] = [e.value for e in KW_ENUM]
 
-INDENT_KW = [KW[k] for k in ['if', 'def', 'try', 'except', 'while_loop', 'endless_loop']]
+INDENT_KW = [KW_ENUM[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
 
 # Tokens that the interpreter will totally ignore
 ignore_tokens = set("~'")
