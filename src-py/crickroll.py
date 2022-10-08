@@ -122,11 +122,11 @@ class Token:
             add_to_tokens(TT_operator, tok)
 
         # Variables
-        elif self.last_kw == KW_let:
+        elif self.last_kw == KW.LET.value:
             variables.append(tok)
             add_to_tokens(TT_variable, tok)
         # Functions
-        elif self.last_kw == KW_def:
+        elif self.last_kw == KW.DEF.value:
             functions.append(tok)
             add_to_tokens(TT_function, tok)
         elif tok and tok in variables:
@@ -155,21 +155,21 @@ class TranslateToCpp:
         if kw in functions:
             self.write(join_list(self.values))
 
-        if kw == KW_main:
+        if kw == KW.MAIN.value:
             self.write('int main(int argc, char* argv[]){')
-        if kw == KW_print:
+        if kw == KW.PRINT.value:
             """
             cout << EXPR;
             """
             EXPR = join_list(self.values[1:])
             self.write(f'cout<<{EXPR};')
-        if kw == KW_if:
+        if kw == KW.IF.value:
             """
             if(CONDI){
             """
             CONDI = join_list(self.values[1:])
             self.write(f'if({CONDI})' + '{')
-        if kw == KW_let:
+        if kw == KW.LET.value:
             """
             give ID up EXPR;
             """
@@ -182,23 +182,23 @@ class TranslateToCpp:
             else:
                 self.write(f'{ID}={EXPR};')
 
-        if kw == KW_endless_loop:
+        if kw == KW.ENDLESS_LOOP.value:
             self.write('while(true){')
 
-        if kw == KW_while_loop:
+        if kw == KW.WHILE_LOOP.value:
             """
             while(CONDI){
             """
             CONDI = join_list(self.values[1:])
             self.write(f'while({CONDI})' + '{')
 
-        if kw == KW_break:
+        if kw == KW.BREAK.value:
             self.write('break;')
 
-        if kw == KW_continue:
+        if kw == KW.CONTINUE.value:
             self.write('continue;')
 
-        if kw == KW_def:
+        if kw == KW.DEF.value:
             """
             int ID(ARGS){
             """
@@ -207,14 +207,14 @@ class TranslateToCpp:
 
             self.write(f"auto {ID} = []({ARGS}) {{")
 
-        if kw == KW_return1:
+        if kw == KW.RETURN1.value:
             """
             return EXPR;
             """
             EXPR = join_list(self.values[1:])
             self.write(f'return {EXPR};')
 
-        if kw == KW_end:
+        if kw == KW.END.value:
             self.write('};')
 
     # Write to C++ code

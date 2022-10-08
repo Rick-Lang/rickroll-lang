@@ -48,17 +48,17 @@ from Keywords import *
 engine = init()
 
 audio = {
-    KW_print: 'audios/print.wav',
-    KW_let: 'audios/let.wav',
-    KW_main: 'audios/main.wav',
-    KW_if: 'audios/if.wav',
-    KW_end: 'audios/end.wav',
-    KW_break: 'audios/break.wav',
-    KW_while_loop:  'audios/whileloop.wav',
-    KW_endless_loop: 'audios/loop.wav',
+    KW.PRINT.value: 'audios/print.wav',
+    KW.LET.value: 'audios/let.wav',
+    KW.MAIN.value: 'audios/main.wav',
+    KW.IF.value: 'audios/if.wav',
+    KW.END.value: 'audios/end.wav',
+    KW.BREAK.value: 'audios/break.wav',
+    KW.WHILE_LOOP.value:  'audios/whileloop.wav',
+    KW.ENDLESS_LOOP.value: 'audios/loop.wav',
 }
 
-def play(token):
+def play(token: str):
     au = audio.get(token)
 
     if au:

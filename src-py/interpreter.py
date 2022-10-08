@@ -58,13 +58,13 @@ class Parser(AST):
 
     def parse(self):
         self.stmt = self.tokens[self.pos]
-        if self.match(KW_print):
+        if self.match(KW.PRINT.value):
             AST.print_node(self.Node, self.stmt[1:])
 
-        elif self.match(KW_let):
+        elif self.match(KW.LET.value):
             AST.let_node(self.Node, self.stmt[1], self.stmt[3:])
 
-        elif self.match(KW_if):
+        elif self.match(KW.IF.value):
             cond = self.stmt[1:]
             child_stmts = []
             if_count = 1
@@ -72,7 +72,7 @@ class Parser(AST):
                 self.pos += 1
                 if self.tokens[self.pos][0] in INDENT_KW:
                     if_count += 1
-                elif self.tokens[self.pos][0] == KW_end:
+                elif self.tokens[self.pos][0] == KW.END.value:
                     if_count -= 1
 
                 child_stmts.append(self.tokens[self.pos])

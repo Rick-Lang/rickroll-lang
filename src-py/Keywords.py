@@ -1,5 +1,6 @@
 from enum import Enum
 
+# Keywords
 class KW(Enum):
     PRINT = 'ijustwannatelluhowimfeeling'
     IF = 'andifuaskmehowimfeeling'
@@ -29,36 +30,6 @@ class KW(Enum):
     E_OP = 'is'
 
     PY = 'py:'
-
-# Keywords
-KW_print        = KW.PRINT.value
-KW_if           = KW.IF.value
-
-KW_let          = KW.LET.value
-KW_assign       = KW.ASSIGN.value
-KW_import1      = 'weknowthe'
-KW_import2      = "andwe'regonnaplayit"
-KW_def          = 'gonna'
-KW_return1      = 'whenigivemy'
-KW_return2      = 'itwillbecompletely'
-KW_try          = 'thereaintnomistaking'
-KW_except       = 'iftheyevergetudown'
-KW_main         = 'takemetourheart'
-KW_end          = 'saygoodbye'
-
-KW_break        = 'desertu'
-KW_continue     = 'runaround'
-KW_endless_loop = 'togetherforeverandnevertopart'
-KW_while_loop   = 'togetherforeverwith'
-
-KW_L_OP = 'islessthan'
-KW_G_OP = 'isgreaterthan'
-KW_GOE_OP = 'isgreaterthanorequalto'
-KW_LOE_OP = 'islessthanorequalto'
-KW_is_not_OP = 'aint'
-KW_E_OP = 'is'
-
-KW_PY = KW.PY.value
 
 keywords: list[str] = [e.value for e in KW]
 
