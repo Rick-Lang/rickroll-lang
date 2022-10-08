@@ -64,9 +64,7 @@ KW_PY = 'py:'
 
 keywords = dict_values(KW)
 
-INDENT_KW = [
-    KW['if'], KW['def'], KW['try'], KW['except'], KW['while_loop'], KW['endless_loop']
-]
+INDENT_KW = [KW[k] for k in ['if', 'def', 'try', 'except', 'while_loop', 'endless_loop']]
 
 # Tokens that the interpreter will totally ignore
 ignore_tokens = set("~'")
