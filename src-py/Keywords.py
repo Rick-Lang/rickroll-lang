@@ -43,7 +43,7 @@ digits = set('0123456789.')
 
 # Separators are used in tokenization
 separators = {
-    # Don't use `set`, because multi-char `str`s may be added in the future
+    # not using `set`, because multi-char `str`s may be added in the future
     '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
 
