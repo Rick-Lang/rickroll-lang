@@ -1,7 +1,6 @@
 from sys import stdout
 
 from Lexer import *
-from Keywords import KW, OP_build_in_functions
 from helpers import join_list
 
 # Keywords can execute outside main function
