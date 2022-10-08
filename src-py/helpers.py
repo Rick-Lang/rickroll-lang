@@ -12,10 +12,6 @@ def remove_all(ls: list, __value):
         ls.remove(__value)
     return ls
 
-def dict_values(d: dict):
-    """Get only the values (not keys) from a `dict`ionary"""
-    return [v for _, v in d.items()]
-
 def filter_str(s: str):
     """Remove 1st and last chars from a `str`ing"""
     return s[1:-1]
