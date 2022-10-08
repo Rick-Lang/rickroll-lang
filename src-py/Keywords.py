@@ -1,3 +1,37 @@
+from helpers import dict_values
+
+# TO-DO': replace all KW* vars by this dict
+KW = {
+    'print':'ijustwannatelluhowimfeeling',
+    'if':'andifuaskmehowimfeeling',
+
+    'let':'give',
+    'assign':'up',
+    'import1':'weknowthe',
+    'import2':"andwe'regonnaplayit",
+    'def':'gonna',
+    'return1':'whenigivemy',
+    'return2':'itwillbecompletely',
+    'try':'thereaintnomistaking',
+    'except':'iftheyevergetudown',
+    'main':'takemetourheart',
+    'end':'saygoodbye',
+
+    'break':'desertu',
+    'continue':'runaround',
+    'endless_loop':'togetherforeverandnevertopart',
+    'while_loop':'togetherforeverwith',
+
+    'L_OP':'islessthan',
+    'G_OP':'isgreaterthan',
+    'GOE_OP':'isgreaterthanorequalto',
+    'LOE_OP':'islessthanorequalto',
+    'is_not_OP':'aint',
+    'E_OP':'is',
+
+    'PY':"py:"
+}
+
 # Keywords
 KW_print        = 'ijustwannatelluhowimfeeling'
 KW_if           = 'andifuaskmehowimfeeling'
@@ -28,33 +62,7 @@ KW_E_OP = 'is'
 
 KW_PY = "py:"
 
-keywords = [
-    KW_print,
-    KW_if,
-    KW_let,
-    KW_assign,
-    KW_import1,
-    KW_import2,
-    KW_def,
-    KW_return1,
-    KW_return2,
-    KW_try,
-    KW_except,
-    KW_main,
-    KW_end,
-    KW_break,
-    KW_continue,
-    KW_endless_loop,
-    KW_while_loop,
-    KW_L_OP,
-    KW_G_OP,
-    KW_GOE_OP,
-    KW_LOE_OP,
-    KW_is_not_OP,
-    KW_E_OP,
-
-    KW_PY
-]
+keywords = dict_values(KW)
 
 INDENT_KW = [
     KW_if, KW_def, KW_try, KW_except, KW_while_loop, KW_endless_loop
@@ -79,6 +87,3 @@ operators = {
     '>', '<', '<=', '>=', '!=', 'is', 'aint'
 }
 OP_build_in_functions = {'to_string', 'to_int', 'to_float', 'length'}
-
-def join_list(l):
-    return ''.join(map(str, l))

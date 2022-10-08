@@ -1,10 +1,5 @@
 from Keywords import *
-
-def remove_all(ls: list, __value):
-    """Remove all occurrences of value (in-place) and returns the list"""
-    while __value in ls:
-        ls.remove(__value)
-    return ls
+from helpers import remove_all
 
 all_keyword_string = ','.join(keywords)
 

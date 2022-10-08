@@ -3,6 +3,7 @@ from sys import platform
 
 from Lexer import lexicalize
 from Keywords import *
+from helpers import join_list
 
 
 # Token types
