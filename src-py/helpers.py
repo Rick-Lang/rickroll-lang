@@ -6,11 +6,11 @@ def join_list(l: list):
     """Convert any `list` into a string without delimiter"""
     return ''.join(map(str, l))
 
-def remove_all(ls: list, __value):
+def remove_all(l: list, x):
     """Remove all occurrences of value (in-place) and returns the list"""
-    while __value in ls:
-        ls.remove(__value)
-    return ls
+    while x in l:
+        l.remove(x)
+    return l
 
 def filter_str(s: str):
     """Remove 1st and last chars from a `str`ing"""
