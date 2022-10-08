@@ -60,23 +60,23 @@ KW_LOE_OP = 'islessthanorequalto'
 KW_is_not_OP = 'aint'
 KW_E_OP = 'is'
 
-KW_PY = "py:"
+KW_PY = 'py:'
 
 keywords = dict_values(KW)
 
 INDENT_KW = [
-    KW_if, KW_def, KW_try, KW_except, KW_while_loop, KW_endless_loop
+    KW['if'], KW['def'], KW['try'], KW['except'], KW['while_loop'], KW['endless_loop']
 ]
 
-
 # Tokens that the interpreter will totally ignore
-ignore_tokens = {'~', "'"}
+ignore_tokens = set("~'")
 
-# Characters in numbers
-digits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'}
+# Characters in numerals
+digits = set('0123456789.')
 
 # Separators are used in tokenization
 separators = {
+    # Don't use `set`, because multi-char `str`s may be added in the future
     '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
 
