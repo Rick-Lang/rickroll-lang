@@ -1,4 +1,4 @@
-from Keywords import *
+from Keywords import keywords, ignore_tokens, separators
 from helpers import remove_all
 
 all_keyword_string = ','.join(keywords)

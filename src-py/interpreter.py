@@ -80,7 +80,7 @@ class Parser(AST):
             Parser(tokens=child_stmts, Node=if_nodes)
             AST.if_node(self.Node, cond, if_nodes)
 
-        elif self.match(KW_while_loop):
+        elif self.match(KW.WHILE_LOOP.value):
             cond = self.stmt[1:]
             child_stmts = []
             indent_count = 1
@@ -88,7 +88,7 @@ class Parser(AST):
                 self.pos += 1
                 if self.tokens[self.pos][0] in INDENT_KW:
                     indent_count += 1
-                elif self.tokens[self.pos][0] == KW_end:
+                elif self.tokens[self.pos][0] == KW.END.value:
                     indent_count -= 1
 
                 child_stmts.append(self.tokens[self.pos])
@@ -102,9 +102,9 @@ def applyOp(a, b, op: str):
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
-    if op=='is'and a==b or op=='aint'and a!=b or op==KW_GOE_OP and a>b\
-        or op==KW_L_OP and a<b or op==KW_GOE_OP and a >= b\
-        or op==KW_LOE_OP and a <= b:
+    if op=='is'and a==b or op=='aint'and a!=b or op==KW.GOE_OP.value and a>b\
+        or op==KW.L_OP.value and a<b or op==KW.GOE_OP.value and a >= b\
+        or op==KW.LOE_OP.value and a <= b:
         return 'True'
     return 'False'
 

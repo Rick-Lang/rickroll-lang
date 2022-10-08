@@ -1,10 +1,11 @@
 from sys import stdout
 
 from Lexer import *
+from Keywords import KW, OP_build_in_functions
 from helpers import join_list
 
 # Keywords can execute outside main function
-kw_exe_outside_main = {KW_main, KW_def, KW_import1}
+kw_exe_outside_main = {KW.MAIN.value, KW.DEF.value, KW.IMPORT1.value}
 
 variables = []
 functions = []
@@ -35,17 +36,21 @@ class Token:
             self.last_kw = tok
 
         elif tok in OP_build_in_functions:
-            if tok == 'length': self.t_values.append('len')
-            if tok == 'to_string': self.t_values.append('str')
-            if tok == 'to_int': self.t_values.append('int')
-            if tok == 'to_float': self.t_values.append('float')
+            TOK_TO_FN = {
+                'length': 'len',
+                'to_string': 'str',
+                'to_int': 'int',
+                'to_float': 'float'
+            }
+            if tok in TOK_TO_FN:
+                self.t_values.append(TOK_TO_FN[tok])
 
         # Variables
-        elif self.last_kw == KW_let:
+        elif self.last_kw == KW.LET.value:
             variables.append(tok)
             self.t_values.append(tok)
         # Functions
-        elif self.last_kw == KW_def:
+        elif self.last_kw == KW.DEF.value:
             functions.append(tok)
             self.t_values.append(tok)
         else:
@@ -86,7 +91,7 @@ class TranslateToPython:
         if kw in functions:
             self.write(join_list(self.values))
 
-        elif kw == KW_main:
+        elif kw == KW.MAIN.value:
             self.write('if __name__ == "__main__":')
 
             self.is_main = True
@@ -96,7 +101,7 @@ class TranslateToPython:
             self.is_main = False
             self.is_function = False
 
-        elif kw == KW_print:
+        elif kw == KW.PRINT.value:
             """
                 print EXPR
             """
@@ -104,16 +109,16 @@ class TranslateToPython:
             EXPR = join_list(self.values[1:])
             self.write(f'print({EXPR}, end="")')
 
-        elif kw == KW_let:
+        elif kw == KW.LET.value:
             """
                 let ID up EXPR
             """
 
-            ID = join_list(self.values[self.values.index(KW_let) + 1 : self.values.index(KW_assign)])
-            EXPR = join_list(self.values[self.values.index(KW_assign) + 1:])
+            ID = join_list(self.values[self.values.index(KW.LET.value) + 1 : self.values.index(KW.ASSIGN.value)])
+            EXPR = join_list(self.values[self.values.index(KW.ASSIGN.value) + 1:])
             self.write(f'{ID} = {EXPR}')
 
-        elif kw == KW_if:
+        elif kw == KW.IF.value:
             """
                 if CONDI
             """
@@ -122,19 +127,19 @@ class TranslateToPython:
             self.write(f'if {CONDI}:')
             self.indent_count += 1
 
-        elif kw == KW_try:
+        elif kw == KW.TRY.value:
             self.write('try:')
             self.indent_count += 1
 
-        elif kw == KW_except:
+        elif kw == KW.EXCEPT.value:
             self.write('except:')
             self.indent_count += 1
 
-        elif kw == KW_endless_loop:
+        elif kw == KW.ENDLESS_LOOP.value:
             self.write('while True:')
             self.indent_count += 1
 
-        elif kw == KW_while_loop:
+        elif kw == KW.WHILE_LOOP.value:
             """
                 while1 CONDI
             """
@@ -143,13 +148,13 @@ class TranslateToPython:
             self.write(f'while {CONDI}:')
             self.indent_count += 1
 
-        elif kw == KW_break:
+        elif kw == KW.BREAK.value:
             self.write('break')
 
-        elif kw == KW_continue:
+        elif kw == KW.CONTINUE.value:
             self.write('continue')
 
-        elif kw == KW_def:
+        elif kw == KW.DEF.value:
             """
                 def ID ARGS
             """
@@ -161,24 +166,24 @@ class TranslateToPython:
             self.is_function = True
             self.indent_count += 1
 
-        elif kw == KW_return1:
+        elif kw == KW.RETURN1.value:
             """
                 return1 EXPR return2
             """
             EXPR = join_list(self.values[1:])
             self.write(f'return {EXPR}')
 
-        elif kw == KW_end:
+        elif kw == KW.END.value:
             self.write('pass')
             self.indent_count -= 1
 
-        elif kw == KW_import1:
+        elif kw == KW.IMPORT1.value:
             """
                 import1 lib_name import2
             """
             self.write(f'import {self.values[1]}')
 
-        elif kw == KW_PY:
+        elif kw == KW.PY.value:
             self.write(join_list(self.values[1:]))
 
 
