@@ -1,3 +1,5 @@
+from sys import stdout
+
 from Lexer import *
 from helpers import join_list
 
