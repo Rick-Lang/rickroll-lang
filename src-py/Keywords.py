@@ -1,6 +1,6 @@
 from enum import Enum
 
-class KW_ENUM(Enum):
+class KW(Enum):
     PRINT = 'ijustwannatelluhowimfeeling'
     IF = 'andifuaskmehowimfeeling'
 
@@ -31,11 +31,11 @@ class KW_ENUM(Enum):
     PY = 'py:'
 
 # Keywords
-KW_print        = KW_ENUM.PRINT.value
-KW_if           = KW_ENUM.IF.value
+KW_print        = KW.PRINT.value
+KW_if           = KW.IF.value
 
-KW_let          = KW_ENUM.LET.value
-KW_assign       = KW_ENUM.ASSIGN.value
+KW_let          = KW.LET.value
+KW_assign       = KW.ASSIGN.value
 KW_import1      = 'weknowthe'
 KW_import2      = "andwe'regonnaplayit"
 KW_def          = 'gonna'
@@ -58,11 +58,11 @@ KW_LOE_OP = 'islessthanorequalto'
 KW_is_not_OP = 'aint'
 KW_E_OP = 'is'
 
-KW_PY = KW_ENUM.PY.value
+KW_PY = KW.PY.value
 
-keywords: list[str] = [e.value for e in KW_ENUM]
+keywords: list[str] = [e.value for e in KW]
 
-INDENT_KW = [KW_ENUM[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
+INDENT_KW = [KW[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
 
 # Tokens that the interpreter will totally ignore
 ignore_tokens = set("~'")
