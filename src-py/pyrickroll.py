@@ -20,8 +20,18 @@ class Token:
             if tok:
                 self.__make_token(tok)
 
-    def __make_token(self, tok):
+    def __make_token(self, tok: str):
         global variables, functions
+
+        TOK_TO_OP = {
+            KW.E_OP.value: '==',
+            # "why isn't this `aint`?" - @Rudxain
+            'isnot': '!=',
+            KW.G_OP.value: '>',
+            KW.L_OP.value: '<',
+            KW.GOE_OP.value: '>=',
+            KW.LOE_OP.value: '<=',
+        }
 
         TOK_TO_FN = {
             'length': 'len',
@@ -31,15 +41,7 @@ class Token:
         }
 
         if tok in keywords:
-            if tok == KW.E_OP.value: self.t_values.append('==')
-            # "why isn't this `aint`?" - @Rudxain
-            elif tok == 'isnot': self.t_values.append('!=')
-            elif tok == KW.G_OP.value: self.t_values.append('>')
-            elif tok == KW.L_OP.value: self.t_values.append('<')
-            elif tok == KW.GOE_OP.value: self.t_values.append('>=')
-            elif tok == KW.LOE_OP.value: self.t_values.append('<=')
-            else: self.t_values.append(tok)
-
+            self.t_values.append(TOK_TO_OP.get(tok, tok))
             self.last_kw = tok
 
         elif tok in OP_build_in_functions:
