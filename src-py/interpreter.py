@@ -3,7 +3,7 @@ from time import time
 
 from Keywords import *
 from Lexer import lexicalize
-from helpers import filter_str, precedence
+from helpers import filter_str, precedence, starts_ends
 
 start = time()
 
@@ -110,7 +110,7 @@ def applyOp(a, b, op: str):
 
 def evaluate(tokens: list[str]):
     if len(tokens) == 1:
-        if tokens[0][0] == '"' and tokens[0][-1] == '"':
+        if starts_ends(tokens[0], '"'):
             return filter_str(tokens[0])
 
     values = []
@@ -122,7 +122,7 @@ def evaluate(tokens: list[str]):
             i += 1
         elif tokens[i] == '(':
             ops.append(tokens[i])
-        elif tokens[i][0] == '"' and tokens[i][-1] == '"':
+        elif starts_ends(tokens[i], '"'):
             values.append(filter_str(tokens[i]))
         elif tokens[i].isdigit():
             values.append(int(tokens[i]))

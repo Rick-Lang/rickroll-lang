@@ -1,6 +1,6 @@
 from sys import stdout
 
-from helpers import filter_str, precedence
+from helpers import filter_str, precedence, starts_ends
 
 """
 print: print EXPR
@@ -22,7 +22,7 @@ def applyOp(a, b, op: str):
 
 def evaluate(tokens):
     if len(tokens) == 1:
-        if tokens[0][0] == '"' and tokens[0][-1] == '"':
+        if starts_ends(tokens[0], '"'):
             return filter_str(tokens[0])
         return tokens[0]
 
@@ -37,7 +37,7 @@ def evaluate(tokens):
         elif tokens[i] == '(':
             ops.append(tokens[i])
 
-        elif tokens[i][0] == '"' and tokens[i][-1] == '"':
+        elif starts_ends(tokens[i], '"'):
             values.append(filter_str(tokens[i]))
 
         elif tokens[i].isdigit():
