@@ -109,9 +109,8 @@ def applyOp(a, b, op: str):
     else 'False'
 
 def evaluate(tokens: list[str]):
-    if len(tokens) == 1:
-        if starts_ends(tokens[0], '"'):
-            return filter_str(tokens[0])
+    if len(tokens) == 1 and starts_ends(tokens[0], '"'):
+        return filter_str(tokens[0])
 
     values = []
     ops = []
