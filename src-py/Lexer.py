@@ -1,12 +1,12 @@
 from Keywords import *
 from helpers import remove_all
 
-all_keyword_string = ','.join(keywords)
+ALL_KW_STR = ','.join(keywords)
 
-def lexicalize(stmt):
+def lexicalize(stmt: str):
     current_token = ''
     quote_count = 0
-    tokens = []
+    tokens: list[str] = []
     for char in stmt:
         if char == '"': quote_count += 1
         if char == '#': break
@@ -24,17 +24,17 @@ def lexicalize(stmt):
 
     return order_words(tokens)
 
-def order_words(tokens):
+def order_words(tokens: list[str]):
     """
     if current `token+kw_in_statement` is in all keyword string, `kw_in_statement += token`
     if current `token+kw_in_statement` not in all keyword string, add `kw_in_statement` to `final_token`
     if statement is ended, add `kw_in_statement` to `final_token`
     """
-    final_token = []
+    final_token: list[str] = []
     kw_in_statement = ''
     temp = False
     for tok in tokens:
-        if tok in all_keyword_string and kw_in_statement + tok in all_keyword_string:
+        if tok in ALL_KW_STR and kw_in_statement + tok in ALL_KW_STR:
             kw_in_statement += tok
 
         else:

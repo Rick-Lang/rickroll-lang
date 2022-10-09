@@ -20,14 +20,14 @@ def applyOp(a, b, op: str):
         or op=='>='and a>=b or op=='<='and a<=b \
     else 'False'
 
-def evaluate(tokens):
+def evaluate(tokens: list[str]):
     if len(tokens) == 1:
         if starts_ends(tokens[0], '"'):
             return filter_str(tokens[0])
         return tokens[0]
 
     values = []
-    ops = []
+    ops: list[str] = []
 
     for i in range(len(tokens)):
         if not tokens[i]: return
@@ -63,7 +63,7 @@ def evaluate(tokens):
 
         else:
             var_value = variables[tokens[i]]
-            values.append(int(var_value) if var_value.isdigit() else var_value)
+            values.append(int(var_value) if str(var_value).isdigit() else var_value)
 
         i += 1
 
@@ -83,13 +83,13 @@ class RickVM(object):
         self.stmts = []
         self.idx = 0
 
-    def run_vm(self, stmts):
+    def run_vm(self, stmts: list[list]):
         self.stmts = stmts
         while self.idx < len(stmts):
             self.execute(self.stmts[self.idx])
             self.idx += 1
 
-    def execute(self, stmt):
+    def execute(self, stmt: list):
         if stmt[0] == "print":
             stdout.write(str(evaluate(stmt[1:])))
         elif stmt[0] == "jmp":

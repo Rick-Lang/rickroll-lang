@@ -42,7 +42,7 @@ class AST:
 
 
 class Parser(AST):
-    def __init__(self, tokens: list[str], Node):
+    def __init__(self, tokens: list[list[str]], Node):
         self.Node = Node
         self.tokens = tokens
 
@@ -113,7 +113,7 @@ def evaluate(tokens: list[str]):
         return filter_str(tokens[0])
 
     values = []
-    ops = []
+    ops: list[str] = []
 
     for i in range(len(tokens)):
         if not tokens[i]: return
@@ -158,7 +158,7 @@ class Interpreter:
     def __init__(self):
         self.idx = 0
 
-    def interpret(self, nodes):
+    def interpret(self, nodes: list[list]):
         for node in nodes:
             self.idx += 1
             if node[0] == "print_node":
@@ -176,9 +176,9 @@ class Interpreter:
                     self.interpret(node[2])
 
 
-def run_in_interpreter(src_file_name):
+def run_in_interpreter(src_file_name: str):
     intpr = Interpreter()
-    Node = []
+    Node: list[list] = []
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
