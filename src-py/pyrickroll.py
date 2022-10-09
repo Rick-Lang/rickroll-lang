@@ -12,7 +12,7 @@ functions = []
 current_line = 0
 
 class Token:
-    def __init__(self, tokens):
+    def __init__(self, tokens: list[str]):
         self.t_values = []
         self.last_kw = ''
 
@@ -25,8 +25,7 @@ class Token:
 
         TOK_TO_OP = {
             KW.E_OP.value: '==',
-            # "why isn't this `aint`?" - @Rudxain
-            'isnot': '!=',
+            KW.IS_NOT_OP.value: '!=',
             KW.G_OP.value: '>',
             KW.L_OP.value: '<',
             KW.GOE_OP.value: '>=',
