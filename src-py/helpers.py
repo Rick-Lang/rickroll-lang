@@ -2,6 +2,19 @@
 Common/Shared fns and constants to use across multiple modules/scripts
 """
 
+def starts_ends(container: str | list, x):
+    """
+    Check if it starts and ends with the same value.
+
+    Examples:
+    ```
+    starts_ends('"rick"', '"') # `True`
+    starts_ends('"rick"', "'") # `False`
+    starts_ends('(rick)', '()') # `False`
+    ```
+    """
+    return container[0] is x and container[-1] is x
+
 def join_list(l: list):
     """Convert any `list` into a `str` without delimiter."""
     return ''.join(map(str, l))

@@ -3,7 +3,7 @@ from sys import platform
 
 from Keywords import *
 from Lexer import lexicalize
-from helpers import join_list, remove_file_ext
+from helpers import join_list, remove_file_ext, starts_ends
 
 
 # Token types
@@ -41,26 +41,25 @@ int length(int arr[]){
 
 
 # Determine variable types
-def v_types(string: str):
-    string = str(string)
+def v_types(s: str):
     # Boolean
-    if string in {'True', 'False'}:
+    if s in {'True', 'False'}:
         return 'bool'
     # String
-    if string[0] == '"' and string[-1] == '"':
+    if starts_ends(s, '"'):
         return 'string'
     # List
-    if string[0] == '[' and string[-1] == ']':
+    if s[0] == '[' and s[-1] == ']':
         return 'list'
     # Determine the string is int or float
     count = 0
     dot_count = 0
-    for char in string:
+    for char in s:
         if char in digits:
             count += 1
         if char == '.':
             dot_count += 1
-    if count == len(string):
+    if count == len(s):
         if dot_count == 1: return 'float'
         if dot_count == 0: return 'int'
 
@@ -82,9 +81,10 @@ class Token:
                 self.make_token(tok)
 
     def make_token(self, tok: str):
-        def add_to_tokens(type: str, token: str):
-            self.t_types.append(type)
-            self.t_values.append(token)
+        # named `_type` to avoid collision with built-in `type`
+        def add_to_tokens(_type: str, tok: str):
+            self.t_types.append(_type)
+            self.t_values.append(tok)
 
         global variables, functions
 

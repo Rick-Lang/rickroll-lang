@@ -6,14 +6,14 @@ from helpers import join_list
 # Keywords can execute outside main function
 kw_exe_outside_main = {KW.MAIN.value, KW.DEF.value, KW.IMPORT1.value}
 
-variables = []
-functions = []
+variables: list[str] = []
+functions: list[str] = []
 
 current_line = 0
 
 class Token:
     def __init__(self, tokens: list[str]):
-        self.t_values = []
+        self.t_values: list[str] = []
         self.last_kw = ''
 
         for tok in tokens:
@@ -68,7 +68,7 @@ class TranslateToPython:
         self.indent_count = 0
         self.py_code = ""               # Python source code, translated from RickRoll source code
 
-    def translate(self, values):
+    def translate(self, values: list[str]):
         self.values = values
         # if there is no code in the current line of code
         if not self.values:
@@ -78,7 +78,7 @@ class TranslateToPython:
             stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
             return
 
-        if self.is_main or (self.is_main == False and self.values[0] in kw_exe_outside_main) or self.is_function:
+        if self.is_main or (self.is_main is False and self.values[0] in kw_exe_outside_main) or self.is_function:
             # Convert Rickroll code to Python
             self.convert(kw=self.values[0])
 
@@ -88,7 +88,7 @@ class TranslateToPython:
             )
 
 
-    def convert(self, kw):
+    def convert(self, kw: str):
 
         if kw in functions:
             self.write(join_list(self.values))
@@ -189,11 +189,11 @@ class TranslateToPython:
             self.write(join_list(self.values[1:]))
 
 
-    def write(self, stmt):
+    def write(self, stmt: str):
         self.py_code += f"{'  ' * self.indent_count + stmt}\n"
 
 
-def run_in_py(src_file_name):
+def run_in_py(src_file_name: str):
     global current_line
 
     transpiler = TranslateToPython()
