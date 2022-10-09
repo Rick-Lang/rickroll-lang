@@ -8,7 +8,7 @@ from helpers import filter_str, precedence, starts_ends
 start = time()
 
 class AST:
-    def print_node(Node, args):
+    def print_node(Node: list, args):
         """
             print_node
                 |
@@ -16,7 +16,7 @@ class AST:
         """
         Node.append(["print_node", args])
 
-    def let_node(Node, name, expr):
+    def let_node(Node: list, name, expr):
         """
               let_node
                /     \
@@ -24,7 +24,7 @@ class AST:
         """
         Node.append(["let_node", name, expr])
 
-    def if_node(Node, cond, child_stmts):
+    def if_node(Node: list, cond, child_stmts):
         """
               if_node
                 /  \
@@ -32,7 +32,7 @@ class AST:
         """
         Node.append(["if_node", cond, child_stmts])
 
-    def while_node(Node, cond, child_stmts):
+    def while_node(Node: list, cond, child_stmts):
         """
               while_node
                /     \
@@ -42,7 +42,7 @@ class AST:
 
 
 class Parser(AST):
-    def __init__(self, tokens: list[list[str]], Node):
+    def __init__(self, tokens: list[list[str]], Node: list):
         self.Node = Node
         self.tokens = tokens
 
