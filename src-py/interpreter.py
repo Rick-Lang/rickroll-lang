@@ -8,7 +8,7 @@ from helpers import filter_str, precedence, starts_ends
 start = time()
 
 class AST:
-    def print_node(Node: list, args):
+    def print_node(Node: list[list[str]], args):
         """
             print_node
                 |
@@ -16,7 +16,7 @@ class AST:
         """
         Node.append(["print_node", args])
 
-    def let_node(Node: list, name, expr):
+    def let_node(Node: list[list[str]], name, expr):
         """
               let_node
                /     \
@@ -24,7 +24,7 @@ class AST:
         """
         Node.append(["let_node", name, expr])
 
-    def if_node(Node: list, cond, child_stmts):
+    def if_node(Node: list[list[str]], cond, child_stmts):
         """
               if_node
                 /  \
@@ -32,7 +32,7 @@ class AST:
         """
         Node.append(["if_node", cond, child_stmts])
 
-    def while_node(Node: list, cond, child_stmts):
+    def while_node(Node: list[list[str]], cond, child_stmts):
         """
               while_node
                /     \
@@ -42,7 +42,7 @@ class AST:
 
 
 class Parser(AST):
-    def __init__(self, tokens, Node):
+    def __init__(self, tokens: list[str], Node: list[list[str]]):
         self.Node = Node
         self.tokens = tokens
 
@@ -53,8 +53,8 @@ class Parser(AST):
             self.parse()
             self.pos += 1
 
-    def match(self, kw):
-        return True if self.tokens[self.pos][0] == kw else False
+    def match(self, kw: str):
+        return self.tokens[self.pos][0] is kw
 
     def parse(self):
         self.stmt = self.tokens[self.pos]
