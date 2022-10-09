@@ -1,9 +1,9 @@
 from os import system
 from sys import platform
 
-from Lexer import lexicalize
 from Keywords import *
-from helpers import join_list
+from Lexer import lexicalize
+from helpers import join_list, remove_file_ext
 
 
 # Token types
@@ -25,9 +25,9 @@ c_separators = {
     '(', ')', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
 
-variables = []
-declared_variables = set()
-functions = []
+variables: list[str] = []
+declared_variables: set[str] = set()
+functions: list[str] = []
 
 current_line = 0
 
@@ -71,9 +71,9 @@ Token
 """
 ####################################################################################
 class Token:
-    def __init__(self, raw_tokens):
-        self.t_types = []
-        self.t_values = []
+    def __init__(self, raw_tokens: list[str]):
+        self.t_types: list[str] = []
+        self.t_values: list[str] = []
 
         self.last_kw = ''
 
@@ -81,8 +81,8 @@ class Token:
             if tok:
                 self.make_token(tok)
 
-    def make_token(self, tok):
-        def add_to_tokens(type, token):
+    def make_token(self, tok: str):
+        def add_to_tokens(type: str, token: str):
             self.t_types.append(type)
             self.t_values.append(token)
 
@@ -139,7 +139,7 @@ class Token:
 'Translate To C++'
 ####################################################################################
 class TranslateToCpp:
-    def __init__(self, types, values):
+    def __init__(self, types: list[str], values: list[str]):
         self.types = types
         self.values = values
 
@@ -151,7 +151,7 @@ class TranslateToCpp:
             raise SyntaxError(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
     # Convert RickRoll tokens to C++
-    def convert(self, kw):
+    def convert(self, kw: str):
         if kw in functions:
             self.write(join_list(self.values))
 
@@ -218,7 +218,7 @@ class TranslateToCpp:
             self.write('};')
 
     # Write to C++ code
-    def write(self, content):
+    def write(self, content: str):
         global c_code
         c_code += f'{content}\n'
 
@@ -228,7 +228,7 @@ class TranslateToCpp:
 ####################################################################################
 
 
-def run_in_cpp(src_file_name):
+def run_in_cpp(src_file_name: str):
     global current_line
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
@@ -236,7 +236,7 @@ def run_in_cpp(src_file_name):
         content = src.readlines()
         content[-1] += '\n'
 
-        for statement in content:  # "statement" is a line of code the in source code
+        for statement in content:  # "statement" is a line of code in the source code
             current_line += 1
 
             tokens = lexicalize(statement)
@@ -244,15 +244,14 @@ def run_in_cpp(src_file_name):
             if tok.t_types:
                 TranslateToCpp(types=tok.t_types, values=tok.t_values)
 
-    f_name = src_file_name.split('.')
-    f_name = ".".join((f_name[:-1]))
+    f_name = remove_file_ext(src_file_name)
 
     with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
         f.write(c_code)
 
     if platform == 'win32':
         exe_file = f'{f_name}.exe'
-        system(f'g++ {f_name + ".cpp"} -o {exe_file}')
+        system(f'g++ {f_name}.cpp -o {exe_file}')
         system(f'{exe_file}')
     elif platform == 'linux':
         exe_file = f'{f_name}.out'

@@ -3,18 +3,35 @@ Common/Shared fns and constants to use across multiple modules/scripts
 """
 
 def join_list(l: list):
-    """Convert any `list` into a string without delimiter"""
+    """Convert any `list` into a `str` without delimiter."""
     return ''.join(map(str, l))
 
 def remove_all(l: list, x):
-    """Remove all occurrences of value (in-place) and returns the list"""
+    """Remove all occurrences of value (in-place) from a `list` and returns it."""
     while x in l:
         l.remove(x)
     return l
 
 def filter_str(s: str):
-    """Remove 1st and last chars from a `str`ing"""
+    """Remove 1st and last chars from a `str`."""
     return s[1:-1]
+
+def remove_file_ext(f_name: str):
+    """
+    Return a file-name-path without extension (substring after last dot).
+
+    **WARNING:** if path is a dot-{file/dir} the name (and dot) will be obliterated!
+
+    Examples:
+    ```
+    remove_file_ext('never_gonna_give_u_up.ogg') # 'never_gonna_give_u_up'
+
+    remove_file_ext('totally not a rickroll.exe') # 'totally not a rickroll'
+
+    remove_file_ext('.rick') # ''
+    ```
+    """
+    return '.'.join(f_name.split('.')[:-1])
 
 def precedence(op: str):
     """
@@ -22,7 +39,7 @@ def precedence(op: str):
 
     `op` should be a char.
 
-    returns `1` for lowest precedence, `2` for highest, `0` if `op` is not recognized
+    returns `1` for lowest precedence, `2` for highest, `0` if `op` is not recognized.
     """
     if op in {'+', '-'}:
         return 1
