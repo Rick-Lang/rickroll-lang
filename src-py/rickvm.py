@@ -9,14 +9,16 @@ var: var NAME VALUE
 """
 
 
-def applyOp(a, b, op):
+def applyOp(a, b, op: str):
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
-    if op=='=='and a==b or op=='!='and a!=b or op=='>'and a>b or op=='<'and a<b or op==">=" and a >= b or op=="<=" and a <= b:
-        return 'True'
-    return 'False'
+    return 'True' if \
+        op=='=='and a==b or op=='!='and a!=b \
+        or op=='>'and a>b or op=='<'and a<b \
+        or op=='>='and a>=b or op=='<='and a<=b \
+    else 'False'
 
 def evaluate(tokens):
     if len(tokens) == 1:

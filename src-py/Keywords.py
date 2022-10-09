@@ -22,8 +22,8 @@ class KW(Enum):
     ENDLESS_LOOP = 'togetherforeverandnevertopart'
     WHILE_LOOP = 'togetherforeverwith'
 
-    L_OP = 'islessthan'
     G_OP = 'isgreaterthan'
+    L_OP = 'islessthan'
     GOE_OP = 'isgreaterthanorequalto'
     LOE_OP = 'islessthanorequalto'
     IS_NOT_OP = 'aint'

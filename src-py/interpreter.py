@@ -102,13 +102,13 @@ def applyOp(a, b, op: str):
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
-    if op=='is'and a==b or op=='aint'and a!=b or op==KW.GOE_OP.value and a>b\
-        or op==KW.L_OP.value and a<b or op==KW.GOE_OP.value and a >= b\
-        or op==KW.LOE_OP.value and a <= b:
-        return 'True'
-    return 'False'
+    return 'True' if \
+        op==KW.E_OP.value and a==b or op==KW.IS_NOT_OP.value and a!=b \
+        or op==KW.G_OP.value and a>b or op==KW.L_OP.value and a<b \
+        or op==KW.GOE_OP.value and a>=b or op==KW.LOE_OP.value and a<=b \
+    else 'False'
 
-def evaluate(tokens):
+def evaluate(tokens: list[str]):
     if len(tokens) == 1:
         if tokens[0][0] == '"' and tokens[0][-1] == '"':
             return filter_str(tokens[0])

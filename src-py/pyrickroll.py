@@ -23,6 +23,13 @@ class Token:
     def __make_token(self, tok):
         global variables, functions
 
+        TOK_TO_FN = {
+            'length': 'len',
+            'to_string': 'str',
+            'to_int': 'int',
+            'to_float': 'float'
+        }
+
         if tok in keywords:
             if tok == 'is': self.t_values.append('==')
             elif tok == 'isnot': self.t_values.append('!=')
@@ -35,12 +42,6 @@ class Token:
             self.last_kw = tok
 
         elif tok in OP_build_in_functions:
-            TOK_TO_FN = {
-                'length': 'len',
-                'to_string': 'str',
-                'to_int': 'int',
-                'to_float': 'float'
-            }
             if tok in TOK_TO_FN:
                 self.t_values.append(TOK_TO_FN[tok])
 
