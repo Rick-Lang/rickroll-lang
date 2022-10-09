@@ -20,7 +20,7 @@ def join_list(l: list):
     return ''.join(map(str, l))
 
 def remove_all(l: list, x):
-    """Remove all occurrences of value (in-place) from a `list` and returns it."""
+    """Remove all occurrences of value (in-place) from a `list` and return it."""
     while x in l:
         l.remove(x)
     return l
