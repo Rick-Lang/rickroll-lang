@@ -31,12 +31,13 @@ class Token:
         }
 
         if tok in keywords:
-            if tok == 'is': self.t_values.append('==')
+            if tok == KW.E_OP.value: self.t_values.append('==')
+            # "why isn't this `aint`?" - @Rudxain
             elif tok == 'isnot': self.t_values.append('!=')
-            elif tok == 'isgreaterthan': self.t_values.append('>')
-            elif tok == 'islessthan': self.t_values.append('<')
-            elif tok == 'isgreaterthanorequalto': self.t_values.append('>=')
-            elif tok == 'islessthanorequalto': self.t_values.append('<=')
+            elif tok == KW.G_OP.value: self.t_values.append('>')
+            elif tok == KW.L_OP.value: self.t_values.append('<')
+            elif tok == KW.GOE_OP.value: self.t_values.append('>=')
+            elif tok == KW.LOE_OP.value: self.t_values.append('<=')
             else: self.t_values.append(tok)
 
             self.last_kw = tok
