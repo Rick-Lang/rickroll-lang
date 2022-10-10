@@ -54,7 +54,7 @@ class Parser(AST):
             self.pos += 1
 
     def match(self, kw: str):
-        return self.tokens[self.pos][0] is kw
+        return True if self.tokens[self.pos][0] == kw else False
 
     def parse(self):
         self.stmt = self.tokens[self.pos]
