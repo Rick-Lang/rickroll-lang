@@ -78,7 +78,7 @@ class TranslateToPython:
             stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
             return
 
-        if self.is_main or (self.is_main is False and self.values[0] in kw_exe_outside_main) or self.is_function:
+        if self.is_main or (self.is_main == False and self.values[0] in kw_exe_outside_main) or self.is_function:
             # Convert Rickroll code to Python
             self.convert(kw=self.values[0])
 
