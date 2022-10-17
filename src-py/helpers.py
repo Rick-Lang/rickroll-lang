@@ -13,7 +13,7 @@ def starts_ends(container: str | list, x):
     starts_ends('(rick)', '()') # `False`
     ```
     """
-    return container[0] is x and container[-1] is x
+    return container[0] == x and container[-1] == x
 
 def join_list(l: list):
     """Convert any `list` into a `str` without delimiter."""
