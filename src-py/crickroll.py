@@ -1,9 +1,10 @@
 from os import system
+from os.path import splitext
 from sys import platform
 
 from Keywords import *
 from Lexer import lexicalize
-from helpers import join_list, remove_path_ext, starts_ends
+from helpers import join_list, starts_ends
 
 
 # Token types
@@ -245,7 +246,7 @@ def run_in_cpp(src_file_name: str):
             if tok.t_types:
                 TranslateToCpp(types=tok.t_types, values=tok.t_values)
 
-    f_name = remove_path_ext(src_file_name)
+    f_name = splitext(src_file_name)[0]
 
     with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
         f.write(c_code)
