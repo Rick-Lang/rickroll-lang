@@ -1,174 +1,141 @@
+# Documentation
+its not a rickroll! get into the car and the journey is gonna start in 3 secs
 
-<img src="https://avatars.githubusercontent.com/u/83736946?s=200&v=4" align="right" width="150" height="150"/>
-<br>
+# Notice:
+**The syntax of RickRoll-Lang is not same as Python**
+1. It doesn't need indentation
+2. The code must be written inside the main method, otherwise the interpreter will not execute
 
-# Lenguaje de Programación Rickroll
-![Build](https://img.shields.io/badge/Build-passing-orange?style=for-the-badge&logo=appveyor)
-![Python](https://img.shields.io/badge/Python-3.6%2B-brightgreen?style=for-the-badge&logo=appveyor)
-![Licencia](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
-<br>
-Lenguaje de Programación Rick Roll, un lenguaje basado en rickroll!
-
-![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
-
-## Hola Mundo
-**Aunque Rickroll se puede transpilar a Python3, su sintaxis no es completamente similar a la de Python.**
-1. No necesita sangría
-2. El código debe escribirse dentro del método principal, de lo contrario, el intérprete no se ejecutará
-3. **Las palabras clave se pueden separar libremente**
-
-Rickroll-Lang:
+## Commands to execute your code
+Execute by converting .rickroll to Python
 ```
-take me to ur heart
-    give msj up "Never gonna give you up, never gonna let you down~\n"
-    i just wanna tell u how im feeling msj
-say goodbye
+python3 RickRoll.py [Source Code File Name]
 ```
-Equivalente a Python
-```python
-if __name__ == '__main__':
-  msj = "Never gonna give you up, never gonna let you down~\n"
-  print(msj, end='')
-
+Execute by converting .rickroll to C++ (Requires g++ compiler, however this feature is quite immature, sometimes probably won't work)
+```
+python3 RickRoll.py -cpp [Source Code File Name]
+```
+If you want to know the execution time:
+> Add "--time"
+```
+python3 RickRoll.py [Source Code File Name] --time
+```
+Generate and play an audio from .rickroll (This feature is quite new)
+```
+python3 RickRoll.py [Source Code File Name] --audio
 ```
 
-Equivalente a C++
-```c++
-#include<iostream>
-using namespace std;
-int main(int argc, char* argv[]){
-    string msj = "Never gonna give you up, never gonna let you down~\n";
-    cout<<msj;
-}
+## Hello World
 ```
-**Y puedes obtener la salida en tu terminal:**
-
-<img src="https://camo.githubusercontent.com/e1e1abc53d498866b9a533d65cdfee7ac7cc289423dcbe3eead940051d93a275/68747470733a2f2f707265766965772e726564642e69742f77326e383169717833377035312e6769663f666f726d61743d706e673826733d61353631396661303039333863326161383137343936646464396563656461386137323733323463" width="460" height="460"/>
-
-<br>
-
-**Lo siento, es esto:**
+take me to ur heart                                                    # This is the MAIN METHOD
+    give msg up "Never gonna give you up, never gonna let you down~\n" # Define a variable
+    i just wanna tell u how im feeling msg                             # print the "msg" variable
+say goodbye                                                            # End the main method
+```
+And you can get the output on your terminal:
 ```
 Never gonna give you up, never gonna let you down~
 ```
-**Las palabras clave se pueden separar libremente**
-```
-takemetourheart
-    give msj up "Never gonna give you up, never gonna let you down~\n"
-    i justwanna telluhowim feeling msj
-say good bye
-```
-Esto también es ejecutable
 
+## Defining Variable
+You can define int, float, string, list/array, set, and tuple.
+```
+give a up 10
+give b up "It is a string"
+give c up ["This", "is", "an", "array"]
 
-## Ejecutar Código
-Ejecutar convirtiendo .rickroll a Python
-```shell
-python3 RickRoll.py [Nombre del Archivo de Código Fuente]
-```
-Ejecutar convirtiendo .rickroll a C++ (Requiere compilador g++ y tiene numerosos bugs)
-```shell
-python3 RickRoll.py -cpp [Nombre del Archivo de Código Fuente]
-```
-Ejecutar con intérprete
-```shell
-python3 RickRoll.py -intpr [Nombre del Archivo de Código Fuente]
-```
-Si quieres saber el tiempo de ejecución:
-> Añade "--time"
-```shell
-python3 RickRoll.py [Nombre del Archivo de Código Fuente] --time
-```
-Generate and play an audio from .rickroll
-```shell
-python3 RickRoll.py [Nombre del Archivo de Código Fuente] --audio
 ```
 
-## Extensión de VsCode
-https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
-
-
-## Requisitos
-- [Bibliotecas de Python](requirements.txt)
-- [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
-- Compilador G++ (Para traducir RickRoll a C++)
-
-
-## Características
-- *[Turing-completo](https://es.wikipedia.org/wiki/Turing_completo)*
-- *Compatibilidad [Python 3.6+](https://www.python.org/downloads/release/python-3610/)*
-- *Las palabras clave/declaraciones provienen de las letras de [Rick Astley](https://es.wikipedia.org/wiki/Rick_Astley)*
-- *Las palabras clave se pueden separar libremente*
-- *[Ejemplos](examples) para comenzar*
-- *Traduce código fuente de RickRoll a Python3 y C++*
-- *[Generar y reproducir audios desde el código fuente de .rickroll](#Generar-Audio)*
-- *Documentación en chino, ruso, e inglés* (Espero ustedes puedan hacer pull requests de docs en otros idiomas lol)
-- [*Un editor para escribir código .rickroll*](https://github.com/RedEnder666/RickRoll_IDE)
-- [*Una extensión para Vscode*](https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang)
-
-
-## Generar Audio
-Command:
+## If Statement
+Indentation in RickRoll-lang is optional.
 ```
-python3 RickRoll.py [Nombre del Archivo de Código Fuente] --audio
+take me to ur heart~    # You can add "~" at the end of the statement (it is totally optional)
+    give a up 10
+
+    and if u ask me how im feeling a is 10
+        i just wanna tell u how im feeling "A is 10!"
+    say goodbye
+
+say goodbye~
 ```
-After running this command, the generator is gonna generate an audio from the .rickroll program and play it on your terminal
+Equivalent to Python:
+```python
+if __name__ == '__main__':
+    a = 10
+    if a == 10:
+        print("A is 10!")
 
-![](img/au_generator.PNG)
+```
 
-## Documentation
-We don't usually update [The Chinese Documentation / 中文文档](doc-Ch.md)
+And you will get this on your terminal
+```
+"A is 10!"
+```
 
-**[English](doc.md)**
-<br>
-**[简体中文](doc-Ch.md)**
-<br>
-**[Russian](doc-RU.md)**
+## Loop
+RickRoll supports 2 kinds of loop, the first one is endless loop, and the second one is while loop
+```
+take me to ur heart
+    together forever and never to part # Endless loop
 
-# Rickroll-lang Editor
-See https://github.com/RedEnder666/RickRoll_IDE
+    say goodbye
 
-# Todo!
-In order to make RICKROll becoming a world heritage, YOU and I still have a bunch of things to do!
-1. Add more keywords and built-in functions!
-2. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
-3. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
-4. Improve the current audio generator!
-5. Improve the RickRoll interpreter!
-6. Support "writing code by singing"!
-7. Design a better icon!
-8. [**SPREAD RICKROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
+say_good_bye
+```
+Equivalent to Python:
+```Python
+if __name__ == "__main__":
+    while True:
+        pass
+```
+While loop
+```
+take me to ur heart
+    give a up 10
+    together forever with a is less than 10
+        give a up a + 1
+    say goodbye
 
-# Rickroll Language Website
-**[https://rickroll-lang.tech/introduction/](https://www.bilibili.com/video/BV1uT4y1P7CX)**
-<br>
-**_or_**
-<br>
-**https://rick-lang.github.io/rickroll-lang/**
+say goodbye
+```
+Equivalent to python:
+```
+if __name__ == "__main__":
+    a = 0
+    while a < 10:
+        a += 1
 
-# Offcial Discord Server/Contact
-https://discord.gg/bRrbZPjVDH
-Join this server to chat with cool people or for support
-<br /> We currently need some people to join!
+```
 
-Wechat/微信: githubsherlockcxk
-<br>
-Discord: Satin Wuker#0572
-<br/> Valcan#1407
+## Defining Function
+RickRoll supports return function
+```
+gonna do_something arg1, arg2 # Define a function
+    when i give my arg1, arg2 it will be completely # Return arg1 and arg2
+say goodbye
+```
+Equivalent to Python:
+```python
+def do_something(arg1, arg2):
+    return arg1, arg2
+```
 
-# Purpose
-Despite the fact that the Rickroll Language is considered an esoteric programming language, it has its unignorable significance. I believe that rick roll is not only a way to promote people’s communication, it is also one of the most paramount art in the human history. The purpose of the Rickroll Language is to introduce this art to people in a distinctive way – programming.
+## Import Python Library/file
+```
+we know the LIB_NAME and we're gonna play it
+```
+Equivalent to Python:
+```python
+import LIB_NAME
+```
 
-# Related Repos
-Here are the projects that are inspired by Rickroll-lang
-1. [Ricky](https://github.com/thevvx/Ricky)
-2. [Rickroll-lang API](https://github.com/FusionSid/RicklangAPI)
-3. [RickRoll IDE](https://github.com/RedEnder666/RickRoll_IDE)
-4. [Rick Astley Bot](https://github.com/FusionSid/Rick-Astley-Bot)
-5. [Rickroll Lang Vscode extension](https://github.com/FusionSid/Rickroll-Lang-VScode-Extension)
-
-# Credit: Rick Astley
- Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
-<br/> Twitter: https://twitter.com/rickastley
-<br/> Facebook: https://www.facebook.com/RickAstley
-<br/> Spotify: https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt
+### Embed Python Code
+```
+py: print("hello Rick Astley")
+py: import sys
+```
+Equivalent to Python:
+```python
+print("hello Rick Astley")
+import sys
+```
