@@ -89,32 +89,32 @@ https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
 
 
 ## Requisitos
-- [Bibliotecas de Python](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
+- [Bibliotecas de Python](requirements.txt)
 - [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
 - Compilador G++ (Para traducir RickRoll a C++)
 
 
 ## Características
-- *[Turing-completo](https://en.wikipedia.org/wiki/Turing_completeness)*
+- *[Turing-completo](https://es.wikipedia.org/wiki/Turing_completo)*
 - *Compatibilidad [Python 3.6+](https://www.python.org/downloads/release/python-3610/)*
-- *Las palabras clave/declaraciones provienen de las letras de [Rick Astley](https://en.wikipedia.org/wiki/Rick_Astley)*
+- *Las palabras clave/declaraciones provienen de las letras de [Rick Astley](https://es.wikipedia.org/wiki/Rick_Astley)*
 - *Las palabras clave se pueden separar libremente*
-- *[Ejemplos](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) para comenzar*
+- *[Ejemplos](examples) para comenzar*
 - *Traduce código fuente de RickRoll a Python3 y C++*
-- *[Generar y reproducir audios desde el código fuente de .rickroll](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
+- *[Generar y reproducir audios desde el código fuente de .rickroll](#Generar-Audio)*
 - *Documentación en chino, ruso, e inglés* (Espero ustedes puedan hacer pull requests de docs en otros idiomas lol)
 - [*Un editor para escribir código .rickroll*](https://github.com/RedEnder666/RickRoll_IDE)
 - [*Una extensión para Vscode*](https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang)
 
 
-## Generate Audio
+## Generar Audio
 Command:
 ```
 python3 RickRoll.py [Nombre del Archivo de Código Fuente] --audio
 ```
 After running this command, the generator is gonna generate an audio from the .rickroll program and play it on your terminal
 
-![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
+![](img/au_generator.PNG)
 
 ## Documentation
 We don't usually update [The Chinese Documentation / 中文文档](doc-Ch.md)
