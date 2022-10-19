@@ -91,20 +91,20 @@ https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
 ## Requisitos
 - [Bibliotecas de Python](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
 - [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
-- G++ compiler (For translating RickRoll to C++)
+- Compilador G++ (Para traducir RickRoll a C++)
 
 
 ## Características
 - *[Turing-completo](https://en.wikipedia.org/wiki/Turing_completeness)*
-- *Support [Python 3.6+](https://www.python.org/downloads/release/python-3610/)*
-- *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
-- *Keywords can be separated freely*
-- *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
-- *Translate RickRoll source code to Python3 and C++*
-- *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
-- *Chinese, Russian, and English documentation* (Hope you guys can pull request docs in other languages lol)
-- [*An editor for writing .rickroll code*](https://github.com/RedEnder666/RickRoll_IDE)
-- [*An Vscode extension*](https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang)
+- *Compatibilidad [Python 3.6+](https://www.python.org/downloads/release/python-3610/)*
+- *Las palabras clave/declaraciones provienen de las letras de [Rick Astley](https://en.wikipedia.org/wiki/Rick_Astley)*
+- *Las palabras clave se pueden separar libremente*
+- *[Ejemplos](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) para comenzar*
+- *Traduce código fuente de RickRoll a Python3 y C++*
+- *[Generar y reproducir audios desde el código fuente de .rickroll](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
+- *Documentación en chino, ruso, e inglés* (Espero ustedes puedan hacer pull requests de docs en otros idiomas lol)
+- [*Un editor para escribir código .rickroll*](https://github.com/RedEnder666/RickRoll_IDE)
+- [*Una extensión para Vscode*](https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang)
 
 
 ## Generate Audio
