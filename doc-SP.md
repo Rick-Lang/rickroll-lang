@@ -13,32 +13,32 @@ Lenguaje de Programación Rick Roll, un lenguaje basado en rickroll!
 
 ## Hola Mundo
 **Aunque Rickroll se puede transpilar a Python3, su sintaxis no es completamente similar a la de Python.**
-1. It doesn't need indentation
-2. The code must be written inside the main method, otherwise the interpreter will not execute
-3. **The keywords can be separated freely**
+1. No necesita sangría
+2. El código debe escribirse dentro del método principal, de lo contrario, el intérprete no se ejecutará
+3. **Las palabras clave se pueden separar libremente**
 
 Rickroll-Lang:
 ```
 take me to ur heart
-    give msg up "Never gonna give you up, never gonna let you down~\n"
-    i just wanna tell u how im feeling msg
+    give msj up "Never gonna give you up, never gonna let you down~\n"
+    i just wanna tell u how im feeling msj
 say goodbye
 ```
 Equivalente a Python
 ```python
 if __name__ == '__main__':
-  msg = "Never gonna give you up, never gonna let you down~\n"
-  print(msg, end='')
+  msj = "Never gonna give you up, never gonna let you down~\n"
+  print(msj, end='')
 
 ```
 
-Equivalent to C++
+Equivalente a C++
 ```c++
 #include<iostream>
 using namespace std;
 int main(int argc, char* argv[]){
-    string msg = "Never gonna give you up, never gonna let you down~\n";
-    cout<<msg;
+    string msj = "Never gonna give you up, never gonna let you down~\n";
+    cout<<msj;
 }
 ```
 **And you can get the output on your terminal:**
@@ -54,8 +54,8 @@ Never gonna give you up, never gonna let you down~
 **The keywords can be separated freely**
 ```
 takemetourheart
-    give msg up "Never gonna give you up, never gonna let you down~\n"
-    i justwanna telluhowim feeling msg
+    give msj up "Never gonna give you up, never gonna let you down~\n"
+    i justwanna telluhowim feeling msj
 say good bye
 ```
 This is also executable
