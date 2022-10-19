@@ -41,50 +41,50 @@ int main(int argc, char* argv[]){
     cout<<msj;
 }
 ```
-**And you can get the output on your terminal:**
+**Y puedes obtener la salida en tu terminal:**
 
 <img src="https://camo.githubusercontent.com/e1e1abc53d498866b9a533d65cdfee7ac7cc289423dcbe3eead940051d93a275/68747470733a2f2f707265766965772e726564642e69742f77326e383169717833377035312e6769663f666f726d61743d706e673826733d61353631396661303039333863326161383137343936646464396563656461386137323733323463" width="460" height="460"/>
 
 <br>
 
-**Sorry, it's this:**
+**Lo siento, es esto:**
 ```
 Never gonna give you up, never gonna let you down~
 ```
-**The keywords can be separated freely**
+**Las palabras clave se pueden separar libremente**
 ```
 takemetourheart
     give msj up "Never gonna give you up, never gonna let you down~\n"
     i justwanna telluhowim feeling msj
 say good bye
 ```
-This is also executable
+Esto también es ejecutable
 
 
-## Run Code
-Execute by converting .rickroll to Python
+## Ejecutar Código
+Ejecutar convirtiendo .rickroll a Python
 ```shell
-python3 RickRoll.py [Source Code File Name]
+python3 RickRoll.py [Nombre del Archivo de Código Fuente]
 ```
-Execute by converting .rickroll to C++ (Requires g++ compiler and has numerous bugs)
+Ejecutar convirtiendo .rickroll a C++ (Requiere compilador g++ y tiene numerosos bugs)
 ```shell
-python3 RickRoll.py -cpp [Source Code File Name]
+python3 RickRoll.py -cpp [Nombre del Archivo de Código Fuente]
 ```
-Execute by interpreter
+Ejecutar con intérprete
 ```shell
-python3 RickRoll.py -intpr [Source Code File Name]
+python3 RickRoll.py -intpr [Nombre del Archivo de Código Fuente]
 ```
-If you want to know the execution time:
-> Add "--time"
+Si quieres saber el tiempo de ejecución:
+> Añade "--time"
 ```shell
-python3 RickRoll.py [Source Code File Name] --time
+python3 RickRoll.py [Nombre del Archivo de Código Fuente] --time
 ```
 Generate and play an audio from .rickroll
 ```shell
-python3 RickRoll.py [Source Code File Name] --audio
+python3 RickRoll.py [Nombre del Archivo de Código Fuente] --audio
 ```
 
-## VsCode Extension
+## Extensión de VsCode
 https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
 
 
@@ -94,8 +94,8 @@ https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
 - G++ compiler (For translating RickRoll to C++)
 
 
-## Features
-- *[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)*
+## Características
+- *[Turing-completo](https://en.wikipedia.org/wiki/Turing_completeness)*
 - *Support [Python 3.6+](https://www.python.org/downloads/release/python-3610/)*
 - *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *Keywords can be separated freely*
@@ -110,7 +110,7 @@ https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
 ## Generate Audio
 Command:
 ```
-python3 RickRoll.py [Source Code File Name] --audio
+python3 RickRoll.py [Nombre del Archivo de Código Fuente] --audio
 ```
 After running this command, the generator is gonna generate an audio from the .rickroll program and play it on your terminal
 
