@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from time import time
 start = time()      # Set and start a timer
 
