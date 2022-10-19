@@ -2,17 +2,17 @@
 <img src="https://avatars.githubusercontent.com/u/83736946?s=200&v=4" align="right" width="150" height="150"/>
 <br>
 
-# Rickroll Programming Language
+# Lenguaje de Programación Rickroll
 ![Build](https://img.shields.io/badge/Build-passing-orange?style=for-the-badge&logo=appveyor)
 ![Python](https://img.shields.io/badge/Python-3.6%2B-brightgreen?style=for-the-badge&logo=appveyor)
-![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
+![Licencia](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 <br>
-Rick Roll Programming Language, a language that is rickroll based!
+Lenguaje de Programación Rick Roll, un lenguaje basado en rickroll!
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
-## Hello World
-**Although Rickroll can be transpiled into Python3, its syntax is not completely similar to Python's**
+## Hola Mundo
+**Aunque Rickroll se puede transpilar a Python3, su sintaxis no es completamente similar a la de Python.**
 1. It doesn't need indentation
 2. The code must be written inside the main method, otherwise the interpreter will not execute
 3. **The keywords can be separated freely**
@@ -24,7 +24,7 @@ take me to ur heart
     i just wanna tell u how im feeling msg
 say goodbye
 ```
-Equivalent to Python
+Equivalente a Python
 ```python
 if __name__ == '__main__':
   msg = "Never gonna give you up, never gonna let you down~\n"
@@ -172,4 +172,3 @@ Here are the projects that are inspired by Rickroll-lang
 <br/> Twitter: https://twitter.com/rickastley
 <br/> Facebook: https://www.facebook.com/RickAstley
 <br/> Spotify: https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt
-
