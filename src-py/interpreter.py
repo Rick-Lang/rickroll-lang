@@ -182,7 +182,8 @@ def run_in_interpreter(src_file_name: str):
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
-        content[-1] += '\n'
+        if len(content) > 0:
+            content[-1] += '\n'
         tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != []]
         Parser(tokens=tokens, Node=Node)
 
