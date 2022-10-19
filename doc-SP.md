@@ -1,94 +1,94 @@
-# Documentation
-its not a rickroll! get into the car and the journey is gonna start in 3 secs
+# Documentación
+no es un rickroll! súbete al auto y el viaje comenzará en 3 segs
 
-# Notice:
-**The syntax of RickRoll-Lang is not same as Python**
-1. It doesn't need indentation
-2. The code must be written inside the main method, otherwise the interpreter will not execute
+# Aviso:
+**La sintaxis de RickRoll-Lang no es la misma que la de Python**
+1. No necesita sangría
+2. El código debe escribirse dentro del método principal, de lo contrario, el intérprete no se ejecutará.
 
-## Commands to execute your code
-Execute by converting .rickroll to Python
+## Comandos para ejecutar tu código
+Ejecutar convirtiendo .rickroll a Python
 ```
-python3 RickRoll.py [Source Code File Name]
+python3 RickRoll.py [Nombre del archivo de código fuente]
 ```
-Execute by converting .rickroll to C++ (Requires g++ compiler, however this feature is quite immature, sometimes probably won't work)
+Ejecutar convirtiendo .rickroll a C++ (Requiere el compilador g++, sin embargo, esta característica es bastante inmadura, a veces probablemente no funcione)
 ```
-python3 RickRoll.py -cpp [Source Code File Name]
+python3 RickRoll.py -cpp [Nombre del archivo de código fuente]
 ```
-If you want to know the execution time:
-> Add "--time"
+Si quieres saber el tiempo de ejecución:
+> Añade "--time"
 ```
-python3 RickRoll.py [Source Code File Name] --time
+python3 RickRoll.py [Nombre del archivo de código fuente] --time
 ```
-Generate and play an audio from .rickroll (This feature is quite new)
+Generar y reproducir un audio desde .rickroll (Esta característica es bastante nueva)
 ```
-python3 RickRoll.py [Source Code File Name] --audio
+python3 RickRoll.py [Nombre del archivo de código fuente] --audio
 ```
 
-## Hello World
+## Hola Mundo
 ```
-take me to ur heart                                                    # This is the MAIN METHOD
-    give msg up "Never gonna give you up, never gonna let you down~\n" # Define a variable
-    i just wanna tell u how im feeling msg                             # print the "msg" variable
-say goodbye                                                            # End the main method
+take me to ur heart                                                    # Este es el MÉTODO PRINCIPAL
+    give msj up "Never gonna give you up, never gonna let you down~\n" # Definir una variable
+    i just wanna tell u how im feeling msj                             # imprime la variable "msj"
+say goodbye                                                            # Finalizar el método principal
 ```
-And you can get the output on your terminal:
+Y puede obtener la salida en su terminal:
 ```
 Never gonna give you up, never gonna let you down~
 ```
 
-## Defining Variable
-You can define int, float, string, list/array, set, and tuple.
+## Definiendo Variable
+Puede definir int, float, string, list/array, set y tuple.
 ```
 give a up 10
-give b up "It is a string"
-give c up ["This", "is", "an", "array"]
+give b up "Es un string"
+give c up ["Esto", "es", "un", "array"]
 
 ```
 
-## If Statement
-Indentation in RickRoll-lang is optional.
+## Declaración If
+La sangría en RickRoll-lang es opcional.
 ```
-take me to ur heart~    # You can add "~" at the end of the statement (it is totally optional)
+take me to ur heart~ # Puedes agregar "~" al final de la declaración (es totalmente opcional)
     give a up 10
 
     and if u ask me how im feeling a is 10
-        i just wanna tell u how im feeling "A is 10!"
+        i just wanna tell u how im feeling "¡A es 10!"
     say goodbye
 
 say goodbye~
 ```
-Equivalent to Python:
+Equivalente a Python:
 ```python
 if __name__ == '__main__':
     a = 10
     if a == 10:
-        print("A is 10!")
+        print("¡A es 10!")
 
 ```
 
-And you will get this on your terminal
+Y obtendrás esto en tu terminal.
 ```
-"A is 10!"
+"¡A es 10!"
 ```
 
-## Loop
-RickRoll supports 2 kinds of loop, the first one is endless loop, and the second one is while loop
+## Bucle
+RickRoll admite 2 tipos de bucle, el primero es bucle sin fin y el segundo es bucle mientras
 ```
 take me to ur heart
-    together forever and never to part # Endless loop
+    together forever and never to part # Bucle sin fin
 
     say goodbye
 
 say_good_bye
 ```
-Equivalent to Python:
+Equivalente a Python:
 ```Python
 if __name__ == "__main__":
     while True:
         pass
 ```
-While loop
+Bucle mientras
 ```
 take me to ur heart
     give a up 10
@@ -98,7 +98,7 @@ take me to ur heart
 
 say goodbye
 ```
-Equivalent to python:
+Equivalente a python:
 ```
 if __name__ == "__main__":
     a = 0
@@ -107,35 +107,35 @@ if __name__ == "__main__":
 
 ```
 
-## Defining Function
-RickRoll supports return function
+## Definiendo Función
+RickRoll admite función retorno
 ```
-gonna do_something arg1, arg2 # Define a function
-    when i give my arg1, arg2 it will be completely # Return arg1 and arg2
+gonna hacer_algo arg1, arg2 # Definir una función
+    when i give my arg1, arg2 it will be completely # Retornar arg1 y arg2
 say goodbye
 ```
-Equivalent to Python:
+Equivalente a Python:
 ```python
-def do_something(arg1, arg2):
+def hacer_algo(arg1, arg2):
     return arg1, arg2
 ```
 
-## Import Python Library/file
+## Importar Archivo/Biblioteca de Python
 ```
-we know the LIB_NAME and we're gonna play it
+we know the NOMBRE_BIB and we're gonna play it
 ```
-Equivalent to Python:
+Equivalente a Python:
 ```python
-import LIB_NAME
+import NOMBRE_BIB
 ```
 
-### Embed Python Code
+### Insertar código de Python
 ```
-py: print("hello Rick Astley")
+py: print("hola Rick Astley")
 py: import sys
 ```
-Equivalent to Python:
+Equivalente a Python:
 ```python
-print("hello Rick Astley")
+print("hola Rick Astley")
 import sys
 ```
