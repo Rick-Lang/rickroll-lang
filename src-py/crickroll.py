@@ -234,7 +234,8 @@ def run_in_cpp(src_file_name: str):
     with open(src_file_name, mode='r', encoding='utf-8') as src:
 
         content = src.readlines()
-        content[-1] += '\n'
+        if len(content) > 0:
+            content[-1] += '\n'
 
         for statement in content:  # "statement" is a line of code in the source code
             current_line += 1
