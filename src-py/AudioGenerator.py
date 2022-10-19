@@ -22,13 +22,13 @@ if dependancyMissingBool:
     installChoice=input().upper()
     if installChoice=="Y":
         print("pip needed for this to work.")
-        import os
+        from os import system
         if pyttsxMissingBool:
             print("Installing the pip package pyttsx3...")
-            os.system("pip install pyttsx3")
+            system("pip install pyttsx3")
         if playsoundMissingBool:
             print("Installing the pip package playsound...")
-            os.system("pip install playsound")
+            system("pip install playsound")
         try:
             from pyttsx3 import init
         except:
