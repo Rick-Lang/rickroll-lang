@@ -1,6 +1,7 @@
 """
-Common/Shared fns and constants to use across multiple modules/scripts
+Common/Shared utilities, to use across multiple modules/scripts
 """
+from os.path import splitext
 
 def starts_ends(container: str | list, x):
     """
@@ -29,22 +30,21 @@ def filter_str(s: str):
     """Remove 1st and last chars from a `str`."""
     return s[1:-1]
 
-def remove_file_ext(f_name: str):
+def remove_path_ext(f_name: str):
     """
     Return a file-name-path without extension (substring after last dot).
 
-    **WARNING:** if path is a dot-{file/dir} the name (and dot) will be obliterated!
-
     Examples:
     ```
-    remove_file_ext('never_gonna_give_u_up.ogg') # 'never_gonna_give_u_up'
+    remove_path_ext('Never Gonna Give U Up.ogg') # 'Never Gonna Give U Up'
 
-    remove_file_ext('totally not a rickroll.exe') # 'totally not a rickroll'
+    remove_path_ext('totally-not-a-rickroll.exe') # 'totally-not-a-rickroll'
 
-    remove_file_ext('.rick') # ''
+    remove_path_ext('.rick') # '.rick'
     ```
     """
-    return '.'.join(f_name.split('.')[:-1])
+    (f_name, _) = splitext(f_name)
+    return f_name
 
 def precedence(op: str):
     """
