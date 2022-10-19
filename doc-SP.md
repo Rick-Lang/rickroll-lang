@@ -88,8 +88,8 @@ python3 RickRoll.py [Nombre del Archivo de Código Fuente] --audio
 https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
 
 
-## Requirements
-- [Python libraries](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
+## Requisitos
+- [Bibliotecas de Python](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
 - [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
 - G++ compiler (For translating RickRoll to C++)
 
