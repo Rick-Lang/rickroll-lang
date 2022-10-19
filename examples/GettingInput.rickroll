@@ -7,7 +7,7 @@ take me to ur heart
 
     give name up sys.stdin.readline()
 
-    # Prints hello {name}
+    #print(f"hello {name}")
     i just wanna tell u how im feeling "hello " + name + "\n"
 
 say goodbye
