@@ -33,22 +33,23 @@ class KW(Enum):
     PY = 'py:'
 
 keywords: Final[list[str]] = [e.value for e in KW]
+"""values in `KW`"""
 
 INDENT_KW: Final = [KW[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
+"""keywords that require indentation in their body (when transpiled to py)"""
 
-# Tokens that the interpreter will totally ignore
 ignore_tokens: Final = set("~'")
+"""Tokens that the interpreter will totally ignore"""
 
-# Characters in numerals
 digits: Final = set('0123456789.')
+"""Characters in numerals"""
 
-# Separators are used in tokenization
 separators: Final = {
-    # not using `set`, because multi-char `str`s may be added in the future
+    # not using `set`, because readability, and multi-char `str`s may be added in the future
     '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
+"""Separators are used in tokenization"""
 
-# Operators
 operators = {
     '+', '-', '*', '/', '%', '^', '=',
     '[', ']', '(', ')', '{', '}', ',',

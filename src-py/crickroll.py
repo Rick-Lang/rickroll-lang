@@ -144,14 +144,13 @@ class TranslateToCpp:
         self.values = values
 
         if self.types[0] == TT.keyword.value or self.values[0] in functions:
-            # Convert RickRoll code to Cpp
             self.convert(kw=self.values[0])
 
         else:
             raise SyntaxError(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
 
-    # Convert RickRoll tokens to C++
     def convert(self, kw: str):
+        """Convert RickRoll tokens to C++"""
         if kw in functions:
             self.write(join_list(self.values))
 
@@ -217,8 +216,8 @@ class TranslateToCpp:
         if kw == KW.END.value:
             self.write('};')
 
-    # Write to C++ code
     def write(self, content: str):
+        """Write to C++ code"""
         global c_code
         c_code += f'{content}\n'
 
@@ -237,7 +236,8 @@ def run_in_cpp(src_file_name: str):
         if len(content) > 0:
             content[-1] += '\n'
 
-        for statement in content:  # "statement" is a line of code in the source code
+        # `statement`` is a line of code in the source code
+        for statement in content:
             current_line += 1
 
             tokens = lexicalize(statement)
