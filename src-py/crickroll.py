@@ -9,6 +9,7 @@ from helpers import join_list, starts_ends
 
 
 # Token types
+# to-do: convert to enum
 TT_keyword        = 'KEYWORDS'
 TT_operator       = 'OPERATORS'
 TT_build_in_funcs = 'Build-In-Function'
@@ -23,13 +24,13 @@ TT_arguments = 'ARGUMENTS'
 TT_variable   = 'VARIABLE'
 TT_function   = 'FUNCTION'
 
-c_separators = {
+c_separators: Final = {
     '(', ')', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
 
-variables: list[str] = []
-declared_variables: set[str] = set()
-functions: list[str] = []
+variables: Final[list[str]] = []
+declared_variables: Final[set[str]] = set()
+functions: Final[list[str]] = []
 
 current_line = 0
 
@@ -90,7 +91,7 @@ class Token:
 
         global variables, functions
 
-        TOK_TO_OP = {
+        TOK_TO_OP: Final = {
             'is': '==',
             'isnot': '!=',
             'isgreaterthan': '>',
@@ -247,7 +248,7 @@ def run_in_cpp(src_file_name: str):
             if tok.t_types:
                 TranslateToCpp(types=tok.t_types, values=tok.t_values)
 
-    f_name = splitext(src_file_name)[0]
+    f_name: Final = splitext(src_file_name)[0]
 
     with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
         f.write(c_code)
