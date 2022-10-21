@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from traceback import format_exc
 
+
 def play_audio(src_file_name: str):
     import AudioGenerator
     from pyrickroll import Token
@@ -16,18 +17,18 @@ def play_audio(src_file_name: str):
             for i in range(len(tok.t_values)):
                 AudioGenerator.play(tok.t_values[i])
 
+
 def main():
     from argparse import ArgumentParser
     from sys import stdout
     from time import time
 
-
     arg_parser = ArgumentParser()
     arg_parser.add_argument("file", nargs='?', default="")
-    arg_parser.add_argument("-cpp", action = "store_true")
-    arg_parser.add_argument("-intpr", action = "store_true")
-    arg_parser.add_argument("--time", action = "store_true")
-    arg_parser.add_argument("--audio", action = "store_true")
+    arg_parser.add_argument("-cpp", action="store_true")
+    arg_parser.add_argument("-intpr", action="store_true")
+    arg_parser.add_argument("--time", action="store_true")
+    arg_parser.add_argument("--audio", action="store_true")
     args = arg_parser.parse_args()
 
     # excludes `def`s, `import`s and `argparse` times
@@ -54,7 +55,6 @@ def main():
 
     else:
         stdout.write('Warning: [Not executing any script...]')
-
 
     if args.audio:
         play_audio(args.file)

@@ -1,13 +1,13 @@
-from sys import stdout
-from typing import Final
-
-from helpers import filter_str, precedence, starts_ends
-
 """
 print: print EXPR
 jmp: jmp LINE COND
 var: var NAME VALUE
 """
+
+from sys import stdout
+from typing import Final
+
+from helpers import filter_str, precedence, starts_ends
 
 
 def applyOp(a: float | str, b: float | str, op: str):
@@ -19,7 +19,7 @@ def applyOp(a: float | str, b: float | str, op: str):
         op=='=='and a==b or op=='!='and a!=b \
         or op=='>'and a>b or op=='<'and a<b \
         or op=='>='and a>=b or op=='<='and a<=b \
-    else 'False'
+        else 'False'
 
 def evaluate(tokens: list[str]):
     if len(tokens) == 1:
