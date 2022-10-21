@@ -9,13 +9,14 @@ def play_audio(src_file_name: str):
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
-        content[-1] += '\n'
+        if len(content) > 0:
+            content[-1] += '\n'
         for statement in content:
             tokens = lexicalize(statement)
             tok = Token(tokens)
 
-            for i in range(len(tok.t_values)):
-                AudioGenerator.play(tok.t_values[i])
+            for v in tok.t_values:
+                AudioGenerator.play(v)
 
 
 def main():
