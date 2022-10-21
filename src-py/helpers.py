@@ -14,7 +14,9 @@ def starts_ends(container: str | list, x):
     starts_ends('(rick)', '()') # `False`
     ```
     """
-    return container[0] == x and container[-1] == x
+    # for some reason, type-inference only works if it explicitly returns a bool
+    # does this mean that `==` doesn't return a bool? 🤔
+    return True if container[0] == x and container[-1] == x else False
 
 
 def join_list(l: list):

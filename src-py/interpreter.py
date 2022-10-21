@@ -54,8 +54,7 @@ class Parser(AST):
             self.pos += 1
 
     def match(self, kw: str):
-        # for some reason, type-inference only works if it explicitly returns a bool
-        # does this mean that `==` doesn't return a bool? 🤔
+        # explanation at helpers.py
         return True if self.tokens[self.pos][0] == kw else False
 
     def parse(self):
