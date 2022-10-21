@@ -1,3 +1,4 @@
+from typing import Final
 from enum import Enum
 
 # Keywords
@@ -33,13 +34,13 @@ class KW(Enum):
 
 keywords: list[str] = [e.value for e in KW]
 
-INDENT_KW = [KW[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
+INDENT_KW: Final = [KW[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
 
 # Tokens that the interpreter will totally ignore
-ignore_tokens = set("~'")
+ignore_tokens: Final = set("~'")
 
 # Characters in numerals
-digits = set('0123456789.')
+digits: Final = set('0123456789.')
 
 # Separators are used in tokenization
 separators = {

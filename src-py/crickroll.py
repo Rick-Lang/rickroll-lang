@@ -163,26 +163,26 @@ class TranslateToCpp:
             """
             cout << EXPR;
             """
-            EXPR = join_list(self.values[1:])
-            self.write(f'cout<<{EXPR};')
+            xpr = join_list(self.values[1:])
+            self.write(f'cout<<{xpr};')
         if kw == KW.IF.value:
             """
             if(CONDI){
             """
-            CONDI = join_list(self.values[1:])
-            self.write(f'if({CONDI})' + '{')
+            cond = join_list(self.values[1:])
+            self.write(f'if({cond})' + '{')
         if kw == KW.LET.value:
             """
-            give ID up EXPR;
+            give `id` up `xpr`;
             """
-            ID = self.values[1]
-            EXPR = join_list(self.values[self.values.index('up') + 1:])
+            id = self.values[1]
+            xpr = join_list(self.values[self.values.index('up') + 1:])
 
-            if ID not in declared_variables:
-                self.write(f'auto {ID}={EXPR};')
-                declared_variables.add(ID)
+            if id not in declared_variables:
+                self.write(f'auto {id}={xpr};')
+                declared_variables.add(id)
             else:
-                self.write(f'{ID}={EXPR};')
+                self.write(f'{id}={xpr};')
 
         if kw == KW.ENDLESS_LOOP.value:
             self.write('while(true){')
@@ -191,8 +191,8 @@ class TranslateToCpp:
             """
             while(CONDI){
             """
-            CONDI = join_list(self.values[1:])
-            self.write(f'while({CONDI})' + '{')
+            cond = join_list(self.values[1:])
+            self.write(f'while({cond})' + '{')
 
         if kw == KW.BREAK.value:
             self.write('break;')
@@ -204,17 +204,17 @@ class TranslateToCpp:
             """
             int ID(ARGS){
             """
-            ID = self.values[1]
-            ARGS = ", ".join(["auto "+x for x in self.values[2:]])
+            id = self.values[1]
+            ARGS: Final = ", ".join(["auto "+x for x in self.values[2:]])
 
-            self.write(f"auto {ID} = []({ARGS}) {{")
+            self.write(f"auto {id} = []({ARGS}) {{")
 
         if kw == KW.RETURN1.value:
             """
             return EXPR;
             """
-            EXPR = join_list(self.values[1:])
-            self.write(f'return {EXPR};')
+            xpr = join_list(self.values[1:])
+            self.write(f'return {xpr};')
 
         if kw == KW.END.value:
             self.write('};')
