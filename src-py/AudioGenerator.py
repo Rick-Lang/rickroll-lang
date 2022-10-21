@@ -1,3 +1,5 @@
+from typing import Final
+
 pyttsxMissingBool = False
 playsoundMissingBool = False
 dependancyMissingBool = False
@@ -19,7 +21,7 @@ except:
 
 if dependancyMissingBool:
     print(dependancyMissingCounter, " packages are missing. Would you like to install them or stop the script?(Y/N)")
-    installChoice=input().upper()
+    installChoice: Final = input().upper()
     if installChoice=="Y":
         print("pip needed for this to work.")
         from os import system
@@ -45,9 +47,9 @@ if dependancyMissingBool:
 
 from Keywords import *
 
-engine = init()
+engine: Final = init()
 
-audio = {
+audio: Final = {
     KW.PRINT.value: 'audios/print.wav',
     KW.LET.value: 'audios/let.wav',
     KW.MAIN.value: 'audios/main.wav',
@@ -59,7 +61,7 @@ audio = {
 }
 
 def play(token: str):
-    au = audio.get(token)
+    au: Final = audio.get(token)
 
     if au:
         play_wav(au)

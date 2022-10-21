@@ -1,3 +1,4 @@
+from typing import Final
 from os import system
 from os.path import splitext
 from sys import platform
