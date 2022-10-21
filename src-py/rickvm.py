@@ -1,4 +1,5 @@
 from sys import stdout
+from typing import Final
 
 from helpers import filter_str, precedence, starts_ends
 
@@ -9,7 +10,7 @@ var: var NAME VALUE
 """
 
 
-def applyOp(a, b, op: str):
+def applyOp(a: float | str, b: float | str, op: str):
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
@@ -26,13 +27,12 @@ def evaluate(tokens: list[str]):
             return filter_str(tokens[0])
         return tokens[0]
 
-    values = []
-    ops: list[str] = []
+    values: Final[list[float | str]] = []
+    ops: Final[list[str]] = []
 
     for i in range(len(tokens)):
         if not tokens[i]: return
-        if tokens[i] == ' ':
-            i += 1
+        if tokens[i] == ' ': i += 1
 
         elif tokens[i] == '(':
             ops.append(tokens[i])
@@ -63,7 +63,7 @@ def evaluate(tokens: list[str]):
 
         else:
             var_value = variables[tokens[i]]
-            values.append(int(var_value) if str(var_value).isdigit() else var_value)
+            values.append(int(var_value) if var_value.isdigit() else var_value)
 
         i += 1
 
@@ -75,8 +75,8 @@ def evaluate(tokens: list[str]):
     return values[-1]
 
 
-variables = {}
-OPERATORS = {'+', '-', '*', '/', '==', '>', '<', '<=', '>=', '!='}
+variables: Final[dict[str, str]] = {}
+OPERATORS: Final = {'+', '-', '*', '/', '==', '>', '<', '<=', '>=', '!='}
 
 class RickVM(object):
     def __init__(self):

@@ -32,7 +32,7 @@ class KW(Enum):
 
     PY = 'py:'
 
-keywords: list[str] = [e.value for e in KW]
+keywords: Final[list[str]] = [e.value for e in KW]
 
 INDENT_KW: Final = [KW[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
 
@@ -43,7 +43,7 @@ ignore_tokens: Final = set("~'")
 digits: Final = set('0123456789.')
 
 # Separators are used in tokenization
-separators = {
+separators: Final = {
     # not using `set`, because multi-char `str`s may be added in the future
     '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }

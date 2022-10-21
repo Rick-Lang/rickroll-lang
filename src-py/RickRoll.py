@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-from time import time
-start = time()      # Set and start a timer
-
-from sys import stdout
 from traceback import format_exc
-from argparse import ArgumentParser
-
 
 def play_audio(src_file_name: str):
     import AudioGenerator
@@ -23,6 +17,10 @@ def play_audio(src_file_name: str):
                 AudioGenerator.play(tok.t_values[i])
 
 def main():
+    from argparse import ArgumentParser
+    from sys import stdout
+    from time import time
+
 
     arg_parser = ArgumentParser()
     arg_parser.add_argument("file", nargs='?', default="")
@@ -32,6 +30,8 @@ def main():
     arg_parser.add_argument("--audio", action = "store_true")
     args = arg_parser.parse_args()
 
+    # excludes `def`s, `import`s and `argparse` times
+    start = time()
     # Run the RickRoll program
     if args.file:
         # Convert .rickroll to C++
