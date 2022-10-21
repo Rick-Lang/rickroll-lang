@@ -1,13 +1,14 @@
+from typing import Final
 from sys import stdout
 
 from Lexer import *
 from helpers import join_list
 
 # Keywords can execute outside main function
-kw_exe_outside_main = {KW.MAIN.value, KW.DEF.value, KW.IMPORT1.value}
+kw_exe_outside_main: Final = {KW.MAIN.value, KW.DEF.value, KW.IMPORT1.value}
 
-variables: list[str] = []
-functions: list[str] = []
+variables: Final[list[str]] = []
+functions: Final[list[str]] = []
 
 current_line = 0
 
@@ -23,7 +24,7 @@ class Token:
     def __make_token(self, tok: str):
         global variables, functions
 
-        TOK_TO_OP = {
+        TOK_TO_OP: Final = {
             KW.E_OP.value: '==',
             KW.IS_NOT_OP.value: '!=',
             KW.G_OP.value: '>',
@@ -32,7 +33,7 @@ class Token:
             KW.LOE_OP.value: '<=',
         }
 
-        TOK_TO_FN = {
+        TOK_TO_FN: Final = {
             'length': 'len',
             'to_string': 'str',
             'to_int': 'int',
@@ -66,7 +67,7 @@ class TranslateToPython:
         self.is_main = False
         self.is_function = False
         self.indent_count = 0
-        self.py_code = ""               # Python source code, translated from RickRoll source code
+        self.py_code = ""    # Python source code, translated from RickRoll source code
 
     def translate(self, values: list[str]):
         self.values = values
@@ -84,7 +85,7 @@ class TranslateToPython:
 
         else:
             stdout.write(
-            f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n'
+                f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n'
             )
 
 
@@ -105,28 +106,28 @@ class TranslateToPython:
 
         elif kw == KW.PRINT.value:
             """
-                print EXPR
+                print xpr
             """
 
-            EXPR = join_list(self.values[1:])
-            self.write(f'print({EXPR}, end="")')
+            xpr = join_list(self.values[1:])
+            self.write(f'print({xpr}, end="")')
 
         elif kw == KW.LET.value:
             """
-                let ID up EXPR
+                let id up xpr
             """
 
-            ID = join_list(self.values[self.values.index(KW.LET.value) + 1 : self.values.index(KW.ASSIGN.value)])
-            EXPR = join_list(self.values[self.values.index(KW.ASSIGN.value) + 1:])
-            self.write(f'{ID} = {EXPR}')
+            id = join_list(self.values[self.values.index(KW.LET.value) + 1 : self.values.index(KW.ASSIGN.value)])
+            xpr = join_list(self.values[self.values.index(KW.ASSIGN.value) + 1:])
+            self.write(f'{id} = {xpr}')
 
         elif kw == KW.IF.value:
             """
-                if CONDI
+                if `cond`
             """
 
-            CONDI = join_list(self.values[1:])
-            self.write(f'if {CONDI}:')
+            cond = join_list(self.values[1:])
+            self.write(f'if {cond}:')
             self.indent_count += 1
 
         elif kw == KW.TRY.value:
@@ -143,11 +144,11 @@ class TranslateToPython:
 
         elif kw == KW.WHILE_LOOP.value:
             """
-                while1 CONDI
+                while1 `cond`
             """
 
-            CONDI = join_list(self.values[1:])
-            self.write(f'while {CONDI}:')
+            cond = join_list(self.values[1:])
+            self.write(f'while {cond}:')
             self.indent_count += 1
 
         elif kw == KW.BREAK.value:
@@ -158,22 +159,22 @@ class TranslateToPython:
 
         elif kw == KW.DEF.value:
             """
-                def ID ARGS
+                def `id` ARGS
             """
-            ID = self.values[1]
-            ARGS = join_list(self.values[2:])
+            id = self.values[1]
+            ARGS: Final = join_list(self.values[2:])
 
-            self.write(f'def {ID}({ARGS}):')
+            self.write(f'def {id}({ARGS}):')
 
             self.is_function = True
             self.indent_count += 1
 
         elif kw == KW.RETURN1.value:
             """
-                return1 EXPR return2
+                return1 `xpr` return2
             """
-            EXPR = join_list(self.values[1:])
-            self.write(f'return {EXPR}')
+            xpr = join_list(self.values[1:])
+            self.write(f'return {xpr}')
 
         elif kw == KW.END.value:
             self.write('pass')

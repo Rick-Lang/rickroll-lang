@@ -7,22 +7,21 @@ from Keywords import *
 from Lexer import lexicalize
 from helpers import join_list, starts_ends
 
-
 # Token types
-# to-do: convert to enum
-TT_keyword        = 'KEYWORDS'
-TT_operator       = 'OPERATORS'
-TT_build_in_funcs = 'Build-In-Function'
-TT_int            = 'VALUE-Int'
-TT_float          = 'VALUE-Float'
-TT_bool           = 'VALUE-Bool'
-TT_char           = 'VALUE-Char'
-TT_string         = 'VALUE-String'
-TT_list           = 'VALUE-List'
+class TT(Enum):
+    keyword        = 'KEYWORDS'
+    operator       = 'OPERATORS'
+    build_in_funcs = 'Build-In-Function'
+    int            = 'VALUE-Int'
+    float          = 'VALUE-Float'
+    bool           = 'VALUE-Bool'
+    char           = 'VALUE-Char'
+    string         = 'VALUE-String'
+    list           = 'VALUE-List'
 
-TT_arguments = 'ARGUMENTS'
-TT_variable   = 'VARIABLE'
-TT_function   = 'FUNCTION'
+    arguments = 'ARGUMENTS'
+    variable   = 'VARIABLE'
+    function   = 'FUNCTION'
 
 c_separators: Final = {
     '(', ')', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
@@ -101,42 +100,42 @@ class Token:
         }
 
         if tok in keywords:
-            add_to_tokens(TT_operator, TOK_TO_OP.get(tok, tok))
+            add_to_tokens(TT.operator.value, TOK_TO_OP.get(tok, tok))
 
             self.last_kw = tok
         elif tok in OP_build_in_functions:
-            add_to_tokens(TT_build_in_funcs, tok)
+            add_to_tokens(TT.build_in_funcs.value, tok)
 
         # Variable types
         elif v_types(tok) == 'bool':
-            add_to_tokens(TT_bool, tok)
+            add_to_tokens(TT.bool.value, tok)
         elif v_types(tok) == 'string':
-            add_to_tokens(TT_string, tok)
+            add_to_tokens(TT.string.value, tok)
         elif v_types(tok) == 'list':
             tok = '{' + str(tok[1 : len(tok) -1]) + '}'
-            add_to_tokens(TT_list, tok)
+            add_to_tokens(TT.list.value, tok)
         elif v_types(tok) == 'float':
-            add_to_tokens(TT_float, tok)
+            add_to_tokens(TT.float.value, tok)
         elif v_types(tok) == 'int':
-            add_to_tokens(TT_int, tok)
+            add_to_tokens(TT.int.value, tok)
 
         # Operators
         elif tok in operators:
-            add_to_tokens(TT_operator, tok)
+            add_to_tokens(TT.operator.value, tok)
 
         # Variables
         elif self.last_kw == KW.LET.value:
             variables.append(tok)
-            add_to_tokens(TT_variable, tok)
+            add_to_tokens(TT.variable.value, tok)
         # Functions
         elif self.last_kw == KW.DEF.value:
             functions.append(tok)
-            add_to_tokens(TT_function, tok)
+            add_to_tokens(TT.function.value, tok)
         elif tok and tok in variables:
-            add_to_tokens(TT_variable, tok)
+            add_to_tokens(TT.variable.value, tok)
 
         else:
-            add_to_tokens(TT_arguments, tok)
+            add_to_tokens(TT.arguments.value, tok)
 
 ####################################################################################
 'Translate To C++'
@@ -146,7 +145,7 @@ class TranslateToCpp:
         self.types = types
         self.values = values
 
-        if self.types[0] == TT_keyword or self.values[0] in functions:
+        if self.types[0] == TT.keyword.value or self.values[0] in functions:
             # Convert RickRoll code to Cpp
             self.convert(kw=self.values[0])
 
@@ -162,19 +161,19 @@ class TranslateToCpp:
             self.write('int main(int argc, char* argv[]){')
         if kw == KW.PRINT.value:
             """
-            cout << EXPR;
+            cout << xpr;
             """
             xpr = join_list(self.values[1:])
             self.write(f'cout<<{xpr};')
         if kw == KW.IF.value:
             """
-            if(CONDI){
+            if(cond){
             """
             cond = join_list(self.values[1:])
             self.write(f'if({cond})' + '{')
         if kw == KW.LET.value:
             """
-            give `id` up `xpr`;
+            give id up xpr;
             """
             id = self.values[1]
             xpr = join_list(self.values[self.values.index('up') + 1:])
@@ -190,7 +189,7 @@ class TranslateToCpp:
 
         if kw == KW.WHILE_LOOP.value:
             """
-            while(CONDI){
+            while(cond){
             """
             cond = join_list(self.values[1:])
             self.write(f'while({cond})' + '{')
@@ -203,7 +202,7 @@ class TranslateToCpp:
 
         if kw == KW.DEF.value:
             """
-            int ID(ARGS){
+            int id(ARGS){
             """
             id = self.values[1]
             ARGS: Final = ", ".join(["auto "+x for x in self.values[2:]])
@@ -212,7 +211,7 @@ class TranslateToCpp:
 
         if kw == KW.RETURN1.value:
             """
-            return EXPR;
+            return xpr;
             """
             xpr = join_list(self.values[1:])
             self.write(f'return {xpr};')
