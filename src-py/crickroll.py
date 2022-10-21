@@ -7,8 +7,8 @@ from Keywords import *
 from Lexer import lexicalize
 from helpers import join_list, starts_ends
 
-# Token types
 class TT(Enum):
+    """Token types"""
     keyword        = 'KEYWORDS'
     operator       = 'OPERATORS'
     build_in_funcs = 'Build-In-Function'
@@ -33,24 +33,22 @@ functions: Final[list[str]] = []
 
 current_line = 0
 
-# C++ source code, translated from RickRoll source code
 c_code = '''#include<iostream>
 using namespace std;
 int length(int arr[]){
     return sizeof(arr) / sizeof(arr[0]);
-}
-'''
+}\n'''
+"""C++ source code, translated from RickRoll source code"""
 
-
-# Determine variable types
 def v_types(s: str):
+    """Determine var type from literal-syntax"""
     # Boolean
     if s in {'True', 'False'}:
         return 'bool'
     # String
     if starts_ends(s, '"'):
         return 'string'
-    # List
+    # List or Array
     if s[0] == '[' and s[-1] == ']':
         return 'list'
     # Determine the string is int or float

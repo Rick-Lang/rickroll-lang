@@ -1,8 +1,8 @@
 from typing import Final
 from enum import Enum
 
-# Keywords
 class KW(Enum):
+    """Keywords"""
     PRINT = 'ijustwannatelluhowimfeeling'
     IF = 'andifuaskmehowimfeeling'
 
