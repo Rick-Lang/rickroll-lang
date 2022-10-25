@@ -3,6 +3,9 @@ Common/Shared utilities, to use across multiple modules/scripts
 """
 
 
+from typing import Callable, Final
+
+
 def starts_ends(container: str | list, x):
     """
     Check if it starts and ends with the same value.
@@ -15,13 +18,12 @@ def starts_ends(container: str | list, x):
     ```
     """
     # for some reason, type-inference only works if it explicitly returns a bool
-    # does this mean that `==` doesn't return a bool? 🤔
+    # WTF?
     return True if container[0] == x and container[-1] == x else False
 
 
-def join_list(l: list):
-    """Convert any `list` into a `str` without delimiter."""
-    return ''.join(map(str, l))
+join_list: Final[Callable[[list], str]] = lambda l: ''.join(map(str, l))
+"""Convert any `list` into a `str` without delimiter."""
 
 
 def remove_all(l: list, x):
@@ -31,9 +33,8 @@ def remove_all(l: list, x):
     return l
 
 
-def filter_str(s: str):
-    """Remove 1st and last chars from a `str`."""
-    return s[1:-1]
+filter_str: Final[Callable[[str], str]] = lambda s: s[1:-1]
+"""Remove 1st and last chars from a `str`."""
 
 
 def precedence(op: str):
@@ -44,8 +45,8 @@ def precedence(op: str):
 
     returns `1` for lowest precedence, `2` for highest, `0` if `op` is not recognized.
     """
-    if op in {'+', '-'}:
+    if op in ('+', '-'):  # tiny `tuple`s are faster than tiny `list`s and `set`s
         return 1
-    if op in {'*', '/'}:
+    if op in ('*', '/'):
         return 2
     return 0
