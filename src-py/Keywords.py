@@ -1,6 +1,7 @@
 from typing import Final
 from enum import Enum
 
+
 class KW(Enum):
     """Keywords"""
     PRINT = 'ijustwannatelluhowimfeeling'
@@ -32,27 +33,28 @@ class KW(Enum):
 
     PY = 'py:'
 
-keywords: Final[list[str]] = [e.value for e in KW]
+
+KEYWORDS: Final[list[str]] = [e.value for e in KW]
 """values in `KW`"""
 
 INDENT_KW: Final = [KW[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
 """keywords that require indentation in their body (when transpiled to py)"""
 
-ignore_tokens: Final = set("~'")
+IGNORE_TOKENS: Final = set("~'")
 """Tokens that the interpreter will totally ignore"""
 
-digits: Final = set('0123456789.')
+DIGITS: Final = set('0123456789.')
 """Characters in numerals"""
 
-separators: Final = {
+SEPARATORS: Final = {
     # not using `set`, because readability, and multi-char `str`s may be added in the future
     '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
 """Separators are used in tokenization"""
 
-operators: Final = {
+OPERATORS: Final = {
     '+', '-', '*', '/', '%', '^', '=',
     '[', ']', '(', ')', '{', '}', ',',
     '>', '<', '<=', '>=', '!=', 'is', 'aint'
 }
-OP_build_in_functions: Final = {'to_string', 'to_int', 'to_float', 'length'}
+OP_BUILT_IN_FUNCTIONS: Final = {'to_string', 'to_int', 'to_float', 'length'}

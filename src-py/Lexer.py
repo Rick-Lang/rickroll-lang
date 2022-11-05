@@ -1,7 +1,7 @@
 from Keywords import *
 from helpers import remove_all
 
-ALL_KW_STR = ','.join(keywords)
+ALL_KW_STR = ','.join(KEYWORDS)
 
 def lexicalize(stmt: str):
     current_token = ''
@@ -10,10 +10,10 @@ def lexicalize(stmt: str):
     for char in stmt:
         if char == '"': quote_count += 1
         if char == '#': break
-        if char in ignore_tokens and quote_count % 2 == 0:
+        if char in IGNORE_TOKENS and quote_count % 2 == 0:
             continue
 
-        if char in separators and quote_count % 2 == 0:
+        if char in SEPARATORS and quote_count % 2 == 0:
             if current_token not in {' ', '\n'}:
                 tokens.append(current_token)
             if char not in {' ', '\n'}:

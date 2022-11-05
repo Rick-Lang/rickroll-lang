@@ -133,7 +133,7 @@ def evaluate(tokens: list[str]):
                 op = ops.pop()
                 values.append(applyOp(val1, val2, op))
             ops.pop()
-        elif tokens[i] in operators:
+        elif tokens[i] in OPERATORS:
             while len(ops) != 0 and precedence(ops[-1]) >= precedence(tokens[i]):
                 val2 = values.pop()
                 val1 = values.pop()

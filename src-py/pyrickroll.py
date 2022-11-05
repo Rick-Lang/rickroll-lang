@@ -40,11 +40,11 @@ class Token:
             'to_float': 'float'
         }
 
-        if tok in keywords:
+        if tok in KEYWORDS:
             self.t_values.append(TOK_TO_OP.get(tok, tok))
             self.last_kw = tok
 
-        elif tok in OP_build_in_functions:
+        elif tok in OP_BUILT_IN_FUNCTIONS:
             if tok in TOK_TO_FN:
                 self.t_values.append(TOK_TO_FN[tok])
 
@@ -75,7 +75,7 @@ class TranslateToPython:
         if not self.values:
             self.write("")
             return
-        if not (self.values[0] in keywords or self.values[0] in functions):
+        if not (self.values[0] in KEYWORDS or self.values[0] in functions):
             stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
             return
 

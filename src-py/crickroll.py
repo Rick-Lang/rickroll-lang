@@ -53,7 +53,7 @@ def v_types(s: str):
     count = 0
     dot_count = 0
     for char in s:
-        if char in digits:
+        if char in DIGITS:
             count += 1
         if char == '.':
             dot_count += 1
@@ -95,11 +95,11 @@ class Token:
             'islessthanorequalto': '<='
         }
 
-        if tok in keywords:
+        if tok in KEYWORDS:
             add_to_tokens(TT.OPERATOR.value, TOK_TO_OP.get(tok, tok))
 
             self.last_kw = tok
-        elif tok in OP_build_in_functions:
+        elif tok in OP_BUILT_IN_FUNCTIONS:
             add_to_tokens(TT.BUILD_IN_FUNCS.value, tok)
 
         # Variable types
@@ -116,7 +116,7 @@ class Token:
             add_to_tokens(TT.INT.value, tok)
 
         # Operators
-        elif tok in operators:
+        elif tok in OPERATORS:
             add_to_tokens(TT.OPERATOR.value, tok)
 
         # Variables
