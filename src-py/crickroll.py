@@ -9,19 +9,19 @@ from helpers import join_list, starts_ends
 
 class TT(Enum):
     """Token types"""
-    keyword        = 'KEYWORDS'
-    operator       = 'OPERATORS'
-    build_in_funcs = 'Build-In-Function'
-    int            = 'VALUE-Int'
-    float          = 'VALUE-Float'
-    bool           = 'VALUE-Bool'
-    char           = 'VALUE-Char'
-    string         = 'VALUE-String'
-    list           = 'VALUE-List'
+    KEYWORD        = 'KEYWORDS'
+    OPERATOR       = 'OPERATORS'
+    BUILD_IN_FUNCS = 'Build-In-Function'
+    INT            = 'VALUE-Int'
+    FLOAT          = 'VALUE-Float'
+    BOOL           = 'VALUE-Bool'
+    CHAR           = 'VALUE-Char'
+    STRING         = 'VALUE-String'
+    LIST           = 'VALUE-List'
 
-    arguments = 'ARGUMENTS'
-    variable   = 'VARIABLE'
-    function   = 'FUNCTION'
+    ARGUMENTS = 'ARGUMENTS'
+    VARIABLE   = 'VARIABLE'
+    FUNCTION   = 'FUNCTION'
 
 c_separators: Final = set('(){},\n +-*/%^=')
 
@@ -96,42 +96,42 @@ class Token:
         }
 
         if tok in keywords:
-            add_to_tokens(TT.operator.value, TOK_TO_OP.get(tok, tok))
+            add_to_tokens(TT.OPERATOR.value, TOK_TO_OP.get(tok, tok))
 
             self.last_kw = tok
         elif tok in OP_build_in_functions:
-            add_to_tokens(TT.build_in_funcs.value, tok)
+            add_to_tokens(TT.BUILD_IN_FUNCS.value, tok)
 
         # Variable types
         elif v_types(tok) == 'bool':
-            add_to_tokens(TT.bool.value, tok)
+            add_to_tokens(TT.BOOL.value, tok)
         elif v_types(tok) == 'string':
-            add_to_tokens(TT.string.value, tok)
+            add_to_tokens(TT.STRING.value, tok)
         elif v_types(tok) == 'list':
             tok = '{' + str(tok[1 : len(tok) -1]) + '}'
-            add_to_tokens(TT.list.value, tok)
+            add_to_tokens(TT.LIST.value, tok)
         elif v_types(tok) == 'float':
-            add_to_tokens(TT.float.value, tok)
+            add_to_tokens(TT.FLOAT.value, tok)
         elif v_types(tok) == 'int':
-            add_to_tokens(TT.int.value, tok)
+            add_to_tokens(TT.INT.value, tok)
 
         # Operators
         elif tok in operators:
-            add_to_tokens(TT.operator.value, tok)
+            add_to_tokens(TT.OPERATOR.value, tok)
 
         # Variables
         elif self.last_kw == KW.LET.value:
             variables.append(tok)
-            add_to_tokens(TT.variable.value, tok)
+            add_to_tokens(TT.VARIABLE.value, tok)
         # Functions
         elif self.last_kw == KW.DEF.value:
             functions.append(tok)
-            add_to_tokens(TT.function.value, tok)
+            add_to_tokens(TT.FUNCTION.value, tok)
         elif tok and tok in variables:
-            add_to_tokens(TT.variable.value, tok)
+            add_to_tokens(TT.VARIABLE.value, tok)
 
         else:
-            add_to_tokens(TT.arguments.value, tok)
+            add_to_tokens(TT.ARGUMENTS.value, tok)
 
 ####################################################################################
 'Translate To C++'
@@ -141,7 +141,7 @@ class TranslateToCpp:
         self.types = types
         self.values = values
 
-        if self.types[0] == TT.keyword.value or self.values[0] in functions:
+        if self.types[0] == TT.KEYWORD.value or self.values[0] in functions:
             self.convert(kw=self.values[0])
 
         else:
