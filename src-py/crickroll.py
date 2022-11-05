@@ -63,9 +63,7 @@ def v_types(s: str):
 
 
 ####################################################################################
-"""
-Token
-"""
+'Token'
 ####################################################################################
 class Token:
     def __init__(self, raw_tokens: list[str]):
@@ -234,7 +232,9 @@ def run_in_cpp(src_file_name: str):
         if len(content) > 0:
             content[-1] += '\n'
 
-        # `statement`` is a line of code in the source code
+        """
+        `statement`` is a line of code in the source code
+        """
         for statement in content:
             current_line += 1
 
