@@ -168,14 +168,15 @@ class TranslateToCpp:
             """
             give id up xpr;
             """
-            id = self.values[1]
+            # named `_id` to avoid collision with `id`
+            _id = self.values[1]
             xpr = join_list(self.values[self.values.index('up') + 1:])
 
-            if id not in declared_variables:
-                self.write(f'auto {id}={xpr};')
-                declared_variables.add(id)
+            if _id not in declared_variables:
+                self.write(f'auto {_id}={xpr};')
+                declared_variables.add(_id)
             else:
-                self.write(f'{id}={xpr};')
+                self.write(f'{_id}={xpr};')
 
         if kw == KW.ENDLESS_LOOP.value:
             self.write('while(true){')
@@ -197,10 +198,10 @@ class TranslateToCpp:
             """
             int id(ARGS){
             """
-            id = self.values[1]
+            _id = self.values[1]
             ARGS: Final = ", ".join(["auto "+x for x in self.values[2:]])
 
-            self.write(f"auto {id} = []({ARGS}) {{")
+            self.write(f"auto {_id} = []({ARGS}) {{")
 
         if kw == KW.RETURN1.value:
             """
