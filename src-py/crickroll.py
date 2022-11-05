@@ -23,9 +23,7 @@ class TT(Enum):
     variable   = 'VARIABLE'
     function   = 'FUNCTION'
 
-c_separators: Final = {
-    '(', ')', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
-}
+c_separators: Final = set('(){},\n +-*/%^=')
 
 variables: Final[list[str]] = []
 declared_variables: Final[set[str]] = set()
