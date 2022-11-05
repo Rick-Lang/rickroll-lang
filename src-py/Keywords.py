@@ -50,9 +50,9 @@ separators: Final = {
 }
 """Separators are used in tokenization"""
 
-operators = {
+operators: Final = {
     '+', '-', '*', '/', '%', '^', '=',
     '[', ']', '(', ')', '{', '}', ',',
     '>', '<', '<=', '>=', '!=', 'is', 'aint'
 }
-OP_build_in_functions = {'to_string', 'to_int', 'to_float', 'length'}
+OP_build_in_functions: Final = {'to_string', 'to_int', 'to_float', 'length'}
