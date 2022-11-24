@@ -1,3 +1,5 @@
+from typing import Final # explanation at Lexer.py
+
 from sys import stdout
 from time import time
 
@@ -5,7 +7,7 @@ from Keywords import *
 from Lexer import lexicalize
 from helpers import filter_str, precedence, starts_ends
 
-start = time()
+start: Final = time()
 
 class AST:
     def print_node(Node: list, args):
@@ -47,7 +49,7 @@ class Parser(AST):
         self.tokens = tokens
 
         self.pos = 0
-        self.stmt = []
+        self.stmt: Final = []
 
         while self.pos < len(self.tokens):
             self.parse()
@@ -98,7 +100,7 @@ class Parser(AST):
             Parser(tokens=child_stmts, Node=while_nodes)
             AST.while_node(self.Node, cond, while_nodes)
 
-def applyOp(a, b, op: str):
+def applyOp(a: int | str, b: int | str, op: str) -> int | str:
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
@@ -109,12 +111,12 @@ def applyOp(a, b, op: str):
         or op==KW.GOE_OP.value and a>=b or op==KW.LOE_OP.value and a<=b \
     else 'False'
 
-def evaluate(tokens: list[str]):
+def evaluate(tokens: str):
     if len(tokens) == 1 and starts_ends(tokens[0], '"'):
         return filter_str(tokens[0])
 
-    values = []
-    ops: list[str] = []
+    values: Final[list[int | str]] = []
+    ops: Final[list[str]] = []
 
     for i in range(len(tokens)):
         if not tokens[i]: return
@@ -153,13 +155,13 @@ def evaluate(tokens: list[str]):
         values.append(applyOp(val1, val2, op))
     return values[-1]
 
-variables = {}
+variables: Final[dict[str, int | str | None]] = {}
 
 class Interpreter:
     def __init__(self):
         self.idx = 0
 
-    def interpret(self, nodes: list[list]):
+    def interpret(self, nodes: list | str):
         for node in nodes:
             self.idx += 1
             if node[0] == "print_node":
@@ -179,7 +181,7 @@ class Interpreter:
 
 def run_in_interpreter(src_file_name: str):
     intpr = Interpreter()
-    Node: list[list] = []
+    Node = []
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()

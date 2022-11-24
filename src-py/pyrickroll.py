@@ -63,7 +63,7 @@ class Token:
 class TranslateToPython:
     def __init__(self):
         # tokens
-        self.values = []
+        self.values: list[str] = []
         self.is_main = False
         self.is_function = False
         self.indent_count = 0

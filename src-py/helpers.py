@@ -5,10 +5,9 @@ Common/Shared utilities, to use across multiple modules/scripts
 
 from typing import Callable, Final
 
-
-def starts_ends(container: str | list, x):
+def starts_ends(s: str, char: str):
     """
-    Check if it starts and ends with the same value.
+    Check if it starts and ends with the same char.
 
     Examples:
     ```
@@ -19,7 +18,7 @@ def starts_ends(container: str | list, x):
     """
     # for some reason, type-inference only works if it explicitly returns a bool
     # WTF?
-    return True if container[0] == x and container[-1] == x else False
+    return True if s[0] == char and s[-1] == char else False
 
 
 join_list: Final[Callable[[list], str]] = lambda l: ''.join(map(str, l))

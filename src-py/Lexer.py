@@ -1,9 +1,15 @@
+# the type-checker complains about the re-export, for some reason,
+# so we must explicitly import it here.
+from typing import Final
+
 from Keywords import *
 from helpers import remove_all
 
-ALL_KW_STR = ','.join(KEYWORDS)
+ALL_KW_STR: Final = ','.join(KEYWORDS)
 
 def lexicalize(stmt: str):
+    SP_LN: Final = {' ', '\n'}
+
     current_token = ''
     quote_count = 0
     tokens: list[str] = []
@@ -14,9 +20,9 @@ def lexicalize(stmt: str):
             continue
 
         if char in SEPARATORS and quote_count % 2 == 0:
-            if current_token not in {' ', '\n'}:
+            if current_token not in SP_LN:
                 tokens.append(current_token)
-            if char not in {' ', '\n'}:
+            if char not in SP_LN:
                 tokens.append(char)
 
             current_token = ''
@@ -30,7 +36,7 @@ def order_words(tokens: list[str]):
     if current `token+kw_in_statement` not in all keyword string, add `kw_in_statement` to `final_token`
     if statement is ended, add `kw_in_statement` to `final_token`
     """
-    final_token: list[str] = []
+    final_token: Final[list[str]] = []
     kw_in_statement = ''
     temp = False
     for tok in tokens:

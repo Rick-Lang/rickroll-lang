@@ -10,7 +10,7 @@ from typing import Final
 from helpers import filter_str, precedence, starts_ends
 
 
-def applyOp(a: float | str, b: float | str, op: str):
+def applyOp(a: int | str, b: int | str, op: str) -> int | str:
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
@@ -27,7 +27,7 @@ def evaluate(tokens: list[str]):
             return filter_str(tokens[0])
         return tokens[0]
 
-    values: Final[list[float | str]] = []
+    values: Final[list[int | str]] = []
     ops: Final[list[str]] = []
 
     for i in range(len(tokens)):

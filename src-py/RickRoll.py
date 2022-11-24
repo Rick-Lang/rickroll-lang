@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from typing import Final
 from traceback import format_exc
 
 
@@ -33,7 +34,7 @@ def main():
     args = arg_parser.parse_args()
 
     # excludes `def`s, `import`s and `argparse` times
-    start = time()
+    start: Final = time()
     # Run the RickRoll program
     if args.file:
         # Convert .rickroll to C++
