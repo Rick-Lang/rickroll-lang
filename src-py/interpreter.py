@@ -1,7 +1,14 @@
+from typing import Final # explanation at Lexer.py
+
+from sys import stdout
+from time import time
+
 from Keywords import *
 from Lexer import lexicalize
-from time import time
-start = time()
+from helpers import filter_str, precedence, starts_ends
+
+start: Final = time()
+
 class AST:
     def print_node(Node: list, args):
         """
@@ -37,29 +44,30 @@ class AST:
 
 
 class Parser(AST):
-    def __init__(self, tokens, Node):
+    def __init__(self, tokens: list[list[str]], Node: list):
         self.Node = Node
         self.tokens = tokens
 
         self.pos = 0
-        self.stmt = []
+        self.stmt: Final = []
 
         while self.pos < len(self.tokens):
             self.parse()
             self.pos += 1
 
-    def match(self, kw):
+    def match(self, kw: str):
+        # explanation at helpers.py
         return True if self.tokens[self.pos][0] == kw else False
 
     def parse(self):
         self.stmt = self.tokens[self.pos]
-        if self.match(KW_print):
+        if self.match(KW.PRINT.value):
             AST.print_node(self.Node, self.stmt[1:])
 
-        elif self.match(KW_let):
+        elif self.match(KW.LET.value):
             AST.let_node(self.Node, self.stmt[1], self.stmt[3:])
 
-        elif self.match(KW_if):
+        elif self.match(KW.IF.value):
             cond = self.stmt[1:]
             child_stmts = []
             if_count = 1
@@ -67,7 +75,7 @@ class Parser(AST):
                 self.pos += 1
                 if self.tokens[self.pos][0] in INDENT_KW:
                     if_count += 1
-                elif self.tokens[self.pos][0] == KW_end:
+                elif self.tokens[self.pos][0] == KW.END.value:
                     if_count -= 1
 
                 child_stmts.append(self.tokens[self.pos])
@@ -75,7 +83,7 @@ class Parser(AST):
             Parser(tokens=child_stmts, Node=if_nodes)
             AST.if_node(self.Node, cond, if_nodes)
 
-        elif self.match(KW_while_loop):
+        elif self.match(KW.WHILE_LOOP.value):
             cond = self.stmt[1:]
             child_stmts = []
             indent_count = 1
@@ -83,7 +91,7 @@ class Parser(AST):
                 self.pos += 1
                 if self.tokens[self.pos][0] in INDENT_KW:
                     indent_count += 1
-                elif self.tokens[self.pos][0] == KW_end:
+                elif self.tokens[self.pos][0] == KW.END.value:
                     indent_count -= 1
 
                 child_stmts.append(self.tokens[self.pos])
@@ -92,32 +100,23 @@ class Parser(AST):
             Parser(tokens=child_stmts, Node=while_nodes)
             AST.while_node(self.Node, cond, while_nodes)
 
-def filter_str(a):
-    return a[1:-1]
-
-def precedence(op):
-    if op in {'+', '-'}: return 1
-    if op in {'*', '/'}: return 2
-    return 0
-
-def applyOp(a, b, op):
+def applyOp(a: int | str, b: int | str, op: str) -> int | str:
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
-    if op=='is'and a==b or op=='aint'and a!=b or op==KW_GOE_OP and a>b\
-        or op==KW_L_OP and a<b or op==KW_GOE_OP and a >= b\
-        or op==KW_LOE_OP and a <= b:
-        return 'True'
-    return 'False'
+    return 'True' if \
+        op==KW.E_OP.value and a==b or op==KW.IS_NOT_OP.value and a!=b \
+        or op==KW.G_OP.value and a>b or op==KW.L_OP.value and a<b \
+        or op==KW.GOE_OP.value and a>=b or op==KW.LOE_OP.value and a<=b \
+    else 'False'
 
-def evaluate(tokens):
-    if len(tokens) == 1:
-        if tokens[0][0] == '"' and tokens[0][-1] == '"':
-            return filter_str(tokens[0])
+def evaluate(tokens: str):
+    if len(tokens) == 1 and starts_ends(tokens[0], '"'):
+        return filter_str(tokens[0])
 
-    values = []
-    ops = []
+    values: Final[list[int | str]] = []
+    ops: Final[list[str]] = []
 
     for i in range(len(tokens)):
         if not tokens[i]: return
@@ -125,7 +124,7 @@ def evaluate(tokens):
             i += 1
         elif tokens[i] == '(':
             ops.append(tokens[i])
-        elif tokens[i][0] == '"' and tokens[i][-1] == '"':
+        elif starts_ends(tokens[i], '"'):
             values.append(filter_str(tokens[i]))
         elif tokens[i].isdigit():
             values.append(int(tokens[i]))
@@ -136,7 +135,7 @@ def evaluate(tokens):
                 op = ops.pop()
                 values.append(applyOp(val1, val2, op))
             ops.pop()
-        elif tokens[i] in operators:
+        elif tokens[i] in OPERATORS:
             while len(ops) != 0 and precedence(ops[-1]) >= precedence(tokens[i]):
                 val2 = values.pop()
                 val1 = values.pop()
@@ -156,13 +155,13 @@ def evaluate(tokens):
         values.append(applyOp(val1, val2, op))
     return values[-1]
 
-variables = {}
+variables: Final[dict[str, int | str | None]] = {}
 
 class Interpreter:
     def __init__(self):
         self.idx = 0
 
-    def interpret(self, nodes):
+    def interpret(self, nodes: list | str):
         for node in nodes:
             self.idx += 1
             if node[0] == "print_node":
@@ -180,13 +179,14 @@ class Interpreter:
                     self.interpret(node[2])
 
 
-def run_in_interpreter(src_file_name):
+def run_in_interpreter(src_file_name: str):
     intpr = Interpreter()
     Node = []
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
-        content[-1] += '\n'
+        if len(content) > 0:
+            content[-1] += '\n'
         tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != []]
         Parser(tokens=tokens, Node=Node)
 

@@ -1,39 +1,42 @@
-from time import time
-start = time()      # Set and start a timer
-
-from sys import stdout
+#!/usr/bin/env python3
+from typing import Final
 from traceback import format_exc
-from argparse import ArgumentParser
 
 
-def play_audio(src_file_name):
+def play_audio(src_file_name: str):
     import AudioGenerator
     from pyrickroll import Token
     from Lexer import lexicalize
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
-        content[-1] += '\n'
+        if len(content) > 0:
+            content[-1] += '\n'
         for statement in content:
             tokens = lexicalize(statement)
             tok = Token(tokens)
 
-            for i in range(len(tok.t_values)):
-                AudioGenerator.play(tok.t_values[i])
+            for v in tok.t_values:
+                AudioGenerator.play(v)
+
 
 def main():
+    from argparse import ArgumentParser
+    from sys import stdout
+    from time import time
 
     arg_parser = ArgumentParser()
     arg_parser.add_argument("file", nargs='?', default="")
-    arg_parser.add_argument("-cpp", action = "store_true")
-    arg_parser.add_argument("-intpr", action = "store_true")
-    arg_parser.add_argument("--time", action = "store_true")
-    arg_parser.add_argument("--audio", action = "store_true")
+    arg_parser.add_argument("-cpp", action="store_true")
+    arg_parser.add_argument("-intpr", action="store_true")
+    arg_parser.add_argument("--time", action="store_true")
+    arg_parser.add_argument("--audio", action="store_true")
     args = arg_parser.parse_args()
 
+    # excludes `def`s, `import`s and `argparse` times
+    start: Final = time()
     # Run the RickRoll program
     if args.file:
-        from os.path import exists
         # Convert .rickroll to C++
         if args.cpp:
             from crickroll import run_in_cpp
@@ -54,7 +57,6 @@ def main():
 
     else:
         stdout.write('Warning: [Not executing any script...]')
-
 
     if args.audio:
         play_audio(args.file)

@@ -1,3 +1,5 @@
+from typing import Final
+
 pyttsxMissingBool = False
 playsoundMissingBool = False
 dependancyMissingBool = False
@@ -19,16 +21,16 @@ except:
 
 if dependancyMissingBool:
     print(dependancyMissingCounter, " packages are missing. Would you like to install them or stop the script?(Y/N)")
-    installChoice=input().upper()
+    installChoice: Final = input().upper()
     if installChoice=="Y":
         print("pip needed for this to work.")
-        import os
+        from os import system
         if pyttsxMissingBool:
             print("Installing the pip package pyttsx3...")
-            os.system("pip install pyttsx3")
+            system("pip install pyttsx3")
         if playsoundMissingBool:
             print("Installing the pip package playsound...")
-            os.system("pip install playsound")
+            system("pip install playsound")
         try:
             from pyttsx3 import init
         except:
@@ -45,21 +47,21 @@ if dependancyMissingBool:
 
 from Keywords import *
 
-engine = init()
+engine: Final = init()
 
-audio = {
-    KW_print: 'audios/print.wav',
-    KW_let: 'audios/let.wav',
-    KW_main: 'audios/main.wav',
-    KW_if: 'audios/if.wav',
-    KW_end: 'audios/end.wav',
-    KW_break: 'audios/break.wav',
-    KW_while_loop:  'audios/whileloop.wav',
-    KW_endless_loop: 'audios/loop.wav',
+audio: Final = {
+    KW.PRINT.value: 'audios/print.wav',
+    KW.LET.value: 'audios/let.wav',
+    KW.MAIN.value: 'audios/main.wav',
+    KW.IF.value: 'audios/if.wav',
+    KW.END.value: 'audios/end.wav',
+    KW.BREAK.value: 'audios/break.wav',
+    KW.WHILE_LOOP.value:  'audios/whileloop.wav',
+    KW.ENDLESS_LOOP.value: 'audios/loop.wav',
 }
 
-def play(token):
-    au = audio.get(token)
+def play(token: str):
+    au: Final = audio.get(token)
 
     if au:
         play_wav(au)

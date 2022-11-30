@@ -1,86 +1,60 @@
-from sys import stdout
-
-# Keywords
-KW_print        = 'ijustwannatelluhowimfeeling'
-KW_if           = 'andifuaskmehowimfeeling'
-
-KW_let          = 'give'
-KW_assign       = 'up'
-KW_import1      = 'weknowthe'
-KW_import2      = "andwe'regonnaplayit"
-KW_def          = 'gonna'
-KW_return1      = 'whenigivemy'
-KW_return2      = 'itwillbecompletely'
-KW_try          = 'thereaintnomistaking'
-KW_except       = 'iftheyevergetudown'
-KW_main         = 'takemetourheart'
-KW_end          = 'saygoodbye'
-
-KW_break        = 'desertu'
-KW_continue     = 'runaround'
-KW_endless_loop = 'togetherforeverandnevertopart'
-KW_while_loop   = 'togetherforeverwith'
-
-KW_L_OP = 'islessthan'
-KW_G_OP = 'isgreaterthan'
-KW_GOE_OP = 'isgreaterthanorequalto'
-KW_LOE_OP = 'islessthanorequalto'
-KW_is_not_OP = 'aint'
-KW_E_OP = 'is'
-
-KW_PY = "py:"
-
-keywords = [
-    KW_print,
-    KW_if,
-    KW_let,
-    KW_assign,
-    KW_import1,
-    KW_import2,
-    KW_def,
-    KW_return1,
-    KW_return2,
-    KW_try,
-    KW_except,
-    KW_main,
-    KW_end,
-    KW_break,
-    KW_continue,
-    KW_endless_loop,
-    KW_while_loop,
-    KW_L_OP,
-    KW_G_OP,
-    KW_GOE_OP,
-    KW_LOE_OP,
-    KW_is_not_OP,
-    KW_E_OP,
-
-    KW_PY
-]
-
-INDENT_KW = [
-KW_if, KW_def, KW_try, KW_except, KW_while_loop, KW_endless_loop
-]
+from typing import Final
+from enum import Enum
 
 
-# Tokens that the interpreter will totally ignore
-ignore_tokens = {'~', "'"}
+class KW(Enum):
+    """Keywords"""
+    PRINT = 'ijustwannatelluhowimfeeling'
+    IF = 'andifuaskmehowimfeeling'
 
-# Characters in numbers
-digits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'}
+    LET = 'give'
+    ASSIGN = 'up'
+    IMPORT1 = 'weknowthe'
+    IMPORT2 = "andwe'regonnaplayit"
+    DEF = 'gonna'
+    RETURN1 = 'whenigivemy'
+    RETURN2 = 'itwillbecompletely'
+    TRY = 'thereaintnomistaking'
+    EXCEPT = 'iftheyevergetudown'
+    MAIN = 'takemetourheart'
+    END = 'saygoodbye'
 
-# Separators are used in tokenization
-separators = {
+    BREAK = 'desertu'
+    CONTINUE = 'runaround'
+    ENDLESS_LOOP = 'togetherforeverandnevertopart'
+    WHILE_LOOP = 'togetherforeverwith'
+
+    G_OP = 'isgreaterthan'
+    L_OP = 'islessthan'
+    GOE_OP = 'isgreaterthanorequalto'
+    LOE_OP = 'islessthanorequalto'
+    IS_NOT_OP = 'aint'
+    E_OP = 'is'
+
+    PY = 'py:'
+
+
+KEYWORDS: Final[list[str]] = [e.value for e in KW]
+"""values in `KW`"""
+
+INDENT_KW: Final = [KW[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
+"""keywords that require indentation in their body (when transpiled to py)"""
+
+IGNORE_TOKENS: Final = set("~'")
+"""Tokens that the interpreter will totally ignore"""
+
+DIGITS: Final = set('0123456789.')
+"""Characters in numerals"""
+
+SEPARATORS: Final = {
+    # not using `set`, because readability, and multi-char `str`s may be added in the future
     '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
+"""Separators are used in tokenization"""
 
-# Operators
-operators = {
+OPERATORS: Final = {
     '+', '-', '*', '/', '%', '^', '=',
     '[', ']', '(', ')', '{', '}', ',',
     '>', '<', '<=', '>=', '!=', 'is', 'aint'
 }
-OP_build_in_functions = {'to_string', 'to_int', 'to_float', 'length'}
-
-def join_list(l):
-    return ''.join(map(str, l))
+OP_BUILT_IN_FUNCTIONS: Final = {'to_string', 'to_int', 'to_float', 'length'}

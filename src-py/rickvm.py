@@ -1,45 +1,43 @@
-from sys import stdout
 """
 print: print EXPR
 jmp: jmp LINE COND
 var: var NAME VALUE
 """
 
-def filter_str(a):
-    return a[1:-1]
+from sys import stdout
+from typing import Final
 
-def precedence(op):
-    if op in ['+', '-']: return 1
-    if op in ['*', '/']: return 2
-    return 0
+from helpers import filter_str, precedence, starts_ends
 
-def applyOp(a, b, op):
+
+def applyOp(a: int | str, b: int | str, op: str) -> int | str:
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
-    if op=='=='and a==b or op=='!='and a!=b or op=='>'and a>b or op=='<'and a<b or op==">=" and a >= b or op=="<=" and a <= b:
-        return 'True'
-    return 'False'
+    return 'True' if \
+        op=='=='and a==b or op=='!='and a!=b \
+        or op=='>'and a>b or op=='<'and a<b \
+        or op=='>='and a>=b or op=='<='and a<=b \
+        else 'False'
 
-def evaluate(tokens):
+def evaluate(tokens: list[str]):
     if len(tokens) == 1:
-        if tokens[0][0] == '"' and tokens[0][-1] == '"':
+        if starts_ends(tokens[0], '"'):
             return filter_str(tokens[0])
         return tokens[0]
 
-    values = []
-    ops = []
+    values: Final[list[int | str]] = []
+    ops: Final[list[str]] = []
 
     for i in range(len(tokens)):
         if not tokens[i]: return
-        if tokens[i] == ' ':
-            i += 1
+        if tokens[i] == ' ': i += 1
 
         elif tokens[i] == '(':
             ops.append(tokens[i])
 
-        elif tokens[i][0] == '"' and tokens[i][-1] == '"':
+        elif starts_ends(tokens[i], '"'):
             values.append(filter_str(tokens[i]))
 
         elif tokens[i].isdigit():
@@ -77,21 +75,21 @@ def evaluate(tokens):
     return values[-1]
 
 
-variables = {}
-OPERATORS = {'+', '-', '*', '/', '==', '>', '<', '<=', '>=', '!='}
+variables: Final[dict[str, str]] = {}
+OPERATORS: Final = {'+', '-', '*', '/', '==', '>', '<', '<=', '>=', '!='}
 
 class RickVM(object):
     def __init__(self):
         self.stmts = []
         self.idx = 0
 
-    def run_vm(self, stmts):
+    def run_vm(self, stmts: list[list]):
         self.stmts = stmts
         while self.idx < len(stmts):
             self.execute(self.stmts[self.idx])
             self.idx += 1
 
-    def execute(self, stmt):
+    def execute(self, stmt: list):
         if stmt[0] == "print":
             stdout.write(str(evaluate(stmt[1:])))
         elif stmt[0] == "jmp":

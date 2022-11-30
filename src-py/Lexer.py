@@ -1,21 +1,28 @@
+# the type-checker complains about the re-export, for some reason,
+# so we must explicitly import it here.
+from typing import Final
+
 from Keywords import *
+from helpers import remove_all
 
-all_keyword_string = ','.join(keywords)
+ALL_KW_STR: Final = ','.join(KEYWORDS)
 
-def lexicalize(stmt):
+def lexicalize(stmt: str):
+    SP_LN: Final = {' ', '\n'}
+
     current_token = ''
     quote_count = 0
-    tokens = []
+    tokens: list[str] = []
     for char in stmt:
         if char == '"': quote_count += 1
         if char == '#': break
-        if char in ignore_tokens and quote_count % 2 == 0:
+        if char in IGNORE_TOKENS and quote_count % 2 == 0:
             continue
 
-        if char in separators and quote_count % 2 == 0:
-            if current_token not in {' ', '\n'}:
+        if char in SEPARATORS and quote_count % 2 == 0:
+            if current_token not in SP_LN:
                 tokens.append(current_token)
-            if char not in {' ', '\n'}:
+            if char not in SP_LN:
                 tokens.append(char)
 
             current_token = ''
@@ -23,17 +30,17 @@ def lexicalize(stmt):
 
     return order_words(tokens)
 
-def order_words(tokens):
+def order_words(tokens: list[str]):
     """
-    if current token+kw_in_statement is in all keyword string, kw_in_statement += token
-    if current token+kw_in_statement not in all keyword string, add kw_in_statement to final_token
-    if statement is ended, add kw_in_statement to final_token
+    if current `token+kw_in_statement` is in all keyword string, `kw_in_statement += token`
+    if current `token+kw_in_statement` not in all keyword string, add `kw_in_statement` to `final_token`
+    if statement is ended, add `kw_in_statement` to `final_token`
     """
-    final_token = []
+    final_token: Final[list[str]] = []
     kw_in_statement = ''
     temp = False
     for tok in tokens:
-        if tok in all_keyword_string and kw_in_statement + tok in all_keyword_string:
+        if tok in ALL_KW_STR and kw_in_statement + tok in ALL_KW_STR:
             kw_in_statement += tok
 
         else:
@@ -45,7 +52,4 @@ def order_words(tokens):
     if not temp:
         final_token.append(kw_in_statement)
 
-    while '' in final_token:
-        final_token.remove('')
-
-    return final_token
+    return remove_all(final_token, '')
