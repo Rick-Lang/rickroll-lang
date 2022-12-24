@@ -1,44 +1,70 @@
-from pyttsx3 import init
-from playsound import playsound as play_wav
+from typing import Final
 
-from PublicVariables import *
+pyttsxMissingBool = False
+playsoundMissingBool = False
+dependancyMissingBool = False
+dependancyMissingCounter = 0
 
-engine = init()
+try:
+    from pyttsx3 import init
+except:
+    pyttsxMissingBool = True
+    dependancyMissingBool = True
+    dependancyMissingCounter += 1
 
-au_print = 'audios/print.wav'
-au_let = 'audios/let.wav'
-au_main = 'audios/main.wav'
-au_if = 'audios/if.wav'
-au_end = 'audios/end.wav'
-au_break = 'audios/break.wav'
-au_loop = 'audios/loop.wav'
-au_while_loop = 'audios/whileloop.wav'
+try:
+    from playsound import playsound as play_wav
+except:
+    playsoundMissingBool=True
+    dependancyMissingBool=True
+    dependancyMissingCounter+=1
 
-def play(token):
-    if token == KW_print:
-        play_wav(au_print)
+if dependancyMissingBool:
+    print(dependancyMissingCounter, " packages are missing. Would you like to install them or stop the script?(Y/N)")
+    installChoice: Final = input().upper()
+    if installChoice=="Y":
+        print("pip needed for this to work.")
+        from os import system
+        if pyttsxMissingBool:
+            print("Installing the pip package pyttsx3...")
+            system("pip install pyttsx3")
+        if playsoundMissingBool:
+            print("Installing the pip package playsound...")
+            system("pip install playsound")
+        try:
+            from pyttsx3 import init
+        except:
+            print("Failed. Stopping :(")
+            exit()
+        try:
+            from playsound import playsound as play_wav
+        except:
+            print("Failed. Stopping :(")
+            exit()
+    else:
+         print("Stopping...")
+         exit()
 
-    elif token == KW_let:
-        play_wav(au_let)
+from Keywords import *
 
-    elif token == KW_main:
-        play_wav(au_main)
+engine: Final = init()
 
-    elif token == KW_if:
-        play_wav(au_if)
+audio: Final = {
+    KW.PRINT.value: 'audios/print.wav',
+    KW.LET.value: 'audios/let.wav',
+    KW.MAIN.value: 'audios/main.wav',
+    KW.IF.value: 'audios/if.wav',
+    KW.END.value: 'audios/end.wav',
+    KW.BREAK.value: 'audios/break.wav',
+    KW.WHILE_LOOP.value:  'audios/whileloop.wav',
+    KW.ENDLESS_LOOP.value: 'audios/loop.wav',
+}
 
-    elif token == KW_end:
-        play_wav(au_end)
+def play(token: str):
+    au: Final = audio.get(token)
 
-    elif token == KW_break:
-        play_wav(au_break)
-
-    elif token == KW_while_loop:
-        play_wav(au_while_loop)
-
-    elif token == KW_endless_loop:
-        play_wav(au_loop)
-
+    if au:
+        play_wav(au)
     else:
         engine.say(token)
         engine.runAndWait()

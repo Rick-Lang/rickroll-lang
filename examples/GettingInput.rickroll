@@ -1,0 +1,13 @@
+take me to ur heart
+    # Same as `import sys` in python
+    we know the sys and we're gonna play it
+
+    # Ask for input
+    i just wanna tell u how im feeling "What is your name?\n"
+
+    give name up sys.stdin.readline()
+
+    #print(f"hello {name}")
+    i just wanna tell u how im feeling "hello " + name + "\n"
+
+say goodbye

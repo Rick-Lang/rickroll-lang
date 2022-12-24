@@ -1,22 +1,22 @@
-never_knew LinearSearch arr, target could_feel_this_way
+take me to ur heart
+    gonna LinearSearch arr, target
 
-    give_u_up i = 0
+        give index up 0
 
-    together_forever_with i is less than length(arr)
-        and_if_u_ask_me_how_im_feeling arr[i] is target
-            i_just_wanna_tell_u_how_im_feeling "Found in index " + to_string(i) + "\n"
-            when_i_give_my i it_will_be_completely
-        say_good_bye
-        give_u_up i = i + 1
-    say_good_bye
+        together forever with index is less than length(arr)
+            and if u ask me how im feeling arr[index] is target
+                i just wanna tell u how im feeling "Found in index " + to_string(index) + "\n"
+                when i give my index it will be completely
+            say goodbye
+            give index up index + 1
+        say goodbye
 
-    i_just_wanna_tell_u_how_im_feeling to_string(target) + " is not found! :( \n"
+        i just wanna tell u how im feeling to_string(target) + " is not found! :( \n"
 
-say_good_bye
+    say good bye
 
-take_me_to_ur_heart
-    give_u_up arr = [6, 7, 5, 9, 12]
+    give arr up [6, 7, 5, 9, 12]
     LinearSearch(arr, 12)
     LinearSearch(arr, 7)
     LinearSearch(arr, 0)
-say_good_bye
+say goodbye

@@ -1,0 +1,13 @@
+take me to ur heart
+    # Same as `import requests` in python
+    we know the requests and we're gonna play it
+
+    # The link
+    give link up "https://fusionsidapi.herokuapp.com/api/fact/"
+
+    # Makes a get request and saves it to a variable called `response`
+    give response up requests.get(link).json()
+
+    # Prints a fact
+    i just wanna tell u how im feeling response["fact"] + "\n"
+say goodbye

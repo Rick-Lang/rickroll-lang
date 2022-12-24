@@ -1,0 +1,15 @@
+take me to ur heart
+    # Same as `import requests` in python
+    we know the requests and we're gonna play it
+
+    # Message
+    give message up "Put Message Here"
+    
+    # Discord token
+    give token up "Put your token here"
+
+    give channel up Put Channel Id Here (int)
+    
+    i just wanna tell u how im feeling requests.post(url=f"https://discord.com/api/v8/channels/{channel}/messages", data = {"content": message}, headers = {"authorization": token}).content
+
+say goodbye

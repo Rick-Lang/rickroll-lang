@@ -1,5 +1,5 @@
-# Language Documentation
-A rick roll oriented, dynamic, strong, interpreting esoteric programming language.
+# Documentation
+its not a rickroll! get into the car and the journey is gonna start in 3 secs
 
 # Notice:
 **The syntax of RickRoll-Lang is not same as Python**
@@ -9,20 +9,20 @@ A rick roll oriented, dynamic, strong, interpreting esoteric programming languag
 ## Commands to execute your code
 Execute by converting .rickroll to Python
 ```
-python3 RickRoll.py -py [Source Code File Name]
+python3 RickRoll.py [Source Code File Name]
 ```
-Execute by converting .rickroll to C++ (Requires g++ compiler, however this feature is quite new, sometimes probably will not work)
+Execute by converting .rickroll to C++ (Requires g++ compiler, however this feature is quite immature, sometimes probably won't work)
 ```
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
 If you want to know the execution time:
 > Add "--time"
 ```
-python3 RickRoll.py -py [Source Code File Name] --time
+python3 RickRoll.py [Source Code File Name] --time
 ```
-Generate and play an audio from .rickroll (This feature probably will fail becauese it is quite new)
+Generate and play an audio from .rickroll (This feature is quite new)
 ```
-python3 RickRoll.py -py [Source Code File Name] --audio
+python3 RickRoll.py [Source Code File Name] --audio
 ```
 
 ## Hello World
@@ -110,12 +110,32 @@ if __name__ == "__main__":
 ## Defining Function
 RickRoll supports return function
 ```
-never knew func arg1, arg2 could feel this way  # Define a function
-    when i give_my arg1, arg2 it will be completely # Return arg1 and arg2
+gonna do_something arg1, arg2 # Define a function
+    when i give my arg1, arg2 it will be completely # Return arg1 and arg2
 say goodbye
 ```
 Equivalent to Python:
 ```python
-def func(arg1, arg2):
+def do_something(arg1, arg2):
     return arg1, arg2
+```
+
+## Import Python Library/file
+```
+we know the LIB_NAME and we're gonna play it
+```
+Equivalent to Python:
+```python
+import LIB_NAME
+```
+
+### Embed Python Code
+```
+py: print("hello Rick Astley")
+py: import sys
+```
+Equivalent to Python:
+```python
+print("hello Rick Astley")
+import sys
 ```

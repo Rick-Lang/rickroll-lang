@@ -1,270 +1,214 @@
-from PublicVariables import *
-from Lexer import Lexer
+from typing import Final
+from sys import stdout
 
-
-# Token types
-TT_keyword  = 'KEYWORDS'
-TT_operator = 'OPERATORS'
-TT_number   = 'VALUE-NUMBER'
-TT_bool     = 'VALUE-BOOL'
-TT_string   = 'VALUE-STRING'
-TT_list     = 'VALUE-LIST'
-
-TT_arguments = 'ARGUMENTS'
-TT_variable = 'VARIABLE'
-TT_function = 'FUNCTION'
-TT_library  = 'LIBRARY'
-TT_build_in_funcs = 'BUILD-IN-FUNCS'
-
+from Lexer import *
+from helpers import join_list
 
 # Keywords can execute outside main function
-kw_exe_outside_main = {KW_main, KW_def1, KW_import1}
+kw_exe_outside_main: Final = {KW.MAIN.value, KW.DEF.value, KW.IMPORT1.value}
 
-variables = []
-functions = []
+variables: Final[list[str]] = []
+functions: Final[list[str]] = []
 
-indent_count = 0                       # Determine if needs to indent
 current_line = 0
 
-is_main = False                        # Is the current statement in main
-is_function = False                    # Is the current statement in a function
-
-
-# Python source code, translated from RickRoll source code
-py_code = ""
-
-libraries = {}
-
-# Determine variable types
-def v_types(string):
-    string = str(string)
-    # Boolean
-    if string == 'True' or string == 'False':
-        return 'bool'
-    # String
-    if string[0] == '"' and string[-1] == '"':
-        return 'string'
-    # List
-    if string[0] == '[' and string[-1] == ']':
-        return 'list'
-    # Determine the string is int or float
-    count = 0
-    for char in string:
-        if char in digits:
-            count += 1
-    if count == len(string) and string.count('.') < 2:
-        return 'number'
-
-####################################################################################
-'Token Class'
-####################################################################################
-class Token:    # Return token types
-    def __init__(self, tokens):
-        self.t_types = []
-        self.t_values = []
-        self.__tokens = tokens
+class Token:
+    def __init__(self, tokens: list[str]):
+        self.t_values: list[str] = []
         self.last_kw = ''
 
-        for tok in self.__tokens:
+        for tok in tokens:
             if tok:
                 self.__make_token(tok)
 
-    def add_to_tokens(self, type, token):
-        self.t_types.append(type)
-        self.t_values.append(token)
-
-    def __make_token(self, tok):
+    def __make_token(self, tok: str):
         global variables, functions
 
-        if tok in keywords:
-            if tok == 'is': self.add_to_tokens(TT_operator, '==')
-            elif tok == 'isnot': self.add_to_tokens(TT_operator, '!=')
-            elif tok == 'isgreaterthan': self.add_to_tokens(TT_operator, '>')
-            elif tok == 'islessthan': self.add_to_tokens(TT_operator, '<')
-            elif tok == 'isgreaterthanorequalto': self.add_to_tokens(TT_operator, '>=')
-            elif tok == 'islessthanorequalto': self.add_to_tokens(TT_operator, '<=')
-            else: self.add_to_tokens(TT_keyword, tok)
+        TOK_TO_OP: Final = {
+            KW.E_OP.value: '==',
+            KW.IS_NOT_OP.value: '!=',
+            KW.G_OP.value: '>',
+            KW.L_OP.value: '<',
+            KW.GOE_OP.value: '>=',
+            KW.LOE_OP.value: '<=',
+        }
 
+        TOK_TO_FN: Final = {
+            'length': 'len',
+            'to_string': 'str',
+            'to_int': 'int',
+            'to_float': 'float'
+        }
+
+        if tok in KEYWORDS:
+            self.t_values.append(TOK_TO_OP.get(tok, tok))
             self.last_kw = tok
 
-        elif tok in OP_build_in_functions:
-            if tok == 'length': self.add_to_tokens(TT_build_in_funcs, 'len')
-            if tok == 'to_string': self.add_to_tokens(TT_build_in_funcs, 'str')
-            if tok == 'to_int': self.add_to_tokens(TT_build_in_funcs, 'int')
-            if tok == 'to_float': self.add_to_tokens(TT_build_in_funcs, 'float')
-
-        # Variable types
-        elif v_types(tok) == 'bool':
-            self.add_to_tokens(TT_bool, tok)
-        elif v_types(tok) == 'string':
-            self.add_to_tokens(TT_string, tok)
-        elif v_types(tok) == 'list':
-            self.add_to_tokens(TT_list, tok)
-        elif v_types(tok) == 'number':
-            self.add_to_tokens(TT_number, tok)
-
-        # Operators
-        elif tok in operators:
-            self.add_to_tokens(TT_operator, tok)
+        elif tok in OP_BUILT_IN_FUNCTIONS:
+            if tok in TOK_TO_FN:
+                self.t_values.append(TOK_TO_FN[tok])
 
         # Variables
-        elif self.last_kw == KW_let:
+        elif self.last_kw == KW.LET.value:
             variables.append(tok)
-            self.add_to_tokens(TT_variable, tok)
+            self.t_values.append(tok)
         # Functions
-        elif self.last_kw == KW_def1:
+        elif self.last_kw == KW.DEF.value:
             functions.append(tok)
-            self.add_to_tokens(TT_function, tok)
-        elif tok and tok in variables:
-            self.add_to_tokens(TT_variable, tok)
-
+            self.t_values.append(tok)
         else:
-            self.add_to_tokens(TT_arguments, tok)
+            self.t_values.append(tok)
 
-
-####################################################################################
-'Translate To Python'
-####################################################################################
 
 class TranslateToPython:
-
-    def __init__(self, types, values):
-
-        # types of the tokens
-        self.types = types
+    def __init__(self):
         # tokens
+        self.values: list[str] = []
+        self.is_main = False
+        self.is_function = False
+        self.indent_count = 0
+        self.py_code = ""    # Python source code, translated from RickRoll source code
+
+    def translate(self, values: list[str]):
         self.values = values
-
-        # if there is code in the current line of code
-        if self.types:
-
-            if self.types[0] == TT_keyword or self.values[0] in functions or self.values[0] in libraries:
-                if is_main or (is_main == False and self.values[0] in kw_exe_outside_main) or is_function:
-                    # Convert RickRoll code to Python
-                    self.convert(kw=self.values[0])
-
-                else:
-                    stdout.write(f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n')
-
-            else:
-                stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
-
-        # if this line doesn't have code, then write "\n"
-        else:
+        # if there is no code in the current line of code
+        if not self.values:
             self.write("")
+            return
+        if not (self.values[0] in KEYWORDS or self.values[0] in functions):
+            stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+            return
+
+        if self.is_main or (self.is_main == False and self.values[0] in kw_exe_outside_main) or self.is_function:
+            # Convert Rickroll code to Python
+            self.convert(kw=self.values[0])
+
+        else:
+            stdout.write(
+                f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n'
+            )
 
 
-    def convert(self, kw):
-        global indent_count, is_main, is_function
+    def convert(self, kw: str):
 
         if kw in functions:
             self.write(join_list(self.values))
 
-        elif kw == KW_main:
+        elif kw == KW.MAIN.value:
             self.write('if __name__ == "__main__":')
 
-            is_main = True
-            indent_count += 1
+            self.is_main = True
+            self.indent_count += 1
 
-        elif indent_count == 0:
-            if is_main: is_main = False
-            if is_function: is_function = False
+        elif self.indent_count == 0:
+            self.is_main = False
+            self.is_function = False
 
-        elif kw == KW_print:
+        elif kw == KW.PRINT.value:
             """
-                print EXPR
-            """
-
-            EXPR = join_list(self.values[1:])
-            self.write(f'print({EXPR}, end="")')
-
-        elif kw == KW_let:
-            """
-                let ID up EXPR
+                print xpr
             """
 
-            ID = join_list(self.values[self.values.index(KW_let) + 1 : self.values.index(KW_assign)])
-            EXPR = join_list(self.values[self.values.index(KW_assign) + 1:])
-            self.write(f'{ID} = {EXPR}')
+            xpr = join_list(self.values[1:])
+            self.write(f'print({xpr}, end="")')
 
-        elif kw == KW_if:
+        elif kw == KW.LET.value:
             """
-                if CONDI
+                let id up xpr
             """
 
-            CONDI = join_list(self.values[1:])
-            self.write(f'if {CONDI}:')
-            indent_count += 1
+            id = join_list(self.values[self.values.index(KW.LET.value) + 1 : self.values.index(KW.ASSIGN.value)])
+            xpr = join_list(self.values[self.values.index(KW.ASSIGN.value) + 1:])
+            self.write(f'{id} = {xpr}')
 
-        elif kw == KW_try:
+        elif kw == KW.IF.value:
+            """
+                if `cond`
+            """
+
+            cond = join_list(self.values[1:])
+            self.write(f'if {cond}:')
+            self.indent_count += 1
+
+        elif kw == KW.TRY.value:
             self.write('try:')
-            indent_count += 1
+            self.indent_count += 1
 
-        elif kw == KW_except:
+        elif kw == KW.EXCEPT.value:
             self.write('except:')
-            indent_count += 1
+            self.indent_count += 1
 
-        elif kw == KW_endless_loop:
+        elif kw == KW.ENDLESS_LOOP.value:
             self.write('while True:')
-            indent_count += 1
+            self.indent_count += 1
 
-        elif kw == KW_while_loop:
+        elif kw == KW.WHILE_LOOP.value:
             """
-                while1 CONDI while2
+                while1 `cond`
             """
 
-            CONDI = join_list(self.values[1:])
-            self.write(f'while {CONDI}:')
-            indent_count += 1
+            cond = join_list(self.values[1:])
+            self.write(f'while {cond}:')
+            self.indent_count += 1
 
-        elif kw == KW_break:
+        elif kw == KW.BREAK.value:
             self.write('break')
 
-        elif kw == KW_continue:
+        elif kw == KW.CONTINUE.value:
             self.write('continue')
 
-        elif kw == KW_def1:
+        elif kw == KW.DEF.value:
             """
-                def1 ID ARGS def2
+                def `id` ARGS
             """
-            ID = self.values[1]
-            ARGS = join_list(self.values[2:])
+            id = self.values[1]
+            ARGS: Final = join_list(self.values[2:])
 
-            self.write(f'def {ID}({ARGS}):')
+            self.write(f'def {id}({ARGS}):')
 
-            is_function = True
-            indent_count += 1
+            self.is_function = True
+            self.indent_count += 1
 
-        elif kw == KW_return1:
+        elif kw == KW.RETURN1.value:
             """
-                return1 EXPR return2
+                return1 `xpr` return2
             """
-            EXPR = join_list(self.values[1: -1])
-            self.write(f'return {EXPR}')
+            xpr = join_list(self.values[1:])
+            self.write(f'return {xpr}')
 
-        elif kw == KW_end:
+        elif kw == KW.END.value:
             self.write('pass')
-            indent_count -= 1
+            self.indent_count -= 1
+
+        elif kw == KW.IMPORT1.value:
+            """
+                import1 lib_name import2
+            """
+            self.write(f'import {self.values[1]}')
+
+        elif kw == KW.PY.value:
+            self.write(join_list(self.values[1:]))
 
 
-    def write(self, stmt):
-        global py_code
-        py_code += f"{'  ' * indent_count + stmt}\n"
+    def write(self, stmt: str):
+        self.py_code += f"{'  ' * self.indent_count + stmt}\n"
 
 
-def run_in_py(src_file_name):
+def run_in_py(src_file_name: str):
     global current_line
+
+    transpiler = TranslateToPython()
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
 
         content = src.readlines()
-        content[-1] += '\n'
+        if len(content) > 0:
+            content[-1] += '\n'
 
         for statement in content:  # "statement" is a line of code the in source code
             current_line += 1
 
-            lexer = Lexer(statement)
-            token = Token(lexer.tokens)
-            TranslateToPython(types=token.t_types, values=token.t_values)
+            token = Token(lexicalize(statement))
+            transpiler.translate(values=token.t_values)
 
-    return py_code
+    return transpiler.py_code

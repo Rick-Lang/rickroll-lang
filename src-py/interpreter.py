@@ -1,270 +1,193 @@
-from PublicVariables import *
-from Lexer import Lexer
+from typing import Final # explanation at Lexer.py
 
-# Token types
-TT_keyword        = 'KEYWORDS'
-TT_identifier     = 'IDENTIFIER'
-TT_operator       = 'OPERATOR'
-TT_built_in_funcs = 'OPERATORS-BUILT-IN-FUNCS'
+from sys import stdout
+from time import time
 
-TT_int            = 'VALUE-INT'
-TT_float          = 'VALUE-FLOAT'
-TT_bool           = 'VALUE-Bool'
-TT_char           = 'VALUE-Char'
-TT_string         = 'VALUE-String'
+from Keywords import *
+from Lexer import lexicalize
+from helpers import filter_str, precedence, starts_ends
 
-"""
-Code level works as indentation in python
-"""
-# The current code level the interpreter is reading
-current_code_level = 0
-# The code level that the interpreter should execute or interpret
-executing_code_level = 0
+start: Final = time()
 
-in_loop = False
-in_loop_stmts = []
+class AST:
+    def print_node(Node: list, args):
+        """
+            print_node
+                |
+               args
+        """
+        Node.append(["print_node", args])
 
-while_condition = False
+    def let_node(Node: list, name, expr):
+        """
+              let_node
+               /     \
+             name  expr(value)
+        """
+        Node.append(["let_node", name, expr])
 
-current_line = 0
-# For definining variables (Relevant: Interpreter, KW_let)
-variables = {}
+    def if_node(Node: list, cond, child_stmts):
+        """
+              if_node
+                /  \
+            cond  child_stmts
+        """
+        Node.append(["if_node", cond, child_stmts])
 
-
-# Determine variable types
-
-def typeof(string):
-    if string.count('"') == 2: return 'string'
-
-    count = 0
-    for i in string:
-        if i in digits: count += 1
-    if count == len(string):
-        if string.count('.') == 1: return 'float'
-        if string.count('.') == 0: return 'int'
-
-
-class Token:
-    def __init__(self, raw_tokens):
-        self.tokens = []      # Tokens
-        self.types = []       # Token types
-
-        for t in raw_tokens:
-            if t:
-                self.make_token(t)
-
-    def make_token(self, t):
-        self.tokens.append(t)
-        if t in keywords:
-            self.types.append(TT_keyword)
-        elif t in operators:
-            self.types.append(TT_operator)
-        elif t in OP_build_in_functions:
-            self.types.append(TT_built_in_funcs)
-        elif typeof(t) == 'int':
-            self.types.append(TT_int)
-        elif typeof(t) == 'float':
-            self.types.append(TT_float)
-        elif typeof(t) == 'string':
-            self.types.append(TT_string)
-        else:
-            self.types.append(TT_identifier)
-
-class Eval:
-    def __init__(self, tokens, types=[]):
-        self.__tokens = tokens
-        self.__types = types
-        self.values = []
-
-        self.__evaluate(self.__tokens)
-
-    def __precedence(self, op):
-
-        if op == '+' or op == '-':
-            return 1
-        if op == '*' or op == '/':
-            return 2
-        return 0
-
-    def __applyOp(self, a, b, op):
-
-        if op == '+': return a + b
-        if op == '-': return a - b
-        if op == '*': return a * b
-        if op == '/': return a // b
-        if op=='is'and a==b or op=='isnot'and a!=b or op=='isgreaterthan'and a>b or op=='islessthan'and a<b or op==KW_greater_or_equals_OP and a >= b:
-            return 'TrueLove'
-        else:
-            return 'FalseLove'
+    def while_node(Node: list, cond, child_stmts):
+        """
+              while_node
+               /     \
+            cond    child_stmts
+        """
+        Node.append(["while_node", cond, child_stmts])
 
 
-    def __evaluate(self, tokens):
-        ops = []
-
-        for i in range(len(tokens)):
-
-            if tokens[i] == '(':
-                ops.append(tokens[i])
-
-            elif tokens[i].isdigit():
-                self.values.append(int(tokens[i]))
-
-            elif self.__types[i] == TT_identifier:
-                var_value = variables[tokens[i]]
-                self.values.append(int(var_value) if var_value.isdigit() else var_value)
-
-            elif tokens[i][0] == '"' and tokens[i][-1] == '"':
-                self.values.append(tokens[i][1: -1])
-
-
-            elif tokens[i] == ')':
-                while len(ops) != 0 and ops[-1] != '(':
-                    val2 = self.values.pop()
-                    val1 = self.values.pop()
-                    op = ops.pop()
-
-                    self.values.append(self.__applyOp(val1, val2, op))
-
-                ops.pop()
-
-            # Current tok is an operator
-            else:
-                while len(ops) != 0 and self.__precedence(ops[-1]) >= self.__precedence(tokens[i]):
-
-                    val2 = self.values.pop()
-                    val1 = self.values.pop()
-                    op = ops.pop()
-
-                    self.values.append(self.__applyOp(val1, val2, op))
-
-                ops.append(tokens[i])
-
-
-        while len(ops) != 0:
-            val2 = self.values.pop()
-            val1 = self.values.pop()
-            op = ops.pop()
-
-            self.values.append(self.__applyOp(val1, val2, op))
-
-
-    def __repr__(self):
-        return f'{self.values[-1]}'
-
-
-class Interpreter:
-    def __init__(self, types, tokens):
-        self.types = types
+class Parser(AST):
+    def __init__(self, tokens: list[list[str]], Node: list):
+        self.Node = Node
         self.tokens = tokens
 
-        if self.types[0] == TT_keyword:
-            self.run_code(kw=self.tokens[0])
+        self.pos = 0
+        self.stmt: Final = []
 
-    # Indentation, edits the two code levels
-    def indent(self):
-        global current_code_level, executing_code_level
-        current_code_level += 1
-        executing_code_level += 1
+        while self.pos < len(self.tokens):
+            self.parse()
+            self.pos += 1
+
+    def match(self, kw: str):
+        # explanation at helpers.py
+        return True if self.tokens[self.pos][0] == kw else False
+
+    def parse(self):
+        self.stmt = self.tokens[self.pos]
+        if self.match(KW.PRINT.value):
+            AST.print_node(self.Node, self.stmt[1:])
+
+        elif self.match(KW.LET.value):
+            AST.let_node(self.Node, self.stmt[1], self.stmt[3:])
+
+        elif self.match(KW.IF.value):
+            cond = self.stmt[1:]
+            child_stmts = []
+            if_count = 1
+            while if_count != 0:
+                self.pos += 1
+                if self.tokens[self.pos][0] in INDENT_KW:
+                    if_count += 1
+                elif self.tokens[self.pos][0] == KW.END.value:
+                    if_count -= 1
+
+                child_stmts.append(self.tokens[self.pos])
+            if_nodes = []
+            Parser(tokens=child_stmts, Node=if_nodes)
+            AST.if_node(self.Node, cond, if_nodes)
+
+        elif self.match(KW.WHILE_LOOP.value):
+            cond = self.stmt[1:]
+            child_stmts = []
+            indent_count = 1
+            while indent_count != 0:
+                self.pos += 1
+                if self.tokens[self.pos][0] in INDENT_KW:
+                    indent_count += 1
+                elif self.tokens[self.pos][0] == KW.END.value:
+                    indent_count -= 1
+
+                child_stmts.append(self.tokens[self.pos])
+
+            while_nodes = []
+            Parser(tokens=child_stmts, Node=while_nodes)
+            AST.while_node(self.Node, cond, while_nodes)
+
+def applyOp(a: int | str, b: int | str, op: str) -> int | str:
+    if op == '+': return a + b
+    if op == '-': return a - b
+    if op == '*': return a * b
+    if op == '/': return a // b
+    return 'True' if \
+        op==KW.E_OP.value and a==b or op==KW.IS_NOT_OP.value and a!=b \
+        or op==KW.G_OP.value and a>b or op==KW.L_OP.value and a<b \
+        or op==KW.GOE_OP.value and a>=b or op==KW.LOE_OP.value and a<=b \
+    else 'False'
+
+def evaluate(tokens: str):
+    if len(tokens) == 1 and starts_ends(tokens[0], '"'):
+        return filter_str(tokens[0])
+
+    values: Final[list[int | str]] = []
+    ops: Final[list[str]] = []
+
+    for i in range(len(tokens)):
+        if not tokens[i]: return
+        if tokens[i] == ' ':
+            i += 1
+        elif tokens[i] == '(':
+            ops.append(tokens[i])
+        elif starts_ends(tokens[i], '"'):
+            values.append(filter_str(tokens[i]))
+        elif tokens[i].isdigit():
+            values.append(int(tokens[i]))
+        elif tokens[i] == ')':
+            while len(ops) != 0 and ops[-1] != '(':
+                val2 = values.pop()
+                val1 = values.pop()
+                op = ops.pop()
+                values.append(applyOp(val1, val2, op))
+            ops.pop()
+        elif tokens[i] in OPERATORS:
+            while len(ops) != 0 and precedence(ops[-1]) >= precedence(tokens[i]):
+                val2 = values.pop()
+                val1 = values.pop()
+                op = ops.pop()
+                values.append(applyOp(val1, val2, op))
+            ops.append(tokens[i])
+        else:
+            var_value = str(variables[tokens[i]])
+            values.append(int(var_value) if var_value.isdigit() else var_value)
+
+        i += 1
+
+    while ops:
+        val2 = values.pop()
+        val1 = values.pop()
+        op = ops.pop()
+        values.append(applyOp(val1, val2, op))
+    return values[-1]
+
+variables: Final[dict[str, int | str | None]] = {}
+
+class Interpreter:
+    def __init__(self):
+        self.idx = 0
+
+    def interpret(self, nodes: list | str):
+        for node in nodes:
+            self.idx += 1
+            if node[0] == "print_node":
+                stdout.write(evaluate(node[1]))
+
+            elif node[0] == "let_node":
+                variables.update({node[1]:evaluate(node[2])})
+
+            elif node[0] == "if_node":
+                if evaluate(node[1]) == 'True':
+                    self.interpret(node[2])
+
+            elif node[0] == "while_node":
+                while evaluate(node[1]) == 'True':
+                    self.interpret(node[2])
 
 
-    def run_code(self, kw):
-        global current_code_level, executing_code_level
-        global in_loop, in_loop_stmts, while_condition
-
-        # End statement
-        if kw == KW_end:
-
-            run_loop = False
-
-            # send back the executing_code_level
-            if executing_code_level == current_code_level:
-                executing_code_level -= 1
-
-                # End a loop
-                if in_loop:
-                    in_loop = False
-                    run_loop = True
-
-            # the current code level go back 1
-            current_code_level -= 1
-
-            # Run the codes in loop
-            if run_loop:
-                while while_condition:
-                    for stmt in in_loop_stmts:
-                        Interpreter(stmt[0], stmt[1])
-
-
-        # If the current code level should not execute, then return back (don't execute)
-        if executing_code_level != current_code_level:
-            return
-
-        if in_loop:
-            in_loop_stmts.append([self.types, self.tokens])
-
-        if kw == KW_main:
-            self.indent()
-
-        elif kw == KW_print:
-            """
-                PRINT EXPR
-            """
-            EXPR = str(Eval(self.tokens[1:], self.types[1:]))
-            if '\\n' in EXPR:
-                for i in EXPR.split("\\n")[:-1]:
-                    stdout.write(f'{i}\n')
-            else:
-                stdout.write(EXPR)
-
-        elif kw == KW_if:
-            """
-                IF CONDI
-            """
-            CONDI = str(Eval(types=self.types[1:], tokens=self.tokens[1:]))
-            # If the condition is true, execute the next code level (executing_code_level += 1)
-            if CONDI == 'TrueLove':
-                executing_code_level += 1
-
-            current_code_level += 1
-
-        elif kw == KW_endless_loop:
-            in_loop = True
-            while_condition = True
-            self.indent()
-
-        elif kw == KW_break:
-            in_loop = False
-            while_condition = False
-            in_loop_stmts.clear()
-            return
-
-        elif kw == KW_let:
-            """
-                LET ID up EXPR
-            """
-            ID = self.tokens[self.tokens.index(KW_let) + 1]
-
-            EXPR = str(Eval(
-                tokens=self.tokens[self.tokens.index(KW_assign)+1:],
-                types=self.types[self.tokens.index(KW_assign)+1:]
-            ))
-            variables.update({ID: EXPR})
-
-
-def run_in_interpreter(src_file_name):
-    global current_line
+def run_in_interpreter(src_file_name: str):
+    intpr = Interpreter()
+    Node = []
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
-        content[-1] += '\n'
-        for i in range(len(content)):
-            current_line += 1
-            lexer = Lexer(stmt=content[i])    # "statement" is a line of code the in source code
-            token = Token(raw_tokens=lexer.tokens)
+        if len(content) > 0:
+            content[-1] += '\n'
+        tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != []]
+        Parser(tokens=tokens, Node=Node)
 
-            if token.tokens:
-                try:
-                    Interpreter(types=token.types, tokens=token.tokens)
-
-                except Exception as e:
-                    stdout.write(f'Exception in line {current_line}: {e}\n')
+        intpr.interpret(Node)
