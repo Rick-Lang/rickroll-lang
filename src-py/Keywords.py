@@ -53,7 +53,7 @@ SEPARATORS: Final = {
 """Separators are used in tokenization"""
 
 OPERATORS: Final = {
-    '+', '-', '*', '/', '%', '^', '=',
+    '+', '-', '*', '/', '%', '^', '=', '&', '|',
     '[', ']', '(', ')', '{', '}', ',',
     '>', '<', '<=', '>=', '!=', 'is', 'aint'
 }
