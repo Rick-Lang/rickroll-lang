@@ -15,6 +15,10 @@ def applyOp(a: int | str, b: int | str, op: str) -> int | str:
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
+    if op == '%': return a % b
+    if op == '^': return a ^ b
+    if op == '&': return a & b
+    if op == '|': return a | b
     return 'True' if \
         op=='=='and a==b or op=='!='and a!=b \
         or op=='>'and a>b or op=='<'and a<b \
