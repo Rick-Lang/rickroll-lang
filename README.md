@@ -124,6 +124,8 @@ We don't usually update [The Chinese Documentation / 中文文档](doc-Ch.md)
 **[简体中文](doc-Ch.md)**
 <br>
 **[Russian](doc-RU.md)**
+<br>
+**[Francais](doc-FR.md)**
 
 # Rickroll-lang Editor
 See https://github.com/RedEnder666/RickRoll_IDE
