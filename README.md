@@ -175,5 +175,5 @@ Here are the projects that are inspired by Rickroll-lang
 <br/> Facebook: https://www.facebook.com/RickAstley
 <br/> Spotify: https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt
 
-# Consider Buy Me A Coffee!
+# Consider Buying Me A Coffee!
 https://www.buymeacoffee.com/SatinWuker 
