@@ -119,18 +119,25 @@ After running this command, the generator is gonna generate an audio from the .r
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
 ## Documentation
-We don't usually update [The Chinese Documentation / 中文文档](doc-Ch.md)
-
-**[English](doc.md)**
+**[English](Docs/doc.md)**
 <br>
-**[简体中文](doc-Ch.md)**
+**[简体中文](Docs/doc-Ch.md)**
 <br>
-**[Russian](doc-RU.md)**
+**[Русский](Docs/doc-RU.md)**
 <br>
-**[Francais](doc-FR.md)**
+**[Francais](Docs/doc-FR.md)**
+<br>
+**[हिंदी](Docs/doc-HI.md)**
+<br>
+**[عربي](Docs/doc-AR.md)**
+<br>
+**[Português](Docs/doc-PT-BR.md)**
+<br>
+**[Español](Docs/doc-SP.md)**
 
 # Rickroll-lang Editor
-See https://github.com/RedEnder666/RickRoll_IDE
+1. A well-coded code editor by *RedEnder666*: https://github.com/RedEnder666/RickRoll_IDE
+2. The VSCode extension by *FusionSid*: https://github.com/FusionSid/Rickroll-Lang-VScode-Extension
 
 # Todo!
 In order to make RICKROll becoming a world heritage, YOU and I still have a bunch of things to do!
@@ -155,7 +162,7 @@ https://discord.gg/bRrbZPjVDH
 Join this server to chat with cool people or for support
 <br /> We currently need some people to join!
 
-Wechat/微信: githubsherlockcxk
+Wechat/微信: SatinWuker540
 <br>
 Discord: Satin Wuker#0572
 <br/> Valcan#1407
