@@ -3,9 +3,11 @@
 <br>
 
 # Rickroll Programming Language
-![Build](https://img.shields.io/badge/Build-passing-orange?style=for-the-badge&logo=appveyor)
-![Python](https://img.shields.io/badge/Python-3.6%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
+![Build](https://img.shields.io/badge/Build-passing-green?style=for-the-badge&logo=appveyor)
+![RickRoll PL Community](https://img.shields.io/discord/1071835028251738184?color=red&label=Community%20Chat&style=for-the-badge)
+![Original Server](https://img.shields.io/discord/915760402195959861?color=yellow&label=Original%20Server&style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen?style=for-the-badge&logo=appveyor)
 <br>
 Rick Roll Programming Language, a language that is rickroll based!
 
