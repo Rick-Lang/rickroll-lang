@@ -87,29 +87,29 @@ This is also executable
 ## Run Code
 Execute by converting .rickroll to Python
 ```shell
-python3 RickRoll.py [Source Code File Name]
+python RickRoll.py [Source Code File Name]
 ```
 Execute by converting .rickroll to C++ (Requires g++ compiler and has numerous bugs)
 ```shell
-python3 RickRoll.py -cpp [Source Code File Name]
+python RickRoll.py -cpp [Source Code File Name]
 ```
 Execute by interpreter
 ```shell
-python3 RickRoll.py -intpr [Source Code File Name]
+python RickRoll.py -intpr [Source Code File Name]
 ```
 If you want to know the execution time:
 > Add "--time"
 ```shell
-python3 RickRoll.py [Source Code File Name] --time
+python RickRoll.py [Source Code File Name] --time
 ```
 Generate and play an audio from .rickroll
 ```shell
-python3 RickRoll.py [Source Code File Name] --audio
+python RickRoll.py [Source Code File Name] --audio
 ```
 
 ## Requirements
 - [Python libraries](https://github.com/Rick-Lang/rickroll-lang/blob/main/requirements.txt)
-- [Python 3.6+](https://www.python.org/downloads/release/python-3610/)
+- [Python 3.8+](https://www.python.org/downloads/release/python-380/)
 - G++ compiler (For translating RickRoll to C++)
 
 
@@ -200,6 +200,3 @@ Here are the projects that are inspired by Rickroll-lang
 <br/> Twitter: https://twitter.com/rickastley
 <br/> Facebook: https://www.facebook.com/RickAstley
 <br/> Spotify: https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt
-
-# Consider Buying Me A Coffee!
-https://www.buymeacoffee.com/SatinWuker 
