@@ -138,21 +138,22 @@ After running this command, the generator is gonna generate an audio from the .r
 ## Brief Docs:
 **[English](Docs/doc.md)**
 <br>
-**[简体中文](Docs/doc-Ch.md)**
+Simplified Chinese: **[简体中文](Docs/doc-Ch.md)**
 <br>
-**[Русский](Docs/doc-RU.md)**
+Russian: **[Русский](Docs/doc-RU.md)**
 <br>
-**[Francais](Docs/doc-FR.md)**
+French: **[Francais](Docs/doc-FR.md)**
 <br>
-**[हिंदी](Docs/doc-HI.md)**
+Hindi: **[हिंदी](Docs/doc-HI.md)**
 <br>
+Arabic: **[عربي](Docs/doc-AR.md)**
+<br>
+Portuguese: **[Português](Docs/doc-PT-BR.md)**
+<br>
+Spanish: **[Español](Docs/doc-SP.md)**
 
 ## Tutorial
-**[عربي](Docs/doc-AR.md)**
-<br>
-**[Português](Docs/doc-PT-BR.md)**
-<br>
-**[Español](Docs/doc-SP.md)**
+[Main](Tutorial/main.md)
 
 # Rickroll-lang Editor
 1. A well-coded code editor by *RedEnder666*: https://github.com/RedEnder666/RickRoll_IDE
