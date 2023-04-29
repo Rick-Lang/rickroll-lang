@@ -2,7 +2,7 @@
 <img src="https://avatars.githubusercontent.com/u/83736946?s=200&v=4" align="right" width="150" height="150"/>
 <br>
 
-# Rickroll Programming Language
+# Introduction of the Rickroll Programming Language
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 ![Build](https://img.shields.io/badge/Build-passing-green?style=for-the-badge&logo=appveyor)
 ![RickRoll PL Community](https://img.shields.io/discord/1071835028251738184?color=red&label=Community%20Chat&style=for-the-badge)
@@ -135,7 +135,7 @@ After running this command, the generator is gonna generate an audio from the .r
 
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
-## Documentation
+## Brief Docs:
 **[English](Docs/doc.md)**
 <br>
 **[简体中文](Docs/doc-Ch.md)**
@@ -146,6 +146,8 @@ After running this command, the generator is gonna generate an audio from the .r
 <br>
 **[हिंदी](Docs/doc-HI.md)**
 <br>
+
+## Tutorial
 **[عربي](Docs/doc-AR.md)**
 <br>
 **[Português](Docs/doc-PT-BR.md)**
