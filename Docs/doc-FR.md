@@ -121,7 +121,7 @@ python RickRoll.py [Nom Du Ficher Source] --audio
 - *[Exemples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) pour commencer*
 - *Traduire le code RickRoll en Python3 ou C++*
 - *[Générer des ficher audio depuis .rickroll](#g%C3%A9n%C3%A9rer-un-fichier-audio)*
-- *Une documentation avec plusieur language* (j'espère que vous pouvais contribuer sur d'autre language lol)
+- *Une documentation avec plusieur language* (j'espère que vous pouvez contribuer sur d'autre languages lol)
 - [*Un éditeur pour écrire en rickroll*](https://github.com/RedEnder666/RickRoll_IDE)
 - [*Une extension VSCode*](https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang)
 
