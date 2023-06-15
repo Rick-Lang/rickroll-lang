@@ -34,10 +34,12 @@ class KW(Enum):
     PY = 'py:'
 
 
-KEYWORDS: Final[list[str]] = [e.value for e in KW]
+KEYWORDS: Final[list[str]] = list(KW)
 """values in `KW`"""
 
-INDENT_KW: Final = [KW[k].value for k in ['IF', 'DEF', 'TRY', 'EXCEPT', 'WHILE_LOOP', 'ENDLESS_LOOP']]
+INDENT_KW: Final = ['andifuaskmehowimfeeling', 'gonna', 'thereaintnomistaking',
+            'iftheyevergetudown', 'togetherforeverwith', 'togetherforeverandnevertopart'
+]
 """keywords that require indentation in their body (when transpiled to py)"""
 
 IGNORE_TOKENS: Final = set("~'")
