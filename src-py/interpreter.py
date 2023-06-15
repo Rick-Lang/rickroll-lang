@@ -5,100 +5,11 @@ from time import time
 
 from Keywords import *
 from Lexer import lexicalize
+from Parser import Parser, AST
 from helpers import filter_str, precedence, starts_ends
 
 start: Final = time()
 
-class AST:
-    def print_node(Node: list, args):
-        """
-            print_node
-                |
-               args
-        """
-        Node.append(["print_node", args])
-
-    def let_node(Node: list, name, expr):
-        """
-              let_node
-               /     \
-             name  expr(value)
-        """
-        Node.append(["let_node", name, expr])
-
-    def if_node(Node: list, cond, child_stmts):
-        """
-              if_node
-                /  \
-            cond  child_stmts
-        """
-        Node.append(["if_node", cond, child_stmts])
-
-    def while_node(Node: list, cond, child_stmts):
-        """
-              while_node
-               /     \
-            cond    child_stmts
-        """
-        Node.append(["while_node", cond, child_stmts])
-
-
-class Parser(AST):
-    def __init__(self, tokens: list[list[str]], Node: list):
-        self.Node = Node
-        self.tokens = tokens
-
-        self.pos = 0
-        self.stmt: Final = []
-
-        while self.pos < len(self.tokens):
-            self.parse()
-            self.pos += 1
-
-    def match(self, kw: str):
-        # explanation at helpers.py
-        return True if self.tokens[self.pos][0] == kw else False
-
-    def parse(self):
-        self.stmt = self.tokens[self.pos]
-        if self.match(KW.PRINT.value):
-            AST.print_node(self.Node, self.stmt[1:])
-
-        elif self.match(KW.LET.value):
-            AST.let_node(self.Node, self.stmt[1], self.stmt[3:])
-
-        elif self.match(KW.IF.value):
-            cond = self.stmt[1:]
-            child_stmts = []
-            if_count = 1
-            while if_count != 0:
-                self.pos += 1
-                if self.tokens[self.pos][0] in INDENT_KW:
-                    if_count += 1
-                elif self.tokens[self.pos][0] == KW.END.value:
-                    if_count -= 1
-
-                child_stmts.append(self.tokens[self.pos])
-            if_nodes = []
-            Parser(tokens=child_stmts, Node=if_nodes)
-            AST.if_node(self.Node, cond, if_nodes)
-
-        elif self.match(KW.WHILE_LOOP.value):
-            cond = self.stmt[1:]
-            child_stmts = []
-            indent_count = 1
-            while indent_count != 0:
-                self.pos += 1
-                if self.tokens[self.pos][0] in INDENT_KW:
-                    indent_count += 1
-                elif self.tokens[self.pos][0] == KW.END.value:
-                    indent_count -= 1
-
-                child_stmts.append(self.tokens[self.pos])
-
-            while_nodes = []
-            Parser(tokens=child_stmts, Node=while_nodes)
-            AST.while_node(self.Node, cond, while_nodes)
 
 def applyOp(a: int | str, b: int | str, op: str) -> int | str:
     if op == '+': return a + b
@@ -164,6 +75,7 @@ class Interpreter:
     def interpret(self, nodes: list | str):
         for node in nodes:
             self.idx += 1
+
             if node[0] == "print_node":
                 stdout.write(evaluate(node[1]))
 
@@ -188,6 +100,11 @@ def run_in_interpreter(src_file_name: str):
         if len(content) > 0:
             content[-1] += '\n'
         tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != []]
-        Parser(tokens=tokens, Node=Node)
+        print(tokens)
+        Node = Parser(tokens).nodes
+        # print("parser:")
+        # for i in Node:
+        #     print('-----')
+        #     print(i)
 
         intpr.interpret(Node)
