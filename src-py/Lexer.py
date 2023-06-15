@@ -1,11 +1,14 @@
-# the type-checker complains about the re-export, for some reason,
-# so we must explicitly import it here.
 from typing import Final
 
 from Keywords import *
 from helpers import remove_all
 
-ALL_KW_STR: Final = ','.join(KEYWORDS)
+ALL_KW = "ijustwannatelluhowimfeeling,andifuaskmehowimfeeling,\
+give,up,weknowthe,andweregonnaplayit,gonna,whenigivemy,itwillbecompletely,\
+thereaintnomistaking,iftheyevergetudown,takemetourheart,saygoodbye,desertu,\
+runaround,togetherforeverandnevertopart,togetherforeverwith,isgreaterthan,\
+islessthan,isgreaterthanorequalto,islessthanorequalto,aint,is,py:"
+
 
 def lexicalize(stmt: str):
     SP_LN: Final = {' ', '\n'}
@@ -40,7 +43,7 @@ def order_words(tokens: list[str]):
     kw_in_statement = ''
     temp = False
     for tok in tokens:
-        if tok in ALL_KW_STR and kw_in_statement + tok in ALL_KW_STR:
+        if tok in ALL_KW and kw_in_statement + tok in ALL_KW:
             kw_in_statement += tok
 
         else:
