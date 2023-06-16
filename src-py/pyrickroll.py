@@ -205,7 +205,7 @@ def run_in_py(src_file_name: str):
         for statement in content:  # "statement" is a line of code the in source code
             current_line += 1
 
-            tokens = Token(lexicalize(statement))
-            transpiler.translate(tokens.t_values)
+            tokens = lexicalize(statement)
+            transpiler.translate(tokens)
 
     return transpiler.py_code
