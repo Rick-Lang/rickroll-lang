@@ -6,8 +6,7 @@ from helpers import remove_all
 ALL_KW = "ijustwannatelluhowimfeeling,andifuaskmehowimfeeling,\
 give,up,weknowthe,andweregonnaplayit,gonna,whenigivemy,itwillbecompletely,\
 thereaintnomistaking,iftheyevergetudown,takemetourheart,saygoodbye,desertu,\
-runaround,togetherforeverandnevertopart,togetherforeverwith,isgreaterthan,\
-islessthan,isgreaterthanorequalto,islessthanorequalto,aint,is,py:"
+runaround,togetherforeverandnevertopart,togetherforeverwith,>,<,<=,>=,aint,is,py:"
 
 
 def lexicalize(stmt: str):
