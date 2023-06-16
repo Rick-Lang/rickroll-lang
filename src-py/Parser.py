@@ -133,6 +133,9 @@ class Parser(AST):
 
             AST.while_node(self.nodes, cond, Parser(child_stmts).nodes)
 
+        elif self.match(KW.END.value):
+            pass
+
         else:
             # Call function
             AST.call_func(self.nodes, self.tokens[self.pos][0], self.tokens[self.pos][1:])
