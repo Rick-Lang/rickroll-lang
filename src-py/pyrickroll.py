@@ -75,9 +75,6 @@ class TranslateToPython:
         if not self.values:
             self.write("")
             return
-        if not (self.values[0] in KEYWORDS or self.values[0] in functions):
-            stdout.write(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
-            return
 
         if self.is_main or (self.is_main == False and self.values[0] in kw_exe_outside_main) or self.is_function:
             # Convert Rickroll code to Python
@@ -208,7 +205,7 @@ def run_in_py(src_file_name: str):
         for statement in content:  # "statement" is a line of code the in source code
             current_line += 1
 
-            token = Token(lexicalize(statement))
-            transpiler.translate(values=token.t_values)
+            tokens = Token(lexicalize(statement))
+            transpiler.translate(tokens.t_values)
 
     return transpiler.py_code
