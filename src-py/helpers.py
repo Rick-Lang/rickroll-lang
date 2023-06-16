@@ -16,8 +16,7 @@ def starts_ends(s: str, char: str):
     starts_ends('(rick)', '()') # `False`
     ```
     """
-    # for some reason, type-inference only works if it explicitly returns a bool
-    # WTF?
+
     return True if s[0] == char and s[-1] == char else False
 
 
@@ -31,8 +30,20 @@ def remove_all(l: list, x):
         l.remove(x)
     return l
 
+def filter_str(s:str):
+    res = ""
+    i = 1
+    while i < len(s) - 1:
+        if s[i] == '\\':
+            if s[i + 1] == 'n':
+                res += '\n'
+                i += 1
+        else:
+            res += s[i]
+        i += 1
+    return res
 
-filter_str: Final[Callable[[str], str]] = lambda s: s[1:-1]
+# filter_str: Final[Callable[[str], str]] = lambda s: s[1:-1]
 """Remove 1st and last chars from a `str`."""
 
 
