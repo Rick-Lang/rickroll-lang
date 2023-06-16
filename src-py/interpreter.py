@@ -11,15 +11,16 @@ from helpers import filter_str, precedence, starts_ends
 start: Final = time()
 
 
-def applyOp(a: int | str, b: int | str, op: str) -> int | str:
+def apply_op(a: int | str, b: int | str, op: str) -> int | str:
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
     if op == '/': return a // b
+    # if op == '[': return 
     return 'True' if \
-        op==KW.E_OP.value and a==b or op==KW.IS_NOT_OP.value and a!=b \
-        or op==KW.G_OP.value and a>b or op==KW.L_OP.value and a<b \
-        or op==KW.GOE_OP.value and a>=b or op==KW.LOE_OP.value and a<=b \
+        op=='==' and a==b or op==KW.IS_NOT_OP.value and a!=b \
+        or op=='>' and a>b or op=='<' and a<b \
+        or op=='>=' and a>=b or op=='<=' and a<=b \
     else 'False'
 
 def evaluate(tokens: str):
@@ -29,7 +30,8 @@ def evaluate(tokens: str):
     values: Final[list[int | str]] = []
     ops: Final[list[str]] = []
 
-    for i in range(len(tokens)):
+    i = 0
+    while i < len(tokens):
         if not tokens[i]: return
         if tokens[i] == ' ':
             i += 1
@@ -44,16 +46,24 @@ def evaluate(tokens: str):
                 val2 = values.pop()
                 val1 = values.pop()
                 op = ops.pop()
-                values.append(applyOp(val1, val2, op))
+                values.append(apply_op(val1, val2, op))
             ops.pop()
+        elif tokens[i] == '[':
+            lst = ''
+            while i < len(tokens):
+                lst += tokens[i]
+                i += 1
+
+            values.append(lst)
         elif tokens[i] in OPERATORS:
             while len(ops) != 0 and precedence(ops[-1]) >= precedence(tokens[i]):
                 val2 = values.pop()
                 val1 = values.pop()
                 op = ops.pop()
-                values.append(applyOp(val1, val2, op))
+                values.append(apply_op(val1, val2, op))
             ops.append(tokens[i])
         else:
+
             var_value = str(variables[tokens[i]])
             values.append(int(var_value) if var_value.isdigit() else var_value)
 
@@ -63,7 +73,7 @@ def evaluate(tokens: str):
         val2 = values.pop()
         val1 = values.pop()
         op = ops.pop()
-        values.append(applyOp(val1, val2, op))
+        values.append(apply_op(val1, val2, op))
     return values[-1]
 
 variables: Final[dict[str, int | str | None]] = {}
@@ -75,18 +85,27 @@ class Interpreter:
     def interpret(self, nodes: list | str):
         for node in nodes:
             self.idx += 1
-
-            if node[0] == "print_node":
+            # print(f"----------\nnode [{self.idx}]:", node)
+            if node[0] == "func_node":
+                if node[1] == "main": # Main function
+                    # print("main:", node[3])
+                    self.interpret(node[3])
+            elif node[0] == "print_node":
                 stdout.write(evaluate(node[1]))
 
             elif node[0] == "let_node":
+                # print("let:", node[2])
                 variables.update({node[1]:evaluate(node[2])})
+                # print("variable:", variables)
 
             elif node[0] == "if_node":
+                # print("if", node[1], ":", evaluate(node[1]))
                 if evaluate(node[1]) == 'True':
+                    # print("if", node[2])
                     self.interpret(node[2])
 
             elif node[0] == "while_node":
+                # print("while", node[2])
                 while evaluate(node[1]) == 'True':
                     self.interpret(node[2])
 
@@ -100,11 +119,11 @@ def run_in_interpreter(src_file_name: str):
         if len(content) > 0:
             content[-1] += '\n'
         tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != []]
-        print(tokens)
+        # print(tokens)
         Node = Parser(tokens).nodes
         # print("parser:")
         # for i in Node:
         #     print('-----')
-        #     print(i)
+            # print(i)
 
         intpr.interpret(Node)
