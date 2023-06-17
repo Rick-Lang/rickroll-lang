@@ -1,25 +1,25 @@
 take me to ur heart
     gonna fizzBuzz num
-        and if u ask me how im feeling num % 15 is 0
+        and if u ask me how im feeling num % 15 == 0
             i just wanna tell u how im feeling "FizzBuzz\n"
-            when i give my 0 it will be completely
+            when i give my 0, it will be completely
         say goodbye
 
-        and if u ask me how im feeling num % 3 is 0
+        and if u ask me how im feeling num % 3 == 0
             i just wanna tell u how im feeling "Fizz\n"
-            when i give my 0 it will be completely
+            when i give my 0, it will be completely
         say goodbye
 
-        and if u ask me how im feeling num % 5 is 0
+        and if u ask me how im feeling num % 5 == 0
             i just wanna tell u how im feeling "Buzz\n"
-            when i give my 0 it will be completely
+            when i give my 0, it will be completely
         say goodbye
  
         i just wanna tell u how im feeling str(num) + "\n"
     say goodbye
     
     give index up 0
-    together forever with index is less than 30
+    together forever with index < 30
         give index up index + 1
         fizzBuzz(index)
     say goodbye
