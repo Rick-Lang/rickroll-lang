@@ -64,8 +64,7 @@ class TranslateToPython:
     def __init__(self):
         # tokens
         self.values: list[str] = []
-        self.is_main = False
-        self.is_function = False
+        # self.is_main = False
         self.indent_count = 0
         self.py_code = ""    # Python source code, translated from RickRoll source code
 
@@ -73,17 +72,10 @@ class TranslateToPython:
         self.values = values
         # if there is no code in the current line of code
         if not self.values:
-            self.write("")
             return
 
-        if self.is_main or (self.is_main == False and self.values[0] in kw_exe_outside_main) or self.is_function:
-            # Convert Rickroll code to Python
-            self.convert(kw=self.values[0])
-
-        else:
-            stdout.write(
-                f'Exception in line {current_line}: [{self.values[0]}] can not be executed outside the main method\n'
-            )
+        # Convert Rickroll code to Python
+        self.convert(kw=self.values[0])
 
 
     def convert(self, kw: str):
@@ -94,12 +86,8 @@ class TranslateToPython:
         elif kw == KW.MAIN.value:
             self.write('if __name__ == "__main__":')
 
-            self.is_main = True
+            # self.is_main = True
             self.indent_count += 1
-
-        elif self.indent_count == 0:
-            self.is_main = False
-            self.is_function = False
 
         elif kw == KW.PRINT.value:
             """
@@ -159,11 +147,10 @@ class TranslateToPython:
                 def `id` ARGS
             """
             id = self.values[1]
-            ARGS: Final = join_list(self.values[2:])
+            ARGS = join_list(self.values[2:])
 
             self.write(f'def {id}({ARGS}):')
 
-            self.is_function = True
             self.indent_count += 1
 
         elif kw == KW.RETURN1.value:
@@ -186,9 +173,12 @@ class TranslateToPython:
         elif kw == KW.PY.value:
             self.write(join_list(self.values[1:]))
 
+        else:
+            self.write(join_list(self.values))
+
 
     def write(self, stmt: str):
-        self.py_code += f"{'  ' * self.indent_count + stmt}\n"
+        self.py_code += f"{'    ' * self.indent_count + stmt}\n"
 
 
 def run_in_py(src_file_name: str):
