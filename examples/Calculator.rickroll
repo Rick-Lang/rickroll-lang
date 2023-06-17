@@ -1,6 +1,6 @@
 take me to ur heart
     # same as `import sys` in python
-    we know the sys and we’re gonna play it
+    we know the sys and we're gonna play it
 
     # add function
     gonna add num1, num2
@@ -37,30 +37,30 @@ take me to ur heart
         give operator up input[1]
 
         # Create a num1 and num2 variable and make them floats
-        give num1 up to_float(input[0])
-        give num2 up to_float(input[2])
+        give num1 up float(input[0])
+        give num2 up float(input[2])
 
 
         # check if operator is "+" and if so run the add function and print the result
-        and if u ask me how im feeling operator is "+"
+        and if u ask me how im feeling operator == "+"
             i just wanna tell u how im feeling add(num1, num2)
         say goodbye
 
 
         # check if operator is "-" and if so run the subtract function and print the result
-        and if u ask me how im feeling operator is "-"
+        and if u ask me how im feeling operator == "-"
             i just wanna tell u how im feeling subtract(num1, num2)
         say goodbye
 
 
         # check if operator is "/" and if so run the divide function and print the result
-        and if u ask me how im feeling operator is "/"
+        and if u ask me how im feeling operator == "/"
             i just wanna tell u how im feeling divide(num1, num2)
         say goodbye
 
 
         # check if operator is "*" and if so run the multiply function and print the result
-        and if u ask me how im feeling operator is "*"
+        and if u ask me how im feeling operator == "*"
             i just wanna tell u how im feeling multiply(num1, num2)
         say goodbye
 
