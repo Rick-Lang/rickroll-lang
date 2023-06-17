@@ -1,15 +1,13 @@
-take me to ur heart
-
-    gonna BubbleSort arr
+gonna BubbleSort arr
 
         give index up 0
 
-        together forever with index is less than length(arr)
+        together forever with index < len(arr)
             give index up index + 1
             give index2 up 0
-            together forever with index2 is less than length(arr) - 1
+            together forever with index2 < len(arr) - 1
 
-                and if u ask me how im feeling arr[index2] is greater than arr[index2 + 1]
+                and if u ask me how im feeling arr[index2] > arr[index2 + 1]
                     give arr[index2], arr[index2 + 1] up arr[index2 + 1], arr[index2]
                 say goodbye
                 give index2 up index2 + 1
@@ -20,6 +18,9 @@ take me to ur heart
         i just wanna tell u how im feeling arr
 
     say goodbye
+
+    
+take me to ur heart
 
     give arr up [6, 7, 5, 9, 12]
     BubbleSort(arr)
