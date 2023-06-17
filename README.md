@@ -8,8 +8,10 @@
 ![RickRoll PL Community](https://img.shields.io/discord/1071835028251738184?color=red&label=Community%20Chat&style=for-the-badge)
 ![Original Server](https://img.shields.io/discord/915760402195959861?color=yellow&label=Original%20Server&style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen?style=for-the-badge&logo=appveyor)
+![Vscode Installs](https://img.shields.io/visual-studio-marketplace/azure-devops/installs/total/FusionSid.rickroll-lang?label=Vscode%20Installs&style=for-the-badge)
+![Vscode Downloads](https://img.shields.io/visual-studio-marketplace/d/FusionSid.rickroll-lang?label=Vscode%20downloads&style=for-the-badge)
 <br>
-Rick Roll Programming Language, a language that is rickroll based!
+Rick Roll Programming Language, a language that is rickroll-based!
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
