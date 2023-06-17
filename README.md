@@ -10,6 +10,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![Vscode Installs](https://img.shields.io/visual-studio-marketplace/azure-devops/installs/total/FusionSid.rickroll-lang?label=Vscode%20Installs&style=for-the-badge)
 ![Vscode Downloads](https://img.shields.io/visual-studio-marketplace/d/FusionSid.rickroll-lang?label=Vscode%20downloads&style=for-the-badge)
+![HitCount]( https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2FRick-Lang%2Frickroll-lang.json%3Fcolor%3Dyellow&style=for-the-badge&label=Views)
 <br>
 Rick Roll Programming Language, a language that is rickroll-based!
 
