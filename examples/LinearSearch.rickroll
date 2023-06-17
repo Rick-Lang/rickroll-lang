@@ -3,15 +3,15 @@ take me to ur heart
 
         give index up 0
 
-        together forever with index is less than length(arr)
-            and if u ask me how im feeling arr[index] is target
-                i just wanna tell u how im feeling "Found in index " + to_string(index) + "\n"
+        together forever with index < len(arr)
+            and if u ask me how im feeling arr[index] == target
+                i just wanna tell u how im feeling "Found in index " + str(index) + "\n"
                 when i give my index it will be completely
             say goodbye
             give index up index + 1
         say goodbye
 
-        i just wanna tell u how im feeling to_string(target) + " is not found! :( \n"
+        i just wanna tell u how im feeling "give up " + str(target) + " :( \n"
 
     say good bye
 
