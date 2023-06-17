@@ -1,28 +1,27 @@
 from typing import Final
-
 from Keywords import *
-from helpers import remove_all
 
-ALL_KW = "ijustwannatelluhowimfeeling,andifuaskmehowimfeeling,\
+ALL_KW: Final = "ijustwannatelluhowimfeeling,andifuaskmehowimfeeling,\
 give,up,weknowthe,andweregonnaplayit,gonna,whenigivemy,itwillbecompletely,\
 thereaintnomistaking,iftheyevergetudown,takemetourheart,saygoodbye,desertu,\
-runaround,togetherforeverandnevertopart,togetherforeverwith,>,<,<=,>=,aint,is,py:"
+runaround,togetherforeverandnevertopart,togetherforeverwith,>,<,<=,>=,aint,==,py:"
 
 
 def lexicalize(stmt: str):
     SP_LN: Final = {' ', '\n'}
 
     current_token = ''
-    quote_count = 0
+    not_in_quote = True
     tokens: list[str] = []
     for char in stmt:
-        if char == '"': quote_count += 1
+        if char == '"': not_in_quote = not not_in_quote
         if char == '#': break
-        if char in IGNORE_TOKENS and quote_count % 2 == 0:
+        if char in IGNORE_TOKENS and not_in_quote:
             continue
 
-        if char in SEPARATORS and quote_count % 2 == 0:
+        if char in SEPARATORS and not_in_quote:
             if current_token not in SP_LN:
+                # if current_token != '': # this process is moved to order_words()
                 tokens.append(current_token)
             if char not in SP_LN:
                 tokens.append(char)
@@ -34,10 +33,10 @@ def lexicalize(stmt: str):
 
 def order_words(tokens: list[str]):
     """
-    if current `token+kw_in_statement` is in all keyword string, `kw_in_statement += token`
-    if current `token+kw_in_statement` not in all keyword string, add `kw_in_statement` to `final_token`
-    if statement is ended, add `kw_in_statement` to `final_token`
+    token = ['take', 'me', 'to', 'ur', 'heart']
+    order_words(token): final token = ['takemetourheart']
     """
+    # print(tokens)
     final_token: Final[list[str]] = []
     kw_in_statement = ''
     temp = False
@@ -47,11 +46,13 @@ def order_words(tokens: list[str]):
 
         else:
             temp = True
-            final_token.append(kw_in_statement)
-            kw_in_statement = ''
+            if kw_in_statement != '':
+                final_token.append(kw_in_statement)
             final_token.append(tok)
+            kw_in_statement = ''
 
     if not temp:
         final_token.append(kw_in_statement)
 
-    return remove_all(final_token, '')
+    # print(final_token)
+    return final_token
