@@ -20,7 +20,7 @@ def starts_ends(s: str, char: str):
     return True if s[0] == char and s[-1] == char else False
 
 
-join_list: Final[Callable[[list], str]] = lambda l: ''.join(map(str, l))
+join_list: Final[Callable[[list], str]] = lambda l: ''.join(l)
 """Convert any `list` into a `str` without delimiter."""
 
 
