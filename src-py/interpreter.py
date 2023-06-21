@@ -11,7 +11,7 @@ from helpers import filter_str, precedence, starts_ends
 start: Final = time()
 
 
-def apply_op(a: int | str, b: int | str, op: str) -> int | str:
+def apply_op(a: int | str, b: int | str, op: str) -> int | str: # binary operation
     if op == '+': return a + b
     if op == '-': return a - b
     if op == '*': return a * b
@@ -22,6 +22,10 @@ def apply_op(a: int | str, b: int | str, op: str) -> int | str:
         or op=='>' and a>b or op=='<' and a<b \
         or op=='>=' and a>=b or op=='<=' and a<=b \
     else 'False'
+
+def apply_u_op(a: int | str, op: str): # unary operation
+    if op == 'len': return len(a)
+    return None
 
 def evaluate(tokens: str):
     if len(tokens) == 1 and starts_ends(tokens[0], '"'):
@@ -62,7 +66,13 @@ def evaluate(tokens: str):
                 op = ops.pop()
                 values.append(apply_op(val1, val2, op))
             ops.append(tokens[i])
-        else:
+        elif tokens[i] in OP_BUILT_IN_FUNCTIONS:
+            expr = tokens[i + 2:tokens.index(")")] # from `(` to `)`
+            if len(expr) == 1:
+                values.append(apply_u_op(tokens[i], expr[0]))
+            elif len(expr > 1):
+                values.append(apply_u_op(tokens[i], evaluate(expr)))
+        else: # Matched with variable
 
             var_value = str(variables[tokens[i]])
             values.append(int(var_value) if var_value.isdigit() else var_value)
