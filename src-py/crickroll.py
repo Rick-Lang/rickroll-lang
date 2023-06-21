@@ -31,12 +31,6 @@ functions: Final[list[str]] = []
 
 current_line = 0
 
-c_code = '''#include<iostream>
-using namespace std;
-int length(int arr[]){
-    return sizeof(arr) / sizeof(arr[0]);
-}\n'''
-"""C++ source code, translated from RickRoll source code"""
 
 def v_types(s: str):
     """Determine var type from literal-syntax"""
@@ -134,24 +128,50 @@ class Token:
 ####################################################################################
 'Translate To C++'
 ####################################################################################
+c_code = '''#include<iostream>
+using namespace std;
+int length(int arr[]){
+    return sizeof(arr) / sizeof(arr[0]);
+}\n\n'''
+
 class TranslateToCpp:
-    def __init__(self, types: list[str], values: list[str]):
+    def __init__(self):
+        self.types = []
+        self.values = []
+        self.indent_count = 0
+        self.c_code = c_code
+        # if self.types[0] == TT.KEYWORD.value or self.values[0] in functions:
+        #     self.convert(kw=self.values[0])
+
+        # else:
+        #     raise SyntaxError(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+
+    def translate(self, types: list[str], values: list[str]):
         self.types = types
         self.values = values
-
-        if self.types[0] == TT.KEYWORD.value or self.values[0] in functions:
-            self.convert(kw=self.values[0])
-
-        else:
-            raise SyntaxError(f'Exception in line {current_line}: [{self.values[0]}] is neither a keyword nor function\n')
+        self.convert(kw=self.values[0])
 
     def convert(self, kw: str):
-        """Convert RickRoll tokens to C++"""
+        """
+        Convert RickRoll tokens to C++
+        self.convert("takemetourheart")
+        >>> "int main(int argc, char* argv[]){"
+
+        Inside the TranslateToCPP class, self.values is used
+
+        self.convert("ijustwannatelluhowimfeeling")
+        when self.values is ["ijustwannatelluhowimfeeling", "Hello World\n"]
+        >>> "cout "Hello World\n""
+
+        """
+
         if kw in functions:
             self.write(join_list(self.values))
+            self.indent_count += 1
 
         if kw == KW.MAIN.value:
             self.write('int main(int argc, char* argv[]){')
+            self.indent_count += 1
         if kw == KW.PRINT.value:
             """
             cout << xpr;
@@ -164,6 +184,7 @@ class TranslateToCpp:
             """
             cond = join_list(self.values[1:])
             self.write(f'if({cond})' + '{')
+            self.indent_count += 1
         if kw == KW.LET.value:
             """
             give id up xpr;
@@ -180,6 +201,7 @@ class TranslateToCpp:
 
         if kw == KW.ENDLESS_LOOP.value:
             self.write('while(true){')
+            self.indent_count += 1
 
         if kw == KW.WHILE_LOOP.value:
             """
@@ -187,6 +209,7 @@ class TranslateToCpp:
             """
             cond = join_list(self.values[1:])
             self.write(f'while({cond})' + '{')
+            self.indent_count += 1
 
         if kw == KW.BREAK.value:
             self.write('break;')
@@ -196,12 +219,13 @@ class TranslateToCpp:
 
         if kw == KW.DEF.value:
             """
-            int id(ARGS){
+            void id(ARGS){
             """
             _id = self.values[1]
             ARGS: Final = ", ".join(["auto "+x for x in self.values[2:]])
 
             self.write(f"auto {_id} = []({ARGS}) {{")
+            self.indent_count += 1
 
         if kw == KW.RETURN1.value:
             """
@@ -211,12 +235,14 @@ class TranslateToCpp:
             self.write(f'return {xpr};')
 
         if kw == KW.END.value:
+            self.indent_count -= 1
             self.write('};')
+            
 
     def write(self, content: str):
         """Write to C++ code"""
-        global c_code
-        c_code += f'{content}\n'
+        
+        self.c_code += f'{"    " * self.indent_count + content}\n'
 
 
 ####################################################################################
@@ -226,6 +252,8 @@ class TranslateToCpp:
 
 def run_in_cpp(src_file_name: str):
     global current_line
+
+    transpiler = TranslateToCpp()
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
 
@@ -242,12 +270,13 @@ def run_in_cpp(src_file_name: str):
             tokens = lexicalize(statement)
             tok = Token(tokens)
             if tok.t_types:
-                TranslateToCpp(types=tok.t_types, values=tok.t_values)
+                transpiler.translate(types=tok.t_types, values=tok.t_values)
 
     f_name: Final = splitext(src_file_name)[0]
 
     with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
-        f.write(c_code)
+        f.write(transpiler.c_code)
+    print(transpiler.c_code)
 
     if platform == 'win32':
         exe_file = f'{f_name}.exe'
