@@ -57,6 +57,6 @@ SEPARATORS: Final = {
 OPERATORS: Final = {
     '+', '-', '*', '/', '%', '^', '=', '&', '|',
     '[', ']', '(', ')', '{', '}', ',',
-    '>', '<', '<=', '>=', '!=', 'is', 'aint'
+    '>', '<', '<=', '>=', '!=', '==', 'aint'
 }
-OP_BUILT_IN_FUNCTIONS: Final = {'to_string', 'to_int', 'to_float', 'length'}
+OP_BUILT_IN_FUNCTIONS: Final = {'len', 'int', 'float', 'str'}
