@@ -32,6 +32,14 @@ class AST:
         """
         Node.append(["while_node", cond, child_stmts])
 
+    def endless_loop_node(Node: list, child_stmts):
+        """
+            endless_loop_node
+                   |
+               child_stmts
+        """
+        Node.append(["endless_loop_node", child_stmts])
+
     def func_node(Node:list, func_name, params, child_stmts):
         """
                     func_node
@@ -132,6 +140,20 @@ class Parser(AST):
                 child_stmts.append(self.tokens[self.pos])
 
             AST.while_node(self.nodes, cond, Parser(child_stmts).nodes)
+
+        elif self.match(KW.ENDLESS_LOOP.value):
+            child_stmts = []
+            indent_count = 1
+            while indent_count != 0:
+                self.pos += 1
+                if self.tokens[self.pos][0] in INDENT_KW:
+                    indent_count += 1
+                elif self.tokens[self.pos][0] == KW.END.value:
+                    indent_count -= 1
+
+                child_stmts.append(self.tokens[self.pos])
+
+            AST.endless_loop_node(self.nodes, Parser(child_stmts).nodes)
 
         elif self.match(KW.END.value):
             pass
