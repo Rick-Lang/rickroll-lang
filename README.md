@@ -10,7 +10,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen?style=for-the-badge&logo=appveyor)
 ![Vscode Installs](https://img.shields.io/visual-studio-marketplace/azure-devops/installs/total/FusionSid.rickroll-lang?label=Vscode%20Installs&style=for-the-badge)
 ![Vscode Downloads](https://img.shields.io/visual-studio-marketplace/d/FusionSid.rickroll-lang?label=Vscode%20downloads&style=for-the-badge)
-![HitCount]( https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2FRick-Lang%2Frickroll-lang%3Fcolor%3Dyellow&style=for-the-badge&label=Views)
+![HitCount]( https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2FRick-Lang%2Frickroll-lang%3Fcolor%3Dyellow&style=for-the-badge&label=Recent%20Views)
 <br>
 Rick Roll Programming Language, a language that is rickroll-based!
 
@@ -105,7 +105,7 @@ If you want to know the execution time:
 ```shell
 python RickRoll.py [Source Code File Name] --time
 ```
-Generate and play an audio from .rickroll
+Generate and play audio from .rickroll
 ```shell
 python RickRoll.py [Source Code File Name] --audio
 ```
@@ -119,7 +119,7 @@ python RickRoll.py [Source Code File Name] --audio
 ## Features
 - *[Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)*
 - *Support [Python 3.6+](https://www.python.org/downloads/release/python-3610/)*
-- *Keywords/statements are all comming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
+- *Keywords/statements are all coming from [Rick Astley's](https://en.wikipedia.org/wiki/Rick_Astley) lyrics*
 - *Keywords can be separated freely*
 - *[Examples](https://github.com/Rick-Lang/rickroll-lang/tree/main/examples) to get started*
 - *Translate RickRoll source code to Python3 and C++*
@@ -134,7 +134,7 @@ Command:
 ```
 python3 RickRoll.py [Source Code File Name] --audio
 ```
-After running this command, the generator is gonna generate an audio from the .rickroll program and play it on your terminal
+After running this command, the generator is gonna generate audio from the .rickroll program and play it on your terminal
 
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
@@ -180,15 +180,15 @@ In order to make RICKROll becoming a world heritage, YOU and I still have a bunc
 # Offcial Discord Server/Contact
 https://discord.gg/bRrbZPjVDH
 Join this server to chat with cool people or for support
-<br /> We currently need some people to join!
 
 Wechat/微信: SatinWuker540
 <br>
-Discord: SatinW#0572
-<br/> Microsoft Enjoyer#1407
+Discord: satinwuker
+<br/> microsoftenjoyer
 
 # Purpose
-Despite the fact that the Rickroll Language is considered an esoteric programming language, it has its unignorable significance. I believe that rick roll is not only a way to promote people’s communication, it is also one of the most paramount art in the human history. The purpose of the Rickroll Language is to introduce this art to people in a distinctive way – programming.
+Despite the fact that the Rickroll Language is considered an esoteric programming language, it has its unignorable significance. I believe that rickroll is not only the source of happiness for the younger generation but also the most elegant and paramount art in human history, and the cardinal stepping stone to the transition toward a much more advanced civilization. The purpose of the Rickroll Language is to introduce this art to people in a distinctive way – programming.
+Just kidding haha, the Rickroll Language is actually an educational project for introducing various ways of implementing programming languages in a humorous and interactive way, without any painful processes of memorizing unfamiliar and complicated concepts! Our website for programming language tutorials: **https://rick-lang.github.io/programming-language-explainer/**.
 
 # Related Repos
 Here are the projects that are inspired by Rickroll-lang
