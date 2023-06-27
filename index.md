@@ -2,14 +2,17 @@
 <img src="https://avatars.githubusercontent.com/u/83736946?s=200&v=4" align="right" width="150" height="150"/>
 <br>
 
-# Introduction of the Rickroll Programming Language
+# Rickroll Programming Language
 ![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=appveyor)
 ![Build](https://img.shields.io/badge/Build-passing-green?style=for-the-badge&logo=appveyor)
 ![RickRoll PL Community](https://img.shields.io/discord/1071835028251738184?color=red&label=Community%20Chat&style=for-the-badge)
 ![Original Server](https://img.shields.io/discord/915760402195959861?color=yellow&label=Original%20Server&style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen?style=for-the-badge&logo=appveyor)
+![Vscode Installs](https://img.shields.io/visual-studio-marketplace/azure-devops/installs/total/FusionSid.rickroll-lang?label=Vscode%20Installs&style=for-the-badge)
+![Vscode Downloads](https://img.shields.io/visual-studio-marketplace/d/FusionSid.rickroll-lang?label=Vscode%20downloads&style=for-the-badge)
+![HitCount]( https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2FRick-Lang%2Frickroll-lang%3Fcolor%3Dyellow&style=for-the-badge&label=Recent%20Views)
 <br>
-Rick Roll Programming Language, a language that is rickroll based!
+Rick Roll Programming Language, a language that is rickroll-based!
 
 ![](https://repository-images.githubusercontent.com/367934588/4a27ae00-b73b-11eb-801b-36dd1756dc93)
 
@@ -135,40 +138,36 @@ After running this command, the generator is gonna generate audio from the .rick
 
 ![](https://github.com/Rick-Lang/rickroll-lang/blob/main/img/au_generator.PNG)
 
-## Brief Docs:
+## Documentation
 **[English](Docs/doc.md)**
 <br>
-Simplified Chinese: **[简体中文](Docs/doc-Ch.md)**
+**[简体中文](Docs/doc-Ch.md)**
 <br>
-Russian: **[Русский](Docs/doc-RU.md)**
+**[Русский](Docs/doc-RU.md)**
 <br>
-French: **[Francais](Docs/doc-FR.md)**
+**[Francais](Docs/doc-FR.md)**
 <br>
-Hindi: **[हिंदी](Docs/doc-HI.md)**
+**[हिंदी](Docs/doc-HI.md)**
 <br>
-Arabic: **[عربي](Docs/doc-AR.md)**
+**[عربي](Docs/doc-AR.md)**
 <br>
-Portuguese: **[Português](Docs/doc-PT-BR.md)**
+**[Português](Docs/doc-PT-BR.md)**
 <br>
-Spanish: **[Español](Docs/doc-SP.md)**
-
-## Tutorial
-[Main](Tutorial/main.md)
+**[Español](Docs/doc-SP.md)**
 
 # Rickroll-lang Editor
 1. A well-coded code editor by *RedEnder666*: https://github.com/RedEnder666/RickRoll_IDE
 2. The VSCode extension by *FusionSid*: https://github.com/FusionSid/Rickroll-Lang-VScode-Extension and https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang
 
 # Todo!
-In order to make RICKROll becoming a world heritage, YOU and I still have a bunch of things to do!
+In order to make RICKROll become a world heritage, YOU and I still have a bunch of things to do!
 1. Add more keywords and built-in functions
 2. Write algorithms in RickRoll-Lang and upload them to [examples folder](examples).
 3. Make syntax highlights for [VS Code](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) and [Sublime](https://www.sublimetext.com/docs/syntax.html)!
 4. Improve the current audio generator!
 5. Improve the RickRoll interpreter!
 6. Support "writing code by singing"!
-7. Design a better icon!
-8. [**SPREAD RICKROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
+7. [**SPREAD RICKROLL EVERYWHERE!!!**](https://www.bilibili.com/video/BV1uT4y1P7CX)
 
 # Rickroll Language Website
 **[https://rickroll-lang.tech/introduction/](https://www.youtube.com/watch?v=dQw4w9WgXcQ)**
@@ -187,7 +186,7 @@ Discord: satinwuker
 <br/> microsoftenjoyer
 
 # Purpose
-Despite the fact that the Rickroll Language is considered an esoteric programming language, it has its unignorable significance. I believe that rickroll is not only the source of happiness for the younger generation but also the most elegant and paramount art in human history, and the cardinal stepping stone to the transition toward a much more advanced civilization. The purpose of the Rickroll Language is to introduce this art to people in a distinctive way – programming. <br>
+Despite the fact that the Rickroll Language is considered an esoteric programming language, it has its unignorable significance. I believe that rickroll is not only the source of happiness for the younger generation but also the most elegant and paramount art in human history, and the cardinal stepping stone to the transition toward a much more advanced civilization. The purpose of the Rickroll Language is to introduce this art to people in a distinctive way – programming.
 Just kidding haha, the Rickroll Language is actually an educational project for introducing various ways of implementing programming languages in a humorous and interactive way, without any painful processes of memorizing unfamiliar and complicated concepts! Our website for programming language tutorials: **https://rick-lang.github.io/programming-language-explainer/**.
 
 # Related Repos
