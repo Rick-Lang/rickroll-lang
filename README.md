@@ -154,6 +154,8 @@ After running this command, the generator is gonna generate audio from the .rick
 **[Português](Docs/doc-PT-BR.md)**
 <br>
 **[Español](Docs/doc-SP.md)**
+<br>
+**[ภาษาไทย](Docs/doc-TH.md)**
 
 # Rickroll-lang Editor
 1. A well-coded code editor by *RedEnder666*: https://github.com/RedEnder666/RickRoll_IDE
