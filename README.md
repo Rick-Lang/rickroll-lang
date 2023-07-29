@@ -154,6 +154,8 @@ After running this command, the generator is gonna generate audio from the .rick
 **[Português](Docs/doc-PT-BR.md)**
 <br>
 **[Español](Docs/doc-SP.md)**
+<br>
+**[ภาษาไทย](Docs/doc-TH.md)**
 
 # Rickroll-lang Editor
 1. A well-coded code editor by *RedEnder666*: https://github.com/RedEnder666/RickRoll_IDE
@@ -192,11 +194,12 @@ Just kidding haha, the Rickroll Language is actually an educational project for 
 
 # Related Repos
 Here are the projects that are inspired by Rickroll-lang
-1. [Ricky](https://github.com/thevvx/Ricky)
+1. [Ricky](https://github.com/Rick-Lang/Ricky)
 2. [Rickroll-lang API](https://github.com/FusionSid/RicklangAPI)
 3. [RickRoll IDE](https://github.com/RedEnder666/RickRoll_IDE)
 4. [Rick Astley Bot](https://github.com/FusionSid/Rick-Astley-Bot)
 5. [Rickroll Lang Vscode extension](https://github.com/FusionSid/Rickroll-Lang-VScode-Extension)
+6. [The Rickroll-language Interpreter and Compiler Kit](https://github.com/Rick-Lang/trick)
 
 # Credit: Rick Astley
  Youtube: https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw
