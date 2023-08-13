@@ -79,18 +79,23 @@ class Parser(AST):
 
     def parse(self):
         self.stmt = self.tokens[self.pos]
-        if self.match(KW.MAIN.value):
+        if self.match(''): # Emtpy line
+            pass
+
+        elif self.match(KW.MAIN.value):
             child_stmts = []
             indent_count = 1
             while indent_count != 0:
                 self.pos += 1
                 if self.tokens[self.pos][0] in INDENT_KW:
                     indent_count += 1
-                elif self.tokens[self.pos][0] in KW.END.value:
+                elif self.tokens[self.pos][0] == KW.END.value:
                     indent_count -= 1
+                    
                 child_stmts.append(self.tokens[self.pos])
-            
+
             AST.func_node(self.nodes, "main", None, Parser(child_stmts).nodes)
+
         elif self.match(KW.DEF.value):
             func_name = self.stmt[1]
             params = [i for i in self.stmt[2:]]
@@ -100,11 +105,12 @@ class Parser(AST):
                 self.pos += 1
                 if self.tokens[self.pos][0] in INDENT_KW:
                     indent_count += 1
-                elif self.tokens[self.pos][0] in KW.END.value:
+                elif self.tokens[self.pos][0] == KW.END.value:
                     indent_count -= 1
                 child_stmts.append(self.tokens[self.pos])
 
             AST.func_node(self.nodes, func_name, params, Parser(child_stmts).nodes)
+
         elif self.match(KW.PRINT.value):
             AST.print_node(self.nodes, self.stmt[1:])
 
@@ -158,6 +164,6 @@ class Parser(AST):
         elif self.match(KW.END.value):
             pass
 
-        else:
-            # Call function
-            AST.call_func(self.nodes, self.tokens[self.pos][0], self.tokens[self.pos][1:])
+        # else:
+        #     # Call function
+        #     AST.call_func(self.nodes, self.tokens[self.pos][0], self.tokens[self.pos][1:])

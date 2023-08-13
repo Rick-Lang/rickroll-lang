@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
+from argparse import ArgumentParser
+from sys import stdout
+from time import time
 from typing import Final
 from traceback import format_exc
+
+# Internal modules
+import crickroll
+import pyrickroll
+import interpreter
 
 
 def play_audio(src_file_name: str):
@@ -21,9 +29,6 @@ def play_audio(src_file_name: str):
 
 
 def main():
-    from argparse import ArgumentParser
-    from sys import stdout
-    from time import time
 
     arg_parser = ArgumentParser()
     arg_parser.add_argument("file", nargs='?', default="")
@@ -39,18 +44,15 @@ def main():
     if args.file:
         # Convert .rickroll to C++
         if args.cpp:
-            from crickroll import run_in_cpp
-            run_in_cpp(args.file)
+            crickroll.run_in_cpp(args.file)
 
         # Execute .rickroll using the interpreter
         elif args.intpr:
-            from interpreter import run_in_interpreter
-            run_in_interpreter(args.file)
+            interpreter.run_in_interpreter(args.file)
 
         else:
             try:
-                from pyrickroll import run_in_py
-                exec(run_in_py(args.file), globals(), globals())
+                exec(pyrickroll.run_in_py(args.file), globals(), globals())
             except Exception:
                 error_msg = format_exc().split('File "<string>",')[-1]
                 stdout.write(f'Exception in{error_msg}')
