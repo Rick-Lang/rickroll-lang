@@ -286,5 +286,9 @@ def run_in_cpp(src_file_name: str):
         exe_file = f'{f_name}.out'
         system(f'g++ {f_name}.cpp -o {exe_file}')
         system(f'./{exe_file}')
+    elif platform == 'darwin':
+        exe_file = f'{f_name}.out'
+        system(f'g++ {f_name}.cpp -o {exe_file}')
+        system(f'./{exe_file}')
     else:
         raise NotImplementedError(f"Platform {platform} is not supported")
