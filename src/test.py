@@ -1,15 +1,19 @@
 from argparse import ArgumentParser
 from traceback import format_exc
+from time import time
 import os
 
 import crickroll
 import pyrickroll
 import interpreter
 
+start = time()
+
 if __name__ == '__main__':
     arg_parser = ArgumentParser()
     arg_parser.add_argument("-cpp", action="store_true")
     arg_parser.add_argument("-intpr", action="store_true")
+    arg_parser.add_argument("-time", action="store_true")
     arg_parser.add_argument("file", nargs="?", default="")
     args = arg_parser.parse_args()
 
@@ -26,3 +30,6 @@ if __name__ == '__main__':
         except Exception:
             error_msg = format_exc().split('File "<string>",')[-1]
             print(f'Exception in{error_msg}')
+
+    if args.time:
+        print(f'\nExecution Time: [{time() - start}] sec.\n')

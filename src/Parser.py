@@ -82,6 +82,7 @@ class Parser(AST):
         if self.match(''): # Emtpy line
             pass
 
+        # Parse Main Functions
         elif self.match(KW.MAIN.value):
             child_stmts = []
             indent_count = 1
@@ -96,6 +97,7 @@ class Parser(AST):
 
             AST.func_node(self.nodes, "main", None, Parser(child_stmts).nodes)
 
+        # Parse Functions
         elif self.match(KW.DEF.value):
             func_name = self.stmt[1]
             params = [i for i in self.stmt[2:]]
@@ -111,12 +113,15 @@ class Parser(AST):
 
             AST.func_node(self.nodes, func_name, params, Parser(child_stmts).nodes)
 
+        # Parse Print Statement
         elif self.match(KW.PRINT.value):
             AST.print_node(self.nodes, self.stmt[1:])
 
+        # Parse Assignment OP
         elif self.match(KW.LET.value):
             AST.let_node(self.nodes, self.stmt[1], self.stmt[3:])
 
+        # Parse If Statement
         elif self.match(KW.IF.value):
             cond = self.stmt[1:]
             child_stmts = []
@@ -132,6 +137,7 @@ class Parser(AST):
 
             AST.if_node(self.nodes, cond, Parser(child_stmts).nodes)
 
+        # Parse While Statement
         elif self.match(KW.WHILE_LOOP.value):
             cond = self.stmt[1:]
             child_stmts = []
@@ -147,6 +153,7 @@ class Parser(AST):
 
             AST.while_node(self.nodes, cond, Parser(child_stmts).nodes)
 
+        # Parse Loop
         elif self.match(KW.ENDLESS_LOOP.value):
             child_stmts = []
             indent_count = 1
@@ -161,6 +168,7 @@ class Parser(AST):
 
             AST.endless_loop_node(self.nodes, Parser(child_stmts).nodes)
 
+        # Skipping end statement
         elif self.match(KW.END.value):
             pass
 

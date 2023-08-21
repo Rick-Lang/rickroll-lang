@@ -27,6 +27,9 @@ def play_audio(src_file_name: str):
             for v in tok.t_values:
                 AudioGenerator.play(v)
 
+def read_file(file_name):
+    with open(file_name, 'r', encoding='utf-8') as f:
+        return f.read()
 
 def main():
 
@@ -38,31 +41,35 @@ def main():
     arg_parser.add_argument("--audio", action="store_true")
     args = arg_parser.parse_args()
 
-    # excludes `def`s, `import`s and `argparse` times
     start: Final = time()
-    # Run the RickRoll program
-    if args.file:
-        # Convert .rickroll to C++
-        if args.cpp:
-            crickroll.run_in_cpp(args.file)
 
-        # Execute .rickroll using the interpreter
-        elif args.intpr:
-            interpreter.run_in_interpreter(args.file)
 
-        else:
-            try:
-                exec(pyrickroll.run_in_py(args.file), globals(), globals())
-            except Exception:
-                error_msg = format_exc().split('File "<string>",')[-1]
-                stdout.write(f'Exception in{error_msg}')
-
-    else:
+    # No file
+    if not args.file:
         stdout.write('Warning: [Not executing any script...]')
+        return
 
+    # Convert .rickroll to C++
+    if args.cpp:
+        crickroll.run_in_cpp(args.file)
+
+    # Execute .rickroll using the interpreter
+    elif args.intpr:
+        interpreter.run_in_interpreter(args.file)
+
+    # Convert .rickroll to Python
+    else:
+        try:
+            exec(pyrickroll.run_in_py(args.file), globals(), globals())
+        except Exception:
+            error_msg = format_exc().split('File "<string>",')[-1]
+            stdout.write(f'Rickroll source code exception in line {0}\n Python Exception in{error_msg}')
+
+    # Generate audio from source code
     if args.audio:
         play_audio(args.file)
 
+    # Show time
     if args.time:
         stdout.write(f'\nExecution Time: [{time() - start}] sec.\n')
 

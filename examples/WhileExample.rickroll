@@ -3,7 +3,7 @@ take me to ur heart
 
     give astleyCounter up 0
     
-    together forever and never to part
+    together forever and never to parta
         and if u ask me how im feeling astleyCounter == len(areYouRolling)
             desert u
         say goodbye
@@ -11,18 +11,3 @@ take me to ur heart
         give astleyCounter up astleyCounter + 1
     say goodbye
 say goodbye
-
-### Equivalent to Python
-# ----------------------
-# if __name__ == '__main__':
-#    areYouRolling= ["Together ","forever", "and never to part", "Together", "foverer", "we two"]
-#
-#    astleyCounter=0
-#
-#    while True:
-#      if astleyCounter == len(areYouRolling):
-#        break
-#
-#      print(areYouRolling[astleyCounter] + "\n")
-#
-#      astleyCounter+=1

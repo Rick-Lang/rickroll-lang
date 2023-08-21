@@ -95,27 +95,21 @@ class Interpreter:
     def interpret(self, nodes: list | str):
         for node in nodes:
             self.idx += 1
-            # print(f"----------\nnode [{self.idx}]:", node)
             if node[0] == "func_node":
                 if node[1] == "main": # Main function
-                    # print("main:", node[3])
                     self.interpret(node[3])
+
             elif node[0] == "print_node":
                 stdout.write(evaluate(node[1]))
 
             elif node[0] == "let_node":
-                # print("let:", node[2])
                 variables.update({node[1]:evaluate(node[2])})
-                # print("variable:", variables)
 
             elif node[0] == "if_node":
-                # print("if", node[1], ":", evaluate(node[1]))
                 if evaluate(node[1]) == 'True':
-                    # print("if", node[2])
                     self.interpret(node[2])
 
             elif node[0] == "while_node":
-                # print("while", node[2])
                 while evaluate(node[1]) == 'True':
                     self.interpret(node[2])
 
@@ -127,9 +121,9 @@ def run_in_interpreter(src_file_name: str):
         content = src.readlines()
         if len(content) > 0:
             content[-1] += '\n'
-        tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != []]
+        tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != ['']]
         # print("tokens:", tokens)
-        # print(tokens)
+        print(tokens)
         Node = Parser(tokens).nodes
         print("parser:")
         for i in Node:

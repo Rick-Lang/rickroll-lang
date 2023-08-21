@@ -35,7 +35,6 @@ class KW(Enum):
 
 
 KEYWORDS: Final[list[str]] = list(KW)
-"""values in `KW`"""
 
 INDENT_KW: Final = ['andifuaskmehowimfeeling', 'gonna', 'thereaintnomistaking',
             'iftheyevergetudown', 'togetherforeverwith', 'togetherforeverandnevertopart'
@@ -45,7 +44,7 @@ INDENT_KW: Final = ['andifuaskmehowimfeeling', 'gonna', 'thereaintnomistaking',
 IGNORE_TOKENS: Final = set("~'")
 """Tokens that the interpreter will totally ignore"""
 
-DIGITS: Final = set('0123456789.')
+DIGITS: Final = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'}
 """Characters in numerals"""
 
 SEPARATORS: Final = {
