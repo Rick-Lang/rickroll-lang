@@ -60,10 +60,11 @@ def main():
     # Convert .rickroll to Python
     else:
         try:
-            exec(pyrickroll.run_in_py(args.file), globals(), globals())
+            pycode = pyrickroll.run_in_py(args.file)
+            exec(pycode, globals(), globals())
         except Exception:
             error_msg = format_exc().split('File "<string>",')[-1]
-            stdout.write(f'Rickroll source code exception in line {0}\n Python Exception in{error_msg}')
+            print(f'Python Exception in{error_msg}')
 
     # Generate audio from source code
     if args.audio:

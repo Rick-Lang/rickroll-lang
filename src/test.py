@@ -13,7 +13,7 @@ if __name__ == '__main__':
     arg_parser = ArgumentParser()
     arg_parser.add_argument("-cpp", action="store_true")
     arg_parser.add_argument("-intpr", action="store_true")
-    arg_parser.add_argument("-time", action="store_true")
+    arg_parser.add_argument("--time", action="store_true")
     arg_parser.add_argument("file", nargs="?", default="")
     args = arg_parser.parse_args()
 
@@ -26,10 +26,12 @@ if __name__ == '__main__':
         interpreter.run_in_interpreter(f_name)
     else:
         try:
-            exec(pyrickroll.run_in_py(f_name), globals(), globals())
+            pycode = pyrickroll.run_in_py(f_name)
+            exec(pycode, globals(), globals())
         except Exception:
             error_msg = format_exc().split('File "<string>",')[-1]
-            print(f'Exception in{error_msg}')
+            print(f'Python Exception in{error_msg}')
+
 
     if args.time:
         print(f'\nExecution Time: [{time() - start}] sec.\n')

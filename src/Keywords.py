@@ -36,16 +36,16 @@ class KW(Enum):
 
 KEYWORDS: Final[list[str]] = list(KW)
 
+# keywords that require indentation in their body (when transpiled to py)
 INDENT_KW: Final = ['andifuaskmehowimfeeling', 'gonna', 'thereaintnomistaking',
             'iftheyevergetudown', 'togetherforeverwith', 'togetherforeverandnevertopart'
 ]
-"""keywords that require indentation in their body (when transpiled to py)"""
 
+# Tokens that the interpreter will totally ignore
 IGNORE_TOKENS: Final = set("~'")
-"""Tokens that the interpreter will totally ignore"""
 
+# Characters in numerals
 DIGITS: Final = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'}
-"""Characters in numerals"""
 
 SEPARATORS: Final = {
     # not using `set`, because readability, and multi-char `str`s may be added in the future

@@ -8,7 +8,6 @@ runaround,togetherforeverandnevertopart,togetherforeverwith,>,<,<=,>=,aint,==,py
 
 
 def lexicalize(stmt: str):
-    SP_LN: Final = {' ', '\n'}
 
     current_token = ''
     not_in_quote = True
@@ -16,14 +15,14 @@ def lexicalize(stmt: str):
     for char in stmt:
         if char == '"': not_in_quote = not not_in_quote
         if char == '#': break
-        if char in IGNORE_TOKENS and not_in_quote:
+        if char in {'~', "'"} and not_in_quote:
             continue
 
         if char in SEPARATORS and not_in_quote:
-            if current_token not in SP_LN:
+            if current_token not in {' ', '\n'}:
                 # if current_token != '': # this process is moved to order_words()
                 tokens.append(current_token)
-            if char not in SP_LN:
+            if char not in {' ', '\n'}:
                 tokens.append(char)
 
             current_token = ''

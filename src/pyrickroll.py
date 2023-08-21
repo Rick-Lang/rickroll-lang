@@ -12,54 +12,6 @@ functions: Final[list[str]] = []
 
 current_line = 0
 
-class Token:
-    def __init__(self, tokens: list[str]):
-        self.t_values: list[str] = []
-        self.last_kw = ''
-
-        for tok in tokens:
-            if tok:
-                self.__make_token(tok)
-
-    def __make_token(self, tok: str):
-        global variables, functions
-
-        TOK_TO_OP: Final = {
-            KW.E_OP.value: '==',
-            KW.IS_NOT_OP.value: '!=',
-            KW.G_OP.value: '>',
-            KW.L_OP.value: '<',
-            KW.GOE_OP.value: '>=',
-            KW.LOE_OP.value: '<=',
-        }
-
-        TOK_TO_FN: Final = {
-            'length': 'len',
-            'to_string': 'str',
-            'to_int': 'int',
-            'to_float': 'float'
-        }
-
-        if tok in KEYWORDS:
-            self.t_values.append(TOK_TO_OP.get(tok, tok))
-            self.last_kw = tok
-
-        elif tok in OP_BUILT_IN_FUNCTIONS:
-            if tok in TOK_TO_FN:
-                self.t_values.append(TOK_TO_FN[tok])
-
-        # Variables
-        elif self.last_kw == KW.LET.value:
-            variables.append(tok)
-            self.t_values.append(tok)
-        # Functions
-        elif self.last_kw == KW.DEF.value:
-            functions.append(tok)
-            self.t_values.append(tok)
-        else:
-            self.t_values.append(tok)
-
-
 class TranslateToPython:
     def __init__(self):
         # tokens
@@ -181,12 +133,11 @@ class TranslateToPython:
         self.py_code += f"{'    ' * self.indent_count + stmt}\n"
 
 
-def run_in_py(src_file_name: str):
-    global current_line
+def run_in_py(file_name: str):
 
     transpiler = TranslateToPython()
 
-    with open(src_file_name, mode='r', encoding='utf-8') as src:
+    with open(file_name, mode='r', encoding='utf-8') as src:
 
         content = src.readlines()
         if len(content) > 0:
