@@ -18,13 +18,16 @@ class TranslateToPython:
         self.values: list[str] = []
         # self.is_main = False
         self.indent_count = 0
-        self.py_code = ""    # Python source code, translated from RickRoll source code
+        self.py_code = ""    # Python code translated from RickRoll
 
     def translate(self, values: list[str]):
         self.values = values
         # if there is no code in the current line of code
         if not self.values:
             return
+
+        if self.values[0] not in KEYWORDS:
+            print(f"Rickroll exception in line {current_line}: '{self.values[0]}' is invalid\n")
 
         # Convert Rickroll code to Python
         self.convert(kw=self.values[0])
@@ -43,20 +46,20 @@ class TranslateToPython:
 
         elif kw == KW.PRINT.value:
             """
-                print xpr
+                print expr
             """
 
-            xpr = join_list(self.values[1:])
-            self.write(f'print({xpr}, end="")')
+            expr = join_list(self.values[1:])
+            self.write(f'print({expr}, end="")')
 
         elif kw == KW.LET.value:
             """
-                let id up xpr
+                let id up expr
             """
 
             id = join_list(self.values[self.values.index(KW.LET.value) + 1 : self.values.index(KW.ASSIGN.value)])
-            xpr = join_list(self.values[self.values.index(KW.ASSIGN.value) + 1:])
-            self.write(f'{id} = {xpr}')
+            expr = join_list(self.values[self.values.index(KW.ASSIGN.value) + 1:])
+            self.write(f'{id} = {expr}')
 
         elif kw == KW.IF.value:
             """
@@ -107,10 +110,10 @@ class TranslateToPython:
 
         elif kw == KW.RETURN1.value:
             """
-                return1 `xpr` return2
+                return1 `expr` return2
             """
-            xpr = join_list(self.values[1:])
-            self.write(f'return {xpr}')
+            expr = join_list(self.values[1:])
+            self.write(f'return {expr}')
 
         elif kw == KW.END.value:
             self.write('pass')
@@ -134,6 +137,8 @@ class TranslateToPython:
 
 
 def run_in_py(file_name: str):
+
+    global current_line
 
     transpiler = TranslateToPython()
 

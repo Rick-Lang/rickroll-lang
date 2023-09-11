@@ -1,13 +1,13 @@
 from argparse import ArgumentParser
-from traceback import format_exc
-from time import time
+import traceback
+import time
 import os
 
 import crickroll
 import pyrickroll
 import interpreter
 
-start = time()
+start = time.time()
 
 if __name__ == '__main__':
     arg_parser = ArgumentParser()
@@ -29,9 +29,9 @@ if __name__ == '__main__':
             pycode = pyrickroll.run_in_py(f_name)
             exec(pycode, globals(), globals())
         except Exception:
-            error_msg = format_exc().split('File "<string>",')[-1]
+            error_msg = traceback.format_exc().split('File "<string>",')[-1]
             print(f'Python Exception in{error_msg}')
 
 
     if args.time:
-        print(f'\nExecution Time: [{time() - start}] sec.\n')
+        print(f'\nExecution Time: [{time.time() - start}] sec.\n')

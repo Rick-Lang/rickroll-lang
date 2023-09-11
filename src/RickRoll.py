@@ -39,6 +39,7 @@ def main():
     arg_parser.add_argument("-intpr", action="store_true")
     arg_parser.add_argument("--time", action="store_true")
     arg_parser.add_argument("--audio", action="store_true")
+    arg_parser.add_argument("--debug", action="store_true")
     args = arg_parser.parse_args()
 
     start: Final = time()
@@ -55,7 +56,7 @@ def main():
 
     # Execute .rickroll using the interpreter
     elif args.intpr:
-        interpreter.run_in_interpreter(args.file)
+        interpreter.run_in_interpreter(args.file, debug=args.debug)
 
     # Convert .rickroll to Python
     else:
@@ -63,6 +64,7 @@ def main():
             pycode = pyrickroll.run_in_py(args.file)
             exec(pycode, globals(), globals())
         except Exception:
+            
             error_msg = format_exc().split('File "<string>",')[-1]
             print(f'Python Exception in{error_msg}')
 

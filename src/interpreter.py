@@ -18,9 +18,9 @@ def apply_op(a: int | str, b: int | str, op: str) -> int | str: # binary operati
     if op == '/': return a // b
     # if op == '[': return 
     return 'True' if \
-        op=='==' and a==b or op==KW.IS_NOT_OP.value and a!=b \
-        or op=='>' and a>b or op=='<' and a<b \
-        or op=='>=' and a>=b or op=='<=' and a<=b \
+        op == '==' and a == b or op == KW.IS_NOT_OP.value and a != b \
+        or op == '>' and a > b or op == '<' and a < b \
+        or op == '>=' and a >= b or op == '<=' and a <= b \
     else 'False'
 
 def apply_u_op(a: int | str, op: str): # unary operation
@@ -113,21 +113,29 @@ class Interpreter:
                 while evaluate(node[1]) == 'True':
                     self.interpret(node[2])
 
-def run_in_interpreter(src_file_name: str):
+def run_in_interpreter(src_file_name: str, debug=False):
+
     intpr = Interpreter()
     Node = []
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
+
         content = src.readlines()
+
         if len(content) > 0:
-            content[-1] += '\n'
+            content[-1] += '\n'  # EOF handling
+
         tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != ['']]
-        # print("tokens:", tokens)
-        print(tokens)
+
+        if debug:
+            print("tokens (LEXER):", tokens)
+
         Node = Parser(tokens).nodes
-        print("parser:")
-        for i in Node:
-            print('-----')
-            print(i)
+
+        if debug:
+            print("nodes (PARSER):")
+            for i in range(len(Node)):
+                print(f'{i} {Node[i]}')
+                print('-' * len(Node[i]))
 
         intpr.interpret(Node)

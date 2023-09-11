@@ -34,7 +34,7 @@ class KW(Enum):
     PY = 'py:'
 
 
-KEYWORDS: Final[list[str]] = list(KW)
+KEYWORDS: Final[list[str]] = [i.value for i in list(KW)]
 
 # keywords that require indentation in their body (when transpiled to py)
 INDENT_KW: Final = ['andifuaskmehowimfeeling', 'gonna', 'thereaintnomistaking',
@@ -42,7 +42,7 @@ INDENT_KW: Final = ['andifuaskmehowimfeeling', 'gonna', 'thereaintnomistaking',
 ]
 
 # Tokens that the interpreter will totally ignore
-IGNORE_TOKENS: Final = set("~'")
+IGNORE_TOKENS: Final = {"~", "'"}
 
 # Characters in numerals
 DIGITS: Final = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'}
