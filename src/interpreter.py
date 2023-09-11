@@ -37,14 +37,19 @@ def evaluate(tokens: str):
     i = 0
     while i < len(tokens):
         if not tokens[i]: return
+
         if tokens[i] == ' ':
             i += 1
+
         elif tokens[i] == '(':
             ops.append(tokens[i])
+
         elif starts_ends(tokens[i], '"'):
             values.append(filter_str(tokens[i]))
+
         elif tokens[i].isdigit():
             values.append(int(tokens[i]))
+
         elif tokens[i] == ')':
             while len(ops) != 0 and ops[-1] != '(':
                 val2 = values.pop()
@@ -52,6 +57,7 @@ def evaluate(tokens: str):
                 op = ops.pop()
                 values.append(apply_op(val1, val2, op))
             ops.pop()
+
         elif tokens[i] == '[':
             lst = ''
             while i < len(tokens):
@@ -59,6 +65,7 @@ def evaluate(tokens: str):
                 i += 1
 
             values.append(lst)
+
         elif tokens[i] in OPERATORS:
             while len(ops) != 0 and precedence(ops[-1]) >= precedence(tokens[i]):
                 val2 = values.pop()
@@ -66,12 +73,14 @@ def evaluate(tokens: str):
                 op = ops.pop()
                 values.append(apply_op(val1, val2, op))
             ops.append(tokens[i])
+
         elif tokens[i] in OP_BUILT_IN_FUNCTIONS:
             expr = tokens[i + 2:tokens.index(")")] # from `(` to `)`
             if len(expr) == 1:
                 values.append(apply_u_op(tokens[i], expr[0]))
             elif len(expr > 1):
                 values.append(apply_u_op(tokens[i], evaluate(expr)))
+
         else: # Matched with variable
 
             var_value = str(variables[tokens[i]])
@@ -84,6 +93,7 @@ def evaluate(tokens: str):
         val1 = values.pop()
         op = ops.pop()
         values.append(apply_op(val1, val2, op))
+
     return values[-1]
 
 variables: Final[dict[str, int | str | None]] = {}
@@ -103,7 +113,7 @@ class Interpreter:
                 stdout.write(evaluate(node[1]))
 
             elif node[0] == "let_node":
-                variables.update({node[1]:evaluate(node[2])})
+                variables.update({node[1]: evaluate(node[2])})
 
             elif node[0] == "if_node":
                 if evaluate(node[1]) == 'True':
@@ -113,7 +123,7 @@ class Interpreter:
                 while evaluate(node[1]) == 'True':
                     self.interpret(node[2])
 
-def run_in_interpreter(src_file_name: str, debug=False):
+def run(src_file_name: str, debug=False):
 
     intpr = Interpreter()
     Node = []
@@ -128,14 +138,14 @@ def run_in_interpreter(src_file_name: str, debug=False):
         tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != ['']]
 
         if debug:
-            print("tokens (LEXER):", tokens)
+            stdout.write(f"tokens (LEXER): {tokens}\n\n")
 
         Node = Parser(tokens).nodes
 
         if debug:
-            print("nodes (PARSER):")
+            stdout.write("nodes (PARSER):\n")
             for i in range(len(Node)):
-                print(f'{i} {Node[i]}')
-                print('-' * len(Node[i]))
+                stdout.write(f'{i} {Node[i]}\n')
+                stdout.write('-' * 50)
 
         intpr.interpret(Node)

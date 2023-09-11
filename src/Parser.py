@@ -43,15 +43,16 @@ class AST:
     def func_node(Node:list, func_name, params, child_stmts):
         """
                     func_node
-                 /      |      \
+                   /    |     \
             func_name, params, child_stmts
         """
         Node.append(["func_node", func_name, params, child_stmts])
 
     def list_node(Node:list, items):
         """
-
+            list: items = [expr, ..., expr]
         """
+        Node.append(["list_node", items])
 
     def call_func(Node:list, func_name, func_params):
         """
@@ -168,9 +169,24 @@ class Parser(AST):
 
             AST.endless_loop_node(self.nodes, Parser(child_stmts).nodes)
 
+        # Parse 'desert u'
+        elif self.match(KW.BREAK):
+            pass
+
+        # Parse 'run around'
+        elif self.match(KW.CONTINUE):
+            pass
+
+        # Parse list
+        elif self.match('['):
+            pass
+
         # Skipping end statement
         elif self.match(KW.END.value):
             pass
+
+        else:
+            print("unknown keyword:", self.tokens[self.pos][0])
 
         # else:
         #     # Call function

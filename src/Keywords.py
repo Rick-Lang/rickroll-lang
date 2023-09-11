@@ -12,6 +12,7 @@ class KW(Enum):
     IMPORT1 = 'weknowthe'
     IMPORT2 = "andwe'regonnaplayit"
     DEF = 'gonna'
+    CALL = 'gotta'
     RETURN1 = 'whenigivemy'
     RETURN2 = 'itwillbecompletely'
     TRY = 'thereaintnomistaking'

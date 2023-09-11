@@ -4,10 +4,14 @@ take me to ur heart
     give astleyCounter up 0
     
     together forever and never to part
+
         and if u ask me how im feeling astleyCounter == len(areYouRolling)
             desert u
         say goodbye
+
         i just wanna tell u how im feeling areYouRolling[astleyCounter] + "\n"
         give astleyCounter up astleyCounter + 1
+
     say goodbye
+
 say goodbye

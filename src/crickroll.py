@@ -250,7 +250,7 @@ class TranslateToCpp:
 ####################################################################################
 
 
-def run_in_cpp(src_file_name: str):
+def run(src_file_name: str):
     global current_line
 
     transpiler = TranslateToCpp()

@@ -16,7 +16,7 @@ take me to ur heart
     say good bye
 
     give arr up [6, 7, 5, 9, 12]
-    LinearSearch(arr, 12)
-    LinearSearch(arr, 7)
-    LinearSearch(arr, 0)
+    gotta LinearSearch(arr, 12)
+    gotta LinearSearch(arr, 7)
+    gotta LinearSearch(arr, 0)
 say goodbye

@@ -22,11 +22,13 @@ take me to ur heart
         when i give my num1 - num2 it will be completely
     say goodbye
 
+    i just wanna tell u how im feeling "Calculator (each token splits with a space)"
+
     # While True loop to keep the calculator going forever until you kill it (^C)
     together forever and never to part
 
         # Ask for input
-        i just wanna tell u how im feeling "\nCalculate:\n"
+        i just wanna tell u how im feeling "\n>>>"
 
         give input up sys.stdin.readline()
 

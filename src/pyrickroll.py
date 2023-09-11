@@ -26,8 +26,8 @@ class TranslateToPython:
         if not self.values:
             return
 
-        if self.values[0] not in KEYWORDS:
-            print(f"Rickroll exception in line {current_line}: '{self.values[0]}' is invalid\n")
+        if self.values[0] and self.values[0] not in KEYWORDS:
+            stdout.write(f"Rickroll exception in line {current_line}: '{self.values[0]}' is invalid\n")
 
         # Convert Rickroll code to Python
         self.convert(kw=self.values[0])
@@ -108,6 +108,12 @@ class TranslateToPython:
 
             self.indent_count += 1
 
+        elif kw == KW.CALL.value:
+            """
+                call FUNC
+            """
+            self.write(f'{join_list(self.values[1:])}')
+
         elif kw == KW.RETURN1.value:
             """
                 return1 `expr` return2
@@ -136,7 +142,7 @@ class TranslateToPython:
         self.py_code += f"{'    ' * self.indent_count + stmt}\n"
 
 
-def run_in_py(file_name: str):
+def run(file_name: str):
 
     global current_line
 

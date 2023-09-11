@@ -1,7 +1,7 @@
 take me to ur heart
-  give index up 0
-  together forever with index < 99
-    give index up index + 1
-    i just wanna tell u how im feeling str(index) + "\n"
-  say goodbye
+    give idx up 0
+        together forever with idx < 100
+            give idx up idx + 1
+        i just wanna tell u how im feeling str(idx) + "\n"
+    say goodbye
 say goodbye
