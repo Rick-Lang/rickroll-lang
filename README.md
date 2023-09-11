@@ -126,13 +126,13 @@ python RickRoll.py [Source Code File Name] --audio
 - *[Generate and play audios from .rickroll source code](https://github.com/Rick-Lang/rickroll-lang#Generate-Audio)*
 - *Chinese, Russian, and English documentation* (Hope you guys can pull request docs in other languages lol)
 - [*An editor for writing .rickroll code*](https://github.com/RedEnder666/RickRoll_IDE)
-- [*An Vscode extension*](https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang)
+- [*A Vscode extension*](https://marketplace.visualstudio.com/items?itemName=FusionSid.rickroll-lang)
 
 
 ## Generate Audio
 Command:
 ```
-python3 RickRoll.py [Source Code File Name] --audio
+python RickRoll.py [Source Code File Name] --audio
 ```
 After running this command, the generator is gonna generate audio from the .rickroll program and play it on your terminal
 
