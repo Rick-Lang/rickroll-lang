@@ -1,5 +1,5 @@
 # RickRoll 语言教程
-一个面向诈骗，强动态，解释性的深奥编程语言
+一个“面向诱骗”的强动态、解释型脚本语言。
 
 ## 执行源码命令
 
@@ -11,11 +11,11 @@ python3 RickRoll.py [Source Code File Name]
 ```
 python3 RickRoll.py -cpp [Source Code File Name]
 ```
-> 如果客户想知道执行时间：
+> 如果你想知道执行所耗时间：
 ```
 python3 RickRoll.py [Source Code File Name] --time
 ```
-> 从RickRoll源码中生成并播放一个音频（但此功能不算成熟，可能会出错）
+> 利用RickRoll源码生成并播放一个音频（但此功能不算成熟，可能会出错）
 ```
 python3 RickRoll.py [Source Code File Name] --audio
 ```
@@ -23,21 +23,21 @@ python3 RickRoll.py [Source Code File Name] --audio
 
 ## Hello World
 ```
-take me to ur heart                           # 这是一个Main函数/方法
-    give msg up "你 被 骗 了 !\n"              # 定义一个变量
-    i just wanna tell u how im feeling msg    # 输出变量 “msg”
-say_good_bye                                  # 结束Main函数/方法
+take me to ur heart                            # 定义 Main 函数/方法
+    give msg up "你 被 骗 了 !\n"              # 定义 msg 变量
+    i just wanna tell u how im feeling msg     # 输出 msg 变量
+say_good_bye                                   # 结束 Main 函数/方法
 ```
-客户的命令行会打印出：
+那么你的终端将会输出：
 ```
 你 被 骗 了 !
 ```
 
 ## 定义变量
 ```
-give a up 10
-give b up "It is a string"
-give c up ["This", "is", "an", "array"]
+give a up 10                                   # 定义 a 变量并赋值为 10
+give b up "It is a string"                     # 定义 字符串 b
+give c up ["This", "is", "an", "array"]        # 定义 列表 c
 ```
 
 ## If 语句
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
 ```
 
-客户的命令行会打印出：
+终端将会输出：
 ```
 "A is 10!"
 ```
@@ -75,7 +75,7 @@ take me to ur heart
 
 say_good_bye
 ```
-相当于以下Python代码
+等价于以下Python代码
 ```Python
 if __name__ == "__main__":
     while True:
@@ -88,7 +88,7 @@ never knew func arg1, arg2 could feel this way  # 定义函数
     when i give_my arg1, arg2 it will be completely # 返回arg1和arg2
 say goodbye
 ```
-相当于以下Python代码
+等价于以下Python代码
 ```python
 def func(arg1, arg2):
     return arg1, arg2
