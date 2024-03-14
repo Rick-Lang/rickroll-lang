@@ -35,16 +35,7 @@ def filter_str(s:str):
     Remove 1st and last chars, and
     replace line-feed literals with actual line-feeds.
     """
-    res = ""
-    i = 1
-    while i < len(s) - 1:
-        if s[i] == '\\' and s[i + 1] == 'n':
-            res += '\n'
-            i += 2
-        else:
-            res += s[i]
-        i += 1
-    return res
+    return s[1:-1].replace("\\n", "\n")
 
 def precedence(op: str):
     """
