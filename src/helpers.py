@@ -31,21 +31,20 @@ def remove_all(l: list, x):
     return l
 
 def filter_str(s:str):
+    """
+    Remove 1st and last chars, and
+    replace line-feed literals with actual line-feeds.
+    """
     res = ""
     i = 1
     while i < len(s) - 1:
-        if s[i] == '\\':
-            if s[i + 1] == 'n':
-                res += '\n'
-                i += 1
+        if s[i] == '\\' and s[i + 1] == 'n':
+            res += '\n'
+            i += 2
         else:
             res += s[i]
         i += 1
     return res
-
-# filter_str: Final[Callable[[str], str]] = lambda s: s[1:-1]
-"""Remove 1st and last chars from a `str`."""
-
 
 def precedence(op: str):
     """
