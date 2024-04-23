@@ -2,64 +2,77 @@ from typing import Final
 from Keywords import *
 
 ALL_KW: Final = "ijustwannatelluhowimfeeling,andifuaskmehowimfeeling,\
-give,up,weknowthe,andweregonnaplayit,gonna,gotta,whenigivemy,itwillbecompletely,\
+give,up,weknowthe,andweregonnaplayit,gonna,gotta,whenigivemy,itwillbecompletely\
 thereaintnomistaking,iftheyevergetudown,takemetourheart,saygoodbye,desertu,\
 runaround,togetherforeverandnevertopart,togetherforeverwith,>,<,<=,>=,aint,==,py:"
 
 
-def lexicalize(stmt: str):
+def lexicalize(stmt: str) -> list[str]:
+    """
+    Tokenizes the given statement into a list of tokens.
 
-    current_token = ''
-    not_in_quote = True
+    Args:
+        stmt (str): The statement to be tokenized.
+
+    Returns:
+        list[str]: A list of tokens extracted from the statement.
+    """
     tokens: list[str] = []
+    current_token = ""
+    in_quote = False
 
     for char in stmt:
+        if char == '"':
+            in_quote = not in_quote
 
-        if char == '"': not_in_quote = not not_in_quote
-        if char == '#': break
-        if char in {'~', "'"} and not_in_quote:
-            continue
+        if not in_quote:
+            if char == '#':
+                # Comment encountered, ignore the rest of the line
+                break
+            elif char in {'~', "'"}:
+                # Ignore tilde and single quote characters
+                continue
+            elif char in SEPARATORS:
+                if current_token.strip():
+                    tokens.append(current_token.strip())
+                    current_token = ""
+                if char.strip():
+                    tokens.append(char.strip())
+            else:
+                current_token += char
+        else:
+            current_token += char
 
-        if char in SEPARATORS and not_in_quote:
-
-            if current_token not in {' ', '\n'}:
-                # if current_token != '': # this process is moved to order_words()
-                tokens.append(current_token)
-
-            if char not in {' ', '\n'}:
-                tokens.append(char)
-
-            current_token = ''
-
-        else: current_token += char
+    if current_token.strip():
+        tokens.append(current_token.strip())
 
     return order_words(tokens)
 
-def order_words(tokens: list[str]):
+
+def order_words(tokens: list[str]) -> list[str]:
     """
-    token = ['take', 'me', 'to', 'ur', 'heart']
-    order_words(token): final token = ['takemetourheart']
+    Orders the tokens by combining consecutive tokens that form a keyword.
+
+    Args:
+        tokens (list[str]): A list of tokens.
+
+    Returns:
+        list[str]: A list of tokens with combined keywords.
     """
+    final_tokens: list[str] = []
+    kw_buffer = ""
 
-    final_token: Final[list[str]] = []
-    kw_in_statement = ''
-    temp = False
-
-    for tok in tokens:
-
-        if tok in ALL_KW and kw_in_statement + tok in ALL_KW:
-            kw_in_statement += tok
-
+    for token in tokens:
+        if token in ALL_KW and kw_buffer + token in ALL_KW:
+            # Combine consecutive tokens that form a keyword
+            kw_buffer += token
         else:
-            temp = True
+            if kw_buffer:
+                final_tokens.append(kw_buffer)
+                kw_buffer = ""
+            final_tokens.append(token)
 
-            if kw_in_statement != '':
-                final_token.append(kw_in_statement)
+    if kw_buffer:
+        final_tokens.append(kw_buffer)
 
-            final_token.append(tok)
-            kw_in_statement = ''
-
-    if not temp:
-        final_token.append(kw_in_statement)
-
-    return final_token
+    return final_tokens

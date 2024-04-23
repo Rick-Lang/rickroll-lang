@@ -118,7 +118,7 @@ class TranslateToPython:
             """
                 return1 `expr` return2
             """
-            expr = join_list(self.values[1:])
+            expr = join_list(self.values[1:-1])
             self.write(f'return {expr}')
 
         elif kw == KW.END.value:
