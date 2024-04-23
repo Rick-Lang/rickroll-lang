@@ -2,7 +2,7 @@ from typing import Final
 from Keywords import *
 
 ALL_KW: Final = "ijustwannatelluhowimfeeling,andifuaskmehowimfeeling,\
-give,up,weknowthe,andweregonnaplayit,gonna,gotta,whenigivemy,itwillbecompletely\
+give,up,weknowthe,andweregonnaplayit,gonna,gotta,whenigivemy,itwillbecompletely,\
 thereaintnomistaking,iftheyevergetudown,takemetourheart,saygoodbye,desertu,\
 runaround,togetherforeverandnevertopart,togetherforeverwith,>,<,<=,>=,aint,==,py:"
 
