@@ -8,12 +8,12 @@ import path
 import sys
  
 # directory reach
-directory = path.Path(__file__).abspath()
+directory = path.Path(__file__).absolute()
 
 # setting path
 sys.path.append(f'{directory.parent.parent}/src')
 
-import PyRickroll
+import pyrickroll
 
 # Path of the example files
 eg_dir = directory.parent.parent + '/examples/'
@@ -32,7 +32,7 @@ def test_all():
 
     for key, value in expected_values.items():
         cnt_total += 1
-        pycode = PyRickroll.run(eg_dir + key)
+        pycode = pyrickroll.run(eg_dir + key)
         loc = {}
         exec(pycode, globals(), loc)
 
