@@ -1,11 +1,10 @@
-from typing import Final
-from sys import stdout
+import sys
+import Lexer
 
-from Lexer import *
+from typing import Final
+from Keywords import KW, KEYWORDS
 from helpers import join_list
 
-# Keywords can execute outside main function
-kw_exe_outside_main: Final = {KW.MAIN.value, KW.DEF.value, KW.IMPORT1.value}
 
 variables: Final[list[str]] = []
 functions: Final[list[str]] = []
@@ -27,7 +26,7 @@ class TranslateToPython:
             return
 
         if self.values[0] and self.values[0] not in KEYWORDS:
-            stdout.write(f"Rickroll exception in line {current_line}: '{self.values[0]}' is invalid\n")
+            sys.stdout.write(f"Rickroll exception in line {current_line}: '{self.values[0]}' is invalid\n")
 
         # Convert Rickroll code to Python
         self.convert(kw=self.values[0])
@@ -118,7 +117,7 @@ class TranslateToPython:
             """
                 return1 `expr` return2
             """
-            expr = join_list(self.values[1:-1])
+            expr = join_list(self.values[1:-2])
             self.write(f'return {expr}')
 
         elif kw == KW.END.value:
@@ -154,10 +153,10 @@ def run(file_name: str):
         if len(content) > 0:
             content[-1] += '\n'
 
-        for statement in content:  # "statement" is a line of code the in source code
+        for statement in content:  # "statement" is a line of code in the source code
             current_line += 1
 
-            tokens = lexicalize(statement)
+            tokens = [value for kind, value in Lexer.tokenize(statement)]
             transpiler.translate(tokens)
 
     return transpiler.py_code

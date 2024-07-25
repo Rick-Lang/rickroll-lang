@@ -1,29 +1,11 @@
+import os
+import sys
+import Lexer
+
 from typing import Final
-from os import system
-from os.path import splitext
-from sys import platform
-
-from Keywords import *
-from Lexer import lexicalize
 from helpers import join_list, starts_ends
+from Keywords import TOKENS, KW, KEYWORDS, DIGITS, OP_BUILT_IN_FUNCTIONS, OPERATORS
 
-class TT(Enum):
-    """Token types"""
-    KEYWORD        = 'KEYWORDS'
-    OPERATOR       = 'OPERATORS'
-    BUILD_IN_FUNCS = 'Build-In-Function'
-    INT            = 'VALUE-Int'
-    FLOAT          = 'VALUE-Float'
-    BOOL           = 'VALUE-Bool'
-    CHAR           = 'VALUE-Char'
-    STRING         = 'VALUE-String'
-    LIST           = 'VALUE-List'
-
-    ARGUMENTS = 'ARGUMENTS'
-    VARIABLE   = 'VARIABLE'
-    FUNCTION   = 'FUNCTION'
-
-c_separators: Final = set('(){},\n +-*/%^=')
 
 variables: Final[list[str]] = []
 declared_variables: Final[set[str]] = set()
@@ -88,51 +70,48 @@ class Token:
         }
 
         if tok in KEYWORDS:
-            add_to_tokens(TT.OPERATOR.value, TOK_TO_OP.get(tok, tok))
+            add_to_tokens(TOKENS.OPERATOR.value, TOK_TO_OP.get(tok, tok))
 
             self.last_kw = tok
         elif tok in OP_BUILT_IN_FUNCTIONS:
-            add_to_tokens(TT.BUILD_IN_FUNCS.value, tok)
+            add_to_tokens(TOKENS.BUILD_IN_FUNCS.value, tok)
 
         # Variable types
         elif v_types(tok) == 'bool':
-            add_to_tokens(TT.BOOL.value, tok)
+            add_to_tokens(TOKENS.BOOL.value, tok)
         elif v_types(tok) == 'string':
-            add_to_tokens(TT.STRING.value, tok)
+            add_to_tokens(TOKENS.STRING.value, tok)
         elif v_types(tok) == 'list':
             tok = '{' + str(tok[1 : len(tok) -1]) + '}'
-            add_to_tokens(TT.LIST.value, tok)
+            add_to_tokens(TOKENS.LIST.value, tok)
         elif v_types(tok) == 'float':
-            add_to_tokens(TT.FLOAT.value, tok)
+            add_to_tokens(TOKENS.FLOAT.value, tok)
         elif v_types(tok) == 'int':
-            add_to_tokens(TT.INT.value, tok)
+            add_to_tokens(TOKENS.INT.value, tok)
 
         # Operators
         elif tok in OPERATORS:
-            add_to_tokens(TT.OPERATOR.value, tok)
+            add_to_tokens(TOKENS.OPERATOR.value, tok)
 
         # Variables
         elif self.last_kw == KW.LET.value:
             variables.append(tok)
-            add_to_tokens(TT.VARIABLE.value, tok)
+            add_to_tokens(TOKENS.VARIABLE.value, tok)
         # Functions
         elif self.last_kw == KW.DEF.value:
             functions.append(tok)
-            add_to_tokens(TT.FUNCTION.value, tok)
+            add_to_tokens(TOKENS.FUNCTION.value, tok)
         elif tok and tok in variables:
-            add_to_tokens(TT.VARIABLE.value, tok)
+            add_to_tokens(TOKENS.VARIABLE.value, tok)
 
         else:
-            add_to_tokens(TT.ARGUMENTS.value, tok)
+            add_to_tokens(TOKENS.ARGUMENTS.value, tok)
 
-####################################################################################
-'Translate To C++'
-####################################################################################
+# Translate To C++
 c_code = '''#include<iostream>
 using namespace std;
-int length(int arr[]){
-    return sizeof(arr) / sizeof(arr[0]);
-}\n\n'''
+string str(int num){return to_string(num);}
+\n\n'''
 
 class TranslateToCpp:
     def __init__(self):
@@ -140,7 +119,7 @@ class TranslateToCpp:
         self.values = []
         self.indent_count = 0
         self.c_code = c_code
-        # if self.types[0] == TT.KEYWORD.value or self.values[0] in functions:
+        # if self.types[0] == TOKENS.KEYWORD.value or self.values[0] in functions:
         #     self.convert(kw=self.values[0])
 
         # else:
@@ -166,7 +145,7 @@ class TranslateToCpp:
         """
 
         if kw in functions:
-            self.write(join_list(self.values))
+            self.write(join_list(self.values) + ';')
             self.indent_count += 1
 
         if kw == KW.MAIN.value:
@@ -174,10 +153,10 @@ class TranslateToCpp:
             self.indent_count += 1
         if kw == KW.PRINT.value:
             """
-            cout << xpr;
+            cout << expr;
             """
-            xpr = join_list(self.values[1:])
-            self.write(f'cout<<{xpr};')
+            expr = join_list(self.values[1:])
+            self.write(f'cout<<{expr};')
         if kw == KW.IF.value:
             """
             if(cond){
@@ -219,20 +198,20 @@ class TranslateToCpp:
 
         if kw == KW.DEF.value:
             """
-            void id(ARGS){
+            auto _id(ARGS){
             """
             _id = self.values[1]
             ARGS: Final = ", ".join(["auto "+x for x in self.values[2:]])
 
-            self.write(f"auto {_id} = []({ARGS}) {{")
+            self.write(f"auto {_id}({ARGS})" + " {")
             self.indent_count += 1
 
         if kw == KW.RETURN1.value:
             """
-            return xpr;
+            return expr;
             """
-            xpr = join_list(self.values[1:])
-            self.write(f'return {xpr};')
+            expr = join_list(self.values[1:-2])
+            self.write(f'return {expr};')
 
         if kw == KW.END.value:
             self.indent_count -= 1
@@ -244,10 +223,6 @@ class TranslateToCpp:
         
         self.c_code += f'{"    " * self.indent_count + content}\n'
 
-
-####################################################################################
-'Main'
-####################################################################################
 
 
 def run(src_file_name: str):
@@ -267,28 +242,28 @@ def run(src_file_name: str):
         for statement in content:
             current_line += 1
 
-            tokens = lexicalize(statement)
+            tokens = [value for kind, value in Lexer.tokenize(statement)]
             tok = Token(tokens)
             if tok.t_types:
                 transpiler.translate(types=tok.t_types, values=tok.t_values)
 
-    f_name: Final = splitext(src_file_name)[0]
+    f_name: Final = os.path.splitext(src_file_name)[0]
 
     with open(f'{f_name}.cpp', 'w+', encoding='utf-8') as f:
         f.write(transpiler.c_code)
     print(transpiler.c_code)
 
-    if platform == 'win32':
+    if sys.platform == 'win32':
         exe_file = f'{f_name}.exe'
-        system(f'g++ {f_name}.cpp -o {exe_file}')
-        system(f'{exe_file}')
-    elif platform == 'linux':
+        os.system(f'g++ {f_name}.cpp -o {exe_file}')
+        os.system(f'{exe_file}')
+    elif sys.platform == 'linux':
         exe_file = f'{f_name}.out'
-        system(f'g++ {f_name}.cpp -o {exe_file}')
-        system(f'./{exe_file}')
-    elif platform == 'darwin':
+        os.system(f'g++ {f_name}.cpp -o {exe_file}')
+        os.system(f'./{exe_file}')
+    elif sys.platform == 'darwin':
         exe_file = f'{f_name}.out'
-        system(f'g++ {f_name}.cpp -o {exe_file}')
-        system(f'./{exe_file}')
+        os.system(f'g++ {f_name}.cpp -o {exe_file}')
+        os.system(f'./{exe_file}')
     else:
-        raise NotImplementedError(f"Platform {platform} is not supported")
+        raise NotImplementedError(f"Platform {sys.platform} is not supported")

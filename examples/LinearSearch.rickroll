@@ -1,5 +1,4 @@
-take me to ur heart
-    gonna LinearSearch arr, target
+gonna LinearSearch arr, target
 
         give index up 0
 
@@ -14,6 +13,8 @@ take me to ur heart
         i just wanna tell u how im feeling "give up " + str(target) + " :( \n"
 
     say good bye
+
+take me to ur heart
 
     give arr up [6, 7, 5, 9, 12]
     gotta LinearSearch(arr, 12)

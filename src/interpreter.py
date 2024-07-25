@@ -1,10 +1,11 @@
+import Lexer
+
 from typing import Final # explanation at Lexer.py
 
 from sys import stdout
 from time import time
 
 from Keywords import *
-from Lexer import lexicalize
 from Parser import Parser, AST
 from helpers import filter_str, precedence, starts_ends
 
@@ -135,7 +136,7 @@ def run(src_file_name: str, debug=False):
         if len(content) > 0:
             content[-1] += '\n'  # EOF handling
 
-        tokens = [lexicalize(stmt) for stmt in content if lexicalize(stmt) != ['']]
+        tokens = [value for stmt in content for kind, value in Lexer.tokenize(stmt) if value != '']
 
         if debug:
             stdout.write(f"tokens (LEXER): {tokens}\n\n")

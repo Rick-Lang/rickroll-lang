@@ -1,7 +1,9 @@
 take me to ur heart
     give idx up 0
-        together forever with idx < 100
-            give idx up idx + 1
+
+    together forever with idx < 100
+        give idx up idx + 1
         i just wanna tell u how im feeling str(idx) + "\n"
     say goodbye
+
 say goodbye

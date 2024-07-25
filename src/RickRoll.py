@@ -6,14 +6,14 @@ from typing import Final
 from traceback import format_exc
 
 # Internal modules
-import CRickroll
-import PyRickroll
-import Interpreter
+import crickroll
+import pyrickroll
+import interpreter
 
 
 def play_audio(src_file_name: str):
     import AudioGenerator
-    from PyRickroll import Token
+    from pyrickroll import Token
     from Lexer import lexicalize
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
@@ -52,16 +52,16 @@ def main():
 
     # Convert .rickroll to C++
     if args.cpp:
-        CRickroll.run(args.file)
+        crickroll.run(args.file)
 
     # Execute .rickroll using the interpreter
     elif args.intpr:
-        Interpreter.run(args.file, debug=args.debug)
+        interpreter.run(args.file, debug=args.debug)
 
     # Convert .rickroll to Python
     else:
         try:
-            pycode = PyRickroll.run(args.file)
+            pycode = pyrickroll.run(args.file)
             exec(pycode, globals(), globals())
         except Exception:
 

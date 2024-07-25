@@ -1,16 +1,17 @@
-take me to ur heart
-    gonna is_prime num
-        give index up 2
-        together forever with index < num
-            and if u ask me how im feeling num % index == 0
-                when i give my 0 it will be completely
-            say goodbye
-            give index up index + 1
+gonna is_prime num
+    give index up 2
+    together forever with index < num
+        and if u ask me how im feeling num % index == 0
+            when i give my 0 it will be completely
         say goodbye
-
-        when i give my index it will be completely~
+        give index up index + 1
     say goodbye
 
+    when i give my index it will be completely~
+say goodbye
+
+
+take me to ur heart
     give num up 2
     give final_prime up 0
     together forever with num <= 40

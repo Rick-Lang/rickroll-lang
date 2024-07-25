@@ -34,6 +34,21 @@ class KW(Enum):
 
     PY = 'py:'
 
+class TOKENS(Enum):
+    KEYWORD        = 'KW'
+    OPERATOR       = 'OP'
+    BUILD_IN_FUNCS = 'BUILTIN'
+    INT            = 'INT'
+    FLOAT          = 'FLOAT'
+    BOOL           = 'BOOL'
+    CHAR           = 'CHAR'
+    STRING         = 'STR'
+    LIST           = 'LIST'
+
+    ARGUMENTS      = 'ARGS'
+    VARIABLE       = 'VAR'
+    FUNCTION       = 'FUNC'
+
 
 KEYWORDS: Final[list[str]] = [i.value for i in list(KW)]
 
@@ -47,12 +62,6 @@ IGNORE_TOKENS: Final = {"~", "'"}
 
 # Characters in numerals
 DIGITS: Final = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'}
-
-SEPARATORS: Final = {
-    # not using `set`, because readability, and multi-char `str`s may be added in the future
-    '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
-}
-"""Separators are used in tokenization"""
 
 OPERATORS: Final = {
     '+', '-', '*', '/', '%', '^', '=', '&', '|',
