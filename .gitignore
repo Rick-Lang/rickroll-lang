@@ -130,3 +130,7 @@ dmypy.json
 
 *.cpp
 *.out
+
+# editor/IDE
+.vscode/
+.idea/
