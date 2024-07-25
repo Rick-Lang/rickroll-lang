@@ -62,6 +62,8 @@ def main():
     else:
         try:
             pycode = pyrickroll.run(args.file)
+            if args.debug:
+                print(pycode)
             exec(pycode, globals(), globals())
         except Exception:
 

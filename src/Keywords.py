@@ -32,7 +32,7 @@ class KW(Enum):
     IS_NOT_OP = 'aint'
     E_OP = 'is'
 
-    PY = 'py:'
+    PY = 'py'
 
 class TOKENS(Enum):
     KEYWORD        = 'KW'

@@ -131,7 +131,12 @@ class TranslateToPython:
             self.write(f'import {self.values[1]}')
 
         elif kw == KW.PY.value:
-            self.write(join_list(self.values[1:]))
+            '''
+                py: `stmt`
+                ^^^
+                'py' and ':' are ignored
+            '''
+            self.write(join_list(self.values[2:]))
 
         else:
             self.write(join_list(self.values))
@@ -147,16 +152,20 @@ def run(file_name: str):
 
     transpiler = TranslateToPython()
 
-    with open(file_name, mode='r', encoding='utf-8') as src:
+    try:
+        with open(file_name, mode='r', encoding='utf-8') as src:
 
-        content = src.readlines()
-        if len(content) > 0:
-            content[-1] += '\n'
+            content = src.readlines()
+            if len(content) > 0:
+                content[-1] += '\n'
 
-        for statement in content:  # "statement" is a line of code in the source code
-            current_line += 1
+            for statement in content:  # "statement" is a line of code in the source code
+                current_line += 1
 
-            tokens = [value for kind, value in Lexer.tokenize(statement)]
-            transpiler.translate(tokens)
+                tokens = [value for kind, value in Lexer.tokenize(statement)]
+                transpiler.translate(tokens)
+
+    except FileNotFoundError:
+        print(f"File '{file_name}' not found.")
 
     return transpiler.py_code

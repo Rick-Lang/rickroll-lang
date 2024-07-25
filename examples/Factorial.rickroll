@@ -1,0 +1,28 @@
+gonna BubbleSort arr
+
+    give idx up 0
+
+    together forever with idx < len(arr)
+        give idx up idx + 1
+        give idx2 up 0
+        together forever with idx2 < len(arr) - 1
+
+            and if u ask me how im feeling arr[idx2] > arr[idx2 + 1]
+                give arr[idx2], arr[idx2 + 1] up arr[idx2 + 1], arr[idx2]
+            say goodbye
+            give idx2 up idx2 + 1
+
+        say goodbye
+    say goodbye
+
+    i just wanna tell u how im feeling arr
+
+say goodbye
+
+
+take me to ur heart
+
+    give arr up [6, 7, 5, 9, 12]
+    gotta BubbleSort(arr)
+
+say goodbye
