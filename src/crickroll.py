@@ -242,7 +242,7 @@ def run(src_file_name: str):
         for statement in content:
             current_line += 1
 
-            tokens = [value for kind, value in Lexer.tokenize(statement)]
+            tokens = Lexer.tokenize(statement)
             tok = Token(tokens)
             if tok.t_types:
                 transpiler.translate(types=tok.t_types, values=tok.t_values)

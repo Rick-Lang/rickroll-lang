@@ -136,7 +136,12 @@ def run(src_file_name: str, debug=False):
         if len(content) > 0:
             content[-1] += '\n'  # EOF handling
 
-        tokens = [value for stmt in content for kind, value in Lexer.tokenize(stmt) if value != '']
+        tokens = []
+        for stmt in content:
+            t = Lexer.tokenize(stmt)
+            if stmt != ['']:
+                tokens.append(t)
+
 
         if debug:
             stdout.write(f"tokens (LEXER): {tokens}\n\n")

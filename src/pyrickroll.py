@@ -162,7 +162,7 @@ def run(file_name: str):
             for statement in content:  # "statement" is a line of code in the source code
                 current_line += 1
 
-                tokens = [value for kind, value in Lexer.tokenize(statement)]
+                tokens = Lexer.tokenize(statement)
                 transpiler.translate(tokens)
 
     except FileNotFoundError:
