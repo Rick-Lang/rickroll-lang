@@ -9,48 +9,6 @@ SEPARATORS: Final = {
     '(', ')', '[', ']', '{', '}', ',', '\n', ' ', '+', '-', '*', '/', '%', '^', '='
 }
 
-# def tokenize(code: str) -> list[tuple[str, str]]:
-#     """
-#     Tokenizes the given string of code into a list of tokens.
-
-#     Args:
-#         code (str): The code to be tokenized.
-
-#     Returns:
-#         list[tuple[str, str]]: A list of tokens defined as tuple(KIND, VALUE) extracted from the statement.
-#     """
-#     tokens = []
-
-#     lineno = 1
-#     line_start = 0
-#     previous_token = ('', '')
-#     for mo in re.finditer(token_regex, code):
-#         kind = mo.lastgroup
-#         value = mo.group()
-
-#         if kind == 'ID':
-#             if (previous_token[0] == 'ID' or previous_token[0] == 'KW')\
-#                 and previous_token[1] + value in ALL_KW:
-#                 previous_token = ('KW', previous_token[1] + value)
-#                 tokens[-1] = previous_token
-#                 continue
-
-#         elif kind == 'SKIP':
-#             continue
-#         elif kind == 'COMMENT':
-#             continue
-#         elif kind == 'NEWLINE':
-#             lineno += 1
-#             line_start = mo.end()
-#             continue
-        
-
-#         previous_token = (kind, value)
-#         tokens.append(previous_token)
-
-#     return tokens
-
-
 def tokenize(code: str) -> list[tuple[str, str]]:
     """
     Tokenizes the given string of code into a list of tokens.
