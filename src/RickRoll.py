@@ -13,15 +13,15 @@ import interpreter
 
 def play_audio(src_file_name: str):
     import AudioGenerator
-    from pyrickroll import Token
-    from Lexer import lexicalize
+    from crickroll import Token
+    from Lexer import tokenize
 
     with open(src_file_name, mode='r', encoding='utf-8') as src:
         content = src.readlines()
         if len(content) > 0:
             content[-1] += '\n'
         for statement in content:
-            tokens = lexicalize(statement)
+            tokens = tokenize(statement)
             tok = Token(tokens)
 
             for v in tok.t_values:
