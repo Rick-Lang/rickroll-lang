@@ -30,7 +30,7 @@ if dependancyMissingBool:
             system("pip install pyttsx3")
         if playsoundMissingBool:
             print("Installing the pip package playsound...")
-            system("pip install playsound")
+            system("pip install playsound==1.2.2")
         try:
             from pyttsx3 import init
         except:
